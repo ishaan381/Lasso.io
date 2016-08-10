@@ -1,0 +1,25 @@
+{
+  "name": "Lasso",
+  "description": "An ATS",
+  "main": "server/start.js",
+  "authors": [
+    "Payton Henson <pph6@georgetown.edu>"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/ishaan381/Lasso.io",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-formly": "^8.3.0",
+    "api-check": "^7.5.5",
+    "angular-formly-templates-bootstrap": "^6.3.2",
+    "angular-ui-select": "^0.19.1",
+    "angular-sanitize": "^1.5.8",
+    "angular-country-select": "^1.0.0"
+  }
+}
