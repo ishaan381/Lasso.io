@@ -32,20 +32,6 @@ module.exports = function (app, db) {
     // A POST /login route is created to handle login.
     app.post('/login', function (req, res, next) {
 
-        // sg.API(request, function(error, response) {
-        //     console.log(response.status)
-        // })
-
-        sg.send({
-            from: 'llasso1606@gmail.com ',
-            to: 'ishaan7@gmail.com',
-            subject: 'Hello World',
-            text: 'Sendgrid on engine'
-        }, function(err) {
-            if (err) return next(err)
-        })
-
-        res.sendStatus(200);
 
 
         var authCb = function (err, user) {
