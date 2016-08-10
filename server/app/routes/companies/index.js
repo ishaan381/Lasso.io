@@ -2,8 +2,8 @@
 var router = require('express').Router();
 module.exports = router;
 let Company = require('../../../db/models/company'),
-Job_applications = require('../../../db/models/job.application'),
-Job_descriptions = require('../../../db/models/job.description'),
+Job = require('../../../db/models/job'),
+User = require('../../../db/models/user'),
 check = require('../check-handler');
 
 router.param('id', function(req, res, next, id){
@@ -14,8 +14,6 @@ router.param('id', function(req, res, next, id){
 		include: [
 		{ model: Job, as: 'jobs'},
 		{ model: User, as: 'employee'},
-		{ model: Job_applications, as: 'appForm'},
-		{ model: Job_descriptions, as: 'jobDesc'}
 		]
 	})
 	.then(function(company){

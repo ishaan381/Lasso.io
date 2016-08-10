@@ -2,11 +2,11 @@
 var router = require('express').Router();
 module.exports = router;
 
-let Job_applications = require('../../../db/models/job.application'),
+let JobApplication = require('../../../db/models/job.application'),
 check = require('../check-handler');
 
 router.param('id', function(req, res, next, id){
-	Job_applications.findOne({
+	JobApplication.findOne({
 		where:{
 			id: id
 		}
@@ -27,7 +27,7 @@ router.get('/:id', function(req, res, next) {
 });
 
 router.post('/', function(req, res, next) {
-	Job_applications.create(req.body)
+	JobApplication.create(req.body)
 	.then(function(app){
 		res.send(app);
 	})
