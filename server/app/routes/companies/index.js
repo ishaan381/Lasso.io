@@ -37,6 +37,7 @@ router.get('/:id', check.company, function(req, res, next) {
 router.post('/', function(req, res, next) {
 	Company.create(req.body)
 	.then(function(company){
+		res.status(201);
 		res.send(company)
 	})
 	.catch(next);
@@ -45,6 +46,7 @@ router.post('/', function(req, res, next) {
 router.put('/:id', function(req, res, next) {
 	req.requestedCompany.update(req.body)
 	.then(function (user) {
+		res.status(204)
 		res.send(user);
 	})
 	.catch(next);

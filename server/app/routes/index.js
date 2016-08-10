@@ -8,6 +8,8 @@ router.use('/job.applications', require('./job.applications'));
 router.use('/job.descriptions', require('./job.descriptions'));
 router.use('/jobs', require('./jobs'));
 router.use('/users', require('./users'));
+router.use('/comments', require('./comments'));
+router.use('/applications', require('./applications'));
 // Make sure this is after all of
 // the registered routes!
 router.use(function (req, res) {

@@ -46,6 +46,7 @@ router.delete('/:id', check.admin, function(req, res, next) {
 router.put('/:id', check.access, function(req, res, next) {
 	req.requestedUser.update(req.body)
 	.then(function(user){
+		res.status(204);
 		res.send(user);
 	})
 	.catch(next);

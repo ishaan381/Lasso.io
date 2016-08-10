@@ -3,6 +3,7 @@ var router = require('express').Router();
 module.exports = router;
 
 let Job = require('../../../db/models/job'),
+Comment = require('../../../db/models/comment'),
 check = require('../check-handler');
 
 router.param('id', function(req, res, next, id){
@@ -29,6 +30,7 @@ router.get('/:id', function(req, res, next) {
 router.post('/', function(req, res, next) {
 	Job.create(req.body)
 	.then(function(desc){
+		res.status(201);
 		res.send(desc);
 	})
 	.catch(next);
