@@ -17,8 +17,8 @@ router.param('id', function(req, res, next, id){
 	})
 	.catch(next);
 });
-
-router.get('/:id', function(req, res, next) {
+//what would the admin route look like
+router.get('/:id', check.company, function(req, res, next) {
 	req.requestedCompany.reload()
 	.then(function(company){
 		res.send(company)

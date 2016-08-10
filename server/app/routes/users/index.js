@@ -10,8 +10,7 @@ router.param('id', function(req, res, next, id){
 	User.findOne({
 		where:{
 			id: id
-		},
-		//include: [] for later
+		}
 	})
 	.then(function(user){
 		req.requestedUser = user;
