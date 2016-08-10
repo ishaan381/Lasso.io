@@ -19,10 +19,12 @@ module.exports = db.define('user', {
         type: Sequelize.STRING
     },
     isAdmin: {
-        type: Sequelize.BOOLEAN
+        type: Sequelize.BOOLEAN,
+        defaultValue: false
     },
     isCompanyAdmin: {
-        type: Sequelize.BOOLEAN
+        type: Sequelize.BOOLEAN,
+        defaultValue: false
     }
 }, {
     instanceMethods: {
