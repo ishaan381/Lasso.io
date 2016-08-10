@@ -7,7 +7,10 @@ var db = require('../_db');
 
 module.exports = db.define('user', {
     email: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        validate: {
+            isEmail: true
+        }
     },
     password: {
         type: Sequelize.STRING
@@ -15,14 +18,11 @@ module.exports = db.define('user', {
     salt: {
         type: Sequelize.STRING
     },
-    twitter_id: {
-        type: Sequelize.STRING
+    isAdmin: {
+        type: Sequelize.BOOLEAN
     },
-    facebook_id: {
-        type: Sequelize.STRING
-    },
-    google_id: {
-        type: Sequelize.STRING
+    isCompanyAdmin: {
+        type: Sequelize.BOOLEAN
     }
 }, {
     instanceMethods: {
