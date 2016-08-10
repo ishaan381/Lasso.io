@@ -101,6 +101,18 @@
             });
         };
 
+        var self = this;
+        this.signup = function(credentials) {
+
+            return $http.post('/signup', credentials)
+            .then(function() {
+                return self.login(credentials)
+            })
+            .catch(function() {
+                return $q.reject({ message: 'User already exists'});
+            })
+        }
+
     });
 
     app.service('Session', function ($rootScope, AUTH_EVENTS) {
