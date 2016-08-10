@@ -8,14 +8,13 @@ app.config(function ($stateProvider) {
 
 });
 
-app.controller('LoginCtrl', function ($scope, AuthService, $state) {
+app.controller('LoginCtrl', function ($scope, AuthService, $state, $log) {
 
     $scope.login = {};
+    $scope.signup = {};
     $scope.error = null;
 
     $scope.sendLogin = function (loginInfo) {
-
-        $scope.error = null;
 
         AuthService.login(loginInfo).then(function () {
             $state.go('home');
@@ -24,5 +23,26 @@ app.controller('LoginCtrl', function ($scope, AuthService, $state) {
         });
 
     };
+
+    $scope.sendSignup = function(signupInfo) {
+
+        console.log('signing up')
+        AuthService.signup(signupInfo)
+        // .then(function() {
+        //     console.log('auth service signed you in')
+        //     return AuthService.login(signupInfo)
+        // })
+        .then(function() {
+            $state.go('home');
+        })
+        .catch(function(err) {
+            console.log(err);
+            $scope.error = err.message
+        })
+
+
+    }
+
+
 
 });
