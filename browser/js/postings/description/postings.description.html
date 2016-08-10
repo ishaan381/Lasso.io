@@ -1,0 +1,15 @@
+<div>
+  <h2>Build your job description</h2>
+  <form name="vm.descriptionForm" ng-submit="vm.submit(vm.description)">
+    <formly-form model="vm.description" fields="vm.descriptionFields">
+      <button type="submit" class="btn btn-default">Submit</button>
+    </formly-form>
+  </form>
+
+  <h2>Model</h2>
+  <pre>{{ vm.description | json }}</pre>
+  <h2>Fields</h2>
+  <pre>{{ vm.originalFields | json }}</pre>
+  <h3>Form</h3>
+  <pre>{{ vm.descriptionForm | json }}</pre>
+</div>

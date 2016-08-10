@@ -1,5 +1,5 @@
 'use strict';
-window.app = angular.module('FullstackGeneratedApp', ['fsaPreBuilt', 'ui.router', 'ui.bootstrap', 'ngAnimate']);
+window.app = angular.module('FullstackGeneratedApp', ['fsaPreBuilt', 'ui.router', 'ui.bootstrap', 'ngAnimate', 'formly', 'formlyBootstrap', 'ui.select', 'ngSanitize']);
 
 app.config(function ($urlRouterProvider, $locationProvider) {
     // This turns off hashbang urls (/#about) and changes it to something normal (/about)
@@ -10,6 +10,15 @@ app.config(function ($urlRouterProvider, $locationProvider) {
     $urlRouterProvider.when('/auth/:provider', function () {
         window.location.reload();
     });
+});
+
+app.run(function (formlyConfig) {
+   formlyConfig.extras.removeChromeAutoComplete = true;
+   formlyConfig.setType({
+    name: 'ui-select',
+    // extends: 'select',
+    templateUrl: 'js/formly-ui-select.html'
+   })
 });
 
 // This app.run is for controlling access to specific states.
