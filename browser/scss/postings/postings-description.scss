@@ -1,0 +1,27 @@
+#postings-description {
+	font-family: Meta Medium;
+
+	#postings-form {
+		.ta-editor {
+		    min-height: 300px;
+		    height: auto;
+		    overflow: auto;
+		    font-family: inherit;
+		    font-size: 100%;
+		    margin:20px 0;
+		}
+
+		.region-field .select2 {
+			width: 100%;
+		}
+		.region-field .select2-choice {
+			padding: 8px;
+			height: 35px;
+			line-height: 18px;
+
+		}
+
+
+	}
+
+}

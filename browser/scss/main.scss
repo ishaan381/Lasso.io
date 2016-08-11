@@ -14,9 +14,21 @@ body {
   }
 }
 
+@font-face {
+	font-family: Meta Medium;
+	src: url("/media/meta-medium.ttf");
+}
+
+@font-face {
+	font-family: Meta Medium Caps;
+	src: url("/media/meta-medium-caps.ttf");
+}
+
 #main {
   padding-top: 60px;
   margin: 0 auto;
+  margin-left: 50px;
+  margin-right: 50px;
 }
 
 @import 'directives/main';
@@ -24,3 +36,4 @@ body {
 @import 'about/main';
 @import 'tutorial/main';
 @import 'login/main';
+@import 'postings/main';

@@ -18,8 +18,8 @@
     "angular-formly": "^8.3.0",
     "api-check": "^7.5.5",
     "angular-formly-templates-bootstrap": "^6.3.2",
-    "angular-ui-select": "^0.19.1",
     "angular-sanitize": "^1.5.8",
-    "angular-country-select": "^1.0.0"
+    "angular-bootstrap": "^2.0.1",
+    "textAngular": "^1.5.4"
   }
 }
