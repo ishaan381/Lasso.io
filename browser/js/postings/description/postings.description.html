@@ -6,6 +6,8 @@
             <button type="submit" class="btn btn-primary submit-button" ng-disabled="vm.form.$invalid">Submit</button>
           </formly-form>
         </form>
+        <h1>Test</h1>
+        <pre>{{ model }}</pre>
         <h2>Form Data</h2>
         <pre>{{vm.model | json}}</pre>
         <h2>Fields <small>(note, functions are not shown)</small></h2>
@@ -14,7 +16,7 @@
         <pre>{{vm.form | json}}</pre>
   </div>
 </section>
-    
+
 <!-- <div>
   <h2>Build your job description</h2>
   <form name="vm.descriptionForm" ng-submit="vm.submit(vm.description)">

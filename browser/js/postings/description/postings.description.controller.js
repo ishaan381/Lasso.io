@@ -23,7 +23,7 @@ app.controller('newDescriptionCtrl', function ($scope, formlyVersion, $q, $http,
         "label":"Option 3"
       }
     ];
-    
+
     // funcation assignment
     vm.onSubmit = onSubmit;
 
@@ -32,7 +32,7 @@ app.controller('newDescriptionCtrl', function ($scope, formlyVersion, $q, $http,
       name: 'Mark Hayes',
       url: 'https://github.com/mhazy' // a link to your twitter/github/blog/whatever
     };
-    
+
     vm.exampleTitle = 'UI Select (Angular 1.4+)';
     vm.env = {
       angularVersion: angular.version.full,
@@ -47,10 +47,9 @@ app.controller('newDescriptionCtrl', function ($scope, formlyVersion, $q, $http,
       // "multipleOption": null,
       // "singleOptionAsync": null
     };
-    
-   
+
     vm.options = {};
-    
+
     vm.fields = [
     {
       key: 'title',
@@ -93,16 +92,16 @@ app.controller('newDescriptionCtrl', function ($scope, formlyVersion, $q, $http,
         templateOptions: {
           optionsAttr: 'bs-options',
           ngOptions: 'option[to.valueProp] as option in to.options | filter: $select.search',
-          label: 'State/Region',
+          label: 'City',
           valueProp: 'id',
           labelProp: 'label',
-          placeholder: 'State/Region',
+          placeholder: 'City',
           options: testData
         }
       },
           // NOT WORKING YET
     {
-      key: 'commitment', 
+      key: 'commitment',
       type: 'toggleCheckbox',
       className: 'col-md-4',
       templateOptions: {
@@ -141,20 +140,20 @@ app.controller('newDescriptionCtrl', function ($scope, formlyVersion, $q, $http,
           labelProp: 'formatted_address',
           placeholder: 'Search',
           options: [],
-          refresh: refreshAddresses,
+          refresh: refreshAddresses(vm.model.country),
           refreshDelay: 0
         }
       },
     ];
 
     vm.originalFields = angular.copy(vm.fields);
-    
-    function refreshAddresses(address, field) {
+
+    function refreshAddresses(countryCode, field) {
       var promise;
       if (!address) {
         promise = $q.when({data: {results: []}});
       } else {
-        var params = {address: address, sensor: false};
+        var params = {region: countryCode, sensor: false};
         var endpoint = '//maps.googleapis.com/maps/api/geocode/json';
         promise = $http.get(endpoint, {params: params});
       }
@@ -162,7 +161,7 @@ app.controller('newDescriptionCtrl', function ($scope, formlyVersion, $q, $http,
         field.templateOptions.options = response.data.results;
       });
     }
-    
+
     // function definition
     function onSubmit() {
       alert(JSON.stringify(vm.model), null, 2);
