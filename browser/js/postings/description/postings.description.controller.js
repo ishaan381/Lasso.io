@@ -56,6 +56,7 @@ app.controller('newDescriptionCtrl', function ($scope, formlyVersion, $q, $http,
       key: 'title',
       type: 'input',
       className: 'col-md-8',
+      defaultValue: "",
       templateOptions: {
         type: 'text',
         label: 'Position Title',
@@ -176,19 +177,19 @@ app.controller('newDescriptionCtrl', function ($scope, formlyVersion, $q, $http,
       ]
     }
   },
-      {
-        key: 'multipleOption',
-        type: 'ui-select-multiple',
-        templateOptions: {
-          optionsAttr: 'bs-options',
-          ngOptions: 'option[to.valueProp] as option in to.options | filter: $select.search',
-          label: 'Multiple Select',
-          valueProp: 'id',
-          labelProp: 'label',
-          placeholder: 'Select options',
-          options: testData
-        }
-      },
+      // {
+      //   key: 'multipleOption',
+      //   type: 'ui-select-multiple',
+      //   templateOptions: {
+      //     optionsAttr: 'bs-options',
+      //     ngOptions: 'option[to.valueProp] as option in to.options | filter: $select.search',
+      //     label: 'Multiple Select',
+      //     valueProp: 'id',
+      //     labelProp: 'label',
+      //     placeholder: 'Select options',
+      //     options: testData
+      //   }
+      // },
     ];
 
     vm.originalFields = angular.copy(vm.fields);

@@ -70,6 +70,6 @@
     "supertest": "^0.15.0"
   },
   "devDependencies": {
-    "ui-select": "^0.17.0"
+    "ui-select": "0.17.0"
   }
 }
