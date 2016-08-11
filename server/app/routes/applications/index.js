@@ -24,7 +24,7 @@ router.param('id', function(req, res, next, id){
 
 
 router.get('/:id', function(req, res, next) {
-    Comment.findOne({
+    App.findOne({
     	where: {
     		applicationId: req.param.id
     	},
@@ -43,7 +43,7 @@ router.post('/', function(req, res, next){
 		res.send(app);
 	})
 	.catch(next);
-})
+});
 
 router.put('/:id', check.access, function(req, res, next) {
 	req.requestedApplication.update(req.body)
@@ -60,4 +60,4 @@ router.delete('/:id', check.access, function(req, res, next) {
 		res.status(204).end();
 	})
 	.catch(next);
-})
+});

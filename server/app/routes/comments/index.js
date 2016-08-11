@@ -15,7 +15,7 @@ router.param('id', function(req, res, next, id){
 	.catch(next);
 });
 
-router.get('/:appId', function(req, res, next) {
+router.get('/:appId', function(req, res, next) {//getting all comments on an application
 	Comment.findAll({
 		where: {
 			applicationId: req.params.appId
@@ -29,7 +29,7 @@ router.get('/:appId', function(req, res, next) {
 	.catch(next);
 })
 
-router.post('/:id', check.checkCompany, function(req, res, next) {
+router.post('/:id', check.company, function(req, res, next) {
 	Comment.create(req.body)
 	.then(function(comment) {
 		res.status(201);
@@ -46,7 +46,7 @@ router.put('/:id', check.user, function(req, res, next) {
 	}).catch(next);
 })
 
-router.delete('/:id', check.checkCompany, function(req, res, next) {
+router.delete('/:id', check.company, function(req, res, next) {
 	req.requestedComment.destroy()
 	.then(function(){
 		res.status(204).end()
