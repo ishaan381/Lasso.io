@@ -102,7 +102,21 @@
         };
 
         var self = this;
+
+        this.checkCode = function(code) {
+            console.log('checking code')
+            return $http.post('/checkcode', {code: code})
+            .then(function() {
+                console.log('valid code')
+                return $q.resolve({message: 'code valid'})
+            })
+            .catch(function() {
+                return $q.reject({message: 'invalid or expired code'})
+            })
+
+        }
         this.signup = function(credentials) {
+
 
             return $http.post('/signup', credentials)
             .then(function() {
@@ -110,6 +124,17 @@
             })
             .catch(function() {
                 return $q.reject({ message: 'User already exists'});
+            })
+        }
+
+        this.createCompany = function(credentials) {
+
+            return $http.post('/create', {name: credentials.name, website: credentials.website})
+            .then(function(createdCompany) {
+                return self.signup({email: credentials.email, password: credentials.password})
+            })
+            .catch(function() {
+                return $q.reject({message: 'Company account already exists'})
             })
         }
 
