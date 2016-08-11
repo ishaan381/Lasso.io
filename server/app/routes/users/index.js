@@ -2,7 +2,7 @@
 var router = require('express').Router();
 module.exports = router;
 
-let Company = require('../../../db/models/company'),
+let Comment = require('../../../db/models/comment'),
 User = require('../../../db/models/user'),
 check = require('../check-handler');
 
@@ -35,13 +35,16 @@ router.get('/:id', function(req, res, next) {
 // 	.catch(next);
 // });
 
-router.delete('/:id', check.admin, function(req, res, next) {
+
+//hooks on associations and on models take care of deleting all relavant info, if they dont, check the models and associations
+router.delete('/:id', (check.admin || check.pageAdimin), function(req, res, next) {
 	req.requestedUser.destroy()
 	.then(function(){
 		res.status(204).end();
 	})
 	.catch(next);
 });
+
 
 router.put('/:id', check.access, function(req, res, next) {
 	req.requestedUser.update(req.body)

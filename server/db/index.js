@@ -8,22 +8,21 @@ let User = require('./models/user'),
  JobApplication = require('./models/job.application'),
  Company = require('./models/company'),
  Application = require('./models/application'),
- Comment = require('./models/comment');
+ Comment = require('./models/comment'),
+ Code = require('./models/code')
 
 
 //places descriptionId and applicationId on the Job table
-JobDescription.hasOne(Job, {foreignKey: 'descriptionId'});
-JobApplication.hasOne(Job, {foreignKey: 'applicationId'});
-
-Job.belongsTo(JobDescription, {as: 'description'});
-Job.belongsTo(JobApplication, {as: 'application'});
+JobDescription.hasOne(Job, {foreignKey: 'descriptionId', onDelete: 'cascade', hooks: true});
+JobApplication.hasOne(Job, {foreignKey: 'applicationId', onDelete: 'cascade', hooks: true});
 
 Company.hasMany(User);
+Application.hasMany(Comment, {as: 'application', onDelete : 'cascade', hooks: true});//not sure if this works -Jonathan
 User.belongsTo(Company);
-Job.hasMany(Application);
-User.hasMany(Comment);
+Company.hasMany(Job, {foreignKey: 'companyId', onDelete : 'cascade', hooks: true});
+Job.hasMany(Application, {as: 'job', onDelete : 'cascade', hooks: true});
+User.hasMany(Comment, {as: 'user', onDelete : 'cascade', hooks: true});
 
-Application.hasMany(Comment, {as: 'comments'})//not sure if this works -Jonathan
 
 
 

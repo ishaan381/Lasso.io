@@ -11,6 +11,7 @@ router.use('/jobs', require('./jobs'));
 router.use('/users', require('./users'));
 router.use('/comments', require('./comments'));
 router.use('/applications', require('./applications'));
+router.use('/code', require('./code'));
 
 // Make sure this is after all of
 // the registered routes!

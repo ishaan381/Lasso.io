@@ -2,8 +2,8 @@
 var router = require('express').Router();
 module.exports = router;
 let Company = require('../../../db/models/company'),
-Job_applications = require('../../../db/models/job.application'),
-Job_descriptions = require('../../../db/models/job.description'),
+Job = require('../../../db/models/job'),
+User = require('../../../db/models/user'),
 check = require('../check-handler');
 
 router.param('id', function(req, res, next, id){
@@ -14,8 +14,6 @@ router.param('id', function(req, res, next, id){
 		include: [
 		{ model: Job, as: 'jobs'},
 		{ model: User, as: 'employee'},
-		{ model: Job_applications, as: 'appForm'},
-		{ model: Job_descriptions, as: 'jobDesc'}
 		]
 	})
 	.then(function(company){
@@ -26,12 +24,25 @@ router.param('id', function(req, res, next, id){
 });
 
 //what would the admin route look like
-router.get('/:id', check.company, function(req, res, next) {
+router.get('/:id', function(req, res, next) {
 	req.requestedCompany.reload()
 	.then(function(company){
 		res.send(company)
 	})
 	.catch(next);
+});
+
+//this route is for the company admin to get all users
+router.get('/:id/users', function(req, res, next){
+	User.findAll({
+		where: {
+			companyId: req.params.id
+		}
+	})
+	.then(function(users){
+		res.send(users);
+	})
+	.catch(next)
 });
 
 router.post('/', function(req, res, next) {
@@ -43,7 +54,7 @@ router.post('/', function(req, res, next) {
 	.catch(next);
 });
 
-router.put('/:id', function(req, res, next) {
+router.put('/:id', check.company, function(req, res, next) {
 	req.requestedCompany.update(req.body)
 	.then(function (user) {
 		res.status(204)
@@ -51,3 +62,11 @@ router.put('/:id', function(req, res, next) {
 	})
 	.catch(next);
 })
+
+router.delete('/:id', (check.admin || check.pageAdmin), function(req, res, next) {
+	req.requestedCompany.destroy()
+	.then(function(){
+		res.status(204).end()
+	})
+	.catch(next);
+});

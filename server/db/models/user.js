@@ -1,9 +1,9 @@
 'use strict';
-var crypto = require('crypto');
-var _ = require('lodash');
-var Sequelize = require('sequelize');
-
-var db = require('../_db');
+let crypto = require('crypto'),
+_ = require('lodash'),
+Sequelize = require('sequelize'),
+Comment = require('./comment'),
+db = require('../_db');
 
 module.exports = db.define('user', {
     email: {
@@ -52,6 +52,14 @@ module.exports = db.define('user', {
                 user.salt = user.Model.generateSalt();
                 user.password = user.Model.encryptPassword(user.password, user.salt);
             }
+        },
+        beforeDestroy: function(user){
+            return Comment.destroy({
+                where: {
+                    userId: user.id
+                },
+                individualHooks: true
+            })
         }
     }
 });

@@ -12,26 +12,36 @@ app.controller('LoginCtrl', function ($scope, AuthService, $state, $log) {
 
     $scope.login = {};
     $scope.signup = {};
+    $scope.companySignupInfo = {};
     $scope.error = null;
 
     $scope.sendLogin = function (loginInfo) {
 
         AuthService.login(loginInfo).then(function () {
             $state.go('home');
-        }).catch(function () {
-            $scope.error = 'Invalid login credentials.';
+        }).catch(function (err) {
+            $scope.error = err.message;
         });
 
     };
 
+    $scope.createCompany = function (createInfo) {
+        AuthService.createCompany(createInfo)
+        .then(function() {
+            $state.go('home');
+        })
+        .catch(function(err) {
+            $scope.error = err.message;
+        })
+    }
+
     $scope.sendSignup = function(signupInfo) {
 
         console.log('signing up')
-        AuthService.signup(signupInfo)
-        // .then(function() {
-        //     console.log('auth service signed you in')
-        //     return AuthService.login(signupInfo)
-        // })
+        AuthService.checkCode(signupInfo.code)
+        .then(function() {
+            return AuthService.signup({password: signupInfo.password, email: signupInfo.email})
+        })
         .then(function() {
             $state.go('home');
         })
