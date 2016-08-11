@@ -8,7 +8,8 @@ let User = require('./models/user'),
  JobApplication = require('./models/job.application'),
  Company = require('./models/company'),
  Application = require('./models/application'),
- Comment = require('./models/comment');
+ Comment = require('./models/comment'),
+ Code = require('./models/code')
 
 
 //places descriptionId and applicationId on the Job table
