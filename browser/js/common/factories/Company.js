@@ -45,6 +45,7 @@ app.factory('Company', function($http, $log) {
             })
     }
 
+    //this deletes an entire company's page, if it doesnt check the models and association hooks
     Company.remove = function (id) {
         return $http.delete('/api/companies/' + id)
                     .then(function (response) {
