@@ -48,6 +48,7 @@ app.controller('newDescriptionCtrl', function ($scope, formlyVersion, $q, $http,
       // "singleOptionAsync": null
     };
 
+
     vm.options = {};
 
     vm.fields = [
@@ -55,6 +56,7 @@ app.controller('newDescriptionCtrl', function ($scope, formlyVersion, $q, $http,
       key: 'title',
       type: 'input',
       className: 'col-md-8',
+      defaultValue: "",
       templateOptions: {
         type: 'text',
         label: 'Position Title',
@@ -87,21 +89,37 @@ app.controller('newDescriptionCtrl', function ($scope, formlyVersion, $q, $http,
       },
       {
         key: 'region',
-        type: 'ui-select-single-select2',
+        type: 'ui-select-single-search',
         className: 'region-field col-md-4',
         templateOptions: {
           optionsAttr: 'bs-options',
           ngOptions: 'option[to.valueProp] as option in to.options | filter: $select.search',
-          label: 'City',
-          valueProp: 'id',
-          labelProp: 'label',
-          placeholder: 'City',
-          options: testData
+          label: 'Region',
+          valueProp: 'formatted_address',
+          labelProp: 'formatted_address',
+          placeholder: 'Search',
+          options: [],
+          refresh: refreshAddresses,
+          refreshDelay: 0
         }
       },
+      // {
+      //   key: 'region',
+      //   type: 'ui-select-single-select2',
+      //   className: 'region-field col-md-4',
+      //   templateOptions: {
+      //     optionsAttr: 'bs-options',
+      //     ngOptions: 'option[to.valueProp] as option in to.options | filter: $select.search',
+      //     label: 'State/Region',
+      //     valueProp: 'id',
+      //     labelProp: 'label',
+      //     placeholder: 'State/Region',
+      //     options: testData
+      //   }
+      // },
           // NOT WORKING YET
     {
-      key: 'commitment',
+      key: 'current',
       type: 'toggleCheckbox',
       className: 'col-md-4',
       templateOptions: {
@@ -110,54 +128,88 @@ app.controller('newDescriptionCtrl', function ($scope, formlyVersion, $q, $http,
       }
     },
       {
-        key: 'myText',
+        key: 'description',
         type: 'textEditor',
+        className: 'text-editor',
         templateOptions: {
-          label: 'Enter Text'
+          label: 'Job Description'
         }
       },
       {
-        key: 'multipleOption',
-        type: 'ui-select-multiple',
-        templateOptions: {
-          optionsAttr: 'bs-options',
-          ngOptions: 'option[to.valueProp] as option in to.options | filter: $select.search',
-          label: 'Multiple Select',
-          valueProp: 'id',
-          labelProp: 'label',
-          placeholder: 'Select options',
-          options: testData
-        }
+        noFormControl: true,
+        template: '<h3>SECTIONS (for requirements, responsibilities, etc.)</h3><hr>'
       },
       {
-        key: 'singleOptionAsync',
-        type: 'ui-select-single-search',
-        templateOptions: {
-          optionsAttr: 'bs-options',
-          ngOptions: 'option[to.valueProp] as option in to.options | filter: $select.search',
-          label: 'Async Search',
-          valueProp: 'formatted_address',
-          labelProp: 'formatted_address',
-          placeholder: 'Search',
-          options: [],
-          refresh: refreshAddresses(vm.model.country),
-          refreshDelay: 0
+    "type": "repeatSection",
+    "key": "sections",
+    "templateOptions": {
+      "btnText": "Add another section",
+      "fields": [
+        {
+          "className": "row",
+          "fieldGroup": [
+            {
+              "className": "col-md-12 section-title-field",
+              "type": "input",
+              "key": "sectionTitle",
+              "templateOptions": {
+                "label": "Section Title",
+              }
+            }
+          ]
+        },
+        {
+
+          "className": "row",
+          "fieldGroup": [
+            {
+              "key": 'description',
+              "type": 'textEditor',
+              "className": 'text-editor col-md-12',
+              "templateOptions": {
+                "label": 'Section Body'
+              }
+            },
+
+          ]
         }
-      },
+
+      ]
+    }
+  },
+      // {
+      //   key: 'multipleOption',
+      //   type: 'ui-select-multiple',
+      //   templateOptions: {
+      //     optionsAttr: 'bs-options',
+      //     ngOptions: 'option[to.valueProp] as option in to.options | filter: $select.search',
+      //     label: 'Multiple Select',
+      //     valueProp: 'id',
+      //     labelProp: 'label',
+      //     placeholder: 'Select options',
+      //     options: testData
+      //   }
+      // },
     ];
 
     vm.originalFields = angular.copy(vm.fields);
 
-    function refreshAddresses(countryCode, field) {
+    function refreshAddresses(address, field) {
+      console.log(address);
+      console.log('hi');
       var promise;
       if (!address) {
         promise = $q.when({data: {results: []}});
       } else {
-        var params = {region: countryCode, sensor: false};
-        var endpoint = '//maps.googleapis.com/maps/api/geocode/json';
-        promise = $http.get(endpoint, {params: params});
+        // var params = {address: address, components: "country: vm.model.country", sensor: false};
+        // console.log(params);
+        // var endpoint = '//maps.googleapis.com/maps/api/geocode/json';
+        var endpoint = '//maps.googleapis.com/maps/api/geocode/json?components=administrative_area:' + address + '|country:' + vm.model.country
+        // promise = $http.get(endpoint, {params: params});
+        promise = $http.get(endpoint);
       }
       return promise.then(function(response) {
+        console.log(response.data.results);
         field.templateOptions.options = response.data.results;
       });
     }
