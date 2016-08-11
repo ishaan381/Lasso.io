@@ -22,6 +22,7 @@ Job.belongsTo(JobApplication, {as: 'application'});
 Company.hasMany(User);
 Application.hasMany(Comment, {as: 'application'});//not sure if this works -Jonathan
 User.belongsTo(Company);
+Company.hasMany(Job, {foreignKey: 'company'});
 Job.hasMany(Application, {as: 'job'});
 User.hasMany(Comment, {as: 'user'});
 

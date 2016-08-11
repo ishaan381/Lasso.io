@@ -2,8 +2,7 @@
 var router = require('express').Router();
 module.exports = router;
 
-let Company = require('../../../db/models/company'),
-User = require('../../../db/models/user'),
+let User = require('../../../db/models/user'),
 check = require('../check-handler');
 
 router.param('id', function(req, res, next, id){

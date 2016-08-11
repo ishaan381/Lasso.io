@@ -51,4 +51,5 @@ router.delete('/:id', check.company, function(req, res, next) {
 	.then(function(){
 		res.status(204).end()
 	})
+	.catch(next);
 })
