@@ -29,14 +29,16 @@ router.get('/:appId', function(req, res, next) {//getting all comments on an app
 	.catch(next);
 })
 
-router.post('/:id', check.company, function(req, res, next) {
-	Comment.create(req.body)
-	.then(function(comment) {
-		res.status(201);
-		res.send(comment);
-	})
-	.catch(next);
-})
+//comments will only be made on applications, therefore posting a comment will take place in the application routes
+
+// router.post('/:id', check.company, function(req, res, next) {
+// 	Comment.create(req.body)
+// 	.then(function(comment) {
+// 		res.status(201);
+// 		res.send(comment);
+// 	})
+// 	.catch(next);
+// })
 
 router.put('/:id', check.user, function(req, res, next) {
 	req.requestedComment.update(req.body)
