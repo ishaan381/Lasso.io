@@ -2,11 +2,11 @@
 var router = require('express').Router();
 module.exports = router;
 
-let Job_descriptions = require('../../../db/models/job.description'),
+let JobDescription = require('../../../db/models/job.description'),
 check = require('../check-handler');
 
 router.param('id', function(req, res, next, id){
-	Job_descriptions.findOne({
+	JobDescription.findOne({
 		where:{
 			id: id
 		}
@@ -27,7 +27,7 @@ router.get('/:id', function(req, res, next) {
 });
 
 router.post('/', function(req, res, next) {
-	Job_descriptions.create(req.body)
+	JobDescription.create(req.body)
 	.then(function(desc){
 		res.send(desc);
 	})

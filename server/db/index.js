@@ -8,7 +8,8 @@ let User = require('./models/user'),
  JobApplication = require('./models/job.application'),
  Company = require('./models/company'),
  Application = require('./models/application'),
- Comment = require('./models/comment');
+ Comment = require('./models/comment'),
+ Code = require('./models/code')
 
 
 //places descriptionId and applicationId on the Job table
@@ -19,11 +20,11 @@ Job.belongsTo(JobDescription, {as: 'description'});
 Job.belongsTo(JobApplication, {as: 'application'});
 
 Company.hasMany(User);
+Application.hasMany(Comment, {as: 'application'});//not sure if this works -Jonathan
 User.belongsTo(Company);
-Job.hasMany(Application);
-User.hasMany(Comment);
+Job.hasMany(Application, {as: 'job'});
+User.hasMany(Comment, {as: 'user'});
 
-Application.hasMany(Comment, {as: 'comments'})//not sure if this works -Jonathan
 
 
 

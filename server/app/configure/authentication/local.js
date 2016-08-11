@@ -1,10 +1,14 @@
 'use strict';
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
+var _ = require('lodash');
+
 
 module.exports = function (app, db) {
 
     var User = db.model('user');
+    var Company = db.model('company');
+    var Code = db.model('code');
 
     // When passport.authenticate('local') is used, this function will receive
     // the email and password to run the actual authentication logic.
@@ -31,6 +35,8 @@ module.exports = function (app, db) {
     // A POST /login route is created to handle login.
     app.post('/login', function (req, res, next) {
 
+
+
         var authCb = function (err, user) {
 
             if (err) return next(err);
@@ -55,5 +61,71 @@ module.exports = function (app, db) {
         passport.authenticate('local', authCb)(req, res, next);
 
     });
+
+    app.post('/create', function(req, res, next) {
+        Company.findOne({where: {
+            name: req.body.name
+        }})
+        .then(function(company) {
+            if (!company) return Company.create(req.body);
+            else {
+                var error = new Error('Company account already exists');
+                error.status = 401;
+                throw error;
+            }
+        })
+        .then(function(createdCompany) {
+            res.send(createdCompany);
+        })
+        .catch(function(error) {
+            return next (error)
+        })
+    })
+
+    app.post('/checkcode', function(req, res, next) {
+        console.log(req.body, "THIS IS THE CODE WE ARE SEARCHING")
+        Code.findOne({where: {
+            code: req.body.code
+        }})
+        .then(function(code) {
+            console.log('FOUND THE CODE', code)
+            if (code) {
+                return code.destroy()
+            }
+            else {
+                var error = new Error('Invalid or expired verification code');
+                error.status = 401;
+                throw error;
+            }
+        })
+        .then(function() {
+            console.log('code verified');
+            res.sendStatus(200);
+        })
+        .catch(function(error) {
+            return next (error);
+        })
+    })
+
+    app.post('/signup', function(req, res, next) {
+        User.findOne({where: {
+            email: req.body.email
+        }})
+        .then(function(user){
+            if (!user) return User.create(req.body);
+            else {
+                var error = new Error('User already exists');
+                error.status = 401;
+                throw error;
+            }
+        })
+        .then(function(createdUser) {
+            console.log('user created in the backend', createdUser);
+            res.sendStatus(200)
+        })
+        .catch(function(error) {
+            return next (error)
+        })
+    })
 
 };

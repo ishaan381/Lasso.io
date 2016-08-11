@@ -3,14 +3,19 @@ var router = require('express').Router();
 module.exports = router;
 
 let Job = require('../../../db/models/job'),
-Comment = require('../../../db/models/comment'),
+JobDescription = require('../../../db/models/job.description'),
+JobApplication = require('../../../db/models/job.application'),
 check = require('../check-handler');
 
 router.param('id', function(req, res, next, id){
 	Job.findOne({
 		where:{
 			id: id
-		}
+		},
+		include: [
+		{ model: JobApplication, as: 'appForm'},
+		{ model: JobDescription, as: 'jobDesc'}
+		]
 	})
 	.then(function(job){
 		req.requestedJob = job;
