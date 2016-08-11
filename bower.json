@@ -20,6 +20,7 @@
     "angular-formly-templates-bootstrap": "^6.3.2",
     "angular-sanitize": "^1.5.8",
     "angular-bootstrap": "^2.0.1",
-    "textAngular": "^1.5.4"
+    "textAngular": "^1.5.4",
+    "angular-formly-repeating-section": "^0.0.1"
   }
 }

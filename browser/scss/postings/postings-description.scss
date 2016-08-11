@@ -1,27 +1,75 @@
-#postings-description {
-	font-family: Meta Medium;
+.boxed {
+	background: #fff;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
 
-	#postings-form {
-		.ta-editor {
-		    min-height: 300px;
-		    height: auto;
-		    overflow: auto;
-		    font-family: inherit;
-		    font-size: 100%;
-		    margin:20px 0;
+.job-editor {
+	
+	padding: 30px;
+	position: relative;
+	display: inline-block;
+
+
+
+
+	#postings-description {
+		font-family: Meta Medium;
+
+		#postings-form {
+		hr {
+		    display: block;
+		    height: 1px;
+		    border: 0;
+		    border-top: 1px solid #ccc;
+		    margin: 1em 0;
+		    padding: 0;
+		}
+			.ta-editor {
+			    min-height: 150px;
+			    height: auto;
+			    overflow: auto;
+			    font-family: inherit;
+			    font-size: 100%;
+			    // margin:20px 0;
+			}
+
+			.ta-toolbar {
+				.btn-group {
+					button {
+						border: none;
+					}
+				}
+			}
+
+			.ta-scroll-window > .ta-bind {
+				min-height: 150px;
+			}
+
+			.region-field .select2 {
+				width: 100%;
+			}
+			.region-field .select2-choice {
+				padding: 8px;
+				height: 35px;
+				line-height: 18px;
+
+			}
+
+			.section-title-field {
+				height: 0;
+			}
+
+
+			.text-editor {
+				padding: 15px;
+			}
+
+
+
+
 		}
 
-		.region-field .select2 {
-			width: 100%;
-		}
-		.region-field .select2-choice {
-			padding: 8px;
-			height: 35px;
-			line-height: 18px;
-
-		}
-
-
-	}
-
+	}	
 }
