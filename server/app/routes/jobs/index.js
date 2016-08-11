@@ -69,29 +69,9 @@ router.put('/:id', check.access, function(req, res, next) {
 });
 
 //this will delete everything associated with this job
+//hooks take care of deleting all associated content
 router.delete('/:id', check.company, function(req, res, next) {
-    JobApplication.destory({
-    	where: {
-    		id: req.requestedJob.applicationId
-    	}
-    })
-    .then(function(){
-    	JobDescription.destory({
-    		where: {
-    			jobId: req.params.id
-    		}
-    	})
-    })
-    .then(function(){
-    	JobDescription.destory({
-    		where: {
-    			id: req.requestedJob.descriptionId
-    		}
-    	})
-    })
-    .then(function(){
-    	req.requestedJob.destroy()
-    })
+    req.requestedJob.destroy()
     .then(function () {
         res.status(204).end();
     })
