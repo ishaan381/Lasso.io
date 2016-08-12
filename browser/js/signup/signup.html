@@ -1,0 +1,53 @@
+<div layout="row">
+    <div flex="50">
+        <form id="login-form" name="companyForm" ng-submit="createCompany(companySignupInfo)">
+            <alert type="danger" ng-show="error">
+                {{ error }}
+            </alert>
+            <div class="form-group">
+                <!-- <label for="email">Email address</label> -->
+                <input type="text" ng-model="companySignupInfo.email" class="form-control" id="email" placeholder="Email">
+            </div>
+            <div class="form-group">
+                <!-- <label for="login-password">Password</label> -->
+                <input type="password" ng-model="companySignupInfo.password" class="form-control" id="login-password" placeholder="Password">
+            </div>
+            <div class="form-group">
+                <!-- <label for="company-name">Company Name</label> -->
+                <input type="text" ng-model="companySignupInfo.name" class="form-control" id="login-password" placeholder="Company Name">
+            </div>
+            <div class="form-group">
+                <!-- <label for="company-website">Company Website</label> -->
+                <input type="text" ng-model="companySignupInfo.website" class="form-control" id="login-password" placeholder="Company Website">
+            </div>
+            <button type="submit" class="btn btn-default">Create Company</button>
+        </form>
+    </div>
+    <div flex="50">
+        <div id="stockphoto">
+        <img src="https://snap-photos.s3.amazonaws.com/img-thumbs/960w/JBW2PXDOL6.jpg">
+        </div>
+    </div>
+</div>
+<div layout="row">
+    <div flex="50">
+        <form id="login-form" name="signupForm" ng-submit="sendSignup(signup)">
+            <alert type="danger" ng-show="error">
+                {{ error }}
+            </alert>
+            <div class="form-group">
+                <label for="email">Email address</label>
+                <input type="text" ng-model="signup.email" class="form-control" id="email" placeholder="Enter email">
+            </div>
+            <div class="form-group">
+                <label for="login-password">Password</label>
+                <input type="password" ng-model="signup.password" class="form-control" id="login-password" placeholder="Password">
+            </div>
+            <div class="form-group">
+                <label for="code">Verification Code</label>
+                <input type="text" ng-model="signup.code" class="form-control" id="login-password" placeholder="Verification Code" required>
+            </div>
+            <button type="submit" class="btn btn-default">Signup</button>
+        </form>
+    </div>
+</div>

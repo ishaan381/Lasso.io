@@ -1,50 +1,92 @@
 navbar {
-
   display: block;
   background: white;
-  border-bottom: 1px solid black;
-  box-shadow: 1px 1px 14px -3px black;
-
+  font-family: 'Maison Neue Book',HelveticaNeue-Light,"Helvetica Neue Light","Helvetica Neue",Helvetica,Arial,"Lucida Grande",sans-serif;
+  font-weight: 400;
   .container {
     width: 91%;
-    max-width: 1340px;
-    padding-top: 20px;
+    /*max-width: 1340px;*/
+    padding-top: 15px;
+    padding-bottom: 15px;
   }
-
+  .navbar {
+    margin-bottom: 0;
+  }
   fullstack-logo {
     margin-top: 5px;
     margin-right: 20px;
     width: 40px;
   }
-
   a {
-    color: black;
-    font-size: 16px;
-  }
+    color: #353238;
+    opacity: 0.5;
+    font-size: 15px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
 
+    hr {
+      background-color: #353238;
+      opacity: 0;
+      border: none;
+      height: 0px;
+      margin-bottom: 0px;
+    }
+  }
   .nav > li > a {
     cursor: pointer;
-    transition: color 0.2s;
+    /*transition: color 0.3s;*/
     &.active {
-      color: darken(#f31214, 10%);
+      opacity: 1;
+      hr {
+        opacity: 1;
+        margin-top: 5px;
+        height: 1px;
+      }
     }
     &:hover {
-      background: none;
-      color: #f31214;
+      color: #353238;
+      opacity: 1;
+      background-color: white;
+      hr {
+        transition: opacity 0.3s, margin-top 0.3s, height 0.3s;
+        opacity: 1;
+        margin-top: 5px;
+        height: 1px;
+      }
     }
     &:focus {
       background: none;
     }
   }
-
   .login-button {
     float: right;
-    border: 1px solid black;
     margin-top: 10px;
-    background: none;
+    margin-right: 10px;
+    background-color: transparent;
+    font-size: 15px;
+    color: #353238;
     outline: none !important;
+    /*border: 1px solid rgba(21, 20, 22, 0.5);*/
+    opacity: 0.5;
+    text-transform: uppercase;
+    letter-spacing: 2px;
   }
-
+  .login-button:hover {
+    transition: opacity 0.3s;
+    opacity: 1;
+    /*border: 1px solid;*/
+    /*background-color: rgba(0, 0, 0, 0.1);*/
+  }
+  .btn.login-button {
+    &:active {
+      box-shadow: none;
+      opacity: 1;
+    }
+    &.active {
+      box-shadow: none;
+      opacity: 1;
+    }
+  }
   .welcome {
     float: right;
     margin-top: 12px;
@@ -54,9 +96,8 @@ navbar {
       margin-right: 5px;
     }
     a {
-      color: #f30046;
+      color: white;
       cursor: pointer;
     }
   }
-
 }

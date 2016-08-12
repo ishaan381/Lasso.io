@@ -1,4 +1,20 @@
 #login-form {
   width: 60%;
-  margin: 0 auto;
+  margin: auto auto;
+  padding: 20px 20px;
+  vertical-align:  middle;
+  .form-control {
+    padding-bottom: 7px;
+    font-size: 15px;
+    font-family: Times, serif;
+    text-align: center;
+    outline: none !important;
+  }
+  /*background-color: white;*/
+}
+
+img {
+  width: 80%;
+  display: block;
+  margin: auto;
 }
