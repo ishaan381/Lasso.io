@@ -7,6 +7,12 @@
     "start": "nodemon --watch server -e js,html server/start.js",
     "postinstall": "gulp build"
   },
+  "authors": [
+    "Payton Henson <pph6@georgetown.edu>",
+    "Jonathan Ligh <jkl77@case.edu>",
+    "Ishaan Nagpal <In2187@columbia.edu",
+    "Kevin Li <kl42482@nyu.edu>"
+  ],
   "engines": {
     "node": ">=4.0.0"
   },

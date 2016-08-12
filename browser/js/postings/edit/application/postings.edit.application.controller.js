@@ -1,4 +1,4 @@
-app.controller('newDescriptionCtrl', function (_, $scope, formlyVersion, $q, $http, countries, JobDescriptions, Job) {
+app.controller('editApplicationCtrl', function (_, $scope, formlyVersion, $q, $http, countries, JobDescriptions, Job) {
 
     const vm = this;
 
@@ -22,12 +22,13 @@ app.controller('newDescriptionCtrl', function (_, $scope, formlyVersion, $q, $ht
     // function definition
     function onSubmit() {
       var companyId = 1;
-      var descriptionData = {fields: JSON.stringify(vm.model)};
+      var descriptionData = {fields: JSON.stringify(vm.model), companyId: companyId};
       var jobData = {};
-      Job.create({companyId: companyId})
-      .then(job => {
-        descriptionData.jobId = job.id;
-        return JobDescriptions.create(descriptionData);
+      JobDescriptions.create(descriptionData)
+      .then(data => {
+        jobData.descriptionId = data.id;
+        jobData.companyId = companyId;
+        return Job.create(jobData);
       })
       .then(data => {
         console.log(data);

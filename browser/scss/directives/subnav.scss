@@ -1,19 +1,68 @@
 .subnav {
-	font-family: Circular;
+	font-family: Meta Medium Caps;
 	width: 100%;
-	background-color: #484848;
+	background-color: #fafafa;
 
 	.container {
-		width: 91%;
+		width: 100%;
+		margin-right: auto;
+		margin-left: auto;
+	}
+
+
+
+	.stages:hover .stage-container{
+		height: 90px;
+		transition-delay: 0.7s;
 	}
 
 	.subnav-links {
-		margin-left: 115px;
-		margin-top: 8px;
+		a {
+			padding: 0;
+			cursor: pointer;
+		}
+		li {
+			padding: 0;
+		}
+		li:first-child {
+			border-left: 1px solid rgba(0,0,0,0.1);
+		}
+		.nav {
+			padding-left: 25px;
+			padding-right: 15px;
+		}
+
+		.stage-container {
+			padding: 10px;
+			padding-left: 15px;
+			overflow: hidden;
+			height: 45px;
+			transition: height 0.5s ease;
+			.stage-label {
+				color: #666;
+				line-height: 1.4px;
+				font-size: 16px;
+				line-height: 2;
+
+			}
+		}
+
+
+
+		li {
+			border-right: 1px solid rgba(0, 0, 0, 0.1);
+		}
+
+		li:first-child {
+			border-right: 1px solid rgba(0,0,0,0.1);
+		}
 	}
 
-	.subnav-item-active {
+	.stage-active {
 		background-color: #fff;
 		color: #23527c;
+		i {
+			color: #236690;
+		}
 	}
 }

@@ -1,17 +1,21 @@
 .boxed {
 	background: #fff;
 	border: 1px solid #ccc;
-	border-radius: 4px;
 	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+	border-top: 1px solid lighten(#ccc, 7%);
 }
+.job-editor-container {
+	margin-left: 25px;
+	margin-right: 25px;
 
+
+}
 .job-editor {
 	
 	padding: 30px;
 	position: relative;
 	display: inline-block;
 	margin-bottom: 100px;
-
 
 
 	#postings-description {
@@ -120,13 +124,23 @@
 					background-color: rgba(0,0,0,0.1)
 				}
 			}
-
+			.can-toggle__switch {
+				outline: none;
+			}
 			.closing-field {
 				padding-right: 15px;
 				padding-left: 15px;
 				padding-top: 10px;
 			}
-
+			.submit-button {
+			font-size: 18px;
+			font-family: Meta Medium Caps;
+				background-image: linear-gradient(to bottom, #266f9c, #205d84);
+				background-color: #246892;
+				border: 1px solid #194967;
+				border-bottom-color: #143a52;
+				background-repeat: repeat-x;
+			}
 
 		}
 

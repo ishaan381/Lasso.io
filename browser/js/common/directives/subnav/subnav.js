@@ -7,12 +7,10 @@ app.directive('subnav', function ($rootScope, $state, AuthService) {
         link: function (scope) {
 
             scope.items = [
-                { label: 'Inbox', state: 'users.inbox', auth: true },
-                { label: 'Your Listings', state: 'users.listings', auth: true },
-                { label: 'Your Tours', state: 'users.tours', auth: true },
-                { label: 'Profile', state: 'users.profile', auth: true },
+                { label: 'The Job', state: 'editPosting.description', description: "Tell applicants why it's great to work at {{companyName}}", icon: "fa fa-briefcase", auth: true },
+                { label: 'Application Form', state: 'editPosting.application', description: "Design the application form for this role", icon: "fa fa-pencil-square-o", auth: true },
+                { label: 'Advertise / Your Network', state: 'users.tours', description: "Post the job on job boards, engage recruiters, and share on social media", icon: "fa fa-comment", auth: true },
             ];
-
 
             scope.isLoggedIn = function () {
                 return AuthService.isAuthenticated();

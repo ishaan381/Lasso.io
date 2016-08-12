@@ -11,6 +11,9 @@ app.config(function ($urlRouterProvider, $locationProvider) {
     $urlRouterProvider.when('/auth/:provider', function () {
         window.location.reload();
     });
+
+    // $urlRouterProvider.when('/hire/postings/:id/edit', '/hire/postings/:id/edit/description');
+
 });
 
 app.constant('_', window._)
@@ -58,5 +61,9 @@ app.run(function ($rootScope, AuthService, $state) {
         });
 
     });
+
+          $rootScope.$on('$stateChangeError', function (event, toState, toParams, fromState, fromParams, error) {
+            console.error('Error transitioning from "' + fromState.name + '" to "' + toState.name + '":', error);
+          });
 
 });
