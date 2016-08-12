@@ -6,6 +6,7 @@ let Job = require('../../../db/models/job'),
 Apps = require('../../../db/models/application'),
 JobDescription = require('../../../db/models/job.description'),
 JobApplication = require('../../../db/models/job.application'),
+Pipeline = require('../../../db/models/pipe.array'),
 check = require('../check-handler');
 
 
@@ -16,7 +17,8 @@ router.param('id', function(req, res, next, id){
 		},
 		include: [
 		{ model: JobApplication, as: 'application'},
-		{ model: JobDescription, as: 'description'}
+		{ model: JobDescription, as: 'description'},
+		{ model: Pipeline, as: 'pipeline'}
 		]
 	})
 	.then(function(job){
