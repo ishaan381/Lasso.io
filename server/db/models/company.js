@@ -1,6 +1,7 @@
 'use strict';
 let Sequelize = require('sequelize'),
 User = require('./user'),
+Pipette = require('./pipe'),
 db = require('../_db');
 //we still need associations between companies and 
 module.exports = db.define('company', {
@@ -12,8 +13,9 @@ module.exports = db.define('company', {
         validate: {
         	isURL: true
         }
-    }//possibly make an employee association
+    }
 }, {
+	
 	hooks: {
 		beforeDestroy: function(company){
 			return User.destroy({
@@ -23,5 +25,22 @@ module.exports = db.define('company', {
 				individualHooks: true
 			})
 		}
-	}
+	},
+
+	// instanceMethods: {
+	// 	pipeline: function(company){
+	// 		var pipeline = [];
+	// 		return Pipette.findAll({
+	// 			where: {
+	// 				companyId: company.id
+	// 			}
+	// 		}).then(function(pipes){
+	// 			pipes.forEach(function(i){
+	// 				pipeline.push(i);
+	// 			})
+	// 		}).then(function(){
+	// 			return pipeline;
+	// 		})
+	// 	}
+	// }
 });
