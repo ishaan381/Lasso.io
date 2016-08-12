@@ -12,6 +12,12 @@ app.config(function ($urlRouterProvider, $locationProvider) {
     });
 });
 
+app.constant('_', window._)
+  // use in views, ng-repeat="x in _.range(3)"
+app.run(function ($rootScope) {
+     $rootScope._ = window._;
+  });
+
 // This app.run is for controlling access to specific states.
 app.run(function ($rootScope, AuthService, $state) {
 

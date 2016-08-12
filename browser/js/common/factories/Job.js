@@ -54,27 +54,17 @@ app.factory('Job', function($http, $log) {
                     })
     }
 
-    // Job.create = function(job) {
-    //     console.log("in factory")
-    //     return $http.post('/api/company', {
-    //             // title: job.name,
-    //             // location: job.location,
-    //             // duration: job.duration.value,
-    //             // expire_in: job.expire_in.value,
-    //             // image: job.image,
-    //             // description: job.description,
-    //             // tags: job.tags,
-    //             // price: job.price.value,
-    //             // guideId: job.guideId
-    //             description: job.job_description,
-    //             application: job.job_application,
-    //             company: job.company
-
-    //         })
-    //         .then(function(response) {
-    //             return response.data
-    //         })
-    // }
+    Job.create = function(job) {
+        console.log("in factory")
+        return $http.post('/api/jobs', {
+                descriptionId: job.descriptionId,
+                applicationId: job.applicationId,
+                companyId: job.companyId
+            })
+            .then(function(response) {
+                return response.data
+            })
+    }
 
     // Job.edit = function(job) {
     //     return $http.put('/api/jobs/' + job.id, {

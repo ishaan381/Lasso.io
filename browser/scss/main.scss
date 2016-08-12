@@ -24,12 +24,80 @@ body {
 	src: url("/media/meta-medium-caps.ttf");
 }
 
+@font-face {
+  font-family: Meta Light;
+  src: url("/media/meta-light.ttf");
+}
+
 #main {
-  padding-top: 60px;
+  padding-top: 10px;
   margin: 0 auto;
   margin-left: 50px;
   margin-right: 50px;
 }
+
+$spaceamounts: (5, 10, 15, 20, 25, 30);
+
+@mixin generate-margin-bottom() {
+  @each $space in $spaceamounts {
+    .mb-#{$space} {
+      margin-bottom: #{$space}px;
+    }
+  }
+}
+@mixin generate-margin-right() {
+  @each $space in $spaceamounts {
+    .mr-#{$space} {
+      margin-right: #{$space}px;
+    }
+  }
+}
+@mixin generate-margin-top() {
+  @each $space in $spaceamounts {
+    .mt-#{$space} {
+      margin-top: #{$space}px;
+    }
+  }
+}
+@mixin generate-padding-top() {
+  @each $space in $spaceamounts {
+    .pt-#{$space} {
+      padding-top: #{$space}px;
+    }
+  }
+}
+@mixin generate-padding-bottom() {
+  @each $space in $spaceamounts {
+    .pb-#{$space} {
+      padding-bottom: #{$space}px;
+    }
+  }
+}
+
+
+@mixin generate-padding-left() {
+  @each $space in $spaceamounts {
+    .pl-#{$space} {
+      padding-left: #{$space}px;
+    }
+  }
+}
+@mixin generate-padding-right() {
+  @each $space in $spaceamounts {
+    .pr-#{$space} {
+      padding-right: #{$space}px;
+    }
+  }
+}
+
+@include generate-margin-bottom();
+@include generate-margin-right();
+@include generate-margin-top();
+@include generate-padding-bottom();
+@include generate-padding-top();
+@include generate-padding-right();
+@include generate-padding-left();
+
 
 @import 'directives/main';
 @import 'home/main';

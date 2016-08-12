@@ -5,8 +5,8 @@ module.exports = router;
 
 router.use('/members', require('./members'));
 router.use('/companies', require('./companies'));
-router.use('/job.applications', require('./job.applications'));
-router.use('/job.descriptions', require('./job.descriptions'));
+router.use('/jobs/applications', require('./job.applications'));
+router.use('/jobs/descriptions', require('./job.descriptions'));
 router.use('/jobs', require('./jobs'));
 router.use('/users', require('./users'));
 router.use('/comments', require('./comments'));

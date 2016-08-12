@@ -28,7 +28,14 @@ export default ngModule => {
           var lastSection = repeatsection[repeatsection.length - 1];
           var newsection = {};
           if (lastSection) {
+            // console.log(lastSection);
+            // newsection = angular.copy(repeatsection);
             newsection = angular.copy(lastSection);
+            for (var key in newsection) {
+              if (newsection[key] !== "$$hashKey") {
+                newsection[key] = "";
+              }
+            }
           }
           repeatsection.push(newsection);
         }

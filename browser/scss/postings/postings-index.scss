@@ -1,0 +1,121 @@
+#postings {
+	
+	font-family: Meta Medium;
+
+	.postings-title {
+		font-family: Meta Light;
+
+		.postings-url {
+			font-family: Meta Medium;
+			letter-spacing: 0.5px;
+			color: #999;
+			font-size: 12px;
+		}
+	}
+
+	.postings-control-panel {
+
+		margin-top: 10px;
+
+		.add-posting {
+			padding: 0;
+
+			.button {
+					    position: relative;
+					    font-family: Meta Medium Caps;
+					    max-width: 290px;
+					    height: 40px;
+					    background-color: darken(white, 2%);
+			/*		    background-color: #dedede;
+			*/		   
+			/*			 margin: 0 auto;
+			*/		    text-align: center;
+					    -webkit-transition: all 0.3s;
+					    -moz-transition: all 0.3s;
+					    transition: all 0.3s;
+					}
+
+					.button a {
+					    position: relative;
+					    padding: 0px;
+					    text-align: center;
+					    text-transform: uppercase;
+					    text-decoration: none;
+					    color: lighten(#999, 8%);
+					    letter-spacing: 1.5px;
+					    font-size: 14px;
+					    font-weight: 600;
+					    line-height: 40px;
+					    -webkit-transition: all 0.3s;
+					    -moz-transition: all 0.3s;
+					    transition: all 0.3s;
+					    /* background-color:rgba(0, 0, 0, 0.2); */
+					}
+
+					.button:hover a {
+					    color: lighten(#999, 8%);
+					    z-index: 1000;
+					}
+
+					.easing {
+					    position: absolute;
+					    width: 100%;
+					    top: 0;
+					    /*Change 'top' to 'bottom' for an upwards transition*/
+					    height: 0px;
+			/*		    margin: 0 auto;
+			*/		    padding: 0px;
+					    background-color: darken(white, 3%);
+					    -webkit-transition: .2s ease;
+					    -moz-transition: .2s ease;
+					    -o-transition: .2s ease;
+					    -ms-transition: .2s ease;
+					    transition: .2s ease;
+					}
+
+					.button:hover {
+					    color: #ffffff;
+					}
+
+					.button:hover .easing {
+					    height: 40px;
+					}
+
+		}
+
+		.sort-posting {
+			padding: 0;
+
+			.sort-posting-title {
+				color: #adadad;
+				display:inline-block;
+			}
+
+			.sort-posting-filters {
+				color: darken(#999, 25%);
+				text-align: center;
+				i {
+					font-size: 16px;
+				}
+
+				.border-right {
+					border-right: 1px solid gray;
+				}
+
+				.filter-title {
+					font-family: Meta Medium Caps;
+					position: relative;
+					bottom: 1px;
+					letter-spacing: 1px;
+				}
+
+				.filter-option {
+					display: inline-block;
+				}
+			}
+
+		}
+
+			}
+
+}
