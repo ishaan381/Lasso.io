@@ -21,6 +21,11 @@
     "angular-sanitize": "^1.5.8",
     "angular-bootstrap": "^2.0.1",
     "textAngular": "^1.5.4",
+    "angular-parallax": "^0.0.2",
+    "angular-aria": "^1.5.8",
+    "angular-messages": "^1.5.8",
+    "angular-material": "^1.0.9",
     "angular-formly-repeating-section": "^0.0.1"
+
   }
 }
