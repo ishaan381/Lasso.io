@@ -4,6 +4,7 @@ module.exports = router;
 
 let App = require('../../../db/models/application'),
 Comment = require('../../../db/models/comment'),
+Pipette = require('../../../db/models/pipe'),
 check = require('../check-handler');
 
 router.param('id', function(req, res, next, id){
@@ -12,7 +13,8 @@ router.param('id', function(req, res, next, id){
 			id: id
 		},
 		include: [ //we attach comments, and comments have a user attached to them
-		{ model: Comment, as: 'comments'}
+		{ model: Comment, as: 'comments'},
+		{ model: Pipette, as: 'pipe'}
 		]
 	})
 	.then(function(app){
