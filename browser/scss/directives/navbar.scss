@@ -44,6 +44,7 @@ navbar {
       }
     }
     &:hover {
+
       color: #353238;
       opacity: 1;
       background-color: white;
@@ -86,7 +87,6 @@ navbar {
       box-shadow: none;
       opacity: 1;
     }
-  }
   .welcome {
     float: right;
     margin-top: 12px;
@@ -99,5 +99,6 @@ navbar {
       color: white;
       cursor: pointer;
     }
+
   }
 }

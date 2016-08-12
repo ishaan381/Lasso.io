@@ -24,6 +24,8 @@
     "angular-parallax": "^0.0.2",
     "angular-aria": "^1.5.8",
     "angular-messages": "^1.5.8",
-    "angular-material": "^1.0.9"
+    "angular-material": "^1.0.9",
+    "angular-formly-repeating-section": "^0.0.1"
+
   }
 }

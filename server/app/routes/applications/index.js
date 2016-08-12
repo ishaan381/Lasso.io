@@ -23,7 +23,7 @@ router.param('id', function(req, res, next, id){
 });
 
 
-router.get('/:id', function(req, res, next) {
+router.get('/:id', check.company, function(req, res, next) {
     App.findOne({
     	where: {
     		applicationId: req.param.id
@@ -34,6 +34,18 @@ router.get('/:id', function(req, res, next) {
     }).then(function(comments){
     	res.send(comments);
     }).catch(next);
+});
+
+//these seem to the the same
+router.get('/:id/allcomments', function(req, res, next) {
+	Comment.findAll({
+		where: {
+			applicationId: req.params.id
+		}
+	})
+	.then(function(comments){
+		res.send(comments);
+	}).catch(next);
 });
 
 router.post('/', function(req, res, next){
@@ -50,6 +62,16 @@ router.put('/:id', check.access, function(req, res, next) {
 	.then(function(app){
 		res.status(204);
 		res.send(app);
+	})
+	.catch(next);
+})
+
+//lets employee post a comment on an application
+router.post('/:id/comment', check.company, function(req, res, next) {
+	Comment.create(req.body)
+	.then(function(comment) {
+		res.status(201);
+		res.send(comment);
 	})
 	.catch(next);
 })

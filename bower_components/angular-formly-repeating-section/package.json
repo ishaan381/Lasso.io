@@ -1,0 +1,47 @@
+{
+  "name": "angular-formly-repeating-section",
+  "version": "0.0.1",
+  "description": "Repeating sections type for Angular Formly.",
+  "main": "dist/angular-formly-repeating-section.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/markacola/angular-formly-repeating-section.git"
+  },
+  "keywords": [
+    "angular-formly"
+  ],
+  "author": "Mark Cola",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/markacola/angular-formly-repeating-section/issues"
+  },
+  "homepage": "https://github.com/markacola/angular-formly-repeating-section#readme",
+  "peerDependencies": {
+    "angular": "^1.2.x || >= 1.4.0-beta.0 || >= 1.5.0-beta.0",
+    "angular-formly": ">=6.20.0"
+  },
+  "devDependencies": {
+    "browserify": "^13.0.0",
+    "gulp": "^3.9.0",
+    "gulp-concat": "^2.6.0",
+    "gulp-minify-html": "^1.0.5",
+    "gulp-ng-html2js": "^0.2.1",
+    "gulp-notify": "^2.2.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-sourcemaps": "^1.6.0",
+    "gulp-streamify": "^1.0.2",
+    "gulp-uglify": "^1.5.1",
+    "gulp-util": "^3.0.7",
+    "npm": "^3.5.3",
+    "stringify": "^3.2.0",
+    "vinyl-buffer": "^1.0.0",
+    "vinyl-source-stream": "^1.1.0",
+    "watchify": "^3.7.0"
+  },
+  "dependencies": {
+    "babelify": "^7.3.0"
+  }
+}
