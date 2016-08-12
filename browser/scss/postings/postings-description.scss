@@ -10,7 +10,7 @@
 	padding: 30px;
 	position: relative;
 	display: inline-block;
-
+	margin-bottom: 100px;
 
 
 
@@ -18,6 +18,10 @@
 		font-family: Meta Medium;
 
 		#postings-form {
+		h1 {
+			margin-bottom: 20px;
+		}
+
 		hr {
 		    display: block;
 		    height: 1px;
@@ -25,6 +29,18 @@
 		    border-top: 1px solid #ccc;
 		    margin: 1em 0;
 		    padding: 0;
+		}
+
+		.form-control:focus {
+			border-color: #4aa1a1;
+			outline: 0;
+			box-shadow: none;
+		}
+
+		.ta-root.focussed > .ta-scroll-window.form-control {
+			border-color: #4aa1a1;
+			outline: 0;
+			box-shadow: none;
 		}
 			.ta-editor {
 			    min-height: 150px;
@@ -56,9 +72,14 @@
 				line-height: 18px;
 
 			}
+			.description-field-label {
+				p {
+					margin-bottom: 5px;
 
+				}
+			}
 			.section-title-field {
-				height: 0;
+				height: 25px;
 			}
 
 
@@ -66,7 +87,45 @@
 				padding: 15px;
 			}
 
+			.sections-field-detail-label {
+				color: darken(#ccc, 20%);
+			}
 
+			.closings-field-detail-label {
+				color: darken(#ccc, 20%);
+			}
+
+			// for adding sections
+			.remove-button-container {
+
+			}
+			.remove-button {
+				position: relative;
+				bottom: 25px;
+				left: 15px;
+			}
+			.AddNewButton {
+			margin-top: 25px;
+			margin-bottom: 60px;
+			padding-left: 15px;
+				button {
+					font-family: Meta Medium Caps;
+					color: #333;
+					background-color: #f8f8f8;
+					border: 1px solid #ddd;
+					border-radius: 4px 4px 4px 4px;
+					letter-spacing: 1px;
+				}
+				button:hover {
+					background-color: rgba(0,0,0,0.1)
+				}
+			}
+
+			.closing-field {
+				padding-right: 15px;
+				padding-left: 15px;
+				padding-top: 10px;
+			}
 
 
 		}
