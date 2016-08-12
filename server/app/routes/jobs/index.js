@@ -15,8 +15,8 @@ router.param('id', function(req, res, next, id){
 			id: id
 		},
 		include: [
-		{ model: JobApplication, as: 'appForm'},
-		{ model: JobDescription, as: 'jobDesc'}
+		{ model: JobApplication, as: 'application'},
+		{ model: JobDescription, as: 'description'}
 		]
 	})
 	.then(function(job){
@@ -49,6 +49,19 @@ router.get('/:id', function(req, res, next) {
     })
     .catch(next);
 });
+
+router.get('/', function (req, res, next) {
+	Job.findAll({
+		include: [
+			{ model: JobApplication, as: 'application'},
+			{ model: JobDescription, as: 'description'}
+		]
+	})
+		.then(function (desc) {
+			res.send(desc)
+		})
+		.catch(next);
+})
 
 
 router.post('/', function(req, res, next) {

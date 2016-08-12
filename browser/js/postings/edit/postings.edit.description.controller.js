@@ -1,28 +1,8 @@
-app.controller('newDescriptionCtrl', function ($scope, formlyVersion, $q, $http, countries) {
-    var vm,testData;
-    // $http.get('js/postings/description/countries.json')
-    //      .then(function (res) {
-    //       $scope.countries = res.data;
-    //       console.log(res.data);
-    //      })
+app.controller('editDescriptionCtrl', function (_, $scope, formlyVersion, $q, $http, countries, thisJob) {
+    console.log(thisJob.description.fields);
+    var vm = this;
 
-    vm = this;
     vm.countries = countries.data;
-
-    testData = [
-      {
-        "id": 1,
-        "label":"Option 1"
-      },
-      {
-        "id": 2,
-        "label":"Option 2"
-      },
-      {
-        "id": 3,
-        "label":"Option 3"
-      }
-    ];
     
     // funcation assignment
     vm.onSubmit = onSubmit;
@@ -40,33 +20,35 @@ app.controller('newDescriptionCtrl', function ($scope, formlyVersion, $q, $http,
     };
 
     vm.model = {
-      // "jobTitle": null,
-      // "department": null,
-      // "country": null,
-      // "select2Option": null,
-      // "multipleOption": null,
-      // "singleOptionAsync": null
+      
     };
+    console.log(JSON.parse(thisJob.description.fields));
+    _.assign(vm.model, JSON.parse(thisJob.description.fields));
     
    
     vm.options = {};
     
     vm.fields = [
+      {
+        noFormControl: true,
+        template: '<h4 class="essentials-field-label">ESSENTIALS </h4><hr>'
+      },
     {
       key: 'title',
       type: 'input',
-      className: 'col-md-8',
-      defaultValue: "",
+      className: 'col-md-8 col-sm-12',
       templateOptions: {
         type: 'text',
         label: 'Position Title',
-        placeholder: 'Job Title'
+        placeholder: 'Job Title',
+              required: true,
+
       }
     },
     {
       key: 'department',
       type: 'input',
-      className: 'col-md-4',
+      className: 'col-md-4 col-sm-12',
       templateOptions: {
         type: 'text',
         label: 'Department',
@@ -84,7 +66,8 @@ app.controller('newDescriptionCtrl', function ($scope, formlyVersion, $q, $http,
           valueProp: 'code',
           labelProp: 'name',
           placeholder: 'Select a country',
-          options: vm.countries
+          options: vm.countries,
+          required: true
         }
       },
       {
@@ -119,31 +102,36 @@ app.controller('newDescriptionCtrl', function ($scope, formlyVersion, $q, $http,
       // },
           // NOT WORKING YET
     {
-      key: 'current', 
+      key: 'commitment', 
       type: 'toggleCheckbox',
       className: 'col-md-4',
+      defaultValue: 'Part-Time',
       templateOptions: {
         label: 'Commitment',
         toggleData: {'unchecked': 'Part-Time', 'checked': 'Full-Time'},
       }
     },
+     {
+        noFormControl: true,
+        className: 'col-md-12 description-field-label',
+        template: '<p>Job Description</p>'
+      },
       {
         key: 'description',
         type: 'textEditor',
         className: 'text-editor',
         templateOptions: {
-          label: 'Job Description'
         }
       },
       {
         noFormControl: true,
-        template: '<h3>SECTIONS (for requirements, responsibilities, etc.)</h3><hr>'
+        template: '<h4 class="sections-field-label">SECTIONS <span class="sections-field-detail-label"> (for requirements, responsibilities, etc.)</span></h4><hr>'
       },
       {
     "type": "repeatSection",
     "key": "sections",
     "templateOptions": {
-      "btnText": "Add another section",
+      "btnText": "add a section",
       "fields": [
         {
           "className": "row",
@@ -177,6 +165,21 @@ app.controller('newDescriptionCtrl', function ($scope, formlyVersion, $q, $http,
       ]
     }
   },
+
+      {
+        noFormControl: true,
+        template: '<h4 class="closings-field-label">CLOSING / METADATA <span class="closings-field-detail-label"> (optional)</span></h4><hr>'
+      },
+      {
+        "type": "textarea",
+        "key": "closing",
+        "className": "closing-field",
+        "templateOptions": {
+          "placeholder": "Add a closing ...",
+          "rows": 4,
+          "cols": 15
+        }
+      }
       // {
       //   key: 'multipleOption',
       //   type: 'ui-select-multiple',
@@ -195,11 +198,14 @@ app.controller('newDescriptionCtrl', function ($scope, formlyVersion, $q, $http,
     vm.originalFields = angular.copy(vm.fields);
     
     function refreshAddresses(address, field) {
-      console.log(address);
-      console.log('hi');
       var promise;
       if (!address) {
-        promise = $q.when({data: {results: []}});
+        if (vm.model.region) {
+          promise = $q.when({data: {results: [{'formatted_address': vm.model.region}]}})
+        }
+        else {
+          promise = $q.when({data: {results: []}});
+        }
       } else {
         // var params = {address: address, components: "country: vm.model.country", sensor: false};
         // console.log(params);
@@ -209,79 +215,24 @@ app.controller('newDescriptionCtrl', function ($scope, formlyVersion, $q, $http,
         promise = $http.get(endpoint);
       }
       return promise.then(function(response) {
-        console.log(response.data.results);
         field.templateOptions.options = response.data.results;
       });
     }
     
     // function definition
     function onSubmit() {
-      alert(JSON.stringify(vm.model), null, 2);
+      // var companyId = 1;
+      // var descriptionData = {fields: JSON.stringify(vm.model), companyId: companyId};
+      // var jobData = {};
+      // JobDescriptions.create(descriptionData)
+      //                .then(function (data) {
+      //                 jobData.descriptionId = data.id;
+      //                 jobData.companyId = companyId;
+      //                   return Job.create(jobData);
+      //                })
+      //                .then(function (data) {
+      //                 console.log(data);
+      //                })
     }
-  // var vm = this;
 
-  // vm.description = {};
-
-  // // note, these field types will need to be
-  // // pre-defined. See the pre-built and custom templates
-  // // http://docs.angular-formly.com/v6.4.0/docs/custom-templates
-  // var onSubmit = function () {
-  //   console.log('submit button pressed');
-  // }
-
-  // vm.onSubmit = onSubmit;
-
-  // vm.originalFields = angular.copy(vm.fields);
-
-  // vm.env = {
-  //   angularVersion: angular.version.full,
-  //   formlyVersion: formlyVersion
-  // }
-
-  // var countriesList = [
-  //   {
-  //     "name": 'Trinidad and Tobago',
-  //     "code": 'TTO'
-  //   },
-  //   {
-  //     "name": "Madagascar",
-  //     "code": "MDG"
-  //   }
-  // ];
-
-  // vm.descriptionFields = [
-  //   {
-  //     key: 'jobTitle',
-  //     type: 'input',
-  //     templateOptions: {
-  //       type: 'email',
-  //       label: 'Position Title',
-  //       placeholder: ''
-  //     }
-  //   },
-  //   {
-  //     key: 'department',
-  //     type: 'input',
-  //     templateOptions: {
-  //       label: 'Department'
-  //     }
-  //   },
-  //   {
-  //     key: 'description',
-  //     type: 'textarea',
-  //     templateOptions: {
-  //       label: 'Job Description'
-  //     }
-  //   },
-  //   {
-  //     key: 'country',
-  //     type: 'ui-select',
-  //     templateOptions: {
-  //       label: 'Country',
-  //       valueProp: 'code',
-  //       labelProp: 'name',
-  //       options: countriesList
-  //     }
-  //   }
-  // ];
 });

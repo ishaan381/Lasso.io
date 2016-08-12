@@ -5,12 +5,11 @@
                  model="element"
                  form="form">
     </formly-form>
-    <div style="margin-bottom:20px;">
-      <button type="button" class="btn btn-sm btn-danger" ng-click="model[options.key].splice($index, 1)">
+    <div class="remove-button-container" style="">
+      <button type="button" class="btn btn-sm btn-danger remove-button" ng-click="model[options.key].splice($index, 1)">
         Remove
       </button>
     </div>
-    <hr>
 </div>
 <p class="AddNewButton">
       <button type="button" class="btn btn-primary" ng-click="addNew()" >{{to.btnText}}</button>

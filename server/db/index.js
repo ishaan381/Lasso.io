@@ -16,6 +16,18 @@ let User = require('./models/user'),
 JobDescription.hasOne(Job, {foreignKey: 'descriptionId', onDelete: 'cascade', hooks: true});
 JobApplication.hasOne(Job, {foreignKey: 'applicationId', onDelete: 'cascade', hooks: true});
 
+Job.belongsTo(JobDescription, {as: 'description'})
+Job.belongsTo(JobApplication, {as: 'application'})
+
+
+Company.hasMany(JobDescription, {foreignKey: 'companyId'});
+Company.hasMany(JobApplication, {foreignKey: 'companyId'});
+
+// do we need belongs to???
+JobDescription.belongsTo(Company, {as: 'company'});
+JobApplication.belongsTo(Company, {as: 'company'});
+
+
 Company.hasMany(User);
 Application.hasMany(Comment, {as: 'application', onDelete : 'cascade', hooks: true});//not sure if this works -Jonathan
 User.belongsTo(Company);
