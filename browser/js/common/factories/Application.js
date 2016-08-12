@@ -16,7 +16,7 @@ app.factory('App', function($http, $log) {
     }
 
     App.makeComment = function(comment, appId){
-        return $http.post('/api/applications/' + appId + '/comment', {
+        return $http.post('/api/applications/comment', {
             title: comment.title,
             content: comment.content,
             applicationId: appId,
@@ -47,13 +47,13 @@ app.factory('App', function($http, $log) {
     }
 
 //========================================================== methods for the actual application
-    
+
     App.removeApp = function(app) {
         return $http.delete('/api/applications/' + app.id)
         .then(function(resp){
             return resp.data;
         })
     }
-    
+
     return App;
 });

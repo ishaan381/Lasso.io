@@ -6,7 +6,6 @@ let Job = require('../../../db/models/job'),
 Apps = require('../../../db/models/application'),
 JobDescription = require('../../../db/models/job.description'),
 JobApplication = require('../../../db/models/job.application'),
-Pipeline = require('../../../db/models/pipe.array'),
 check = require('../check-handler');
 
 
@@ -19,7 +18,7 @@ router.param('id', function(req, res, next, id){
 			{ model: JobApplication, as: 'application'},
 			{ model: JobDescription, as: 'description'},
 			{ model: Pipeline, as: 'pipeline',
-				include: [{ model: Pipette, as: 'pipe'}] 
+				include: [{ model: Pipette, as: 'pipe'}]
 			}
 		]
 	})
@@ -61,7 +60,7 @@ router.get('/', function (req, res, next) {
 		include: [
 			{ model: JobApplication, as: 'application'},
 			{ model: JobDescription, as: 'description'},
-			{ model: Pipeline, as: 'pipeline'}
+			// { model: Pipeline, as: 'pipeline'}
 		]
 	})
 		.then(function (desc) {
@@ -101,7 +100,7 @@ router.delete('/:id', check.company, function(req, res, next) {
 
 //=====================pipeline job routes=========================
 
-//the names are subject to change 
+//the names are subject to change
 
 //get a pipeline for a job
 router.get('/:id/pipeline', check.company, function(req, res, next) {

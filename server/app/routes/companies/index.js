@@ -13,7 +13,7 @@ router.param('id', function(req, res, next, id){
 		}, //we'll figure this out later
 		include: [
 		{ model: Job, as: 'jobs'},
-		{ model: User, as: 'employee'},
+		{ model: User, as: 'users'},
 		]
 	})
 	.then(function(company){
@@ -34,13 +34,9 @@ router.get('/:id', function(req, res, next) {
 
 //this route is for the company admin to get all users
 router.get('/:id/users', function(req, res, next){
-	User.findAll({
-		where: {
-			companyId: req.params.id
-		}
-	})
-	.then(function(users){
-		res.send(users);
+	req.requestedCompany.reload()
+	.then(function(company){
+		res.send(company.users);
 	})
 	.catch(next)
 });

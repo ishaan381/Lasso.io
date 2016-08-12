@@ -1,9 +1,9 @@
 'use strict';
 let Sequelize = require('sequelize'),
 User = require('./user'),
-Pipette = require('./pipe'),
+Stage = require('./stage'),
 db = require('../_db');
-//we still need associations between companies and 
+//we still need associations between companies and
 module.exports = db.define('company', {
     name: {
         type: Sequelize.STRING
@@ -15,7 +15,7 @@ module.exports = db.define('company', {
         }
     }
 }, {
-	
+
 	hooks: {
 		beforeDestroy: function(company){
 			return User.destroy({

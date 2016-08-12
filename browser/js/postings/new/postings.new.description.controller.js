@@ -22,13 +22,12 @@ app.controller('newDescriptionCtrl', function (_, $scope, formlyVersion, $q, $ht
     // function definition
     function onSubmit() {
       var companyId = 1;
-      var descriptionData = {fields: JSON.stringify(vm.model), companyId: companyId};
+      var descriptionData = {fields: JSON.stringify(vm.model)};
       var jobData = {};
-      JobDescriptions.create(descriptionData)
-      .then(data => {
-        jobData.descriptionId = data.id;
-        jobData.companyId = companyId;
-        return Job.create(jobData);
+      Job.create({companyId: companyId})
+      .then(job => {
+        descriptionData.jobId = job.id;
+        return JobDescriptions.create(descriptionData);
       })
       .then(data => {
         console.log(data);

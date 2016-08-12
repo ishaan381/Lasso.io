@@ -1,5 +1,5 @@
 // var Sequelize = require('sequelize');
-let db = require('../_db'),
+var db = require('../_db'),
  JobDescription = require('./job.description'),
  App = require('./application'),
  JobApplication = require('./job.application');
