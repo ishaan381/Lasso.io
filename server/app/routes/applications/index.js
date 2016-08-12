@@ -4,6 +4,7 @@ module.exports = router;
 
 let App = require('../../../db/models/application'),
 Comment = require('../../../db/models/comment'),
+Stage = require('../../../db/models/stage'),
 check = require('../check-handler');
 
 router.param('id', function(req, res, next, id){
@@ -12,7 +13,7 @@ router.param('id', function(req, res, next, id){
 			id: id
 		},
 		include: [ //we attach comments, and comments have a user attached to them
-		{ model: Comment, as: 'comments'}
+		{ model: Comment, as: 'comments'},
 		]
 	})
 	.then(function(app){
@@ -24,28 +25,16 @@ router.param('id', function(req, res, next, id){
 
 
 router.get('/:id', check.company, function(req, res, next) {
-    App.findOne({
-    	where: {
-    		applicationId: req.param.id
-    	},
-    	include: [
-    		{model: Comment, as: 'comments'}
-    		]
-    }).then(function(comments){
-    	res.send(comments);
-    }).catch(next);
+    req.requestedApplication.reload()
+    .then(app => res.send(app))
+   	.catch(next);
 });
 
 //these seem to the the same
 router.get('/:id/allcomments', function(req, res, next) {
-	Comment.findAll({
-		where: {
-			applicationId: req.params.id
-		}
-	})
-	.then(function(comments){
-		res.send(comments);
-	}).catch(next);
+	req.requestedApplication.reload()
+	.then(app => res.send(app.comments))
+	.catch(next);
 });
 
 router.post('/', function(req, res, next){
@@ -67,7 +56,7 @@ router.put('/:id', check.access, function(req, res, next) {
 })
 
 //lets employee post a comment on an application
-router.post('/:id/comment', check.company, function(req, res, next) {
+router.post('/comment', check.company, function(req, res, next) {
 	Comment.create(req.body)
 	.then(function(comment) {
 		res.status(201);

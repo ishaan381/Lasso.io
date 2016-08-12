@@ -5,7 +5,8 @@ app.factory('JobDescriptions', function($http, $log) {
     JobDescriptions.create = function (data) {
         return $http.post('/api/jobs/descriptions', {
             fields: data.fields,
-            companyId: data.companyId
+            companyId: data.companyId,
+            jobId: data.jobId
         })
         .then(function (response) {
             return response.data
@@ -17,7 +18,7 @@ app.factory('JobDescriptions', function($http, $log) {
         return $http.get('/api/jobs/descriptions/' + id)
                     .then(function (response) {
                         return response.data
-                    }) 
+                    })
     }
 
     return JobDescriptions;

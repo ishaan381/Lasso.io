@@ -15,10 +15,6 @@ var transporter = nodemailer.createTransport({
     }
 });
 
-
-
-
-
 router.get('/', function(req, res, next) {
     Code.create({ code: randomCode(9, false) })
         .then(function(_code) {

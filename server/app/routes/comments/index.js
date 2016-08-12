@@ -15,19 +15,24 @@ router.param('id', function(req, res, next, id){
 	.catch(next);
 });
 
-router.get('/:appId', function(req, res, next) {//getting all comments on an application
-	Comment.findAll({
-		where: {
-			applicationId: req.params.appId
-		},
-		include: [
-			{ model: User, as: 'user'}
-		]
-	}).next(function(user){
-		res.send(user);
-	})
-	.catch(next);
-})
+
+/*
+	ALREADY BEING DONE IN THE APPLICATION ROUTES
+
+*/
+// router.get('/:appId', function(req, res, next) {//getting all comments on an application
+// 	Comment.findAll({
+// 		where: {
+// 			applicationId: req.params.appId
+// 		},
+// 		include: [
+// 			{ model: User, as: 'user'}
+// 		]
+// 	}).next(function(user){
+// 		res.send(user);
+// 	})
+// 	.catch(next);
+// })
 
 //comments will only be made on applications, therefore posting a comment will take place in the application routes
 

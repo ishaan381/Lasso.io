@@ -57,8 +57,6 @@ app.factory('Job', function($http, $log) {
     Job.create = function(job) {
         console.log("in factory")
         return $http.post('/api/jobs', {
-                descriptionId: job.descriptionId,
-                applicationId: job.applicationId,
                 companyId: job.companyId
             })
             .then(function(response) {
@@ -68,7 +66,7 @@ app.factory('Job', function($http, $log) {
 
     // Job.edit = function(job) {
     //     return $http.put('/api/jobs/' + job.id, {
-            
+
     //     })
     // }
 
