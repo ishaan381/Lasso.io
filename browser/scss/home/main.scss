@@ -1,12 +1,28 @@
+
+
 #home {
-  fullstack-logo {
-    padding-top: 30px;
-    width: 150px;
-    margin: 0 auto;
-  }
-  h1 {
-    margin-top: 40px;
-    text-align: center;
+
+  .photobot{
+    background-image: url("https://static.pexels.com/photos/2855/landscape-mountains-nature-lake.jpg");
+    background-attachment: fixed;
+    height: 600px;
+    /*position: relative;*/
+    /*background-position: 50%;*/
+    background-repeat: no-repeat;
+    margin: 0;
+    padding: 0;
+    background-size: cover;
+  };
+
+  .morephoto {
+     background-image: url("http://www.discovertheforest.org/images/hero/home/6.jpg");
+/*    background-attachment: fixed;
+*/    height: 2000px;
+    /*position: fixed;*/
+    /*background-position: 50%;*/
+    background-repeat: no-repeat;
+    margin: 0;
+    padding: 0;
   }
 }
 
