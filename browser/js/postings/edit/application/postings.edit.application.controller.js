@@ -1,4 +1,4 @@
-app.controller('newDescriptionCtrl', function (_, $scope, formlyVersion, $q, $http, countries, JobDescriptions, Job) {
+app.controller('editApplicationCtrl', function (_, $scope, formlyVersion, $q, $http, countries, JobDescriptions, Job) {
 
     const vm = this;
 
