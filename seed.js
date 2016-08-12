@@ -87,9 +87,9 @@ function createCompany() {
 
 function randomUser(num) {
     return User.build({
-        email: userEmails[num],
+        email: userEmails[num + 1],
         password: passwords[2],
-        companyId: Math.floor(Math.random() * 4) + 1
+        companyId: Math.floor(Math.random() * 5) + 1
     })
 }
 
@@ -103,18 +103,16 @@ function createUsers(){
     return Promise.map(genUser(), user => user.save());
 }
 
- var field = JSON.stringify({
-            "title": title[Math.floor(Math.random() * 5)],
-            "commitment": commitment[Math.floor(Math.random() * 2)],
-            "department": department[Math.floor(Math.random() * 5)],
-            "description": description[Math.floor(Math.random() * 5)],
+function randomJobDesc(){
+    return JobDescription.build({
+        fields: JSON.stringify({
+            "title": title[Math.floor(Math.random() * 5) + 1],
+            "commitment": commitment[Math.floor(Math.random() * 2) + 1],
+            "department": department[Math.floor(Math.random() * 5) + 1],
+            "description": description[Math.floor(Math.random() * 5) + 1],
             "country": "US",
             "region": "New York, USA"
         })
-
-function randomJobDesc(){
-    return JobDescription.build({
-        fields: field
     })
 }
 
