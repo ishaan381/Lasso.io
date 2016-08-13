@@ -25,9 +25,8 @@ let chalk = require('chalk'),
  JobDescription = db.model('job_description'),
  JobApplication = db.model('job_application'),
  Comment = db.model('comment'),
- Pipette = db.model('pipe'),
+ Stage = db.model('stage'),
  Company = db.model('company'),
- Pipeline = db.model('pipe_array'),
  App = db.model('application');
 
 var Promise = require('sequelize').Promise;
@@ -103,7 +102,7 @@ function createUsers(){
     return Promise.map(genUser(), user => user.save());
 }
 
-function randomJobDesc(){
+function randomJobDesc(num){
     return JobDescription.build({
         fields: JSON.stringify({
             "title": title[Math.floor(Math.random() * 5) + 1],
@@ -112,12 +111,13 @@ function randomJobDesc(){
             "description": description[Math.floor(Math.random() * 5) + 1],
             "country": "US",
             "region": "New York, USA"
-        })
+        }),
+        jobId: num + 1
     })
 }
 
 function genJobDesc() {
-    var jobDescriptions = doTimes(numJobDesc, randomJobDesc);
+    var jobDescriptions = doNTimes(numJobDesc, randomJobDesc);
     return jobDescriptions;
 }
 
@@ -125,16 +125,17 @@ function createJobDesc() {
     return Promise.map(genJobDesc(), job_description => job_description.save());
 }
 
-function randomJobApp(){
+function randomJobApp(num){
     return JobApplication.build({
         fields: {
             "nothing": "not yet"
-        }
+        },
+        jobId: num + 1
     })
 }
 
 function genJobApp() {
-    var jobApplications = doTimes(numJobApp, randomJobApp);
+    var jobApplications = doNTimes(numJobApp, randomJobApp);
     return jobApplications;
 }
 
@@ -144,8 +145,6 @@ function createJobApp(){
 
 function randomJob(num){
     return Job.build({
-        descriptionId: num + 1,
-        applicationId: num + 1,
         companyId: num + 1
     })
 }
@@ -161,16 +160,16 @@ function createJobs() {
 
 
 function seed() {
-    
+
     return createCompany()
     .then(function(){
         return createUsers();
     }).then(function(){
-        return createJobApp();
+        return createJobs();
     }).then(function() {
         return createJobDesc();
     }).then(function(){
-        return createJobs();
+        return createJobApp();
     })
 
 }
