@@ -5,28 +5,32 @@ var db = require('../_db'),
  JobApplication = require('./job.application');
 
 module.exports = db.define('job', {
-}, {
-	hooks: {
-		beforeDestroy: function(job){
-			JobApplication.delete({
-				where: {
-					id: job.applicationId
-				}
-			})
-			.then(function(){
-				JobDescription.delete({
-					where: {
-						id: job.descriptionId
-					}
-				})
-			})
-			.then(function(){
-				App.delete({
-					where: {
-						jobId: job.id
-					}
-				})
-			})
-		}
 	}
-});
+);
+
+
+// {
+// 	hooks: {
+// 		beforeDestroy: function(job){
+// 			JobApplication.delete({
+// 				where: {
+// 					id: job.applicationId
+// 				}
+// 			})
+// 			.then(function(){
+// 				JobDescription.delete({
+// 					where: {
+// 						id: job.descriptionId
+// 					}
+// 				})
+// 			})
+// 			.then(function(){
+// 				App.delete({
+// 					where: {
+// 						jobId: job.id
+// 					}
+// 				})
+// 			})
+// 		}
+// 	}
+//}

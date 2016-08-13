@@ -14,18 +14,18 @@ module.exports = db.define('company', {
         	isURL: true
         }
     }
-}, {
+ //}, {
 
-	hooks: {
-		beforeDestroy: function(company){
-			return User.destroy({
-				where: {
-					companyId: company.id
-				},
-				individualHooks: true
-			})
-		}
-	},
+// 	hooks: {
+// 		beforeDestroy: function(company){
+// 			return User.destroy({
+// 				where: {
+// 					companyId: company.id
+// 				},
+// 				individualHooks: true
+// 			})
+// 		}
+// 	},
 
 	// instanceMethods: {
 	// 	pipeline: function(company){
