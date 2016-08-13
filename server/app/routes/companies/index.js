@@ -12,8 +12,8 @@ router.param('id', function(req, res, next, id){
 			id: id
 		}, //we'll figure this out later
 		include: [
-		{ model: Job, as: 'jobs'},
-		{ model: User, as: 'users'},
+		{ model: Job, as: 'job'},
+		{ model: User, as: 'user'},
 		]
 	})
 	.then(function(company){
@@ -59,7 +59,7 @@ router.put('/:id', check.company, function(req, res, next) {
 	.catch(next);
 })
 
-router.delete('/:id', (check.admin || check.pageAdmin), function(req, res, next) {
+router.delete('/:id', function(req, res, next) {
 	req.requestedCompany.destroy()
 	.then(function(){
 		res.status(204).end()

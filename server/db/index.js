@@ -18,25 +18,25 @@ Company.hasMany(Job, {as: 'job', onDelete : 'cascade', hooks: true});
 User.belongsTo(Company, {as: 'company'});
 Company.hasMany(User, {as: 'user', onDelete : 'cascade', hooks: true});
 
-JobDescription.belongsTo(Job, {as: 'job', onDelete: 'cascade', hooks: true});
-Job.hasOne(JobDescription, {as: 'description'})
+JobDescription.belongsTo(Job, {as: 'job'});
+Job.hasOne(JobDescription, {as: 'jobDescription', onDelete: 'cascade', hooks: true})
 
-JobApplication.belongsTo(Job, {as: 'job', onDelete: 'cascade', hooks: true});
-Job.hasOne(JobApplication, {as: 'application'})
+JobApplication.belongsTo(Job, {as: 'job'});
+Job.hasOne(JobApplication, {as: 'jobApplication', onDelete: 'cascade', hooks: true})
 
-Stage.belongsTo(Job, {as: 'job', onDelete: 'cascade', hooks: true});
+Stage.belongsTo(Job, {as: 'job'});
 Job.hasMany(Stage, {as: 'stage', onDelete: 'cascade', hooks: true});
 
-Application.belongsTo(Job, {as: 'job', onDelete: 'cascade', hooks: true});
+Application.belongsTo(Job, {as: 'job'});
 Job.hasMany(Application, {as: 'application', onDelete: 'cascade', hooks: true});
 
-Application.belongsTo(Stage, {as: 'stage', onDelete: 'cascade', hooks: true});
+Application.belongsTo(Stage, {as: 'stage'});
 Stage.hasMany(Application, {as: 'application', onDelete: 'cascade', hooks: true});
 
-Comment.belongsTo(Application, {as: 'application', onDelete: 'cascade', hooks: true});
+Comment.belongsTo(Application, {as: 'application'});
 Application.hasMany(Comment, {as: 'comment', onDelete : 'cascade', hooks: true});
 
-Comment.belongsTo(User, {as: 'user', onDelete: 'cascade', hooks: true});
+Comment.belongsTo(User, {as: 'user'});
 User.hasMany(Comment, {as: 'comment', onDelete : 'cascade', hooks: true});
 
 //WILL NEED TO COME BACK TO APPLICATION AND USER ASSOCIATIONS

@@ -15,11 +15,8 @@ router.param('id', function(req, res, next, id){
 			id: id
 		},
 		include: [
-			{ model: JobApplication, as: 'application'},
-			{ model: JobDescription, as: 'description'},
-			{ model: Pipeline, as: 'pipeline',
-				include: [{ model: Pipette, as: 'pipe'}]
-			}
+			{ model: JobApplication, as: 'jobApplication'},
+			{ model: JobDescription, as: 'jobDescription'}
 		]
 	})
 	.then(function(job){
@@ -37,7 +34,6 @@ router.get('/:id/apps', function(req, res, next) {
 		},
 		include: [
 		{ model: Apps, as: 'apps'},
-		{ model: Pipeline, as: 'pipeline'}
 		]
 	})
     .then(function(desc) {
@@ -58,8 +54,8 @@ router.get('/:id', function(req, res, next) {
 router.get('/', function (req, res, next) {
 	Job.findAll({
 		include: [
-			{ model: JobApplication, as: 'application'},
-			{ model: JobDescription, as: 'description'},
+			{ model: JobApplication, as: 'jobApplication'},
+			{ model: JobDescription, as: 'jobDescription'},
 			// { model: Pipeline, as: 'pipeline'}
 		]
 	})
@@ -103,47 +99,47 @@ router.delete('/:id', check.company, function(req, res, next) {
 //the names are subject to change
 
 //get a pipeline for a job
-router.get('/:id/pipeline', check.company, function(req, res, next) {
-	Pipeline.findOne({
-		where: {
-			jodId: req.params.id
-		}
-	}).then(function(desc){
-		res.send(desc);
-	})
-	.catch(next);
-});
+// router.get('/:id/pipeline', check.company, function(req, res, next) {
+// 	Pipeline.findOne({
+// 		where: {
+// 			jodId: req.params.id
+// 		}
+// 	}).then(function(desc){
+// 		res.send(desc);
+// 	})
+// 	.catch(next);
+// });
 
-router.post('/:id/createpipeline', check.company, function(req, res, next) {
-	Pipeline.create(req.body)
-	.then(function(desc) {
-		res.status(201);
-		res.send(desc);
-	})
-	.catch(next)
-});
+// router.post('/:id/createpipeline', check.company, function(req, res, next) {
+// 	Pipeline.create(req.body)
+// 	.then(function(desc) {
+// 		res.status(201);
+// 		res.send(desc);
+// 	})
+// 	.catch(next)
+// });
 
-router.put('/:id/editpipeline', check.company, function(req, res, next) {
-	Pipeline.findOne({
-		where: {
-			jobId: req.params.id
-		}
-	}).update(req.body)
-	.then(function(desc){
-		res.staus(204);
-		res.send(desc);
-	})
-	.catch(next);
-});
+// router.put('/:id/editpipeline', check.company, function(req, res, next) {
+// 	Pipeline.findOne({
+// 		where: {
+// 			jobId: req.params.id
+// 		}
+// 	}).update(req.body)
+// 	.then(function(desc){
+// 		res.staus(204);
+// 		res.send(desc);
+// 	})
+// 	.catch(next);
+// });
 
-router.delete('/:id/deletepipeline', check.company, function(req, res, next) {
-	Pipeline.findOne({
-		where: {
-			jobId: req.params.id
-		}
-	}).destroy()
-	.then(function(){
-		res.status(204).end();
-	})
-	.catch(next)
-})
+// router.delete('/:id/deletepipeline', check.company, function(req, res, next) {
+// 	Pipeline.findOne({
+// 		where: {
+// 			jobId: req.params.id
+// 		}
+// 	}).destroy()
+// 	.then(function(){
+// 		res.status(204).end();
+// 	})
+// 	.catch(next)
+// })
