@@ -11,7 +11,8 @@ app.controller('editDescriptionCtrl', function (_, $scope, formlyVersion, $q, $h
 
     vm.model = {};
 
-    _.assign(vm.model, JSON.parse(thisJob.description.fields));
+    console.log(thisJob.jobDescription);
+    _.assign(vm.model, JSON.parse(thisJob.jobDescription.fields));
 
     vm.options = {};
 
