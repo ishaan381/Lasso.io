@@ -1,0 +1,22 @@
+<div layout="row">
+    <div flex="50" id="positng-box">
+        <div layout="column">
+            <div id="title" flex="50">
+                <h3> {{ detail.jobDescription.fields.title }} </h3>
+            </div>
+            <div id="more-info" flex="50">
+                <div layout="row">
+                    <div flex="33" id="location">
+                        <h7>{{detail.jobDescription.fields.region}}, {{detail.jobDescription.fields.country}}</h7>
+                    </div>
+                    <div flex="33" id="commitment">
+                        <h7>{{detail.jobDescription.fields.commitment}}</h7>
+                    </div>
+                    <div flex="33" id="deparment">
+                        <h7>{{ detail.jobDescription.fields.department }}</h7>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
