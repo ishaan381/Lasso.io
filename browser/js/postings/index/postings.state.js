@@ -4,8 +4,12 @@ app.config(function ($stateProvider) {
     templateUrl: '/js/postings/index/postings.html',
     controller: 'postingsCtrl as vm',
     resolve: {
-    	jobs: function (Job) {
-    		return Job.fetchAll();
+    	jobs: function (Company, AuthService) {
+            return AuthService.getLoggedInUser()
+            .then(user => {
+                if (user) return Company.fetch(user.companyId)
+            })
+            .then(company => company.job)
     	}
     }
   })

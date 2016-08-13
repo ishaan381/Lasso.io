@@ -154,10 +154,12 @@
 
         this.id = null;
         this.user = null;
+        this.companyId = null;
 
         this.create = function (sessionId, user) {
             this.id = sessionId;
             this.user = user;
+            this.company
         };
 
         this.destroy = function () {
