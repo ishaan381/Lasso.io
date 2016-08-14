@@ -6,7 +6,9 @@ navbar {
     font-weight: 400;
     .container {
         width: 91%;
-        /*max-width: 1340px;*/
+        @media (max-width: 850px) {
+            width: 100%;
+        }
         padding-top: 15px;
         padding-bottom: 15px;
     }
@@ -22,6 +24,9 @@ navbar {
         color: #353238;
         opacity: 0.5;
         font-size: 15px;
+        @media (max-width: 850px) {
+            font-size: 13px;
+        }
         letter-spacing: 2px;
         text-transform: uppercase;
         hr {
@@ -35,6 +40,9 @@ navbar {
     .nav > li > a {
         cursor: pointer;
         transition: opacity 0.3s;
+        @media (max-width: 850px) {
+            padding-left: 0px;
+        }
         &.active {
             opacity: 1;
             hr {
@@ -78,6 +86,9 @@ navbar {
         /*background-color: rgba(0, 0, 0, 0.1);*/
     }
     .btn.login-button {
+        @media (max-width: 850px) {
+            font-size: 13px;
+        }
         &:active {
             box-shadow: none;
             opacity: 1;

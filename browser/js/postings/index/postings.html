@@ -1,40 +1,58 @@
-<section id="postings">
+<div id="postings">
     <!--     <div class="container">
  -->
-    <div class="col-md-12 postings-title">
-        <h1>Postings <span class="postings-url">https://lasso.io/jobs/company_name</span></h1>
-    </div>
-    <div class="col-md-12 postings-control-panel">
-        <div class="col-md-6 add-posting">
-            <div class="button">
-                <a class="" href="#" ui-sref="newDescription"><i class="fa fa-plus pr-5" aria-hidden="true"></i>
-add new posting</a>
-                <div class="easing"></div>
+    <div class="container">
+        <div class='col-md-12 upper'>
+            <div class="col-md-6 col-sm-6 col-xs-6 postings-title">
+                <h1>POSTINGS</h1>
             </div>
-        </div>
-        <div class="col-md-6 sort-posting">
-            <div class="sort-posting-filters">
-                <div class="sort-posting-title pr-30"> Sort By: </div>
-                <div class="border-right filter-option pr-15" ng-click="chunkJobs('region')">
-                    <i class="fa fa-map-marker pr-5" aria-hidden="true"></i>
-                    <span class="filter-title"> Location</span>
-                </div>
-                <div class="border-right filter-option pl-15 pr-15" ng-click="chunkJobs('commitment')">
-                    <i class="fa fa-clock-o pr-5" aria-hidden="true"></i>
-                    <span class="filter-title"> Commitment</span>
-                </div>
-                <div class="filter-option pl-15" ng-click="chunkJobs('department')">
-                    <i class="fa fa-tag pr-5" aria-hidden="true"></i>
-                    <span class="filter-title"> Team</span>
+            <div class="postings-control-panel col-md-6 col-sm-6 col-xs-6">
+                <div class="add-posting">
+                    <div class="button">
+                        <a class="" href="#" ui-sref="newDescription"><i class="fa fa-plus pr-5" aria-hidden="true"></i>add new posting</a>
+                        <div class="easing"></div>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="col-md-12">
-        <div ng-repeat="chunk in chunkedJobs">
-            <h3>{{ chunk.category }}</h3>
-            <posting-card ng-repeat="job in chunk.jobs" job-detail="job">
+        <div class="col-md-12 postings-control-panel">
+            <div class="col-md-6 col-sm-6 col-xs-6">
+                <span class="postings-url" id="posting-url">https://lasso.io/jobs/company_name</span>
+            </div>
+            <div class="col-md-6 col-sm-6 col-xs-6 sort-posting">
+                <div class="sort-posting-filters">
+                    <div class="sort-posting-title pr-30" id="sort-by"> Sort By: </div>
+                    <div class="border-right filter-option pr-15" ng-click="chunkJobs('region')">
+                        <i class="fa fa-map-marker pr-5" aria-hidden="true"></i>
+                        <span class="filter-title"> Location</span>
+                    </div>
+                    <div class="border-right filter-option pl-15 pr-15" ng-click="chunkJobs('commitment')">
+                        <i class="fa fa-clock-o pr-5" aria-hidden="true"></i>
+                        <span class="filter-title"> Commitment</span>
+                    </div>
+                    <div class="filter-option pl-15" ng-click="chunkJobs('department')">
+                        <i class="fa fa-tag pr-5" aria-hidden="true"></i>
+                        <span class="filter-title"> Team</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class='col-md-12'>
+            <hr id="panel-hr">
+        </div>
+        <div class="col-md-12" id="chunk-container">
+            <div ng-repeat="chunk in chunkedJobs" id="chunk">
+                <div layout="row">
+                    <div flex="30" class="border-padding">
+                        <div class="border">
+                        <h3 class="category">{{ chunk.category }}</h3>
+                        </div>
+                    </div>
+                    <div flex="70">
+                        <posting-card ng-repeat="job in chunk.jobs" job-detail="job" class="postingcard">
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-
-</section>
+</div>
