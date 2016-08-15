@@ -1,10 +1,10 @@
-app.directive('navbar', function ($rootScope, AuthService, AUTH_EVENTS, $state) {
+app.directive('navbar', function($rootScope, AuthService, AUTH_EVENTS, $state, $mdDialog, $uibModal) {
 
     return {
         restrict: 'E',
         scope: {},
         templateUrl: 'js/common/directives/navbar/navbar.html',
-        link: function (scope) {
+        link: function(scope) {
 
             scope.items = [
                 { label: 'Home', state: 'home' },
@@ -15,23 +15,36 @@ app.directive('navbar', function ($rootScope, AuthService, AUTH_EVENTS, $state) 
 
             scope.user = null;
 
-            scope.isLoggedIn = function () {
+            scope.isLoggedIn = function() {
                 return AuthService.isAuthenticated();
             };
 
-            scope.logout = function () {
-                AuthService.logout().then(function () {
-                   $state.go('home');
+            scope.logout = function() {
+                AuthService.logout().then(function() {
+                    $state.go('home');
                 });
             };
 
-            var setUser = function () {
-                AuthService.getLoggedInUser().then(function (user) {
+            scope.invitePrompt = function(ev) {
+                var modalInstance = $uibModal.open({
+                    animation: true,
+                    templateUrl: 'js/common/directives/navbar/invite.html',
+                    controller: 'ModalInstanceCtrl',
+                    // resolve: {
+                    //     items: function() {
+                    //         return $scope.items;
+                    //     }
+                    // }
+                });
+            }
+
+            var setUser = function() {
+                AuthService.getLoggedInUser().then(function(user) {
                     scope.user = user;
                 });
             };
 
-            var removeUser = function () {
+            var removeUser = function() {
                 scope.user = null;
             };
 
@@ -45,4 +58,43 @@ app.directive('navbar', function ($rootScope, AuthService, AUTH_EVENTS, $state) 
 
     };
 
+});
+
+app.controller('ModalInstanceCtrl', function($scope, $uibModalInstance, $http, AuthService, $timeout) {
+
+    // $scope.items = items;
+    // $scope.selected = {
+    //   item: $scope.items[0]
+    // };
+    $scope.message = "";
+
+    $scope.notsent = true;
+
+    $scope.sendCode = function(email) {
+        $scope.message = "Sending..."
+        AuthService.getLoggedInUser()
+            .then(function(user) {
+                return $http.post('/api/code', { email: email, companyId: user.companyId })
+            })
+            .then(function(response) {
+                $scope.message = "Email with verification code sent to: " + email;
+                $scope.notsent = false;
+                $timeout(function(){$uibModalInstance.dismiss('cancel')}, 1000)
+                // $uibModalInstance.dismiss('cancel')
+
+
+            })
+            .catch(function(err) {
+                $scope.message = "Error! please try again"
+
+            })
+    }
+
+    $scope.ok = function() {
+        $uibModalInstance.close();
+    };
+
+    $scope.cancel = function() {
+        $uibModalInstance.dismiss('cancel');
+    };
 });

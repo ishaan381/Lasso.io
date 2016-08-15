@@ -28,7 +28,7 @@ app.controller('LoginCtrl', function ($scope, AuthService, $state, $log) {
     $scope.createCompany = function (createInfo) {
         AuthService.createCompany(createInfo)
         .then(function() {
-            $state.go('home');
+            $state.go('postings');
         })
         .catch(function(err) {
             $scope.error = err.message;
@@ -39,11 +39,12 @@ app.controller('LoginCtrl', function ($scope, AuthService, $state, $log) {
 
         console.log('signing up')
         AuthService.checkCode(signupInfo.code)
-        .then(function() {
-            return AuthService.signup({password: signupInfo.password, email: signupInfo.email})
+        .then(function(companyInfo) {
+            //console.log("THIRD CONSOLE LOG", companyId)
+            return AuthService.signup({password: signupInfo.password, email: signupInfo.email, companyId: companyInfo.data.id})
         })
         .then(function() {
-            $state.go('home');
+            $state.go('postings');
         })
         .catch(function(err) {
             console.log(err);

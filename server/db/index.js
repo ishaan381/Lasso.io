@@ -18,6 +18,9 @@ Company.hasMany(Job, {as: 'job', onDelete : 'cascade', hooks: true});
 User.belongsTo(Company, {as: 'company'});
 Company.hasMany(User, {as: 'user', onDelete : 'cascade', hooks: true});
 
+Code.belongsTo(Company, {as: 'company'});
+Company.hasMany(Code, {as: 'code', onDelete : 'cascade', hooks: true});
+
 JobDescription.belongsTo(Job, {as: 'job'});
 Job.hasOne(JobDescription, {as: 'jobDescription', onDelete: 'cascade', hooks: true})
 
