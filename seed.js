@@ -310,6 +310,16 @@ function createJobDescriptions(jobs) {
     return Promise.map(genJobDescriptions(jobs), description => description.save())
 }
 
+function randomJobApp(jobs, jobDesc){
+    var job = jobs.shift();
+    return JobApplication.build({
+        fields: JSON.stringify({
+            
+        }),
+        jobId: job.id
+    })
+}
+
 function seed() {
     var _companies, _users;
     return createCompanies()
