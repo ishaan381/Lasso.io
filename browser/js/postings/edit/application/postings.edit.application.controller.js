@@ -1,4 +1,4 @@
-app.controller('editApplicationCtrl', function(_, $scope, formlyVersion, $q, $http, countries, JobDescriptions, Job, sharedModal) {
+app.controller('editApplicationCtrl', function(_, $scope, formlyVersion, $q, $http, JobDescriptions, Job, sharedModal) {
 
     // WATCH FOR MODAL CHANGES SHARING SERVICE 
     $scope.$watch(function() {
