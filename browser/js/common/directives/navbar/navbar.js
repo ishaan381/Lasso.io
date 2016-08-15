@@ -68,16 +68,24 @@ app.controller('ModalInstanceCtrl', function($scope, $uibModalInstance, $http, A
     // };
     $scope.message = "";
 
+    $scope.notsent = true;
+
     $scope.sendCode = function(email) {
+        $scope.message = "Sending..."
         AuthService.getLoggedInUser()
             .then(function(user) {
                 return $http.post('/api/code', { email: email, companyId: user.companyId })
             })
             .then(function(response) {
                 $scope.message = "Email with verification code sent to: " + email;
+                $scope.notsent = false;
+                // $uibModalInstance.dismiss('cancel')
+
+
             })
             .catch(function(err) {
                 $scope.message = "Error! please try again"
+
             })
     }
 
