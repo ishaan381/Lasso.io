@@ -55,5 +55,16 @@ app.factory('App', function($http, $log) {
         })
     }
 
+    App.changeQualification = function(app){
+        return $http.put('/api/applications/' + app.id, {
+            rejected: !app.rejected
+        })
+        .then(function(resp){
+            $rootScope.$emit('editQulificaiton', resp.data);
+            return resp.data;
+        })
+    }
+
     return App;
 });
+

@@ -18,7 +18,7 @@ app.controller('LoginCtrl', function ($scope, AuthService, $state, $log) {
     $scope.sendLogin = function (loginInfo) {
 
         AuthService.login(loginInfo).then(function () {
-            $state.go('home');
+            $state.go('postings');
         }).catch(function (err) {
             $scope.error = err.message;
         });

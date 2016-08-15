@@ -1,0 +1,20 @@
+<div layout="column" class="job-column">
+    <div layout="row">
+    <div id="title">
+        <h3> {{ detail.jobDescription.fields.title }} </h3>
+    </div>
+    </div>
+    <div id="more-info">
+        <div layout="row">
+            <div id="location" class="detail">
+                <h7>{{detail.jobDescription.fields.region}}, {{detail.jobDescription.fields.country}}</h7>
+            </div>
+            <div id="commitment" class="detail">
+                <h7>{{detail.jobDescription.fields.commitment}}</h7>
+            </div>
+            <div id="department" class="detail">
+                <h7>{{ detail.jobDescription.fields.department }}</h7>
+            </div>
+        </div>
+    </div>
+</div>
