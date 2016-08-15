@@ -1,11 +1,14 @@
 <nav class="navbar navbar-static-top">
     <div class="container">
         <div class="navbar-header">
-          <!--   <fullstack-logo></fullstack-logo> -->
-        </div>
+<!--             <fullstack-logo></fullstack-logo>
+ -->        </div>
         <ul class="nav navbar-nav">
             <li ng-repeat="item in items" ng-show="!item.auth || isLoggedIn()">
                 <a ui-sref-active="active" ui-sref="{{ item.state }}">{{ item.label }} <div><hr></div></a>
+            </li>
+            <li ng-show="isLoggedIn()">
+                <a ui-sref-active="active" ng-click="invitePrompt()">INVITE<div><hr></div></a>
             </li>
         </ul>
         <button ng-show="!user" ui-sref="login" ui-sref-active="active" class="btn login-button">Login</button>
