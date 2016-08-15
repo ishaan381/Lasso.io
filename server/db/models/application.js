@@ -8,7 +8,7 @@ module.exports = db.define('application', {
     allowNull: false
   },
   rejected: {
-  	type: Sequelize.BOOL,
+  	type: Sequelize.BOOLEAN,
   	defaultValue: false
   }
 })
