@@ -3,7 +3,7 @@
 }
 
 body {
- /* background: #f2f2f2;*/
+  background: #f2f2f2;
 }
 
 @mixin clearfix {
@@ -38,7 +38,7 @@ body {
 #main {
 
   padding: 0px;
-
+  background-color: #f2f2f2;
 }
 
 $spaceamounts: (5, 10, 15, 20, 25, 30);
