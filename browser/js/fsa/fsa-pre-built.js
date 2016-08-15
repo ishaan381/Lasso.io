@@ -106,9 +106,9 @@
         this.checkCode = function(code) {
             console.log('checking code')
             return $http.post('/checkcode', {code: code})
-            .then(function() {
+            .then(function(companyInfo) {
                 console.log('valid code')
-                return $q.resolve({message: 'code valid'})
+                return $q.resolve(companyInfo)
             })
             .catch(function() {
                 return $q.reject({message: 'invalid or expired code'})
