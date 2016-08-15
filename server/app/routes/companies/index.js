@@ -53,7 +53,7 @@ router.post('/', function(req, res, next) {
 	.catch(next);
 });
 
-router.put('/:id', check.company, function(req, res, next) {
+router.put('/:id', function(req, res, next) {
 	req.requestedCompany.update(req.body)
 	.then(function (user) {
 		res.status(204)

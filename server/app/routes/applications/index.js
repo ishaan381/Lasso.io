@@ -24,7 +24,7 @@ router.param('id', function(req, res, next, id){
 });
 
 
-router.get('/:id', check.company, function(req, res, next) {
+router.get('/:id', function(req, res, next) {
     req.requestedApplication.reload()
     .then(app => res.send(app))
    	.catch(next);
@@ -56,7 +56,7 @@ router.put('/:id', check.access, function(req, res, next) {
 })
 
 //lets employee post a comment on an application
-router.post('/comment', check.company, function(req, res, next) {
+router.post('/comment', function(req, res, next) {
 	Comment.create(req.body)
 	.then(function(comment) {
 		res.status(201);
