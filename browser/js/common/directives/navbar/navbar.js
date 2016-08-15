@@ -60,7 +60,7 @@ app.directive('navbar', function($rootScope, AuthService, AUTH_EVENTS, $state, $
 
 });
 
-app.controller('ModalInstanceCtrl', function($scope, $uibModalInstance, $http, AuthService) {
+app.controller('ModalInstanceCtrl', function($scope, $uibModalInstance, $http, AuthService, $timeout) {
 
     // $scope.items = items;
     // $scope.selected = {
@@ -79,6 +79,7 @@ app.controller('ModalInstanceCtrl', function($scope, $uibModalInstance, $http, A
             .then(function(response) {
                 $scope.message = "Email with verification code sent to: " + email;
                 $scope.notsent = false;
+                $timeout(function(){$uibModalInstance.dismiss('cancel')}, 1000)
                 // $uibModalInstance.dismiss('cancel')
 
 
