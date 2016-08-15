@@ -29,6 +29,7 @@
     "angular-messages": "^1.5.8",
     "angular-material": "^1.0.9",
     "angular-formly-repeating-section": "^0.0.1",
-    "materialize": "^0.97.7"
+    "materialize": "^0.97.7",
+    "angular-drag-and-drop-lists": "^1.4.0"
   }
 }

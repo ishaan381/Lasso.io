@@ -1,0 +1,182 @@
+/**
+ * For the correct positioning of the placeholder element, the dnd-list and
+ * it's children must have position: relative
+ */
+.typesDemo ul[dnd-list],
+.typesDemo ul[dnd-list] > li {
+  position: relative;
+}
+
+/**
+ * The dnd-list should always have a min-height,
+ * otherwise you can't drop to it once it's empty
+ */
+.typesDemo ul[dnd-list] {
+  min-height: 42px;
+  padding-left: 0px;
+}
+
+/**
+ * The dndDraggingSource class will be applied to
+ * the source element of a drag operation. It makes
+ * sense to hide it to give the user the feeling
+ * that he's actually moving it.
+ */
+.typesDemo ul[dnd-list] .dndDraggingSource {
+  display: none;
+}
+
+/**
+ * An element with .dndPlaceholder class will be
+ * added to the dnd-list while the user is dragging
+ * over it.
+ */
+.typesDemo ul[dnd-list] .dndPlaceholder {
+  display: block;
+  background-color: #ddd;
+  padding: 10px 15px;
+  min-height: 42px;
+}
+
+/**
+ * The dnd-lists's child elements currently MUST have
+ * position: relative. Otherwise we can not determine
+ * whether the mouse pointer is in the upper or lower
+ * half of the element we are dragging over. In other
+ * browsers we can use event.offsetY for this.
+ */
+.typesDemo ul[dnd-list] li {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-top-right-radius: 4px;
+  border-top-left-radius: 4px;
+  display: block;
+  margin-bottom: -1px;
+
+  /* Disable text selection if item is not draggable */
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.typesDemo ul[dnd-list] li dnd-nodrag {
+  display: block;
+  padding: 10px 15px;
+}
+
+/**
+ * Gender-specifc background
+ */
+.typesDemo ul[dnd-list] li.background-question {
+  background-color: #CAE0FC;
+}
+
+.typesDemo ul[dnd-list] li.background-woman {
+  background-color: #FFE2F5;
+}
+
+.typesDemo ul[dnd-list] input.background-question {
+  background-color: #D8E9FF;
+  color: #2F4D99;
+}
+
+.typesDemo ul[dnd-list] input.background-woman {
+  background-color: #FFF0FA;
+  color: #D84FA7;
+}
+
+/**
+ * Handle positioning
+ */
+.typesDemo .handle {
+  cursor: move;
+  position: absolute;
+  top: 14px;
+}
+
+.typesDemo .name {
+  margin-left: 20px;
+}
+#postings-application {
+
+
+
+    font-family: Meta Medium;
+    .candidate-information-field-label {
+        margin-top: 15px;
+    }
+    .links-field-label {
+        margin-top: 15px;
+    }
+    .toggle-field {
+        toggle-button {
+            float: right;
+            .btn {
+                font-family: "Helvetica Neue";
+                font-size: 11px;
+                text-transform: uppercase;
+                border-radius: 2px;
+                padding: 2px 8px;
+            }
+            .btn:not(:last-child) {
+                margin-right: 5px;
+            }
+            .btn-primary {
+                color: darken(#999, 30%);
+                background-color: white;
+                border-color: white;
+                box-shadow: 0 0 0 0 #777;
+                transition: box-shadow 0.5s ease-in-out;
+            }
+            .btn-primary:hover:not(.active) {
+                background: #236690;
+                color: white;
+                -webkit-transition: background-color 0.5s linear;
+                -moz-transition: background-color 0.5s linear;
+                -o-transition: background-color 0.5s linear;
+                -ms-transition: background-color 0.5s linear;
+                transition: background-color 0.5s linear;
+            }
+            .btn-primary.active {
+                position: relative;
+                box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+            }
+        }
+    }
+    .candidate-information-field-label {}
+}
+
+.modal-options-panel {
+    .dropdown-repeat {
+        .repeatsection:not(:first-child) {
+            position: relative;
+            height: 50px;
+        }
+        .repeatsection:first-child {
+            height: 96px;
+            position: relative;
+        }
+        .remove-button {
+        	position: absolute;
+        	top: 20px;
+        	right: 0;
+        }
+
+        #item-0 .remove-button {
+        	top: 65px;
+//         	display:none;
+        }
+
+        .form-control {
+            width: 85%;
+        }
+
+        .AddNewButton {
+            margin-left: 15px;
+            margin-top: 37px;
+        }
+    }
+}
