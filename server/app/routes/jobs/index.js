@@ -16,7 +16,8 @@ router.param('id', function(req, res, next, id){
 		},
 		include: [
 			{ model: JobApplication, as: 'jobApplication'},
-			{ model: JobDescription, as: 'jobDescription'}
+			{ model: JobDescription, as: 'jobDescription'},
+      { model: Stage, as: 'stage'}
 		]
 	})
 	.then(function(job){
