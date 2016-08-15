@@ -1,181 +1,205 @@
-app.controller('editApplicationCtrl', function (_, $scope, formlyVersion, $q, $http, countries, JobDescriptions, Job) {
+app.controller('editApplicationCtrl', function(_, $scope, formlyVersion, $q, $http, JobDescriptions, Job, sharedModal) {
+
+    // WATCH FOR MODAL CHANGES SHARING SERVICE 
+    $scope.$watch(function() {
+        return sharedModal.modal;
+    }, function(newVal, oldVal) {
+        if (newVal) {
+            if (!vm.model.customFields) {
+                vm.model.customFields = [];
+                vm.model.customFields.push(newVal);
+            } else {
+                vm.model.customFields.push(newVal);
+            }
+        }
+    })
+
+    // CUSTOM QUESTIONS PREVIEW DRAGGABLE THINGY
+
+    $scope.lists = [
+        {
+            label: "Preview",
+            allowedTypes: ['man'],
+            max: 4,
+            people: [
+                {name: "Bob", type: "man"},
+                {name: "Charlie", type: "man"},
+                {name: "Dave", type: "man"}
+            ]
+        }
+    ];
+
+    // Model to JSON for demo purpose
+    $scope.$watch('lists', function(lists) {
+        $scope.modelAsJson = angular.toJson(lists, true);
+    }, true);
+
+
+    // FORM GENERATION 
+
 
     const vm = this;
 
-    vm.countries = countries.data;
     vm.originalFields = angular.copy(vm.fields);
-
-    function refreshAddresses(address, field) {
-      var promise;
-      if (!address) {
-        promise = $q.when({data: {results: []}});
-      }
-      else {
-        var endpoint = '//maps.googleapis.com/maps/api/geocode/json?components=administrative_area:' + address + '|country:' + vm.model.country
-        promise = $http.get(endpoint);
-      }
-      return promise.then(response => {
-        field.templateOptions.options = response.data.results;
-      });
-    }
 
     // function definition
     function onSubmit() {
-      var companyId = 1;
-      var descriptionData = {fields: JSON.stringify(vm.model), companyId: companyId};
-      var jobData = {};
-      JobDescriptions.create(descriptionData)
-      .then(data => {
-        jobData.descriptionId = data.id;
-        jobData.companyId = companyId;
-        return Job.create(jobData);
-      })
-      .then(data => {
-        console.log(data);
-      })
+
     }
 
     // function assignment
     vm.onSubmit = onSubmit;
 
     vm.env = {
-      angularVersion: angular.version.full,
-      formlyVersion: formlyVersion
+        angularVersion: angular.version.full,
+        formlyVersion: formlyVersion
     };
 
     vm.model = {};
 
     vm.options = {};
 
-    vm.fields = [
-      {
-        noFormControl: true,
-        template: '<h4 class="essentials-field-label">ESSENTIALS</h4><hr>'
-      },
-      {
-        key: 'title',
-        type: 'input',
-        className: 'col-md-8 col-sm-12',
-        templateOptions: {
-          type: 'text',
-          label: 'Position Title',
-          placeholder: 'Job Title',
-          required: true,
-        }
-      },
-      {
-        key: 'department',
-        type: 'input',
-        className: 'col-md-4 col-sm-12',
-        templateOptions: {
-          type: 'text',
-          label: 'Department',
-          placeholder: 'Department'
-        }
-      },
-      {
-        key: 'country',
-        type: 'ui-select-single',
-        className: 'country-field col-md-4',
-        templateOptions: {
-          optionsAttr: 'bs-options',
-          ngOptions: 'option[to.valueProp] as option in to.options | filter: $select.search',
-          label: 'Country',
-          valueProp: 'code',
-          labelProp: 'name',
-          placeholder: 'Select a country',
-          options: vm.countries,
-          required: true
-        }
-      },
-      {
-        key: 'region',
-        type: 'ui-select-single-search',
-        className: 'region-field col-md-4',
-        templateOptions: {
-          optionsAttr: 'bs-options',
-          ngOptions: 'option[to.valueProp] as option in to.options | filter: $select.search',
-          label: 'Region',
-          valueProp: 'formatted_address',
-          labelProp: 'formatted_address',
-          placeholder: 'Search',
-          options: [],
-          refresh: refreshAddresses,
-          refreshDelay: 0
-        }
-      },
-      {
-        key: 'commitment',
-        type: 'toggleCheckbox',
-        className: 'col-md-4',
-        defaultValue: 'Part-Time',
-        templateOptions: {
-          label: 'Commitment',
-          toggleData: {'unchecked': 'Part-Time', 'checked': 'Full-Time'},
-        }
-      },
-      {
-        noFormControl: true,
-        className: 'col-md-12 description-field-label',
-        template: '<p>Job Description</p>'
-      },
-      {
-        key: 'description',
-        type: 'textEditor',
-        className: 'text-editor'
-      },
-      {
-        noFormControl: true,
-        template: '<h4 class="sections-field-label">SECTIONS <span class="sections-field-detail-label">(for requirements, responsibilities, etc.)</span></h4><hr>'
-      },
-      {
-        type: "repeatSection",
-        key: "sections",
-        templateOptions: {
-          btnText: "add a section",
-          fields: [
-            {
-              className: "row",
-              fieldGroup: [
-                {
-                  className: "col-md-12 section-title-field",
-                  type: "input",
-                  key: "sectionTitle",
-                  templateOptions: {
-                    label: "Section Title"
-                  }
-                }
-              ]
-            },
-            {
-              className: "row",
-              fieldGroup: [
-                {
-                  key: 'description',
-                  type: 'textEditor',
-                  className: 'text-editor col-md-12',
-                  templateOptions: {
-                    label: 'Section Body'
-                  }
-                }
-              ]
+    vm.toggleDataOption1 = [{
+        label: 'mandatory',
+        value: 0
+    }]
+
+    vm.toggleDataOption2 = [{
+        label: 'optional',
+        value: 1
+    }, {
+        label: 'off',
+        value: 2
+    }]
+
+    vm.toggleDataOption3 = [{
+        label: 'mandatory',
+        value: 0
+    }, {
+        label: 'optional',
+        value: 1
+    }, {
+        label: 'off',
+        value: 2
+    }]
+
+
+    vm.fields = [{
+            noFormControl: true,
+            className: 'col-md-12',
+            template: '<h4 class="candidate-information-field-label">CANDIDATE INFORMATION</h4><hr>'
+        }, {
+            key: 'hasFullNameField',
+            type: 'toggleButton',
+            className: 'col-md-12 toggle-field',
+            defaultValue: { value: 0 },
+            templateOptions: {
+                label: 'Full Name',
+                toggleData: vm.toggleDataOption1
             }
-          ]
+        }, {
+            key: 'hasEmailField',
+            type: 'toggleButton',
+            className: 'col-md-12 toggle-field',
+            defaultValue: { value: 0 },
+            templateOptions: {
+                label: 'Email',
+                toggleData: vm.toggleDataOption1
+            }
+        }, {
+            key: 'hasResumeField',
+            type: 'toggleButton',
+            className: 'col-md-12 toggle-field',
+            defaultValue: { value: 0 },
+            templateOptions: {
+                label: 'Resume/CV',
+                toggleData: vm.toggleDataOption3
+            }
+        }, {
+            key: 'hasPhoneField',
+            type: 'toggleButton',
+            className: 'col-md-12 toggle-field',
+            defaultValue: { value: 1 },
+            templateOptions: {
+                label: 'Phone',
+                toggleData: vm.toggleDataOption3
+            }
+        }, {
+            key: 'hasCurrentCompanyField',
+            type: 'toggleButton',
+            className: 'col-md-12 toggle-field',
+            defaultValue: { value: 1 },
+            templateOptions: {
+                label: 'Current Company',
+                toggleData: vm.toggleDataOption3
+            }
+        }, {
+            noFormControl: false,
+            className: 'col-md-12',
+
+            template: '<h4 class="links-field-label">LINKS</h4><hr>'
+        }, {
+            key: 'hasLinkedInLinkField',
+            type: 'toggleButton',
+            className: 'col-md-12 toggle-field',
+            defaultValue: { value: 1 },
+            templateOptions: {
+                label: 'LinkedIn URL',
+                toggleData: vm.toggleDataOption2
+            }
+        }, {
+            key: 'hasTwitterLinkField',
+            type: 'toggleButton',
+            className: 'col-md-12 toggle-field',
+            defaultValue: { value: 1 },
+            templateOptions: {
+                label: 'Twitter URL',
+                toggleData: vm.toggleDataOption2
+            }
+        }, {
+            key: 'hasGithubLinkField',
+            type: 'toggleButton',
+            className: 'col-md-12 toggle-field',
+            defaultValue: { value: 1 },
+            templateOptions: {
+                label: 'GitHub URL',
+                toggleData: vm.toggleDataOption2
+            }
+        }, {
+            key: 'hasPortfolioLinkField',
+            type: 'toggleButton',
+            className: 'col-md-12 toggle-field',
+            defaultValue: { value: 1 },
+            templateOptions: {
+                label: 'Portfolio URL',
+                toggleData: vm.toggleDataOption2
+            }
+        }, {
+            key: 'hasOtherLinkField',
+            type: 'toggleButton',
+            className: 'col-md-12 toggle-field',
+            defaultValue: { value: 1 },
+            templateOptions: {
+                label: 'Other Website',
+                toggleData: vm.toggleDataOption2
+            }
+        }, {
+            noFormControl: true,
+            className: 'col-md-12',
+            template: '<h4 class="custom-questions-field-label">CUSTOM QUESTIONS</h4><hr>'
+        }, 
+        {
+          noFormControl: true,
+          className: 'col-md-12',
+          templateUrl: '/js/postings/edit/application/questions-preview.html',
+        },
+        {
+            noFormControl: true,
+            className: 'col-md-12',
+            templateUrl: '/js/postings/edit/application/modal-popup.html'
         }
-      },
-      {
-        noFormControl: true,
-        template: '<h4 class="closings-field-label">CLOSING / METADATA<span class="closings-field-detail-label"> (optional)</span></h4><hr>'
-      },
-      {
-        type: "textarea",
-        key: "closing",
-        className: "closing-field",
-        templateOptions: {
-          placeholder: "Add a closing ...",
-          rows: 4,
-          cols: 15
-        }
-      }
+
+
     ];
+
 });
