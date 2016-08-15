@@ -6,5 +6,9 @@ module.exports = db.define('application', {
   fields: {
     type: Sequelize.JSON,
     allowNull: false
+  },
+  rejected: {
+  	type: Sequelize.BOOLEAN,
+  	defaultValue: false
   }
 })
