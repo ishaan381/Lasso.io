@@ -40,9 +40,7 @@
 //     // numJobDesc = 10,
 //     // numJobApp = 10;
 
-// const companyNames = ['Fullstack Academy', 'Microsoft', 'Lyft', 'Uber', 'BMW'],
-//     // commentContent = ['I love you', '^ is he comming off too strong?', 'he seems too qualified', 'there might something to this', 'I like bread', 'maybe if we actually screen applicants we wouldnt end up with another carl', 'whoopsie daisy', 'if you want to add more comments just put them in the seed file', 'this looks fun', 'wow I love rejecting people... it just makes me feel...  so powerful!', 'Im going insane', 'how many more comments content do I have to write', 'I love seed files!', '#LOL #YOLO #AMIRIGHT?'],
-//     commentTitles = ['Great Job!', 'Could be better', 'it\'s not me, it\'s you', 'it\'s not you, it\'s me', 'it\'s not me, it\'s me', 'it\'s not you, it\'s you', 'fame', 'I think he\'s the perfect applicant!', 'Next!', 'another one bites the dust', 'Clever title', 'comment.title', 'I put one title in here to screw with the scope'],
+// const companyNames = ['Fullstack Academy', 'Microsoft', 'Lyft', 'Uber', 'BMW']
 //     stageNames = ['Phone Screen', 'YOLO', 'Haze Them', 'Just give them the job already'],
 //     userEmails = ['bob@bob.com', 'Jerbderb@ferb.com', 'thesearealleastereggs@seed.com', 'Jamal@gmail.com', 'Ineed20differentemails@gmail.com', 'Istherelifeonmars@gmail.com', 'davidbowie@starman.com', 'crazydiamond@shineon.com', 'Istartedmakingmusicreferences@bored.com', 'a@gmail.com', 'b@gmail.com', 'c@gmail.com', 'd@gmail.com', 'g@gmail.com', 'f@gmail.com', 'e@gmail.com', 'h@gmail.com', 'i@gmail.com', 'j@gmail.com', 'LonathanJigh@gmail.com', 'LevinKi@gmail.com', 'NishaanAgpal@gmail.com', 'HaytonPenson@gmail.com'],
 //     passwords = ['asdf', 'pgs', 'ishaan', 'nissan', 'hondacivic'],
@@ -191,7 +189,10 @@ var Promise = require('sequelize').Promise;
 
 const numUsers = 25,
     numCompanies = 5,
-    numJobs = 30; //pipelines have jobs, jobs have app descriptions, and jobappforms
+    numJobs = 30, //pipelines have jobs, jobs have app descriptions, and jobappforms
+    numStages = 100,
+    numApps = 100,
+    numComments = 300;
 
 
 const companyNames = ['Fullstack Academy', 'Microsoft', 'Lyft', 'Uber', 'BMW'],
@@ -204,12 +205,24 @@ const companyNames = ['Fullstack Academy', 'Microsoft', 'Lyft', 'Uber', 'BMW'],
     innerDescriptions = ["<ul style=\"font-size: 14px;\"><li>Interprets and analyzes new regulations and laws that govern Lyft’s operations</li><li>Provides strategic advice and guidance on implementing those laws, working closely with the product, legal, communications, and operations teams</li><li>Works closely with regulators in various jurisdictions to negotiate for favorable regulations that support the company’s business objectives</li><li>Maintains ongoing positive relationship with regulators</li><li>Works closely with legal and government relations to draft correspondence, comments, and position papers touching upon Lyft compliance matters</li><li>Meets corporate compliance objectives by forecasting requirements, analyzing variances, and initiating corrective actions</li><li>Works closely with legal and government relations to recommend public policy strategies and operational impacts</li><li>Keeps management, operational, and marketing areas informed of compliance issues</li></ul>",
 
         "<ul style=\"font-size: 14px;\"><li>JD from a top-tiered law school</li><li>2+ years of legal experience at a mid- to large-sized law firm, government regulatory entity or in-house at a technology company</li><li>Outstanding writing, research, negotiating, and interpersonal skills </li><li>Strong oral advocacy and presentation skills</li><li>Experience advising fast-growing businesses in a regulated industry</li><li>Proven ability to work cross-functionally to achieve maximum compliance while minimizing the impact of compliance on the business</li><li>An understanding of the transportation industry, ridesharing, payments, or other fast growing newly regulated industry</li></ul>"
-    ]
+    ],
+    commentContent = ['I love you', '^ is he comming off too strong?', 'he seems too qualified', 'there might something to this', 'I like bread', 'maybe if we actually screen applicants we wouldnt end up with another carl', 'whoopsie daisy', 'if you want to add more comments just put them in the seed file', 'this looks fun', 'wow I love rejecting people... it just makes me feel...  so powerful!', 'Im going insane', 'how many more comments content do I have to write', 'I love seed files!', '#LOL #YOLO #AMIRIGHT?'],
+    commentTitles = ['Great Job!', 'Could be better', 'it\'s not me, it\'s you', 'it\'s not you, it\'s me', 'it\'s not me, it\'s me', 'it\'s not you, it\'s you', 'fame', 'I think he\'s the perfect applicant!', 'Next!', 'another one bites the dust', 'Clever title', 'comment.title', 'I put one title in here to screw with the scope'],
+    fullNames = ['Bob Dole', 'Elon Musk', 'Jonathan Ligh', 'Ishaan Nagpal', 'Firstname Lastname', 'Kevin Li', 'Payton Henson'],
+    stageNames = ['step one', 'step two', 'phone screen', 'hired', 'offer', 'applied', 'sourced', 'interview', 'haze them', 'another interview', '(different interview) interview', 'more inputs', 'HR interview', 'department inteview']
 
 function doTimes(n, fn, arg) {
     var results = [];
     while (n--) {
         results.push(fn(arg));
+    }
+    return results;
+}
+
+function doNTimes(n, fn, arg, arr) {
+    var results = arr || [];
+    while (n--) {
+        results.push(fn(arg, n));
     }
     return results;
 }
@@ -268,9 +281,9 @@ function randomJob(companies) {
 }
 
 function genJobs(companies) {
-    var jobs = doTimes(numJobs, randomJob, companies);
+    var jobs, lobs, cobs, pobs = doTimes(numJobs, randomJob, companies);
 
-    return jobs;
+    return jobs, lobs, cobs, pobs;
 }
 
 function createJobs(companies) {
@@ -310,18 +323,93 @@ function createJobDescriptions(jobs) {
     return Promise.map(genJobDescriptions(jobs), description => description.save())
 }
 
-function randomJobApp(jobs, jobDesc){
+
+function randomJobApplication(jobs){//need to finish
     var job = jobs.shift();
     return JobApplication.build({
         fields: JSON.stringify({
-            
+            "fullname": chance.pick(fullNames),
+            "resume": 'this is a resume',
+            "question 1": { 
+                "question": 'answer paragraph',
+            },
+            "question 2": { 
+                "question": 'another answer paragraph',
+            }
         }),
         jobId: job.id
     })
 }
 
+function genJobApplications(jobs) {
+    return doTimes(numJobs, randomJobApplication, jobs);
+}
+
+function createJobApplications(jobs) {
+    return Promise.map(genJobApplications(jobs), application => application.save())
+}
+
+function randomStage(job, num){// might want to edit to prevent stages from having the same index on the same job, right now that is statistically impropable
+    return Stage.build({
+        index: num,
+        title: chance.pick(stageNames),
+        jobId: job.id,
+
+    })
+}
+
+function genStages(jobs) {
+    var stages = [];
+
+    jobs.forEach(function(job) {
+        doNTimes(4, randomStage, job, stages)
+    })
+    
+    return stages;
+}
+
+function createStages(jobs) {
+    return Promise.map(genStages(jobs), stages => stages.save());
+}
+
+function randomApp(stages) {
+    return App.build({
+        fields: JSON.stringify({
+            "Whatever": 'I dont know what goes here'
+        }),
+        jobId: Math.floor(Math.random() * 30) + 1,
+        stageId: chance.pick(stages).id
+    })
+}
+
+function genApps(stages) {
+    return doTimes(numApps, randomApp, stages)
+}
+
+function createApps(stages) {
+    return Promise.map(genApps(stages), apps => apps.save());
+}
+
+function randomComments(){
+    return Comment.build({
+        title: chance.pick(commentTitles),
+        content: chance.pick(commentContent),
+        stageId: Math.floor(Math.random() * 100) + 1,
+        userId: Math.floor(Math.random() * 27) + 1,
+        applicaitonId: Math.floor(Math.random() * 100) + 1
+    })
+}
+
+function genComments(){
+    return doTimes(numComments, randomComments);
+}
+
+function createComments(){
+    return Promise.map(genComments(), comments => comments.save());
+}
+
 function seed() {
-    var _companies, _users;
+    var _companies, _users, _stages, _jobs;
     return createCompanies()
         .then(companies => {
             _companies = companies;
@@ -332,9 +420,22 @@ function seed() {
             return createJobs(_companies)
         })
         .then(jobs => {
+            _jobs = jobs
             return createJobDescriptions(jobs)
         })
-        .then(descriptions => {
+        .then(function(jobs){
+            return createJobApplications(jobs)
+        })
+        .then(function(jobs){
+            return createStages(jobs)
+        })
+        .then(stages => {
+            return createApps(stages)
+        })
+        .then(function(){
+            return createComments()
+        })
+        .then( function() {
             console.log("Hello")
         })
 }

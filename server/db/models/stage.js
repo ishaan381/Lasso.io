@@ -5,5 +5,7 @@ module.exports = db.define('stage', {
     index: {
         type: Sequelize.INTEGER
       },
-    info: Sequelize.JSON
+    title: {
+    	type: Sequelize.STRING
+    }
 });
