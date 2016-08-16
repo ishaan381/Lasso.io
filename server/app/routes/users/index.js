@@ -27,17 +27,9 @@ router.get('/:id', function(req, res, next) {
 	.catch(next);
 });
 
-// router.post('/', function(req, res, next) {
-// 	User.create(req.body)
-// 	.then(function(user){
-// 		res.send(user)
-// 	})
-// 	.catch(next);
-// });
-
 
 //hooks on associations and on models take care of deleting all relavant info, if they dont, check the models and associations
-router.delete('/:id', (check.admin || check.pageAdimin), function(req, res, next) {
+router.delete('/:id', (check.admin || check.pageAdmin), function(req, res, next) {
 	req.requestedUser.destroy()
 	.then(function(){
 		res.status(204).end();

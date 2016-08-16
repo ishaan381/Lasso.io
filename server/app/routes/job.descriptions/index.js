@@ -2,6 +2,8 @@
 var router = require('express').Router();
 module.exports = router;
 
+//REQUIRE DB AND ACCESS IT TO GET MODELS!!!
+
 let JobDescription = require('../../../db/models/job.description'),
 check = require('../check-handler');
 

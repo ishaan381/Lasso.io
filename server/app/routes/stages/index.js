@@ -38,7 +38,7 @@ router.post('/', check.pageAdmin, function(req, res, next){
 });
 
 router.put('/:id', function(req, res, next){
-  req.resquestedStage.update(req.body)
+  req.requestedStage.update(req.body)
   .then(function(stage){
     res.status(204);
     res.send(stage)
@@ -46,7 +46,7 @@ router.put('/:id', function(req, res, next){
 })
 
 router.delete('/:id', function(req, res, next){
-  req.resquestedStage.destroy()
+  req.requestedStage.destroy()
   .then(function(){
     res.status(204).end()
   }).catch(next);
