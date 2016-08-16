@@ -1,0 +1,25 @@
+
+<div ng-controller="ModalCtrl">
+    
+
+    <script type="text/ng-template" id="modal-content.html">
+    
+        <div class="modal-body">
+            <form ng-submit="vm.onSubmit()" name="vm.form" novalidate>
+                <formly-form model="vm.model" fields="vm.fields" options="vm.options" form="vm.form">
+                    <div class="form-actions">
+                    </div>
+                </formly-form>
+            </form>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" type="button" ng-click="ok()">SAVE CHANGES</button>
+        </div>
+
+    </script>
+
+    <button type="button" class="btn btn-default" ng-click="open()">Add a question</button>
+<!--        <div ng-show="selected">Selection from a modal: {{ selected }}</div>
+ -->
+
+ </div>
