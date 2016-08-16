@@ -1,0 +1,22 @@
+.pipe-body-wrapper {
+   height: 88%;
+  .applicantBar {
+    margin: 15px;
+    height: 100%;
+    border: 3px solid white;
+    border-radius: 10px;
+    background-color: white;
+    font-family: Meta Medium Caps;
+    .app-bar {
+      padding-top: 10px;
+      background-color: white;
+    }
+    .app-section {
+      text-align: center;
+    }
+  }
+  hr {
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
+}
