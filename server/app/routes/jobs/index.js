@@ -58,7 +58,6 @@ router.get('/', function (req, res, next) {
 		include: [
 			{ model: JobApplication, as: 'jobApplication'},
 			{ model: JobDescription, as: 'jobDescription'},
-			// { model: Pipeline, as: 'pipeline'}
 		]
 	})
 		.then(function (desc) {

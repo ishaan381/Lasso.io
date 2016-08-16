@@ -2,7 +2,7 @@
 var router = require('express').Router();
 module.exports = router;
 
-let App = require('../../../db/models/application'),
+const App = require('../../../db/models/application'),
 Comment = require('../../../db/models/comment'),
 Stage = require('../../../db/models/stage'),
 check = require('../check-handler');
@@ -28,10 +28,11 @@ router.get('/:id', function(req, res, next) {
     req.requestedApplication.reload()
     .then(app => res.send(app))
    	.catch(next);
+    //we can just res.send req.requestedApplication no promises!
 });
 
 //these seem to the the same
-router.get('/:id/allcomments', function(req, res, next) {
+router.get('/:id/comments', function(req, res, next) {
 	req.requestedApplication.reload()
 	.then(app => res.send(app.comments))
 	.catch(next);
@@ -56,7 +57,8 @@ router.put('/:id', check.access, function(req, res, next) {
 })
 
 //lets employee post a comment on an application
-router.post('/comment', function(req, res, next) {
+router.post('/:id/comment', function(req, res, next) {
+  //NEEDS CHANGE 8/16
 	Comment.create(req.body)
 	.then(function(comment) {
 		res.status(201);
