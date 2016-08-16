@@ -3,9 +3,9 @@
 #home {
 
   .photobot{
-    background-image: url("http://talentjockey.com/wp-content/uploads/2015/04/public-domain-images-free-stock-photos-high-quality-resolution-downloads-public-domain-archive-14-1000x667.jpg");
+    background-image: url("http://media.gettyimages.com/photos/coffee-cup-laptop-notebook-and-pen-in-office-picture-id177245735?k=6&m=177245735&s=170667a&w=0&h=bGzIJEO8-ktxIFNgYCqnOMfPth6810yNr18J2ChpmEY=");
     background-attachment: fixed;
-    height: 600px;
+    height: 560px;
     /*position: relative;*/
     /*background-position: 50%;*/
     background-repeat: no-repeat;
@@ -15,28 +15,62 @@
     position: relative;
   };
 
-  .morephoto {
-     background-image: url("http://www.discovertheforest.org/images/hero/home/6.jpg");
-/*    background-attachment: fixed;
-*/    height: 2000px;
-    /*position: fixed;*/
-    /*background-position: 50%;*/
-    background-repeat: no-repeat;
-    margin: 0;
-    padding: 0;
-  }
-
   .logo {
-    font-weight: 600;
-    font-size: 12vh;
+    font-size: 90px;
     text-align: center;
-    font-family: 'Julius Sans One', sans-serif;
+    font-family: 'Puritan', sans-serif;
     position: absolute;
     top: 30%;
     height: 60%;
     width: 100%;
-    color: #353238;
+    color: whitesmoke;
+    }
+    .sublogo {
+    font-size: 30px;
+    text-align: center;
+    font-family: 'Puritan', sans-serif;
+    position: absolute;
+    top: 50%;
+    height: 60%;
+    width: 100%;
+    color: whitesmoke;
     }
 }
 
+#whitespace {
+  background-color: whitesmoke;
+  height: 360px;
+}
+
+#parallax {
+  .stockphoto {
+    background-image: url("https://static.pexels.com/photos/2855/landscape-mountains-nature-lake.jpg");
+    background-attachment: fixed;
+    height: 360px;
+    background-repeat: no-repeat;
+    margin: 0;
+    padding: 0;
+    background-size: cover;
+  }
+  .coffee {
+    background-image: url("http://talentjockey.com/wp-content/uploads/2015/04/public-domain-images-free-stock-photos-high-quality-resolution-downloads-public-domain-archive-14-1000x667.jpg");
+    background-attachment: fixed;
+    height: 360px;
+    background-repeat: no-repeat;
+    margin: 0;
+    padding: 0;
+    background-size: cover;
+  }
+}
+
+.footer {
+  height: 120px;
+  background-color: #2b2d2e;
+  color: whitesmoke;
+  .col-sm-4 {
+    margin-top: 50px;
+    text-align: center;
+    font-family: 'Maison Neue Book', HelveticaNeue-Light, "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  }
+}
 //https://static.pexels.com/photos/2855/landscape-mountains-nature-lake.jpg

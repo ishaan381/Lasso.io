@@ -2,19 +2,23 @@
  * For the correct positioning of the placeholder element, the dnd-list and
  * it's children must have position: relative
  */
+
 .typesDemo ul[dnd-list],
 .typesDemo ul[dnd-list] > li {
-  position: relative;
+    position: relative;
 }
+
 
 /**
  * The dnd-list should always have a min-height,
  * otherwise you can't drop to it once it's empty
  */
+
 .typesDemo ul[dnd-list] {
-  min-height: 42px;
-  padding-left: 0px;
+    min-height: 42px;
+    padding-left: 0px;
 }
+
 
 /**
  * The dndDraggingSource class will be applied to
@@ -22,21 +26,27 @@
  * sense to hide it to give the user the feeling
  * that he's actually moving it.
  */
+
 .typesDemo ul[dnd-list] .dndDraggingSource {
-  display: none;
+	    display: none;
 }
+
 
 /**
  * An element with .dndPlaceholder class will be
  * added to the dnd-list while the user is dragging
  * over it.
  */
+
 .typesDemo ul[dnd-list] .dndPlaceholder {
-  display: block;
-  background-color: #ddd;
-  padding: 10px 15px;
-  min-height: 42px;
+    display: block;
+    background-color: white;
+    border: 3px dashed #ddd;
+    border-radius: 2px;
+    padding: 10px 15px;
+    min-height: 75px;
 }
+
 
 /**
  * The dnd-lists's child elements currently MUST have
@@ -45,65 +55,120 @@
  * half of the element we are dragging over. In other
  * browsers we can use event.offsetY for this.
  */
-.typesDemo ul[dnd-list] li {
-  background-color: #fff;
-  border: 1px solid #ddd;
-  border-top-right-radius: 4px;
-  border-top-left-radius: 4px;
-  display: block;
-  margin-bottom: -1px;
 
-  /* Disable text selection if item is not draggable */
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
+.typesDemo ul[dnd-list] li {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-top-right-radius: 4px;
+    border-top-left-radius: 4px;
+    display: block;
+    margin-bottom: -1px;
+    /* Disable text selection if item is not draggable */
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 .typesDemo ul[dnd-list] li dnd-nodrag {
-  display: block;
-  padding: 10px 15px;
+    display: block;
+    padding: 10px 15px;
 }
+
 
 /**
  * Gender-specifc background
  */
+
 .typesDemo ul[dnd-list] li.background-question {
-  background-color: #CAE0FC;
+    background-color: #CAE0FC;
 }
 
 .typesDemo ul[dnd-list] li.background-woman {
-  background-color: #FFE2F5;
+    background-color: #FFE2F5;
 }
 
 .typesDemo ul[dnd-list] input.background-question {
-  background-color: #D8E9FF;
-  color: #2F4D99;
+    background-color: #D8E9FF;
+    color: #2F4D99;
 }
 
 .typesDemo ul[dnd-list] input.background-woman {
-  background-color: #FFF0FA;
-  color: #D84FA7;
+    background-color: #FFF0FA;
+    color: #D84FA7;
 }
+
 
 /**
  * Handle positioning
  */
+
 .typesDemo .handle {
-  cursor: move;
-  position: absolute;
-  top: 14px;
+    cursor: move;
+    position: absolute;
+    top: 14px;
 }
 
 .typesDemo .name {
-  margin-left: 20px;
+    margin-left: 20px;
 }
+
 #postings-application {
 
 
+	#postings-application-preview {
 
+		font-family: Lato;
+        font-weight: 400;
+
+		padding: 30px;
+		background-color: #eceef1;
+
+		#postings-application-preview-container {
+
+			background-color: #fff;
+		    padding: 15px;
+
+            .preview-field-label {
+                font-size: 13px;
+                color: #515357;
+                margin-top: 1px;
+            }
+
+            .required {
+                color: red;
+                padding-left: 3px;
+            }
+
+            .default-inputs {
+                input {
+                    height: 18px;
+                }
+            }
+
+        }
+
+
+
+	}
+
+
+    button {
+        outline: 0;
+    }
+    .submit-button {
+        font-size: 18px;
+        font-family: Meta Medium Caps;
+        background-image: linear-gradient(to bottom, #266f9c, #205d84);
+        background-color: #246892;
+        border: 1px solid #194967;
+        border-bottom-color: #143a52;
+        background-repeat: repeat-x;
+        margin-left: 15px;
+        margin-top: 65px;
+    }
     font-family: Meta Medium;
     .candidate-information-field-label {
         margin-top: 15px;
@@ -147,9 +212,51 @@
         }
     }
     .candidate-information-field-label {}
+    .panel-info {
+        border-color: transparent;
+    }
+    .panel-body {
+        padding: 0;
+        .question-preview-container {
+            position: relative;
+            .handle {
+                top: 0px;
+                color: #aaa;
+            }
+            i {
+            	color: slategray;
+            }
+            .handle:hover {
+                color: darken(#aaa, 20%);
+            }
+            .question-preview {
+                margin-left: 25px;
+                .question-basic-title {
+
+                }
+                .question-basic-question {
+                    margin-left: 21px;
+                }
+                .question-options {
+                    ul {
+                        list-style-type: circle;
+                    }
+                    li {
+                        border: none;
+                        font-size: 12px;
+                    }
+                    .bullet {
+                        font-size: 5px;
+                        position: relative;
+                        bottom: 2px;
+                    }
+                }
+            }
+        }
+    }
 }
 
-.modal-options-panel {
+.modal-advanced-panel {
     .dropdown-repeat {
         .repeatsection:not(:first-child) {
             position: relative;
@@ -160,20 +267,17 @@
             position: relative;
         }
         .remove-button {
-        	position: absolute;
-        	top: 20px;
-        	right: 0;
+            position: absolute;
+            top: 20px;
+            right: 0;
         }
-
         #item-0 .remove-button {
-        	top: 65px;
-//         	display:none;
+            top: 65px;
+            //         	display:none;
         }
-
         .form-control {
             width: 85%;
         }
-
         .AddNewButton {
             margin-left: 15px;
             margin-top: 37px;

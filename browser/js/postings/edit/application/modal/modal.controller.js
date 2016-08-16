@@ -8,7 +8,7 @@ app.controller('ModalCtrl', function ($scope, $uibModal, $log, sharedModal) {
 
     var modalInstance = $uibModal.open({
       animation: $scope.animationsEnabled,
-      templateUrl: 'js/postings/edit/application/modal-content.html',
+      templateUrl: 'js/postings/edit/application/modal/modal-content.html',
       // templateUrl: 'myModalContent.html',
       controller: 'ModalInstanceCtrl as vm',
       size: size,

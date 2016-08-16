@@ -1,0 +1,37 @@
+<div ng-controller="editApplicationCtrl" class="typesDemo row">
+    <div ng-repeat="list in lists" class="col-md-12">
+        <div class="panel panel-info" ng-if="list.questions.length > 0">
+            <!--             <div class="panel-heading">
+                <h3 class="panel-title">{{list.label}}</h3>
+            </div> -->
+            <div class="panel-body">
+                <ul dnd-drop="dropCallback(event, index, item, external, type, 'containerType')" dnd-list="list.questions">
+                    <li ng-repeat="question in list.questions" dnd-draggable="question" dnd-type="question.type" dnd-auto-scroll="true" dnd-disable-if="question.type == 'unknown'" dnd-moved="list.questions.splice($index, 1)" dnd-effect-allowed="move" class="background-{{question.type}}">
+                        <dnd-nodrag>
+                            <div class="question-preview-container">
+                                <div dnd-handle class="handle"><i class="fa fa-bars" aria-hidden="true"></i>
+                                </div>
+                                <div class="question-preview">
+                                    <div class="question-basic-title">
+                                        <span class="question-label" tooltip-placement="top" uib-tooltip="{{question.field}}" ng-bind-html="getFieldIcon(question.field)"></span>{{question.basic.title}}
+                                    </div>
+                                    <div class="question-basic-question">
+                                        <small>{{question.basic.question}}</small>
+                                    </div>
+                                    <ul ng-if="question.advanced.options.length !== 0" class="question-options">
+                                        <li ng-repeat="option in question.advanced.options">
+                                            <i class="bullet fa fa-circle" aria-hidden="true"></i> {{option.value}}
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </dnd-nodrag>
+                    </li>
+                    <li class="dndPlaceholder">
+                        Switch the <strong>order</strong> of the questions.
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
