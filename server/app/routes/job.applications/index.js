@@ -42,7 +42,7 @@ router.put('/:id', check.access, function(req, res, next) {
     .catch(next);
 });
 
-router.delete('/:id', check.company, function(req, res, next) {
+router.delete('/:id', function(req, res, next) {
     req.requestedApp.destroy()
     .then(function () {
         res.status(204).end();

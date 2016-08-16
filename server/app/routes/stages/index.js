@@ -20,7 +20,7 @@ router.param('id', function(req, res, next, id){
   .catch(next);
 });
 
-router.get('/:id', check.company, function(req, res, next){
+router.get('/:id', function(req, res, next){
   req.requestedStage.reload()
   .then(function(stage){
     res.send(stage);
@@ -28,7 +28,7 @@ router.get('/:id', check.company, function(req, res, next){
   .catch(next);
 });
 
-router.post('/', check.company || check.pageAdimin, function(req, res, next){
+router.post('/', check.pageAdmin, function(req, res, next){
   Stage.create(req.body)
   .then(function(stage){
     res.status(201);
@@ -37,7 +37,7 @@ router.post('/', check.company || check.pageAdimin, function(req, res, next){
   .catch(next)
 });
 
-router.put('/:id', check.company, function(req, res, next){
+router.put('/:id', function(req, res, next){
   req.resquestedStage.update(req.body)
   .then(function(stage){
     res.status(204);
@@ -45,7 +45,7 @@ router.put('/:id', check.company, function(req, res, next){
   }).catch(next);
 })
 
-router.delete('/:id', check.company, function(req, res, next){
+router.delete('/:id', function(req, res, next){
   req.resquestedStage.destroy()
   .then(function(){
     res.status(204).end()

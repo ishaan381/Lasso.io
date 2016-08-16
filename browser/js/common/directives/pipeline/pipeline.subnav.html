@@ -1,0 +1,17 @@
+<nav class="subnav">
+    <div class="container">
+        <div class="row my-navbar">
+            <ul class="nav navbar-nav col-md-12 nav-center">
+                <li ng-repeat="stage in stages">
+                    <a class="stage" ui-sref-active="stage-active">
+                        <div class="stage-container">
+                            <div class="stage-label">
+                                {{ stage.label }}
+                            </div>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>

@@ -15,13 +15,14 @@ var transporter = nodemailer.createTransport({
     }
 });
 
-router.get('/', function(req, res, next) {
-    Code.create({ code: randomCode(9, false) })
+router.post('/', function(req, res, next) {
+    console.log(req.body)
+    Code.create({ code: randomCode(9, false), companyId: req.body.companyId })
         .then(function(_code) {
             var mailOptions = {
-                from: '"Fred Foo" <llasso1606@gmail.com>', // sender address
-                to: 'ishaan7@gmail.com', // list of receivers
-                subject: 'Hello', // Subject line
+                from: '"Lasso.io" <llasso1606@gmail.com>', // sender address
+                to: req.body.email, // list of receivers
+                subject: 'Invitation Code to Join Lasso!', // Subject line
                 text: _code.code, // plaintext body
                 //html: '<b>Hello world</b>' // html body
             };

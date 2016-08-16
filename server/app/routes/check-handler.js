@@ -26,16 +26,7 @@ var checkAccess = function (req, res, next) {
 }
 
 var checkCompanyAdmin = function(req, res, next) {
-    if(req.user.isCompanyAdmin && req.user.companyId === req.requestedCompany.id) next();
-    else {
-        var err = new Error('Unauthorized');
-        err.status = 401;
-        next(err);
-    }
-}
-
-var checkCompany = function(req, res, next) {
-    if(req.user.companyId === req.requestedCompany.id || req.user.isCompanyAdmin) next();
+    if(req.user.isCompanyAdmin) next();
     else {
         var err = new Error('Unauthorized');
         err.status = 401;
@@ -48,6 +39,5 @@ module.exports = {
     user: checkUser,
     admin: checkAdmin,
     access: checkAccess,
-    pageAdmin: checkCompanyAdmin,
-    company: checkCompany
+    pageAdmin: checkCompanyAdmin
 }
