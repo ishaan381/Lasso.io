@@ -3,7 +3,7 @@
 #home {
 
   .photobot{
-    background-image: url("https://static.pexels.com/photos/2855/landscape-mountains-nature-lake.jpg");
+    background-image: url("http://talentjockey.com/wp-content/uploads/2015/04/public-domain-images-free-stock-photos-high-quality-resolution-downloads-public-domain-archive-14-1000x667.jpg");
     background-attachment: fixed;
     height: 600px;
     /*position: relative;*/
@@ -12,6 +12,7 @@
     margin: 0;
     padding: 0;
     background-size: cover;
+    position: relative;
   };
 
   .morephoto {
@@ -24,5 +25,18 @@
     margin: 0;
     padding: 0;
   }
+
+  .logo {
+    font-weight: 600;
+    font-size: 12vh;
+    text-align: center;
+    font-family: 'Julius Sans One', sans-serif;
+    position: absolute;
+    top: 30%;
+    height: 60%;
+    width: 100%;
+    color: #353238;
+    }
 }
 
+//https://static.pexels.com/photos/2855/landscape-mountains-nature-lake.jpg
