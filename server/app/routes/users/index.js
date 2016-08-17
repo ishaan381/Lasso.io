@@ -1,10 +1,10 @@
 'use strict';
 var router = require('express').Router();
 module.exports = router;
-
-let Comment = require('../../../db/models/comment'),
-User = require('../../../db/models/user'),
+let db = require('../../../db'),
 check = require('../check-handler');
+
+const User = db.model('user');
 
 router.param('id', function(req, res, next, id){
 	User.findOne({
@@ -19,12 +19,8 @@ router.param('id', function(req, res, next, id){
 	.catch(next);
 });
 
-router.get('/:id', function(req, res, next) {
-	req.requestedUser.reload()
-	.then(function(user){
-		res.send(user)
-	})
-	.catch(next);
+router.get('/:id', function(req, res) {
+	res.send(req.requestedUser);
 });
 
 

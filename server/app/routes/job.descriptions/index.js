@@ -1,11 +1,12 @@
 'use strict';
 var router = require('express').Router();
 module.exports = router;
+let db = require('../../../db'),
+check = require('../check-handler');
 
 //REQUIRE DB AND ACCESS IT TO GET MODELS!!!
 
-let JobDescription = require('../../../db/models/job.description'),
-check = require('../check-handler');
+const JobDescription = db.model('job_description')
 
 router.param('id', function(req, res, next, id){
 	JobDescription.findOne({
@@ -20,12 +21,8 @@ router.param('id', function(req, res, next, id){
 	.catch(next);
 });
 
-router.get('/:id', function(req, res, next) {
-    req.requestedDesc.reload()
-    .then(function(desc) {
-        res.send(desc)
-    })
-    .catch(next);
+router.get('/:id', function(req, res) {
+    res.send(req.requestedDesc)
 });
 
 router.post('/', function(req, res, next) {

@@ -2,7 +2,7 @@
 var db = require('./_db');
 module.exports = db;
 
-let User = require('./models/user'),
+const User = require('./models/user'),
  Job = require('./models/job'),
  JobDescription = require('./models/job.description'),
  JobApplication = require('./models/job.application'),

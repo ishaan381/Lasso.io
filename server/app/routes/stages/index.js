@@ -1,11 +1,10 @@
 'use strict';
 var router = require('express').Router();
 module.exports = router;
-
-let Stage = require('../../../db/models/stage'),
-User = require('../../../db/models/user'),
-Comment = require('../../../db/models/comment'),
+let db = require('../../../db'),
 check = require('../check-handler');
+
+const Stage = db.model('stage');
 
 router.param('id', function(req, res, next, id){
   Stage.findOne({
@@ -21,11 +20,7 @@ router.param('id', function(req, res, next, id){
 });
 
 router.get('/:id', function(req, res, next){
-  req.requestedStage.reload()
-  .then(function(stage){
-    res.send(stage);
-  })
-  .catch(next);
+  res.send(req.requestedStage);
 });
 
 router.post('/', check.pageAdmin, function(req, res, next){

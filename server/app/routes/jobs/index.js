@@ -2,12 +2,14 @@
 var router = require('express').Router();
 module.exports = router;
 
-let Job = require('../../../db/models/job'),
-Apps = require('../../../db/models/application'),
-JobDescription = require('../../../db/models/job.description'),
-JobApplication = require('../../../db/models/job.application'),
-Stage = require('../../../db/models/stage'),
+let db = require('../../../db'),
 check = require('../check-handler')
+
+const Job = db.model('job'),
+Apps = db.model('application'),
+JobDescription = db.model('job_description'),
+JobApplication = db.model('job_application'),
+Stage = db.model('stage');
 
 
 router.param('id', function(req, res, next, id){
@@ -45,12 +47,8 @@ router.get('/:id/apps', function(req, res, next) {
 });
 
 //get one job
-router.get('/:id', function(req, res, next) {
-    req.requestedJob.reload()
-    .then(function(desc) {
-        res.send(desc);
-    })
-    .catch(next);
+router.get('/:id', function(req, res) {
+    res.send(req.requestedJob);
 });
 
 router.get('/', function (req, res, next) {

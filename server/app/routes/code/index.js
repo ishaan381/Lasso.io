@@ -1,7 +1,7 @@
 'use strict';
 var router = require('express').Router();
 module.exports = router;
-let Code = require('../../../db/models/code');
+const Code = require('../../../db/models/code');
 
 var randomCode = require('password-generator');
 
