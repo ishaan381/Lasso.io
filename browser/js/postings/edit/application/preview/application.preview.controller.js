@@ -5,9 +5,7 @@ app.controller('previewApplicationCtrl', function(_, $scope, $timeout, $interval
     $scope.originalFields = angular.copy($scope.fields);
 
     // function definition
-    function onSubmit() {
-
-    }
+    function onSubmit() {}
 
     // function assignment
     $scope.onSubmit = onSubmit;
@@ -71,7 +69,7 @@ app.controller('previewApplicationCtrl', function(_, $scope, $timeout, $interval
                         className: 'col-md-8 default-inputs',
                         templateOptions: {
                             type: 'text',
-                            // disabled: true,
+                            disabled: true,
                             // label: infoData.label,
                             required: (infoData.value === 0) ? true : false,
                         }
@@ -83,7 +81,7 @@ app.controller('previewApplicationCtrl', function(_, $scope, $timeout, $interval
                         className: 'col-md-8 default-inputs',
                         templateOptions: {
                             type: 'text',
-                            // disabled: true,
+                            disabled: true,
 
                             // label: infoData.label,
                             required: (infoData.value === 0) ? true : false,
@@ -119,7 +117,7 @@ app.controller('previewApplicationCtrl', function(_, $scope, $timeout, $interval
                     type: 'input',
                     className: 'col-md-8 default-inputs',
                     templateOptions: {
-                        // disabled: true,
+                        disabled: true,
                         type: 'text',
                         required: (linkData.value === 0) ? true : false,
                     }
@@ -138,6 +136,14 @@ app.controller('previewApplicationCtrl', function(_, $scope, $timeout, $interval
             'checkbox': generateCheckBoxes
         }
 
+        var customsTitle = {
+            noFormControl: true,
+            className: 'col-md-12',
+            template: '<h4 class="preview-application-link-title">Additional Questions</h4><hr>'
+        }
+
+        $scope.fields.push(customsTitle);
+
         $scope.model.customFields.forEach(function(data) {
             // COL-MD-4
             generateTitleQuestion(data);
@@ -146,15 +152,13 @@ app.controller('previewApplicationCtrl', function(_, $scope, $timeout, $interval
         })
 
         function generateTitleQuestion(field) {
+            // var customTitle = {
+            //     noFormControl: true,
+            //     className: 'col-md-12',
+            //     template: '<h4 class="preview-custom-title">' + field.basic.title + '</h4><hr>'
+            // }
 
-
-            var customTitle = {
-                noFormControl: true,
-                className: 'col-md-12',
-                template: '<h4 class="preview-custom-title">' + field.basic.title + '</h4><hr>'
-            }
-
-            $scope.fields.push(customTitle);
+            // $scope.fields.push(customTitle);
 
             var template = '<h5 class="preview-custom-question">' + field.basic.question + '</h5>';
             $scope.fields.push({
@@ -169,9 +173,10 @@ app.controller('previewApplicationCtrl', function(_, $scope, $timeout, $interval
             $scope.fields.push({
                 key: field.id,
                 type: 'input',
-                className: 'col-md-8',
+                className: 'col-md-8 custom-text-input',
                 templateOptions: {
                     type: 'text',
+                    disabled: true
                 }
             })
         }
@@ -183,7 +188,8 @@ app.controller('previewApplicationCtrl', function(_, $scope, $timeout, $interval
                 className: 'col-md-8',
                 templateOptions: {
                     rows: 4,
-                    cols: 15
+                    cols: 15,
+                    disabled: true
                 }
             })
 
@@ -200,7 +206,7 @@ app.controller('previewApplicationCtrl', function(_, $scope, $timeout, $interval
                     valueProp: 'value',
                     labelProp: 'label',
                     placeholder: 'Select an option',
-                    // disabled: true,
+                    disabled: true,
                     options: field.advanced.options.map(function(option) {
                         return { "label": option.value, "value": option.value }
                     })
@@ -214,11 +220,12 @@ app.controller('previewApplicationCtrl', function(_, $scope, $timeout, $interval
                 type: 'multiCheckbox',
                 className: 'col-md-8',
                 templateOptions: {
-                    options: field.advanced.options.map(function(option){
-                        return {"label": option.value, "value": option.value};
+                    options: field.advanced.options.map(function(option) {
+                        return { "label": option.value, "value": option.value };
                     }),
                     valueProp: 'value',
-                    labelProp: 'label'
+                    labelProp: 'label',
+                    disabled: true
                 }
             })
         }

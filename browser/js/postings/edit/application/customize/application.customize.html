@@ -12,34 +12,28 @@
                         </div>
                     </formly-form>
                 </form>
-                {{modelAsJson}}
-                <h2>Form Data</h2>
-     <!--            <div ng-repeat="thing in stuff">
-                    <pre>{{thing | json}}</pre>
-                </div> -->
-<!--                 <pre>{{stuff}}</pre>
-                                <div ng-repeat="list in lists">
-                    
-                    <ul>
-                        <li ng-repeat="question in list.questions">{{question}}</li>
-                    </ul>
-                </div> -->
-                <pre>{{lists | json}}</pre>
+                <!--                 <h2>Form Data</h2>
+ -->
+                <!--                 <pre>{{lists | json}}</pre>
                 <pre>{{model | json}}</pre>
-            </div>
+ --></div>
             <div id="postings-application-preview" ng-controller="previewApplicationCtrl" class="col-md-6">
                 <div id="postings-application-preview-container">
-                <form ng-submit="onSubmit()" name="form" novalidate>
-                    <formly-form model="model" fields="fields" options="options" form="form">
-                        <div class="form-actions">
-                            <button type="submit" class="btn btn-primary submit-button" ng-disabled="form.$invalid">Save Changes</button>
-                        </div>
-                    </formly-form>
-                </form>
-                <h2>Form Data</h2>
-                <pre>{{model | json}}</pre>
+                    <form ng-submit="onSubmit()" name="form" novalidate>
+                        <formly-form model="model" fields="fields" options="options" form="form">
+                            <div class="form-actions col-md-12">
+                                <button type="submit" class="btn btn-primary submit-application-button" ng-disabled="form.$invalid">SUBMIT APPLICATION</button>
+                            </div>
+                        </formly-form>
+                    </form>
+                    <!--                     <h2>Form Data</h2>
+                    <pre>{{model | json}}</pre> -->
                 </div>
-                <!-- <div class="header-wrapper">
+            </div>
+        </div>
+    </div>
+</div>
+<!-- <div class="header-wrapper">
                     <header class="section"></header>
                 </div>
                 <div class="content-wrapper">

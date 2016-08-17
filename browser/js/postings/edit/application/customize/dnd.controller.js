@@ -1,34 +1,58 @@
 app.controller('dndCtrl', function(_, $scope, formlyVersion, $q, $http, sharedModal) {
+
+    // Used in questions-preview.html by the drag-and-drop directive.
     $scope.lists = [{
         label: "Preview",
         questions: []
     }];
 
+    /*
+        // ---
+        // WATCHERS.
+        // ---
+    */
+
+    // Watches service for a new modal saved from modal popup.
+    // See ::modal.controller.js which saves the modal instance into sharedModal.modal.
+    // Pushes to questions list, which updates view.
     $scope.$watch(function() {
         return sharedModal.modal;
     }, function(newCustomField, oldVal) {
         if (newCustomField) {
-            // ADD IDS TO CUSTOM FIELDS
-            newCustomField.id = $scope.lists[0].questions.length;
-            // ADD TO FORM MODEL
-            // $scope.model.customFields.push(newCustomField);
-            // ADD TO VIEW (QUESTIONS-PREVIEW.HTML)
             $scope.lists[0].questions.push(newCustomField);
             console.log($scope.lists[0]);
         }
     })
 
+    // Watches service for a pre-existing custom fields resolved from database.
+    // Adds to questions list if it does, which updates view.
+    // Comes from ^editApplicationCtrl
+    // Note: should we unbind this?
+    $scope.$watch(function() {
+        return sharedModal.customFields;
+    }, function(newVal) {
+        console.log('wow');
+        $scope.lists[0].questions = newVal;
+    })
+
+    // Watches questions list for updates. Adds incremented ID / tag to each custom field.
+    // Updates sharedModal.customFields service which ^editApplicationCtrl is $watch-ing.
+
     $scope.$watch('lists', function(newVal) {
-        console.log('updated');
-        $scope.lists[0].questions.forEach(function (question, idx) {
+        $scope.lists[0].questions.forEach(function(question, idx) {
             question.id = 'custom-field-' + idx;
         })
         sharedModal.customFields = $scope.lists[0].questions;
     }, true)
 
+    // Sets sharedModal.modal to null if state change --> if user had not saved changes
+    // but has "saved" a modal instance.
+
     $scope.$on('$locationChangeStart', function(event, newUrl, oldUrl) {
         sharedModal.modal = null;
     });
+
+    // Gets Font Awesome icon (used in questions-preview.html)
 
     $scope.getFieldIcon = function(value) {
         switch (value) {
@@ -47,7 +71,12 @@ app.controller('dndCtrl', function(_, $scope, formlyVersion, $q, $http, sharedMo
         }
     }
 
-    // DEBUG DND
+    /*
+        // ---
+        // DEBUG Drag and Drop directive.
+        // ---
+    */
+
     $scope.dropCallback = function(event, index, item, external, type, allowedType) {
         $scope.logListEvent('dropped at', event, index, external, type);
 
