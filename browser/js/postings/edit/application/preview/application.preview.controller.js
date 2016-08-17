@@ -1,6 +1,6 @@
 app.controller('previewApplicationCtrl', function(_, $scope, $timeout, $interval, formlyVersion, $q, $http) {
 
-    console.log($scope.model);
+    // console.log($scope.model);
 
     const vm = this;
 
@@ -73,7 +73,7 @@ app.controller('previewApplicationCtrl', function(_, $scope, $timeout, $interval
                         className: 'col-md-8 default-inputs',
                         templateOptions: {
                             type: 'text',
-                            disabled: true,
+                            // disabled: true,
                             // label: infoData.label,
                             required: (infoData.value === 0) ? true : false,
                         }
@@ -85,7 +85,7 @@ app.controller('previewApplicationCtrl', function(_, $scope, $timeout, $interval
                         className: 'col-md-8 default-inputs',
                         templateOptions: {
                             type: 'text',
-                            disabled: true,
+                            // disabled: true,
 
                             // label: infoData.label,
                             required: (infoData.value === 0) ? true : false,
@@ -121,7 +121,7 @@ app.controller('previewApplicationCtrl', function(_, $scope, $timeout, $interval
                     type: 'input',
                     className: 'col-md-8 default-inputs',
                     templateOptions: {
-                        disabled: true,
+                        // disabled: true,
                         type: 'text',
                         required: (linkData.value === 0) ? true : false,
                     }
@@ -131,35 +131,31 @@ app.controller('previewApplicationCtrl', function(_, $scope, $timeout, $interval
     }
 
     function generateFormCustoms() {
+
+        var toggleFieldGenerator = {
+            'dropdown': generateDropdownField,
+            'radio': generateRadioField,
+            'text': generateTextField,
+            'textbox': generateTextBoxField,
+            'checkbox': generateCheckBoxes
+        }
+
         $scope.model.customFields.forEach(function(data) {
             // COL-MD-4
             generateTitleQuestion(data);
+            console.log(data.field);
             // COL-MD-8
-            switch (data.field) {
-                // case 'text':
-                //     generateTextField(data);
-                // case 'textbox':
-                //     generateTextBoxField(data);
-                case 'dropdown':
-                    generateDropdownField(data);
-                    // case 'upload':
-                    //     generateUploadField(data);
-                case 'radio':
-                    generateRadioField(data);
-
-                    // case 'checkbox':
-                    //     generateCheckboxField(data);
-            }
+            toggleFieldGenerator[data.field](data)
         })
 
         function generateTitleQuestion(field) {
 
 
             var customTitle = {
-                    noFormControl: true,
-                    className: 'col-md-12',
-                    template: '<h4 class="preview-custom-title">' + field.basic.title + '</h4><hr>'
-                }
+                noFormControl: true,
+                className: 'col-md-12',
+                template: '<h4 class="preview-custom-title">' + field.basic.title + '</h4><hr>'
+            }
 
             $scope.fields.push(customTitle);
 
@@ -172,11 +168,66 @@ app.controller('previewApplicationCtrl', function(_, $scope, $timeout, $interval
 
         }
 
-        function generateDropdownField(field) {
+        function generateTextField(field) {
+            $scope.fields.push({
+                key: field.id,
+                type: 'input',
+                className: 'col-md-8',
+                templateOptions: {
+                    type: 'text',
+                }
+            })
+        }
+
+        function generateTextBoxField(field) {
+            $scope.fields.push({
+                type: "textarea",
+                key: field.id,
+                className: 'col-md-8',
+                templateOptions: {
+                    rows: 4,
+                    cols: 15
+                }
+            })
 
         }
 
+        function generateDropdownField(field) {
+            $scope.fields.push({
+                key: field.id,
+                type: 'ui-select-single',
+                className: 'col-md-8',
+                templateOptions: {
+                    optionsAttr: 'bs-options',
+                    ngOptions: 'option[to.valueProp] as option in to.options | filter: $select.search',
+                    valueProp: 'value',
+                    labelProp: 'label',
+                    placeholder: 'Select an option',
+                    // disabled: true,
+                    options: field.advanced.options.map(function(option) {
+                        return { "label": option.value, "value": option.value }
+                    })
+                }
+            })
+        }
+
+        function generateCheckBoxes(field) {
+            $scope.fields.push({
+                key: field.id,
+                type: 'multiCheckbox',
+                className: 'col-md-8',
+                templateOptions: {
+                    options: field.advanced.options.map(function(option){
+                        return {"label": option.value, "value": option.value};
+                    }),
+                    valueProp: 'value',
+                    labelProp: 'label'
+                }
+            })
+        }
+
         function generateRadioField(field) {
+            console.log(field)
             $scope.fields.push({
                 "key": field.id,
                 "type": "radio",
@@ -184,6 +235,7 @@ app.controller('previewApplicationCtrl', function(_, $scope, $timeout, $interval
                 "templateOptions": {
                     disabled: true,
                     "options": field.advanced.options.map(function(option) {
+                        console.log(option.value);
                         return { "name": option.value, "value": option.value };
                     })
                 }
@@ -191,6 +243,7 @@ app.controller('previewApplicationCtrl', function(_, $scope, $timeout, $interval
         }
 
     }
+
 
     function generateForm() {
         generateFormMainHeader();
@@ -203,6 +256,7 @@ app.controller('previewApplicationCtrl', function(_, $scope, $timeout, $interval
 
         $scope.fields = [];
         $scope.model = $scope.$parent.model;
+        // console.log($scope.model);
         generateForm();
     }, true);
 

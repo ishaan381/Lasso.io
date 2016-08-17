@@ -29,7 +29,7 @@ app.directive('navbar', function($rootScope, AuthService, AUTH_EVENTS, $state, $
                 var modalInstance = $uibModal.open({
                     animation: true,
                     templateUrl: 'js/common/directives/navbar/invite.html',
-                    controller: 'ModalInstanceCtrl',
+                    controller: 'ModalInstaCtrl',
                     // resolve: {
                     //     items: function() {
                     //         return $scope.items;
@@ -60,7 +60,7 @@ app.directive('navbar', function($rootScope, AuthService, AUTH_EVENTS, $state, $
 
 });
 
-app.controller('ModalInstanceCtrl', function($scope, $uibModalInstance, $http, AuthService, $timeout) {
+app.controller('ModalInstaCtrl', function($scope, $uibModalInstance, $http, AuthService, $timeout) {
 
     // $scope.items = items;
     // $scope.selected = {

@@ -14,6 +14,17 @@
                 </form>
                 {{modelAsJson}}
                 <h2>Form Data</h2>
+     <!--            <div ng-repeat="thing in stuff">
+                    <pre>{{thing | json}}</pre>
+                </div> -->
+<!--                 <pre>{{stuff}}</pre>
+                                <div ng-repeat="list in lists">
+                    
+                    <ul>
+                        <li ng-repeat="question in list.questions">{{question}}</li>
+                    </ul>
+                </div> -->
+                <pre>{{lists | json}}</pre>
                 <pre>{{model | json}}</pre>
             </div>
             <div id="postings-application-preview" ng-controller="previewApplicationCtrl" class="col-md-6">
@@ -60,7 +71,7 @@
                 </div>
                 <div class="footer-wrapper">
                     <footer class="section"></footer>
-                </div> -->
+                </div>
             </div>
         </div>
     </div>
