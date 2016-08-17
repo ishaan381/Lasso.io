@@ -5,7 +5,7 @@
   .photobot{
     background-image: url("http://media.gettyimages.com/photos/coffee-cup-laptop-notebook-and-pen-in-office-picture-id177245735?k=6&m=177245735&s=170667a&w=0&h=bGzIJEO8-ktxIFNgYCqnOMfPth6810yNr18J2ChpmEY=");
     background-attachment: fixed;
-    height: 560px;
+    height: 100vh;
     /*position: relative;*/
     /*background-position: 50%;*/
     background-repeat: no-repeat;
@@ -26,7 +26,7 @@
     color: whitesmoke;
     }
     .sublogo {
-    font-size: 30px;
+    font-size: 25px;
     text-align: center;
     font-family: 'Puritan', sans-serif;
     position: absolute;
@@ -39,14 +39,45 @@
 
 #whitespace {
   background-color: whitesmoke;
-  height: 360px;
+  height: 300px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.24);
+  color: #353238;
+  padding-right: 37%;
+  padding-left: 37%;
+
+  .card {
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    vertical-align: center;
+    -webkit-font-smoothing: antialiased;
+    font-weight: 400px;
+    padding-right: 20%;
+    padding-left: 20%;
+    background: #fff;
+    border-radius: 2px;
+    display: inline-block;
+    height: 300px;
+    position: relative;
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25);
+
+    .title {
+      padding: 12px;
+      padding-top: 24px;
+      font-size: 24px;
+      text-align: center;
+    }
+
+    .content {
+      padding: 12px;
+      text-align: left;
+    }
+  }
 }
 
 #parallax {
   .stockphoto {
     background-image: url("https://static.pexels.com/photos/2855/landscape-mountains-nature-lake.jpg");
     background-attachment: fixed;
-    height: 360px;
+    height: 45vh;
     background-repeat: no-repeat;
     margin: 0;
     padding: 0;
@@ -55,7 +86,7 @@
   .coffee {
     background-image: url("http://talentjockey.com/wp-content/uploads/2015/04/public-domain-images-free-stock-photos-high-quality-resolution-downloads-public-domain-archive-14-1000x667.jpg");
     background-attachment: fixed;
-    height: 360px;
+    height: 45vh;
     background-repeat: no-repeat;
     margin: 0;
     padding: 0;
@@ -64,11 +95,11 @@
 }
 
 .footer {
-  height: 120px;
+  height: 15vh;
   background-color: #2b2d2e;
   color: whitesmoke;
   .col-sm-4 {
-    margin-top: 50px;
+    top: 40%;
     text-align: center;
     font-family: 'Maison Neue Book', HelveticaNeue-Light, "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
   }
