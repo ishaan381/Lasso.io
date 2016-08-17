@@ -12,8 +12,18 @@
       padding-top: 10px;
       background-color: white;
     }
-    .app-section {
+    .app-section1 {
       text-align: center;
+      border-right: 2px solid #eee;
+      a {
+        color: #66bb6a
+      }
+    }
+    .app-section2 {
+      text-align: center;
+      a {
+        color: #ef5350
+      }
     }
   }
   hr {
