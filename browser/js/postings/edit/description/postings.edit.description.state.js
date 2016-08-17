@@ -7,11 +7,11 @@ app.config(function ($stateProvider) {
     	countries: function ($http) {
     		return $http.get('js/postings/countries.json')
     	},
-        thisJob: function (Job, $stateParams) {
-            console.log($stateParams.id);
-            var postingId = $stateParams.id;
-            return Job.fetch(postingId) // fetch from stateparams
-        }
+        // thisJob: function (Job, $stateParams) {
+        //     console.log($stateParams.id);
+        //     var postingId = $stateParams.id;
+        //     return Job.fetch(postingId) // fetch from stateparams
+        // }
     }
   })
 })

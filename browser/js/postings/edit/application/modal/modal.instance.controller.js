@@ -59,12 +59,6 @@ app.controller('ModalInstanceCtrl', function(_, $scope, formlyVersion, $uibModal
             templateOptions: { label: 'Basic Information' },
             className: 'modal-basic-panel col-md-12',
             fieldGroup: [{
-                key: 'title',
-                type: 'input',
-                templateOptions: {
-                    placeholder: 'Enter title ...'
-                }
-            }, {
                 key: 'question',
                 type: 'input',
                 templateOptions: {

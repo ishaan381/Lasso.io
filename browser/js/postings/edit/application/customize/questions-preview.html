@@ -12,11 +12,8 @@
                                 <div dnd-handle class="handle"><i class="fa fa-bars" aria-hidden="true"></i>
                                 </div>
                                 <div class="question-preview">
-                                    <div class="question-basic-title">
-                                        <span class="question-label" tooltip-placement="top" uib-tooltip="{{question.field}}" ng-bind-html="getFieldIcon(question.field)"></span>{{question.basic.title}}
-                                    </div>
                                     <div class="question-basic-question">
-                                        <small>{{question.basic.question}}</small>
+                                        <span class="question-label" tooltip-placement="top" uib-tooltip="{{question.field}}" ng-bind-html="getFieldIcon(question.field)"></span>{{question.basic.question}}
                                     </div>
                                     <ul ng-if="question.advanced.options.length !== 0" class="question-options">
                                         <li ng-repeat="option in question.advanced.options">
@@ -33,7 +30,6 @@
                 </ul>
             </div>
         </div>
-        <pre>{{list | json}}</pre>
     </div>
 </div>
 
