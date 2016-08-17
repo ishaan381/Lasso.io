@@ -1,4 +1,4 @@
-<div ng-controller="editApplicationCtrl" class="typesDemo row">
+<div ng-controller="dndCtrl" class="typesDemo row">
     <div ng-repeat="list in lists" class="col-md-12">
         <div class="panel panel-info" ng-if="list.questions.length > 0">
             <!--             <div class="panel-heading">
@@ -33,5 +33,7 @@
                 </ul>
             </div>
         </div>
+        <pre>{{list | json}}</pre>
     </div>
 </div>
+
