@@ -14,7 +14,7 @@ router.param('id', function(req, res, next, id){
 			id: id
 		},
 		include: [ //we attach comments, and comments have a user attached to them
-		{ model: Comment, as: 'comments'},
+		  { model: Comment, as: 'comments'},
 		]
 	})
 	.then(function(app){

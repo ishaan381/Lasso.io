@@ -24,7 +24,6 @@ router.post('/', function(req, res, next) {
                 to: req.body.email, // list of receivers
                 subject: 'Invitation Code to Join Lasso!', // Subject line
                 text: _code.code, // plaintext body
-                //html: '<b>Hello world</b>' // html body
             };
 
             transporter.sendMail(mailOptions, function(error, info) {
@@ -32,6 +31,4 @@ router.post('/', function(req, res, next) {
                 else res.send(info);
             })
         })
-
-
 });
