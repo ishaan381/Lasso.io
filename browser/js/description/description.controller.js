@@ -9,3 +9,8 @@ app.controller('descriptionCtrl', function(JobDescriptions, $stateParams, $scope
   });
 
 });
+
+app.config(function ($mdThemingProvider) {
+  $mdThemingProvider.theme('default')
+  .primaryPalette('indigo')
+});
