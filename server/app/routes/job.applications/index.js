@@ -10,10 +10,10 @@ const JobApplication = db.model('job_application');
 router.param('id', function(req, res, next, id){
 	JobApplication.findOne({
 		where:{
-			id: id
+			jobId: id
 		}
 	})
-	.then(function(app){
+	.then(app => {
 		req.requestedApp = app;
 		next();
 	})
@@ -21,11 +21,7 @@ router.param('id', function(req, res, next, id){
 });
 
 router.get('/:id', function(req, res, next) {
-    req.requestedApp.reload()
-    .then(function(app) {
-        res.send(app)
-    })
-    .catch(next);
+  res.send(req.requestedApp);
 });
 
 router.post('/', function(req, res, next) {

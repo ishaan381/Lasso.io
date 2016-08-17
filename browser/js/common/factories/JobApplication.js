@@ -9,6 +9,10 @@ app.factory('JobApplication', function($http, $log) {
         })
     }
 
+    JobApplication.fetch = function (jobId) {
+      return $http.get('/api/jobs/applications/' + jobId)
+    }
+
 
     return JobApplication;
 });

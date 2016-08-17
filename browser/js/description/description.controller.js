@@ -4,7 +4,6 @@ app.controller('descriptionCtrl', function(JobDescriptions, $stateParams, $scope
 
   JobDescriptions.fetch($stateParams.jobId)
   .then(description => {
-    console.log(description);
     $scope.description = description;
   });
 
