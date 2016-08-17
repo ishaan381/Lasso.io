@@ -1,3 +1,39 @@
   .stages-boxes {
+      font-family: Meta Medium Caps;
+      .typesDemo {
+          .input-sm {
+              border: none;
+              box-shadow: none;
+          }
+          ul[dnd-list] li {
+              border-radius: 0;
+              /*         &:active {
+            background-color: white;
+          }*/
+          }
+          ul[dnd-list] .dndDragging {
+              border-color: #236690;
+              z-index: 1000;
+          }
+          i {
+              margin-top: 4px;
+              font-size: 15px;
+          }
+      }
+      .add-stage-button {
+          i {
+              font-size: 15px;
+          }
+          padding: 0 20px;
+          background-color: #236690;
+          color: white;
+          margin: 0;
 
-}
+          &:hover {
+            background-color: lighten(#236690, 10%) !important;
+          }
+      }
+      .stages-row {
+        margin-bottom: 35px;
+      }
+  }
