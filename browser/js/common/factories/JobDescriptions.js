@@ -14,11 +14,10 @@ app.factory('JobDescriptions', function($http, $log) {
     }
 
     JobDescriptions.fetch = function (id) {
-        console.log(id);
         return $http.get('/api/jobs/descriptions/' + id)
-                    .then(function (response) {
-                        return response.data
-                    })
+        .then(function (response) {
+            return JSON.parse(response.data.fields);
+        });
     }
 
     return JobDescriptions;
