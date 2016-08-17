@@ -2,11 +2,11 @@
     <div class="container">
         <div class="row my-navbar">
             <ul class="nav navbar-nav col-md-12 nav-center">
-                <li ng-repeat="stage in stages">
+                <li ng-repeat="stage in stages | orderBy:'index'">
                     <a class="stage" ui-sref-active="stage-active">
                         <div class="stage-container">
                             <div class="stage-label">
-                                {{ stage.label }}
+                                {{ stage.title }}
                             </div>
                         </div>
                     </a>
