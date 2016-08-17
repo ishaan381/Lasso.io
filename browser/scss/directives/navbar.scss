@@ -10,7 +10,6 @@ navbar {
             width: 100%;
         }
         padding-top: 15px;
-        /*padding-bottom: 15px;*/
     }
     .navbar {
         margin-bottom: 0;
@@ -40,6 +39,7 @@ navbar {
     .nav > li > a {
         cursor: pointer;
         transition: opacity 0.3s;
+        padding-bottom: 0px;
         @media (max-width: 850px) {
             padding-left: 0px;
         }
