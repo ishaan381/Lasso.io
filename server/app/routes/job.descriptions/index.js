@@ -6,22 +6,24 @@ check = require('../check-handler');
 
 //REQUIRE DB AND ACCESS IT TO GET MODELS!!!
 
-const JobDescription = db.model('job_description')
+const JobDescription = db.model('job_description'),
+Job = db.model('job')
 
 router.param('id', function(req, res, next, id){
 	JobDescription.findOne({
 		where:{
-			id: id
+			jobId: id
 		}
 	})
-	.then(function(desc){
-		req.requestedDesc = desc;
+	.then(description => {
+		req.requestedDesc = description;
 		next();
 	})
 	.catch(next);
 });
 
 router.get('/:id', function(req, res) {
+    console.log('In')
     res.send(req.requestedDesc)
 });
 
