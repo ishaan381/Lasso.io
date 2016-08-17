@@ -8,9 +8,6 @@ app.directive('navbar', function($rootScope, AuthService, AUTH_EVENTS, $state, $
 
             scope.items = [
                 { label: 'Home', state: 'home' },
-                { label: 'About', state: 'about' },
-                { label: 'Documentation', state: 'docs' },
-                { label: 'Members Only', state: 'membersOnly', auth: true }
             ];
 
             scope.user = null;
@@ -30,11 +27,6 @@ app.directive('navbar', function($rootScope, AuthService, AUTH_EVENTS, $state, $
                     animation: true,
                     templateUrl: 'js/common/directives/navbar/invite.html',
                     controller: 'ModalInstaCtrl',
-                    // resolve: {
-                    //     items: function() {
-                    //         return $scope.items;
-                    //     }
-                    // }
                 });
             }
 
@@ -62,10 +54,6 @@ app.directive('navbar', function($rootScope, AuthService, AUTH_EVENTS, $state, $
 
 app.controller('ModalInstaCtrl', function($scope, $uibModalInstance, $http, AuthService, $timeout) {
 
-    // $scope.items = items;
-    // $scope.selected = {
-    //   item: $scope.items[0]
-    // };
     $scope.message = "";
 
     $scope.notsent = true;
@@ -80,9 +68,6 @@ app.controller('ModalInstaCtrl', function($scope, $uibModalInstance, $http, Auth
                 $scope.message = "Email with verification code sent to: " + email;
                 $scope.notsent = false;
                 $timeout(function(){$uibModalInstance.dismiss('cancel')}, 1000)
-                // $uibModalInstance.dismiss('cancel')
-
-
             })
             .catch(function(err) {
                 $scope.message = "Error! please try again"

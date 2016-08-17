@@ -42,8 +42,6 @@ Application.hasMany(Comment, {as: 'comment', onDelete : 'cascade', hooks: true})
 Comment.belongsTo(User, {as: 'user'});
 User.hasMany(Comment, {as: 'comment', onDelete : 'cascade', hooks: true});
 
-//WILL NEED TO COME BACK TO APPLICATION AND USER ASSOCIATIONS
-
 
 
 
