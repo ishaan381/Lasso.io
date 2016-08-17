@@ -1,11 +1,13 @@
 'use strict';
 var router = require('express').Router();
 module.exports = router;
-let Company = require('../../../db/models/company'),
-Job = require('../../../db/models/job'),
-User = require('../../../db/models/user'),
-JobDescription = require('../../../db/models/job.description'),
+let db = require('../../../db'),
 check = require('../check-handler');
+
+const Company = db.model('company'),
+Job = db.model('job'),
+User = db.model('user'),
+JobDescription = db.model('job_description');
 
 router.param('id', function(req, res, next, id){
 	Company.findOne({
@@ -27,21 +29,13 @@ router.param('id', function(req, res, next, id){
 });
 
 //what would the admin route look like
-router.get('/:id', function(req, res, next) {
-	req.requestedCompany.reload()
-	.then(function(company){
-		res.send(company)
-	})
-	.catch(next);
+router.get('/:id', function(req, res) {
+	res.send(req.requestedCompany);
 });
 
 //this route is for the company admin to get all users
-router.get('/:id/users', function(req, res, next){
-	req.requestedCompany.reload()
-	.then(function(company){
-		res.send(company.users);
-	})
-	.catch(next)
+router.get('/:id/users', function(req, res){
+	res.send(req.requestedCompany);
 });
 
 router.post('/', function(req, res, next) {

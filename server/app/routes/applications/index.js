@@ -2,10 +2,11 @@
 var router = require('express').Router();
 module.exports = router;
 
-const App = require('../../../db/models/application'),
-Comment = require('../../../db/models/comment'),
-Stage = require('../../../db/models/stage'),
+let db = require('../../../db'),
 check = require('../check-handler');
+
+const App = db.model('application'),
+Comment = db.model('comment');
 
 router.param('id', function(req, res, next, id){
 	App.findOne({
@@ -24,19 +25,11 @@ router.param('id', function(req, res, next, id){
 });
 
 
-router.get('/:id', function(req, res, next) {
-    req.requestedApplication.reload()
-    .then(app => res.send(app))
-   	.catch(next);
-    //we can just res.send req.requestedApplication no promises!
+router.get('/:id', function(req, res) {
+    res.send(req.requestedApplication);
 });
 
 //these seem to the the same
-router.get('/:id/comments', function(req, res, next) {
-	req.requestedApplication.reload()
-	.then(app => res.send(app.comments))
-	.catch(next);
-});
 
 router.post('/', function(req, res, next){
 	App.create(req.body)

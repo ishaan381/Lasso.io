@@ -1,10 +1,10 @@
 'use strict';
 var router = require('express').Router();
 module.exports = router;
-
-let Comment = require('../../../db/models/comment'),
-User = require('../../../db/models/user'),
+let db = require('../../../db'),
 check = require('../check-handler');
+
+const Comment = db.model('comment');
 
 router.param('id', function(req, res, next, id){
 	Comment.findById(id)

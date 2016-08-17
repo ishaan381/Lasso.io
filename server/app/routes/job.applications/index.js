@@ -2,8 +2,10 @@
 var router = require('express').Router();
 module.exports = router;
 
-let JobApplication = require('../../../db/models/job.application'),
+let db = require('../../../db'),
 check = require('../check-handler');
+
+const JobApplication = db.model('job_application');
 
 router.param('id', function(req, res, next, id){
 	JobApplication.findOne({
