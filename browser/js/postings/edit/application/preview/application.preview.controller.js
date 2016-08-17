@@ -1,7 +1,5 @@
 app.controller('previewApplicationCtrl', function(_, $scope, $timeout, $interval, formlyVersion, $q, $http) {
 
-    // console.log($scope.model);
-
     const vm = this;
 
     $scope.originalFields = angular.copy($scope.fields);
@@ -143,7 +141,6 @@ app.controller('previewApplicationCtrl', function(_, $scope, $timeout, $interval
         $scope.model.customFields.forEach(function(data) {
             // COL-MD-4
             generateTitleQuestion(data);
-            console.log(data.field);
             // COL-MD-8
             toggleFieldGenerator[data.field](data)
         })
@@ -227,7 +224,6 @@ app.controller('previewApplicationCtrl', function(_, $scope, $timeout, $interval
         }
 
         function generateRadioField(field) {
-            console.log(field)
             $scope.fields.push({
                 "key": field.id,
                 "type": "radio",
@@ -235,7 +231,6 @@ app.controller('previewApplicationCtrl', function(_, $scope, $timeout, $interval
                 "templateOptions": {
                     disabled: true,
                     "options": field.advanced.options.map(function(option) {
-                        console.log(option.value);
                         return { "name": option.value, "value": option.value };
                     })
                 }
@@ -256,7 +251,6 @@ app.controller('previewApplicationCtrl', function(_, $scope, $timeout, $interval
 
         $scope.fields = [];
         $scope.model = $scope.$parent.model;
-        // console.log($scope.model);
         generateForm();
     }, true);
 
