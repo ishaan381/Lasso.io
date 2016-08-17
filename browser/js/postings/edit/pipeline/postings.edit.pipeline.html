@@ -2,46 +2,48 @@
 <div class="job-editor-container">
     <div class="boxed job-editor col-md-12 col-sm-12">
         <div class="stages-boxes">
-            <div class="row">
+            <div class="row stages-row">
                 <div class="col-md-3">
                     Applied
                     <div>
                         <small>All new applicants start here.</small>
                     </div>
                 </div>
-                <div class="col-md-9 stages-container">
-                    <div class="typesDemo" ng-repeat="list in lists">
-                        <ul dnd-list="list.people" dnd-allowed-types="list.allowedTypes" dnd-disable-if="list.people.length >= list.max">
-                            <li ng-repeat="person in list.people" dnd-draggable="person" dnd-type="person.type" dnd-disable-if="person.type == 'unknown'" dnd-moved="list.people.splice($index, 1)" dnd-effect-allowed="move" class="background-{{person.type}}">
+                <div class="col-md-4 stages-container">
+                    <div class="typesDemo" ng-repeat="list in beginStage">
+                        <ul dnd-list="list.stages" dnd-allowed-types="list.allowedTypes" dnd-disable-if="list.stages.length >= list.max">
+                            <li ng-repeat="stage in list.stages" dnd-draggable="stage" dnd-type="stage.type" dnd-disable-if="stage.type == 'unknown'" dnd-moved="list.stages.splice($index, 1)" dnd-effect-allowed="move" class="background-{{stage.type}}">
                                 <dnd-nodrag>
-                                    <div dnd-handle class="handle">:::</div>
+                                    <div dnd-handle class="handle"><i class="fa fa-bars" aria-hidden="true"></i></div>
                                     <div class="name">
-                                        <input type="text" ng-model="person.name" class="background-{{person.type}} form-control input-sm">
+                                        <input type="text" ng-model="stage.name" class="background-{{stage.type}} form-control input-sm">
                                     </div>
                                 </dnd-nodrag>
                             </li>
                             <li class="dndPlaceholder">
-                                Drop any <strong>{{list.allowedTypes.join(' or ')}}</strong> here
+                                Begin
                             </li>
                         </ul>
                     </div>
                 </div>
             </div>
-            <div class="row">
+            <div class="row stages-row">
                 <div class="col-md-3">
                     Your Recruiting Stages
                     <div>
                         <small>Add and order your own stages.</small>
                     </div>
                 </div>
-                <div class="col-md-9 stages-container">
-                    <div class="typesDemo" ng-repeat="list in lists">
-                        <ul dnd-list="list.people" dnd-allowed-types="list.allowedTypes" dnd-disable-if="list.people.length >= list.max">
-                            <li ng-repeat="person in list.people" dnd-draggable="person" dnd-type="person.type" dnd-disable-if="person.type == 'unknown'" dnd-moved="list.people.splice($index, 1)" dnd-effect-allowed="move" class="background-{{person.type}}">
+                <div class="col-md-4 stages-container">
+                <div class="typesDemo" ng-repeat="list in customStages">
+                    <ul dnd-list="list.stages" dnd-allowed-types="list.allowedTypes" dnd-disable-if="list.stages.length >= list.max">
+                        <li ng-repeat="stage in list.stages" dnd-draggable="stage" dnd-type="stage.type" dnd-disable-if="stage.type == 'unknown'" dnd-moved="list.stages.splice($index, 1)" dnd-effect-allowed="move" class="background-{{stage.type}}">
                                 <dnd-nodrag>
-                                    <div dnd-handle class="handle">:::</div>
+                                    <div dnd-handle class="handle"><i class="fa fa-bars" aria-hidden="true"></i></div>
+
+
                                     <div class="name">
-                                        <input type="text" ng-model="person.name" class="background-{{person.type}} form-control input-sm">
+                                        <input type="text" ng-model="stage.name" class="background-{{stage.type}} form-control input-sm">
                                     </div>
                                 </dnd-nodrag>
                             </li>
@@ -50,33 +52,36 @@
                             </li>
                         </ul>
                     </div>
+          <md-button class="md-raised add-stage-button"><i class="fa fa-plus-circle pr-5" aria-hidden="true" ng-click="addStage()"></i>
+Add Stage</md-button>
+
                 </div>
             </div>
-            <div class="row">
+            <div class="row stages-row">
                 <div class="col-md-3">
                     Hired
                     <div>
                         <small>The applicant is hired!</small>
                     </div>
-                    </div>
-                    <div class="col-md-9 stages-container">
-                        <div class="typesDemo" ng-repeat="list in lists">
-                            <ul dnd-list="list.people" dnd-allowed-types="list.allowedTypes" dnd-disable-if="list.people.length >= list.max">
-                                <li ng-repeat="person in list.people" dnd-draggable="person" dnd-type="person.type" dnd-disable-if="person.type == 'unknown'" dnd-moved="list.people.splice($index, 1)" dnd-effect-allowed="move" class="background-{{person.type}}">
-                                    <dnd-nodrag>
-                                        <div dnd-handle class="handle">:::</div>
-                                        <div class="name">
-                                            <input type="text" ng-model="person.name" class="background-{{person.type}} form-control input-sm">
-                                        </div>
-                                    </dnd-nodrag>
-                                </li>
-                                <li class="dndPlaceholder">
-                                    Drop any <strong>{{list.allowedTypes.join(' or ')}}</strong> here
-                                </li>
-                            </ul>
-                        </div>
+                </div>
+                <div class="col-md-4 stages-container">
+                    <div class="typesDemo" ng-repeat="list in endStage">
+                        <ul dnd-list="list.stages" dnd-allowed-types="list.allowedTypes" dnd-disable-if="list.stages.length >= list.max">
+                            <li ng-repeat="stage in list.stages" dnd-draggable="stage" dnd-type="stage.type" dnd-disable-if="stage.type == 'unknown'" dnd-moved="list.stages.splice($index, 1)" dnd-effect-allowed="move" class="background-{{stage.type}}">
+                                <dnd-nodrag>
+                                    <div dnd-handle class="handle"><i class="fa fa-bars" aria-hidden="true"></i></div>
+                                    <div class="name">
+                                        <input type="text" ng-model="stage.name" class="background-{{stage.type}} form-control input-sm">
+                                    </div>
+                                </dnd-nodrag>
+                            </li>
+                            <li class="dndPlaceholder">
+                                End
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</div>

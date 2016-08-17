@@ -1,34 +1,52 @@
-app.controller('editPipelineCtrl', function (_, $scope, formlyVersion, $q, $http, thisJob) {
+app.controller('editPipelineCtrl', function(_, $scope, formlyVersion, $q, $http, thisJob) {
 
     $scope.env = {
-      angularVersion: angular.version.full,
-      formlyVersion: formlyVersion
+        angularVersion: angular.version.full,
+        formlyVersion: formlyVersion
     };
 
-    $scope.model = {
-    };
+    $scope.model = {};
     console.log('job:', thisJob);
     console.log('job desc:', thisJob.jobDescription);
 
     $scope.options = {};
 
+    $scope.addStage = function() {
+        $scope.customStages[0].stages.push({name: "", type: "custom"})
+    }
+
     $scope.fields = [
 
     ]
 
+    $scope.beginStage = [{
+        label: "Men",
+        max: 1,
+        allowedTypes: ['begin'],
+        stages: [
+            { name: "Applied", type: "begin" }
+        ]
+    }]
 
-     $scope.lists = [
+     $scope.customStages = [
         {
             label: "Men",
-            allowedTypes: ['man'],
+            allowedTypes: ['custom'],
             max: 4,
-            people: [
-                {name: "Bob", type: "man"},
-                {name: "Charlie", type: "man"},
-                {name: "Dave", type: "man"}
+            stages: [
+                {name: "Phone Interview", type: "custom"},
+                {name: "In-Person Interview", type: "custom"},
             ]
         }
     ];
+    $scope.endStage = [{
+        label: "Men",
+        allowedTypes: ['end'],
+        max: 1,
+        stages: [
+            { name: "Hired", type: "end" }
+        ]
+    }]
 
     // Model to JSON for demo purpose
     $scope.$watch('lists', function(lists) {
