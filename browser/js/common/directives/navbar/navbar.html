@@ -7,6 +7,13 @@
             <li ng-show="isLoggedIn()">
                 <a ui-sref-active="active" ng-click="invitePrompt()">INVITE<div><hr></div></a>
             </li>
+            <li ng-show="isLoggedIn()">
+                <a ui-sref-active="active" ui-sref="postings">POSTINGS
+                    <div>
+                        <hr>
+                    </div>
+                </a>
+            </li>
         </ul>
         <button ng-show="!user" ui-sref="login" ui-sref-active="active" class="btn login-button">Login</button>
         <button ng-show="!user" ui-sref="signup" ui-sref-active="active" class="btn login-button">Signup</button>
