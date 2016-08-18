@@ -8,9 +8,18 @@
 .job-editor-container {
 	margin-left: 25px;
 	margin-right: 25px;
-
-
 }
+
+.job-desc-title {
+	font-family: Roboto, "Helvetica Neue", sans-serif;
+	font-weight: bold;
+}
+
+.control-label {
+	font-family: Roboto, "Helvetica Neue", sans-serif;
+	font-weight: bold;
+}
+
 .job-editor {
 	
 	padding: 30px;
@@ -21,7 +30,7 @@
 
 	#postings-description {
 		width: 100%;
-		font-family: Meta Medium;
+		font-family: Roboto, "Helvetica Neue", sans-serif;
 		align-content: center;
 
 		#postings-form {

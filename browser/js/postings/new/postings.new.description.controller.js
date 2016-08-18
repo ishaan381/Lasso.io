@@ -108,7 +108,7 @@ app.controller('newDescriptionCtrl', function (_, $scope, formlyVersion, $q, $ht
       {
         noFormControl: true,
         className: 'col-md-12 description-field-label',
-        template: '<p>Job Description</p>'
+        template: '<div class="job-desc-title">Job Description</div>'
       },
       {
         key: 'description',
