@@ -4,10 +4,8 @@ module.exports = router;
 let db = require('../../../db'),
 check = require('../check-handler');
 
-//REQUIRE DB AND ACCESS IT TO GET MODELS!!!
 
-const JobDescription = db.model('job_description'),
-Job = db.model('job')
+const JobDescription = db.model('job_description');
 
 router.param('id', function(req, res, next, id){
 	JobDescription.findOne({

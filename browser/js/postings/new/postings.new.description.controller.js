@@ -23,7 +23,6 @@ app.controller('newDescriptionCtrl', function (_, $scope, formlyVersion, $q, $ht
     function onSubmit() {
       var companyId = 1;
       var descriptionData = {fields: JSON.stringify(vm.model)};
-      var jobData = {};
       Job.create({companyId: companyId})
       .then(job => {
         descriptionData.jobId = job.id;

@@ -6,8 +6,6 @@ app.controller('editPipelineCtrl', function(_, $scope, formlyVersion, $q, $http,
     };
 
     $scope.model = {};
-    console.log('job:', thisJob);
-    console.log('job desc:', thisJob.jobDescription);
 
     $scope.options = {};
 
@@ -17,7 +15,6 @@ app.controller('editPipelineCtrl', function(_, $scope, formlyVersion, $q, $http,
 
     $scope.$watch('customStages', function(newStage, oldStage) {
         $scope.customStages[0].stages.map((stage, index) => stage.id = index);
-        console.log($scope.customStages[0].stages)
     }, true)
 
     $scope.removeStage = function(id) {
@@ -36,8 +33,7 @@ app.controller('editPipelineCtrl', function(_, $scope, formlyVersion, $q, $http,
         stageArray.push({title: $scope.endStage[0].stages[0].name, index: stageArray.length, jobId: thisJob.id});
 
         Pipeline.createStages(stageArray)
-        .then(function(stages) {
-            console.log(stages);
+        .then(function() {
             $state.go('pipeline', {id: thisJob.id});
         })
 

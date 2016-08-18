@@ -1,7 +1,7 @@
 // Please note that $uibModalInstance represents a modal window (instance) dependency.
 // It is not the same as the $uibModal service used above.
 
-app.controller('ModalInstanceCtrl', function(_, $scope, formlyVersion, $uibModalInstance, $q, $http) {
+app.controller('ModalInstanceCtrl', function(_, $scope, formlyVersion, $uibModalInstance) {
 
     const vm = this;
 
@@ -23,6 +23,11 @@ app.controller('ModalInstanceCtrl', function(_, $scope, formlyVersion, $uibModal
     vm.model = {};
 
     vm.options = { formState: { originalModel: vm.model } };
+
+    function resetModel() {
+        vm.model.options = {};
+        vm.model.basic = {};
+    }
 
     vm.fields = [
 
@@ -153,11 +158,6 @@ app.controller('ModalInstanceCtrl', function(_, $scope, formlyVersion, $uibModal
             }, ]
         }
     ];
-
-    function resetModel() {
-        vm.model.options = {};
-        vm.model.basic = {};
-    }
 
     $scope.ok = function() {
         $uibModalInstance.close(vm.model);

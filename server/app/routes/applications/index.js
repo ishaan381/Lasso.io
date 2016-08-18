@@ -13,8 +13,8 @@ router.param('id', function(req, res, next, id){
 		where:{
 			id: id
 		},
-		include: [ //we attach comments, and comments have a user attached to them
-		  { model: Comment, as: 'comments'},
+		include: [
+			{ model: Comment, as: 'comments'},
 		]
 	})
 	.then(function(app){

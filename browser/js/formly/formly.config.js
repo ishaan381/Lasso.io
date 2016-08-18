@@ -46,11 +46,8 @@
           name: 'toggleCheckbox',
           templateUrl: 'js/formly/toggleCheckbox.html',
           wrapper: ['bootstrapLabel', 'bootstrapHasError'],
-          link: function(scope, el, attr) {
-                  console.log(scope)
-                  console.log(el);
+          link: function(scope, el) {
                   const button = angular.element(el.find('toggle-checkbox')[0])
-                      // console.log(button.attr('value'))
               }
               //   controller: [ '$scope', function ($scope) {
               //     $scope.formOptions = {formState: $scope.formState};
