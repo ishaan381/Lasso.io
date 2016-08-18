@@ -18,22 +18,14 @@ app.factory('Job', function($http, $log) {
 
     Job.fetch = function(id) {
         return $http.get('/api/jobs/' + id)
-            .then(function(response) {
-                return response.data;
-            })
-    }
+        .then(res => res.data)
+        .then(job => {
+            return {
+                description: JSON.parse(job.jobDescription.fields),
+                application: JSON.parse(job.jobApplication.fields)
+            }
+        })
 
-    //not sure if we also have to specify a company field
-    //also not sure if this belongs in the Job application factory
-    Job.apply = function(job, app) {
-        return $http.post('api/applications', {
-            jobId: job.id,
-            fields: app.fields
-        })
-        .then(function(resp) {
-            $log.info(resp.data)
-            return resp.data
-        })
     }
 
 

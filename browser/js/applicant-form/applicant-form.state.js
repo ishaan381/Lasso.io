@@ -5,7 +5,7 @@ app.config($stateProvider => {
     controller: 'applicantFormCtrl',
     resolve: {
       job: function (Job, $stateParams) {
-        return Job.fetch($stateParams.jobId);
+        return Job.fetch($stateParams.jobId)
       }
     }
   });

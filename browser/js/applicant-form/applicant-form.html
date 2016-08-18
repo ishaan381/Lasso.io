@@ -4,11 +4,14 @@
       <h4 class="otherInfo">{{ description.region }}, {{ description.country }} | {{ description.department }} | {{ description.commitment }}</h4>
     <hr>
   </div>
-  <form ng-submit="onSubmit()" name="form" novalidate>
-      <formly-form model="model" fields="fields" options="options" form="form">
-          <div class="form-actions">
-              <button type="submit" class="btn btn-primary submit-button" ng-disabled="form.$invalid">Save Changes</button>
-          </div>
-      </formly-form>
-  </form>
+  <div class="row">
+    <form ng-submit="onSubmit(model)" name="form" novalidate>
+        <formly-form model="model" fields="fields" options="options" form="form">
+            <div class="form-actions button-div">
+                <md-button type="submit" class="md-raised md-primary btn1" ng-disabled="form.$invalid">Submit</md-button>
+            </div>
+        </formly-form>
+    </form>
+  </div>
+  <pre>{{model | json}}</pre>
 </div>
