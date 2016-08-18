@@ -53,28 +53,30 @@ app.controller('newDescriptionCtrl', function (_, $scope, formlyVersion, $q, $ht
       {
         key: 'title',
         type: 'input',
-        className: 'col-md-8 col-sm-12',
+        className: 'col-md-8',
         templateOptions: {
           type: 'text',
           label: 'Position Title',
           placeholder: 'Job Title',
           required: true,
+          disabled: false
         }
       },
       {
         key: 'department',
         type: 'input',
-        className: 'col-md-4 col-sm-12',
+        className: 'col-md-4',
         templateOptions: {
           type: 'text',
           label: 'Department',
-          placeholder: 'Department'
+          placeholder: 'Department',
+          disabled: false
         }
       },
       {
         key: 'city',
         type: 'input',
-        className: 'col-md-4 col-sm-12',
+        className: 'col-md-4',
         templateOptions: {
           type: 'text',
           label: 'City',
@@ -85,11 +87,11 @@ app.controller('newDescriptionCtrl', function (_, $scope, formlyVersion, $q, $ht
       {
         key: 'state',
         type: 'input',
-        className: 'col-md-4 col-sm-12',
+        className: 'col-md-4',
         templateOptions: {
           type: 'text',
           label: 'State',
-          placeholder: 'Search',
+          placeholder: 'State',
           required: true
         }
       },
