@@ -1,0 +1,21 @@
+<div ng-controller="panelFormCtrl">
+    <div ng-repeat="question in questions" class="question-container">
+        <h4 class="col-md-12 edit-title" editable-text="question.title">{{ question.title || "Click to edit title or question ..." }}</h4>
+        <small class="col-md-12 edit-description" editable-text="question.description">{{ question.description || "Click to edit description ..." }}</small>
+        <div class="row">
+            <div class="col-md-4">
+                <md-select ng-model="question.selectedField" placeholder="Question Type" class="md-no-underline">
+                    <md-option value="text">Text (Single Line)</md-option>
+                    <md-option value="textbox">Textbox</md-option>
+                    <md-option value="code">Code</md-option>
+                    <md-option value="dropdown">Dropdown</md-option>
+                    <md-option value="radio">Multiple Choice</md-option>
+                    <md-option value="checkbox">Checkboxes</md-option>
+                    <md-option value="score">Score</md-option>
+                    <md-option value="scoreboard">Scoreboard</md-option>
+                </md-select>
+            </div>
+        </div>
+    </div>
+    <md-button class="md-raised add-question-button" ng-click="addQuestion()"><i class="fa fa-plus-circle pr-5" aria-hidden="true"></i> Add An Interview Question</md-button>
+</div>

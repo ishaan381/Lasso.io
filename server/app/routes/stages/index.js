@@ -24,7 +24,7 @@ router.get('/:id', function(req, res, next){
   res.send(req.requestedStage);
 });
 
-router.post('/', check.pageAdmin, function(req, res, next){
+router.post('/', function(req, res, next){
   var stages = req.body.map(stage => Stage.create(stage));
 
   Promise.all(stages)
