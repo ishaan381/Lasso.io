@@ -1,5 +1,13 @@
-app.factory('App', function($http, $log) {
+app.factory('App', function($http) {
     var App = {};
+
+    App.create = function(jobId, model) {
+        return $http.post('api/applications', {
+            jobId: jobId,
+            fields: model
+        })
+        .then(res => res.data);
+    }
 
     App.fetchComments = function(appId){
         return $http.get('/api/applications/' + appId + 'allcomments')
@@ -33,9 +41,7 @@ app.factory('App', function($http, $log) {
             content: comment.content
         })
         .then(function(resp){
-            $rootScope.$emit('editComment', resp.data); //so it updates comment without refresh of entire app
-            return resp.data;//if we want it to work in realtime I'll come back to this when we have the front end
-            //I just have to add a listener in the main js that calls a evalASync() to sync the session data with the changed server data
+            return resp.data;
         })
     }
 
@@ -60,7 +66,6 @@ app.factory('App', function($http, $log) {
             rejected: !app.rejected
         })
         .then(function(resp){
-            $rootScope.$emit('editQulificaiton', resp.data);
             return resp.data;
         })
     }

@@ -1,6 +1,6 @@
-app.controller('previewApplicationCtrl', function(_, $scope, $timeout, $interval, formlyVersion, $q, $http) {
+app.controller('previewApplicationCtrl', function(_, $scope, $timeout, $interval, formlyVersion) {
 
-    const vm = this;
+    // const vm = this; //we dont use this, why?
 
     $scope.originalFields = angular.copy($scope.fields);
 
@@ -128,47 +128,6 @@ app.controller('previewApplicationCtrl', function(_, $scope, $timeout, $interval
 
     function generateFormCustoms() {
 
-        var toggleFieldGenerator = {
-            'dropdown': generateDropdownField,
-            'radio': generateRadioField,
-            'text': generateTextField,
-            'textbox': generateTextBoxField,
-            'checkbox': generateCheckBoxes
-        }
-
-        var customsTitle = {
-            noFormControl: true,
-            className: 'col-md-12',
-            template: '<h4 class="preview-application-link-title">Additional Questions</h4><hr>'
-        }
-
-        $scope.fields.push(customsTitle);
-
-        $scope.model.customFields.forEach(function(data) {
-            // COL-MD-4
-            generateTitleQuestion(data);
-            // COL-MD-8
-            toggleFieldGenerator[data.field](data)
-        })
-
-        function generateTitleQuestion(field) {
-            // var customTitle = {
-            //     noFormControl: true,
-            //     className: 'col-md-12',
-            //     template: '<h4 class="preview-custom-title">' + field.basic.title + '</h4><hr>'
-            // }
-
-            // $scope.fields.push(customTitle);
-
-            var template = '<h5 class="preview-custom-question">' + field.basic.question + '</h5>';
-            $scope.fields.push({
-                noFormControl: true,
-                className: 'col-md-4',
-                template: template
-            })
-
-        }
-
         function generateTextField(field) {
             $scope.fields.push({
                 key: field.id,
@@ -244,6 +203,47 @@ app.controller('previewApplicationCtrl', function(_, $scope, $timeout, $interval
             })
         }
 
+        var toggleFieldGenerator = {
+            'dropdown': generateDropdownField,
+            'radio': generateRadioField,
+            'text': generateTextField,
+            'textbox': generateTextBoxField,
+            'checkbox': generateCheckBoxes
+        }
+
+        var customsTitle = {
+            noFormControl: true,
+            className: 'col-md-12',
+            template: '<h4 class="preview-application-link-title">Additional Questions</h4><hr>'
+        }
+
+        $scope.fields.push(customsTitle);
+
+        function generateTitleQuestion(field) {
+            // var customTitle = {
+            //     noFormControl: true,
+            //     className: 'col-md-12',
+            //     template: '<h4 class="preview-custom-title">' + field.basic.title + '</h4><hr>'
+            // }
+
+            // $scope.fields.push(customTitle);
+
+            var template = '<h5 class="preview-custom-question">' + field.basic.question + '</h5>';
+            $scope.fields.push({
+                noFormControl: true,
+                className: 'col-md-4',
+                template: template
+            })
+
+        }
+
+        $scope.model.customFields.forEach(function(data) {
+            // COL-MD-4
+            generateTitleQuestion(data);
+            // COL-MD-8
+            toggleFieldGenerator[data.field](data)
+        })
+
     }
 
 
@@ -254,7 +254,7 @@ app.controller('previewApplicationCtrl', function(_, $scope, $timeout, $interval
         generateFormCustoms();
     }
 
-    $scope.$parent.$watch('model', function(value) {
+    $scope.$parent.$watch('model', function() {
 
         $scope.fields = [];
         $scope.model = $scope.$parent.model;

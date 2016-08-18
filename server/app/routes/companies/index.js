@@ -13,7 +13,7 @@ router.param('id', function(req, res, next, id){
 	Company.findOne({
 		where:{
 			id: id
-		}, //we'll figure this out later
+		},
 		include: [
 		{ model: Job, as: 'job',
 			include: [ { model: JobDescription, as: 'jobDescription'}]

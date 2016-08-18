@@ -6,8 +6,6 @@ app.controller('editPipelineCtrl', function(_, $scope, formlyVersion, $q, $http,
     };
 
     $scope.model = {};
-    console.log('job:', thisJob);
-    console.log('job desc:', thisJob.jobDescription);
 
     $scope.options = {};
 
@@ -23,7 +21,7 @@ app.controller('editPipelineCtrl', function(_, $scope, formlyVersion, $q, $http,
 
     $scope.$watch('customStages', function(newStage, oldStage) {
         $scope.customStages[0].stages.map((stage, index) => stage.id = index);
-        repopulateStages();
+        repopulateStages();∂
     }, true)
 
     $scope.selectedCb = function(item) {
@@ -53,9 +51,10 @@ app.controller('editPipelineCtrl', function(_, $scope, formlyVersion, $q, $http,
         console.log(stageArray);
 
         Pipeline.createStages(stageArray)
-            .then(function(stages) {
-                $state.go('pipeline', { id: thisJob.id });
-            })
+        .then(function() {
+            $state.go('pipeline', {id: thisJob.id});
+        })
+
 
     }
 

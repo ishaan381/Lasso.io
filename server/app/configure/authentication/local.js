@@ -1,7 +1,6 @@
 'use strict';
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
-var _ = require('lodash');
 
 
 module.exports = function (app, db) {
