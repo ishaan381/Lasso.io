@@ -1,4 +1,4 @@
-
+//
 app.factory('Job', function($http, $log) {
     var Job = {};
 

@@ -330,10 +330,10 @@ function randomJobApplication(jobs){//need to finish
         fields: JSON.stringify({
             "fullname": chance.pick(fullNames),
             "resume": 'this is a resume',
-            "question 1": { 
+            "question 1": {
                 "question": 'answer paragraph',
             },
-            "question 2": { 
+            "question 2": {
                 "question": 'another answer paragraph',
             }
         }),
@@ -364,7 +364,7 @@ function genStages(jobs) {
     jobs.forEach(function(job) {
         doNTimes(4, randomStage, job, stages)
     })
-    
+
     return stages;
 }
 
@@ -423,9 +423,9 @@ function seed() {
             _jobs = jobs
             return createJobDescriptions(jobs)
         })
-        .then(function(jobs){
-            return createJobApplications(jobs)
-        })
+        // .then(function(jobs){
+        //     return createJobApplications(jobs)
+        // })
         .then(function(jobs){
             return createStages(jobs)
         })

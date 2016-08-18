@@ -7,6 +7,8 @@ app.controller('descriptionCtrl', function(JobDescriptions, $stateParams, $scope
     $scope.description = description;
   });
 
+  $scope.jobId = $stateParams.jobId;
+
 });
 
 app.config(function ($mdThemingProvider) {

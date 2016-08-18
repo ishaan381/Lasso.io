@@ -4,9 +4,8 @@ app.config($stateProvider => {
     templateUrl: '/js/applicant-form/applicant-form.html',
     controller: 'applicantFormCtrl',
     resolve: {
-      formsData: function (JobApplication, $stateParams) {
-        return JobApplication.fetch($stateParams.jobId)
-        .then(res => res.data);
+      job: function (Job, $stateParams) {
+        return Job.fetch($stateParams.jobId);
       }
     }
   });
