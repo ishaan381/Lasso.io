@@ -1,24 +1,25 @@
 <nav class="navbar navbar-static-top" ng-hide="hide">
-    <div class="container">
-        <ul class="nav navbar-nav">
-            <li ng-repeat="item in items" ng-show="!item.auth || isLoggedIn()">
-                <a ui-sref-active="active" ui-sref="{{ item.state }}">{{ item.label }} <div><hr></div></a>
-            </li>
-            <li ng-show="isLoggedIn()">
-                <a ui-sref-active="active" ng-click="invitePrompt()">INVITE<div><hr></div></a>
-            </li>
-            <li ng-show="isLoggedIn()">
-                <a ui-sref-active="active" ui-sref="postings">POSTINGS
-                    <div>
-                        <hr>
-                    </div>
-                </a>
-            </li>
-        </ul>
-        <button ng-show="!user" ui-sref="login" ui-sref-active="active" class="btn login-button">Login</button>
-        <button ng-show="!user" ui-sref="signup" ui-sref-active="active" class="btn login-button">Signup</button>
-        <div ng-show="user" class="welcome">
-            <a ng-click="logout()" class="btn login-button">Logout</a>
+    <div class="container nav-container navbar-header">
+        <button class="navbar-toggle" data-toggle="collapse" data-target=".navHeaderCollapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+
+        <div class="collapse navbar-collapse navHeaderCollapse">
+            <ul class="nav navbar-nav navbar-center">
+                <li ng-repeat="item in items" ng-show="!item.auth || isLoggedIn()">
+                    <a ui-sref-active="active" ui-sref="{{ item.state }}">{{ item.label }}<div><hr></div></a></li>
+                <li ng-show="isLoggedIn()">
+                    <a ui-sref-active="active" ng-click="invitePrompt()">INVITE<div><hr></div>  </a>
+                </li>
+                <li ng-show="isLoggedIn()">
+                    <a ui-sref-active="active" ui-sref="postings">POSTINGS<div><hr></div></a>
+                </li>
+                <li ng-show="!user" ui-sref="login" ui-sref-active="active" class="btn login-button">Login</li>
+                <li ng-show="!user" ui-sref="signup" ui-sref-active="active" class="btn login-button">Signup</li>
+                <li ng-show="user" ng-click="logout()" class="btn login-button">Logout</li>
+            </ul>
         </div>
     </div>
 </nav>

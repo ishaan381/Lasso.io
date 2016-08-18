@@ -59,6 +59,7 @@
     }
     .signup {
         margin-top: 10px;
+        width: 100%;
         margin-bottom: 10px;
     }
     .divider {
@@ -67,9 +68,14 @@
         color: #C9BFBF;
     }
 }
-
+.login-band {
+    width: 100%;
+}
 .login {
-    width: 70%;
+    width: 60%;
+    @media (max-width: 850px) {
+        width: 575px;
+    }
 }
 
 @import url(https://fonts.googleapis.com/css?family=Abel);

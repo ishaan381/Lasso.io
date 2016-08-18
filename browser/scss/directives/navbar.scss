@@ -1,15 +1,30 @@
-navbar {
+.navbar {
+    margin-bottom: 0px;
+    height: 55px;
 
+    .navbar-toggle{ 
+        float: none;
+        margin-top: 8px;
+        margin-right: 0px;
+        .icon-bar{
+        color: black;
+            background-color: black;
+        }
+    }
+    .navbar-nav {
+        float: none;
+    }
     display: block;
     background: white;
     font-family: 'Maison Neue Book', HelveticaNeue-Light, "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
     font-weight: 400;
     .container {
+        text-align: center;
         width: 91%;
+        height: inherit;
         @media (max-width: 850px) {
             width: 100%;
         }
-        padding-top: 15px;
     }
 
     .navbar {
@@ -25,9 +40,6 @@ navbar {
         color: #353238;
         opacity: 0.5;
         font-size: 15px;
-        @media (max-width: 850px) {
-            font-size: 13px;
-        }
         letter-spacing: 2px;
         text-transform: uppercase;
         hr {
@@ -38,13 +50,19 @@ navbar {
             margin-bottom: 0px;
         }
     }
+    .collapse {
+        text-align: center;
+
+        .nav {
+            display: inline-block;
+            margin: 0;
+            padding: 0;
+        }
+    }
     .nav > li > a {
         cursor: pointer;
         transition: opacity 0.3s;
         padding-bottom: 0px;
-        @media (max-width: 850px) {
-            padding-left: 0px;
-        }
         &.active {
             opacity: 1;
             hr {
@@ -68,10 +86,13 @@ navbar {
             background: none;
         }
     }
+
     .login-button {
-        float: right;
-        margin-top: 10px;
-        margin-right: 10px;
+        border: none;
+        padding-right: 15px;
+        padding-left: 15px;
+        padding-top: 15px;
+        padding-bottom: 0px;
         background-color: transparent;
         font-size: 15px;
         color: #353238;
@@ -83,15 +104,18 @@ navbar {
         letter-spacing: 2px;
         font-family: 'Maison Neue Book', HelveticaNeue-Light, "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
     }
+
     .login-button:hover {
         transition: opacity 0.3s;
         opacity: 1;
         /*border: 1px solid;*/
         /*background-color: rgba(0, 0, 0, 0.1);*/
     }
+
     .btn.login-button {
+        line-height: inherit;
         @media (max-width: 850px) {
-            font-size: 13px;
+            font-size: 15px;
         }
         &:active {
             box-shadow: none;
@@ -100,19 +124,6 @@ navbar {
         &.active {
             box-shadow: none;
             opacity: 1;
-        }
-        .welcome {
-            float: right;
-            margin-top: 12px;
-            span {
-                color: black;
-                font-size: 16px;
-                margin-right: 5px;
-            }
-            a {
-                color: white;
-                cursor: pointer;
-            }
         }
     }
 }
