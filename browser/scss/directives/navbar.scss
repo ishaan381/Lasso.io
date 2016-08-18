@@ -11,9 +11,11 @@ navbar {
         }
         padding-top: 15px;
     }
+
     .navbar {
         margin-bottom: 0;
     }
+
     fullstack-logo {
         margin-top: 5px;
         margin-right: 20px;
@@ -78,6 +80,7 @@ navbar {
         opacity: 0.5;
         text-transform: uppercase;
         letter-spacing: 2px;
+        font-family: 'Maison Neue Book', HelveticaNeue-Light, "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
     }
     .login-button:hover {
         transition: opacity 0.3s;
