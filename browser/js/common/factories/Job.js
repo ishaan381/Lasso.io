@@ -9,15 +9,6 @@ app.factory('Job', function($http, $log) {
             })
     }
 
-    //we can use this for searching all jobs, basically the roundabout method
-    Job.queryAll = function(params) {
-        console.log(jQuery.param(params));
-        return $http.get('/api/jobs?' + jQuery.param(params))
-            .then(function(response) {
-                return response.data;
-            })
-    }
-
     Job.getAppsForJob = function(id) {
         return $http.get('/api/jobs/'+ id +'/apps')
         .then(function(resp){

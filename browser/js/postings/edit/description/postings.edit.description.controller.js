@@ -18,7 +18,25 @@ app.controller('editDescriptionCtrl', function (_, $scope, formlyVersion, $q, $h
 
     vm.options = {};
 
-
+    function refreshAddresses(address, field) {
+      var promise;
+      if (!address) {
+        if (vm.model.region) {
+          promise = $q.when({data: {results: [{'formatted_address': vm.model.region}]}})
+        }
+        else {
+          promise = $q.when({data: {results: []}});
+        }
+      }
+      else {
+        var endpoint = '//maps.googleapis.com/maps/api/geocode/json?components=administrative_area:' + address + '|country:' + vm.model.country
+        promise = $http.get(endpoint);
+      }
+      return promise.then(response => {
+        field.templateOptions.options = response.data.results;
+      });
+    }
+    
     vm.fields = [
       {
         noFormControl: true,
@@ -152,24 +170,5 @@ app.controller('editDescriptionCtrl', function (_, $scope, formlyVersion, $q, $h
     ];
 
     vm.originalFields = angular.copy(vm.fields);
-
-    function refreshAddresses(address, field) {
-      var promise;
-      if (!address) {
-        if (vm.model.region) {
-          promise = $q.when({data: {results: [{'formatted_address': vm.model.region}]}})
-        }
-        else {
-          promise = $q.when({data: {results: []}});
-        }
-      }
-      else {
-        var endpoint = '//maps.googleapis.com/maps/api/geocode/json?components=administrative_area:' + address + '|country:' + vm.model.country
-        promise = $http.get(endpoint);
-      }
-      return promise.then(response => {
-        field.templateOptions.options = response.data.results;
-      });
-    }
 
 });

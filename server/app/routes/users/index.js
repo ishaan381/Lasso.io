@@ -24,7 +24,6 @@ router.get('/:id', function(req, res) {
 });
 
 
-//hooks on associations and on models take care of deleting all relavant info, if they dont, check the models and associations
 router.delete('/:id', (check.admin || check.pageAdmin), function(req, res, next) {
 	req.requestedUser.destroy()
 	.then(function(){

@@ -130,7 +130,7 @@
         this.createCompany = function(credentials) {
 
             return $http.post('/create', {name: credentials.name, website: credentials.website})
-            .then(function(createdCompany) {
+            .then(function() {
                 return self.signup({email: credentials.email, password: credentials.password})
             })
             .catch(function() {

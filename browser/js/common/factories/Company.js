@@ -1,18 +1,8 @@
-
-app.factory('Company', function($http, $log) {
+app.factory('Company', function($http) {
     var Company = {};
 
     Company.fetchAll = function() {
         return $http.get('/api/companies')
-            .then(function(response) {
-                return response.data;
-            })
-    }
-
-    //we can use this for searching all companies, basically the roundabout method
-    Company.queryAll = function(params) {
-        console.log(jQuery.param(params));
-        return $http.get('/api/companies?' + jQuery.param(params))
             .then(function(response) {
                 return response.data;
             })
@@ -25,7 +15,7 @@ app.factory('Company', function($http, $log) {
         })
     }
 
-//this gets all jobs from that company
+    //this gets all jobs from that company
     Company.fetch = function(id) {
         return $http.get('/api/companies/' + id)
             .then(function(response) {

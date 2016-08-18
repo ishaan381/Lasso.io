@@ -25,7 +25,7 @@ app.controller('postingsCtrl', function(_, $scope, $q, $http, jobs) {
       }
 
       $scope.jobs.forEach(job => {
-          if (job.jobDescription.fields[property] == startVal) {
+          if (job.jobDescription.fields[property] === startVal) {
 
               $scope.chunkedJobs[startIndex].jobs.push(job);
 
@@ -42,15 +42,8 @@ app.controller('postingsCtrl', function(_, $scope, $q, $http, jobs) {
 
           }
       })
-
-      console.log($scope.chunkedJobs);
-
     }
 
     $scope.chunkJobs('department');
-
-
-
-
 
 });

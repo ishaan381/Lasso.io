@@ -4,26 +4,25 @@ app.controller('newDescriptionCtrl', function (_, $scope, formlyVersion, $q, $ht
 
     vm.countries = countries.data;
     vm.originalFields = angular.copy(vm.fields);
-
-    function refreshAddresses(address, field) {
-      var promise;
-      if (!address) {
-        promise = $q.when({data: {results: []}});
-      }
-      else {
-        var endpoint = '//maps.googleapis.com/maps/api/geocode/json?components=administrative_area:' + address + '|country:' + vm.model.country
-        promise = $http.get(endpoint);
-      }
-      return promise.then(response => {
-        field.templateOptions.options = response.data.results;
-      });
-    }
+    
+    // function refreshAddresses(address, field) {
+    //   var promise;
+    //   if (!address) {
+    //     promise = $q.when({data: {results: []}});
+    //   }
+    //   else {
+    //     var endpoint = '//maps.googleapis.com/maps/api/geocode/json?components=administrative_area:' + address + '|country:' + vm.model.country
+    //     promise = $http.get(endpoint);
+    //   }
+    //   return promise.then(response => {
+    //     field.templateOptions.options = response.data.results;
+    //   });
+    // }
 
     // function definition
     function onSubmit() {
       var companyId = 1;
       var descriptionData = {fields: JSON.stringify(vm.model)};
-      var jobData = {};
       Job.create({companyId: companyId})
       .then(job => {
         descriptionData.jobId = job.id;
@@ -54,53 +53,46 @@ app.controller('newDescriptionCtrl', function (_, $scope, formlyVersion, $q, $ht
       {
         key: 'title',
         type: 'input',
-        className: 'col-md-8 col-sm-12',
+        className: 'col-md-8',
         templateOptions: {
           type: 'text',
           label: 'Position Title',
           placeholder: 'Job Title',
           required: true,
+          disabled: false
         }
       },
       {
         key: 'department',
         type: 'input',
-        className: 'col-md-4 col-sm-12',
+        className: 'col-md-4',
         templateOptions: {
           type: 'text',
           label: 'Department',
-          placeholder: 'Department'
+          placeholder: 'Department',
+          disabled: false
         }
       },
       {
-        key: 'country',
-        type: 'ui-select-single',
-        className: 'country-field col-md-4',
+        key: 'city',
+        type: 'input',
+        className: 'col-md-4',
         templateOptions: {
-          optionsAttr: 'bs-options',
-          ngOptions: 'option[to.valueProp] as option in to.options | filter: $select.search',
-          label: 'Country',
-          valueProp: 'code',
-          labelProp: 'name',
-          placeholder: 'Select a country',
-          options: vm.countries,
+          type: 'text',
+          label: 'City',
+          placeholder: 'City',
           required: true
         }
       },
       {
-        key: 'region',
-        type: 'ui-select-single-search',
-        className: 'region-field col-md-4',
+        key: 'state',
+        type: 'input',
+        className: 'col-md-4',
         templateOptions: {
-          optionsAttr: 'bs-options',
-          ngOptions: 'option[to.valueProp] as option in to.options | filter: $select.search',
-          label: 'Region',
-          valueProp: 'formatted_address',
-          labelProp: 'formatted_address',
-          placeholder: 'Search',
-          options: [],
-          refresh: refreshAddresses,
-          refreshDelay: 0
+          type: 'text',
+          label: 'State',
+          placeholder: 'State',
+          required: true
         }
       },
       {
@@ -116,7 +108,7 @@ app.controller('newDescriptionCtrl', function (_, $scope, formlyVersion, $q, $ht
       {
         noFormControl: true,
         className: 'col-md-12 description-field-label',
-        template: '<p>Job Description</p>'
+        template: '<div class="job-desc-title">Job Description</div>'
       },
       {
         key: 'description',

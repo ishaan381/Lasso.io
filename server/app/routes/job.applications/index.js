@@ -20,7 +20,7 @@ router.param('id', function(req, res, next, id){
 	.catch(next);
 });
 
-router.get('/:id', function(req, res, next) {
+router.get('/:id', function(req, res) {
   res.send(req.requestedApp);
 });
 
