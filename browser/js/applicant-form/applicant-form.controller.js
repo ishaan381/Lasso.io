@@ -104,11 +104,12 @@ app.controller('applicantFormCtrl', function(_, $rootScope, $scope, formlyVersio
         if (obj.field === 'text') outerConfig = 'input'
         if (obj.field === 'textbox') outerConfig = 'textarea'
         if (obj.field === 'dropdown') outerConfig = 'select'
-        if (obj.field === 'radio' || obj.field === 'dropdown') {
+        if (obj.field === 'radio' || obj.field === 'dropdown' || obj.field === 'checkbox') {
           obj.advanced.options.map(function (optionObj) {
             optionObj.name = optionObj.value;
           })
         }
+        if (obj.field === 'checkbox') outerConfig = 'multiCheckbox'
         console.log(obj);
         $scope.fields.push({
           noFormControl: true,
