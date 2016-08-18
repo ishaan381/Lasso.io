@@ -1,4 +1,4 @@
-app.controller('applicantFormCtrl', function(_, $rootScope, $scope, formlyVersion, $q, $http, $stateParams, job) {
+app.controller('applicantFormCtrl', function(_, $rootScope, $scope, formlyVersion, $q, $http, $stateParams, job, App) {
 
 
 
@@ -7,35 +7,22 @@ app.controller('applicantFormCtrl', function(_, $rootScope, $scope, formlyVersio
     $scope.description = JSON.parse(job.jobDescription.fields);
     $scope.application = JSON.parse(job.jobApplication.fields);
 
-    console.log($scope.description);
-    console.log($scope.application);
-
-    // FORM GENERATION
-
-    $scope.originalFields = angular.copy($scope.fields);
-
-    // On Form Submit
-    function onSubmit() {
-
+    $scope.onSubmit = function (model) {
+      App.create($stateParams.jobId, model)
+      .then(res => console.log('success'));
     }
-
-    $scope.onSubmit = onSubmit;
 
     $scope.env = {
         angularVersion: angular.version.full,
         formlyVersion: formlyVersion
     };
 
-    $scope.model = {
-
-    };
+    $scope.model = {};
 
     $scope.options = {};
 
     let links = $scope.application.links;
-
     let personalInfo = $scope.application.general;
-
     let customQs = $scope.application.customFields;
 
     $scope.fields = [{
@@ -110,7 +97,9 @@ app.controller('applicantFormCtrl', function(_, $rootScope, $scope, formlyVersio
           })
         }
         if (obj.field === 'checkbox') outerConfig = 'multiCheckbox'
-        console.log(obj);
+
+        //console.log(obj);
+
         $scope.fields.push({
           noFormControl: true,
           className: 'col-md-3',
@@ -121,7 +110,6 @@ app.controller('applicantFormCtrl', function(_, $rootScope, $scope, formlyVersio
           type: outerConfig || obj.field,
           className: 'col-md-8 default-inputs',
           templateOptions: {
-            label: '',
             options: obj.advanced.options,
             rows: 8,
             cols: 15
@@ -130,13 +118,13 @@ app.controller('applicantFormCtrl', function(_, $rootScope, $scope, formlyVersio
       })
     }
 
-    function generateDefaults() {
+    function generateApplication() {
         generatePersonalInfo();
         generateLinks();
         generateCustoms();
     }
 
-    generateDefaults();
+    generateApplication();
 
 });
 

@@ -14,5 +14,7 @@ app.factory('JobApplication', function($http, $log) {
     }
 
 
+
+
     return JobApplication;
 });

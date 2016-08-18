@@ -1,6 +1,14 @@
 app.factory('App', function($http, $log) {
     var App = {};
 
+    App.create = function(jobId, model) {
+        return $http.post('api/applications', {
+            jobId: jobId,
+            fields: model
+        })
+        .then(res => res.data);
+    }
+
     App.fetchComments = function(appId){
         return $http.get('/api/applications/' + appId + 'allcomments')
         .then(function(resp){

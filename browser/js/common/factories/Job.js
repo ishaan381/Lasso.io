@@ -32,19 +32,6 @@ app.factory('Job', function($http, $log) {
             })
     }
 
-    //not sure if we also have to specify a company field
-    //also not sure if this belongs in the Job application factory
-    Job.apply = function(job, app) {
-        return $http.post('api/applications', {
-            jobId: job.id,
-            fields: app.fields
-        })
-        .then(function(resp) {
-            $log.info(resp.data)
-            return resp.data
-        })
-    }
-
 
     //doesnt work yet, this is just here for the possibility of querying
     Job.queryAllByCompany = function (id, params) {

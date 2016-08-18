@@ -5,17 +5,13 @@
     <hr>
   </div>
   <div class="row">
-    <form ng-submit="onSubmit()" name="form" novalidate>
+    <form ng-submit="onSubmit(model)" name="form" novalidate>
         <formly-form model="model" fields="fields" options="options" form="form">
             <div class="form-actions button-div">
-                <!-- <button type="submit" class="btn btn-primary submit-button" ng-disabled="form.$invalid">Save Changes</button> -->
                 <md-button type="submit" class="md-raised md-primary btn1" ng-disabled="form.$invalid">Submit</md-button>
             </div>
         </formly-form>
     </form>
   </div>
-  <!-- <div class="row button-div">
-    <md-button class="md-raised md-primary btn1">Submit</md-button>
-  </div> -->
-  <!-- <pre>{{model | json}}</pre> -->
+  <pre>{{model | json}}</pre>
 </div>
