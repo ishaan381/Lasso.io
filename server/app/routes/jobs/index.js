@@ -82,9 +82,7 @@ router.put('/:id', function(req, res, next) {
     .catch(next);
 });
 
-//this will delete everything associated with this job
-//hooks take care of deleting all associated content
-router.delete('/:id', function(req, res, next) {
+router.delete('/:id', check.pageAdmin || check.admin, function(req, res, next) {
     req.requestedJob.destroy()
     .then(function () {
         res.status(204).end();

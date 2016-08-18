@@ -1,5 +1,5 @@
 
-app.factory('JobDescriptions', function($http, $log) {
+app.factory('JobDescriptions', function($http) {
     var JobDescriptions = {}
 
     JobDescriptions.create = function (data) {
