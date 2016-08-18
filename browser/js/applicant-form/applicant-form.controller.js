@@ -1,132 +1,25 @@
-app.controller('applicantFormCtrl', function(_, $rootScope, $scope, formlyVersion, $q, $http, $stateParams, job, App, $state) {
+app.controller('applicantFormCtrl', function(_, $rootScope, $scope, formlyVersion, $q, $http, $stateParams, job, App, $state, JobApplication) {
 
+  $rootScope.$broadcast('applicantView');
 
+  $scope.description = job.description;
+  let application = job.application;
 
-    $rootScope.$broadcast('applicantView');
-
-    $scope.description = JSON.parse(job.jobDescription.fields);
-    $scope.application = JSON.parse(job.jobApplication.fields);
-
-    $scope.onSubmit = function (model) {
-      App.create($stateParams.jobId, model)
+  $scope.onSubmit = function(model) {
+    App.create($stateParams.jobId, model)
       .then(() => $state.go('afterSubmit'));
-    }
+  }
 
-    $scope.env = {
-        angularVersion: angular.version.full,
-        formlyVersion: formlyVersion
-    };
+  $scope.env = {
+    angularVersion: angular.version.full,
+    formlyVersion: formlyVersion
+  };
 
-    $scope.model = {};
+  $scope.model = {};
 
-    $scope.options = {};
+  $scope.options = {};
 
-    let links = $scope.application.links;
-    let personalInfo = $scope.application.general;
-    let customQs = $scope.application.customFields;
+  $scope.fields = JobApplication.getFields(application);
 
-    $scope.fields = [{
-        noFormControl: true,
-        className: 'col-md-12',
-        template: '<h4 class="section-title">PERSONAL INFO</h4>'
-    }];
-
-    function generateLinks() {
-        for (let link in links) {
-            let inputConfig = links[link].value;
-            if (inputConfig === 0 || inputConfig === 1) {
-                $scope.fields.push({
-                    noFormControl: true,
-                    className: 'col-md-3',
-                    template: '<h5 class="default-input-labels">' + links[link].label + '</h5>'
-                })
-                $scope.fields.push({
-                    key: link,
-                    type: 'input',
-                    className: 'col-md-8 default-inputs',
-                    templateOptions: {
-                        type: 'text',
-                        required: (inputConfig === 0) ? true : false
-                    }
-                })
-            }
-        }
-        $scope.fields.push({
-          noFormControl: true,
-          className: 'col-md-12',
-          template: '<h4 class="section-title">QUESTIONS</h4>'
-        })
-    }
-
-    function generatePersonalInfo() {
-        for (let field in personalInfo) {
-            let fieldConfig = personalInfo[field].value;
-            if (fieldConfig === 0 || fieldConfig === 1) {
-                $scope.fields.push({
-                    noFormControl: true,
-                    className: 'col-md-3',
-                    template: '<h5 class="default-input-labels">' + personalInfo[field].label + '<span class="required" ng-show=' + (fieldConfig === 0 ? true : false) + '>*</span></h5>'
-                })
-                $scope.fields.push({
-                    key: field,
-                    type: 'input',
-                    className: 'col-md-8 default-inputs',
-                    templateOptions: {
-                        type: 'text',
-                        required: (fieldConfig === 0) ? true : false
-                    }
-                })
-            }
-        }
-        $scope.fields.push({
-          noFormControl: true,
-          className: 'col-md-12',
-          template: '<h4 class="section-title">LINKS</h4>'
-        })
-    }
-
-    function generateCustoms() {
-      customQs.forEach(obj => {
-        let outerConfig;
-        if (obj.field === 'text') outerConfig = 'input'
-        if (obj.field === 'textbox') outerConfig = 'textarea'
-        if (obj.field === 'dropdown') outerConfig = 'select'
-        if (obj.field === 'radio' || obj.field === 'dropdown' || obj.field === 'checkbox') {
-          obj.advanced.options.map(function (optionObj) {
-            optionObj.name = optionObj.value;
-          })
-        }
-        if (obj.field === 'checkbox') outerConfig = 'multiCheckbox'
-
-        //console.log(obj);
-
-        $scope.fields.push({
-          noFormControl: true,
-          className: 'col-md-3',
-          template: '<h5 class="default-input-labels">' + obj.basic.question + '</h5>'
-        })
-        $scope.fields.push({
-          key: obj.id,
-          type: outerConfig || obj.field,
-          className: 'col-md-8 default-inputs',
-          templateOptions: {
-            options: obj.advanced.options,
-            rows: 8,
-            cols: 15
-          }
-        })
-      })
-    }
-
-    function generateApplication() {
-        generatePersonalInfo();
-        generateLinks();
-        generateCustoms();
-    }
-
-    generateApplication();
 
 });
-
-
-
