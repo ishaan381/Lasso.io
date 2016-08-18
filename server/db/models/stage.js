@@ -4,8 +4,11 @@ let Sequelize = require('sequelize'),
 module.exports = db.define('stage', {
     index: {
         type: Sequelize.INTEGER
-      },
+    },
     title: {
-    	type: Sequelize.STRING
+        type: Sequelize.STRING
+    },
+    panels: {
+        type: Sequelize.JSON
     }
 });

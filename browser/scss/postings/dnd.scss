@@ -114,3 +114,27 @@
 .typesDemo .name {
     margin-left: 20px;
 }
+
+
+/***************************** Element Selection *****************************/
+
+.typesDemo .selected {
+    background-color: #236690;
+    i {
+        color: white;
+    }
+    input {
+        background-color: #236690;
+        color: white;
+    }
+    dnd-nodrag {
+        background-color: #236690;
+    }
+}
+
+.typesDemo li.selected {
+    background-color: #236690;
+    .fa-times {
+        color: white;
+    }
+}
