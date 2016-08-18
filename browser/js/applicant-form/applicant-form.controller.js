@@ -1,4 +1,4 @@
-app.controller('applicantFormCtrl', function(_, $rootScope, $scope, formlyVersion, $q, $http, $stateParams, job, App) {
+app.controller('applicantFormCtrl', function(_, $rootScope, $scope, formlyVersion, $q, $http, $stateParams, job, App, $state) {
 
 
 
@@ -9,7 +9,7 @@ app.controller('applicantFormCtrl', function(_, $rootScope, $scope, formlyVersio
 
     $scope.onSubmit = function (model) {
       App.create($stateParams.jobId, model)
-      .then(res => console.log('success'));
+      .then(() => $state.go('afterSubmit'));
     }
 
     $scope.env = {
