@@ -11,12 +11,12 @@
 }
 
 .job-desc-title {
-	font-family: Roboto, "Helvetica Neue", sans-serif;
+	font-family:  'Open Sans', sans-serif;
 	font-weight: bold;
 }
 
 .control-label {
-	font-family: Roboto, "Helvetica Neue", sans-serif;
+	font-family:  'Open Sans', sans-serif;
 	font-weight: bold;
 }
 
@@ -30,7 +30,7 @@
 
 	#postings-description {
 		width: 100%;
-		font-family: Roboto, "Helvetica Neue", sans-serif;
+		font-family:  'Open Sans', sans-serif;
 		align-content: center;
 
 		#postings-form {
@@ -145,13 +145,15 @@
 				padding-top: 10px;
 			}
 			.submit-button {
-			font-size: 18px;
-			font-family: Meta Medium Caps;
-				background-image: linear-gradient(to bottom, #266f9c, #205d84);
-				background-color: #246892;
-				border: 1px solid #194967;
-				border-bottom-color: #143a52;
-				background-repeat: repeat-x;
+				margin-left: 15px;
+				margin-top: 15px;
+				font-size: 15px;
+				font-family: Meta Medium Caps;
+					background-image: linear-gradient(to bottom, #266f9c, #205d84);
+					background-color: #246892;
+					border: 1px solid #194967;
+					border-bottom-color: #143a52;
+					background-repeat: repeat-x;
 			}
 
 		}
