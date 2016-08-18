@@ -1,5 +1,6 @@
 'use strict';
 var router = require('express').Router();
+var Promise = require('bluebird');
 module.exports = router;
 let db = require('../../../db'),
 check = require('../check-handler');
@@ -24,10 +25,12 @@ router.get('/:id', function(req, res, next){
 });
 
 router.post('/', check.pageAdmin, function(req, res, next){
-  Stage.create(req.body)
-  .then(function(stage){
+  var stages = req.body.map(stage => Stage.create(stage));
+
+  Promise.all(stages)
+  .then(function(stages){
     res.status(201);
-    res.send(stage);
+    res.send(stages);
   })
   .catch(next)
 });
