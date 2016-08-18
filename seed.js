@@ -293,7 +293,7 @@ function createJobs(companies) {
 
 function randJobDescription(jobs) {
     var job = jobs.shift();
-
+    var state = chance.state({country: 'us', full: true})
     return JobDescription.build({
         fields: JSON.stringify({
             "title": chance.pick(titles),
@@ -307,8 +307,8 @@ function randJobDescription(jobs) {
                 "sectionTitle": "Experience and Skills",
                 "description": innerDescriptions[1]
             }],
-            "country": "US",
-            "region": chance.state({country: 'us', full: true})
+            "state": state,
+            "city": chance.city({country: 'us', state: state})
         }),
         jobId: job.id
     })

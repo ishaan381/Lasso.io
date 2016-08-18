@@ -4,20 +4,20 @@ app.controller('newDescriptionCtrl', function (_, $scope, formlyVersion, $q, $ht
 
     vm.countries = countries.data;
     vm.originalFields = angular.copy(vm.fields);
-
-    function refreshAddresses(address, field) {
-      var promise;
-      if (!address) {
-        promise = $q.when({data: {results: []}});
-      }
-      else {
-        var endpoint = '//maps.googleapis.com/maps/api/geocode/json?components=administrative_area:' + address + '|country:' + vm.model.country
-        promise = $http.get(endpoint);
-      }
-      return promise.then(response => {
-        field.templateOptions.options = response.data.results;
-      });
-    }
+    
+    // function refreshAddresses(address, field) {
+    //   var promise;
+    //   if (!address) {
+    //     promise = $q.when({data: {results: []}});
+    //   }
+    //   else {
+    //     var endpoint = '//maps.googleapis.com/maps/api/geocode/json?components=administrative_area:' + address + '|country:' + vm.model.country
+    //     promise = $http.get(endpoint);
+    //   }
+    //   return promise.then(response => {
+    //     field.templateOptions.options = response.data.results;
+    //   });
+    // }
 
     // function definition
     function onSubmit() {
@@ -72,34 +72,25 @@ app.controller('newDescriptionCtrl', function (_, $scope, formlyVersion, $q, $ht
         }
       },
       {
-        key: 'country',
-        type: 'ui-select-single',
-        className: 'country-field col-md-4',
+        key: 'city',
+        type: 'input',
+        className: 'col-md-4 col-sm-12',
         templateOptions: {
-          optionsAttr: 'bs-options',
-          ngOptions: 'option[to.valueProp] as option in to.options | filter: $select.search',
-          label: 'Country',
-          valueProp: 'code',
-          labelProp: 'name',
-          placeholder: 'Select a country',
-          options: vm.countries,
+          type: 'text',
+          label: 'City',
+          placeholder: 'City',
           required: true
         }
       },
       {
-        key: 'region',
-        type: 'ui-select-single-search',
-        className: 'region-field col-md-4',
+        key: 'state',
+        type: 'input',
+        className: 'col-md-4 col-sm-12',
         templateOptions: {
-          optionsAttr: 'bs-options',
-          ngOptions: 'option[to.valueProp] as option in to.options | filter: $select.search',
-          label: 'Region',
-          valueProp: 'formatted_address',
-          labelProp: 'formatted_address',
+          type: 'text',
+          label: 'State',
           placeholder: 'Search',
-          options: [],
-          refresh: refreshAddresses,
-          refreshDelay: 0
+          required: true
         }
       },
       {
