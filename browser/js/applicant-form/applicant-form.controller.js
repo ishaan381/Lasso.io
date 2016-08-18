@@ -36,11 +36,12 @@ app.controller('applicantFormCtrl', function(_, $rootScope, $scope, formlyVersio
 
     let personalInfo = $scope.application.general;
 
+    let customQs = $scope.application.customFields;
 
     $scope.fields = [{
         noFormControl: true,
         className: 'col-md-12',
-        template: '<h4 class="application-title">SUBMIT YOUR APPLICATION</h4><hr>'
+        template: '<h4 class="section-title">PERSONAL INFO</h4>'
     }];
 
     function generateLinks() {
@@ -49,8 +50,8 @@ app.controller('applicantFormCtrl', function(_, $rootScope, $scope, formlyVersio
             if (inputConfig === 0 || inputConfig === 1) {
                 $scope.fields.push({
                     noFormControl: true,
-                    className: 'col-md-4',
-                    template: '<h4 class="default-input-labels">' + links[link].label + '</h4>'
+                    className: 'col-md-3',
+                    template: '<h5 class="default-input-labels">' + links[link].label + '</h5>'
                 })
                 $scope.fields.push({
                     key: link,
@@ -60,10 +61,14 @@ app.controller('applicantFormCtrl', function(_, $rootScope, $scope, formlyVersio
                         type: 'text',
                         required: (inputConfig === 0) ? true : false
                     }
-
                 })
             }
         }
+        $scope.fields.push({
+          noFormControl: true,
+          className: 'col-md-12',
+          template: '<h4 class="section-title">QUESTIONS</h4>'
+        })
     }
 
     function generatePersonalInfo() {
@@ -72,8 +77,8 @@ app.controller('applicantFormCtrl', function(_, $rootScope, $scope, formlyVersio
             if (fieldConfig === 0 || fieldConfig === 1) {
                 $scope.fields.push({
                     noFormControl: true,
-                    className: 'col-md-4',
-                    template: '<h4 class="default-input-labels">' + personalInfo[field].label + '<span class="required" ng-show=' + (fieldConfig === 0 ? true : false) + '>*</span></h4>'
+                    className: 'col-md-3',
+                    template: '<h5 class="default-input-labels">' + personalInfo[field].label + '<span class="required" ng-show=' + (fieldConfig === 0 ? true : false) + '>*</span></h5>'
                 })
                 $scope.fields.push({
                     key: field,
@@ -86,13 +91,53 @@ app.controller('applicantFormCtrl', function(_, $rootScope, $scope, formlyVersio
                 })
             }
         }
+        $scope.fields.push({
+          noFormControl: true,
+          className: 'col-md-12',
+          template: '<h4 class="section-title">LINKS</h4>'
+        })
+    }
+
+    function generateCustoms() {
+      customQs.forEach(obj => {
+        let outerConfig;
+        if (obj.field === 'text') outerConfig = 'input'
+        if (obj.field === 'textbox') outerConfig = 'textarea'
+        if (obj.field === 'dropdown') outerConfig = 'select'
+        if (obj.field === 'radio' || obj.field === 'dropdown') {
+          obj.advanced.options.map(function (optionObj) {
+            optionObj.name = optionObj.value;
+          })
+        }
+        console.log(obj);
+        $scope.fields.push({
+          noFormControl: true,
+          className: 'col-md-3',
+          template: '<h5 class="default-input-labels">' + obj.basic.question + '</h5>'
+        })
+        $scope.fields.push({
+          key: obj.id,
+          type: outerConfig || obj.field,
+          className: 'col-md-8 default-inputs',
+          templateOptions: {
+            label: '',
+            options: obj.advanced.options,
+            rows: 8,
+            cols: 15
+          }
+        })
+      })
     }
 
     function generateDefaults() {
         generatePersonalInfo();
         generateLinks();
+        generateCustoms();
     }
 
     generateDefaults();
 
 });
+
+
+
