@@ -1,30 +1,32 @@
-app.controller('applicantFormCtrl', function(_, $rootScope, $scope, formlyVersion, $q, $http, $stateParams, job, App, $state, JobApplication, Upload, $timeout) {
+app.directive('upload', function () {
 
-    $rootScope.$broadcast('applicantView');
+    return {
+        restrict: 'E',
+        templateUrl: 'js/common/directives/upload/upload.html',
+        scope: { model: '=ngModel', options: '='},
+        controller: 'uploadCtrl'
+        // controller: function ($scope) {
 
-    console.log(job)
-    $scope.description = JSON.parse(job.jobDescription.fields);
-    let application = JSON.parse(job.jobApplication.fields);
+        //     console.log($scope.options);
 
-    $scope.onSubmit = function(model) {
-        App.create($stateParams.jobId, model)
-            .then(() => $state.go('afterSubmit'));
-    }
+        //     $scope.checked = $scope.data.checked;
+        //     $scope.unchecked = $scope.data.unchecked;
+        //     $scope.current = $scope.unchecked;
 
-    $scope.env = {
-        angularVersion: angular.version.full,
-        formlyVersion: formlyVersion
+        //     $scope.toggleChecked = function () {
+        //         $scope.current = ($scope.unchecked === $scope.current) ? $scope.current = $scope.checked : $scope.current = $scope.unchecked;
+        //         $scope.model = $scope.current;
+        //     }
+
+
+        // }
     };
 
-    $scope.model = {
-    };
+});
 
+app.controller('uploadCtrl', function(_, $rootScope, $scope, formlyVersion, $q, $http, Upload, $timeout) {
 
-
-    $scope.options = {};
-
-    $scope.fields = JobApplication.getFields(application);
-
+    console.log($scope.model);
 
     $scope.$watch('file', function() {
         if ($scope.file != null) {
@@ -43,6 +45,7 @@ app.controller('applicantFormCtrl', function(_, $rootScope, $scope, formlyVersio
                 }
             }).then(function(resp) {
                 console.log('SUCCESS!', resp)
+                $scope.model = resp.data;
                 $timeout(function() {
                     $scope.log = 'file: ' +
                         resp.config.data.file.name +

@@ -19,12 +19,7 @@ app.factory('Job', function($http, $log) {
     Job.fetch = function(id) {
         return $http.get('/api/jobs/' + id)
         .then(res => res.data)
-        .then(job => {
-            return {
-                description: JSON.parse(job.jobDescription.fields),
-                application: JSON.parse(job.jobApplication.fields)
-            }
-        })
+
 
     }
 

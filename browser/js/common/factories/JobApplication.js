@@ -37,7 +37,8 @@ app.factory('JobApplication', function($http) {
   function generatePersonalInfo(personalInfo) {
     for (let field in personalInfo) {
       let fieldConfig = personalInfo[field].value;
-      if (fieldConfig === 0 || fieldConfig === 1) {
+      console.log(personalInfo[field])
+      if ( (fieldConfig === 0 || fieldConfig === 1) && personalInfo[field].label !== 'Resume') {
         fields.push({
           noFormControl: true,
           className: 'col-md-3',
@@ -52,6 +53,20 @@ app.factory('JobApplication', function($http) {
             required: (fieldConfig === 0) ? true : false
           }
         })
+      } else {
+        fields.push({
+          noFormControl: true,
+          className: 'col-md-3',
+          template: '<h5 class="default-input-labels">' + personalInfo[field].label + '<span class="required" ng-show=' + (fieldConfig === 0 ? true : false) + '>*</span></h5>'
+        })
+        fields.push({
+          key: field,
+          type: 'upload',
+          className: 'col-md-8 default-inputs',
+          templateOptions: {
+            type: 'upload'
+          }
+        })
       }
     }
     fields.push({
@@ -62,7 +77,7 @@ app.factory('JobApplication', function($http) {
   }
 
   function generateCustoms(customQs) {
-    customQs.forEach(obj => {
+    if (customQs) customQs.forEach(obj => {
 
       let outerConfig;
 

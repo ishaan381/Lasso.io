@@ -21,7 +21,7 @@ app.controller('editPipelineCtrl', function(_, $scope, formlyVersion, $q, $http,
 
     $scope.$watch('customStages', function(newStage, oldStage) {
         $scope.customStages[0].stages.map((stage, index) => stage.id = index);
-        repopulateStages();∂
+        repopulateStages();
     }, true)
 
     $scope.selectedCb = function(item) {

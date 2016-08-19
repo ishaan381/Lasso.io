@@ -2,6 +2,9 @@ module.exports = {
   "DATABASE_URI": "postgres://localhost:5432/lasso",
   "Email": "llasso1606@gmail.com",
   "Password": "fullstack1606",
+  "AWS_ACCESS_KEY_ID": "AKIAIAVODYJBLIDQ4WAQ",
+  "AWS_SECRET_ACCESS_KEY": "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",
+  "S3_BUCKET": "lasso-uploads",
   "SESSION_SECRET": "Optimus Prime is my real dad",
   "TWITTER": {
     "consumerKey": "INSERT_TWITTER_CONSUMER_KEY_HERE",
