@@ -1,15 +1,32 @@
-navbar {
+.navbar {
+    width: 100%;
+    margin-bottom: 0px;
+    height: 55px;
+
+    .navbar-toggle{ 
+        float: none;
+        margin-top: 12px;
+        margin-right: 0px;
+        .icon-bar{
+        color: black;
+            background-color: black;
+        }
+    }
+    .navbar-nav {
+        float: none;
+    }
 
     display: block;
     background: white;
     font-family: 'Maison Neue Book', HelveticaNeue-Light, "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
     font-weight: 400;
     .container {
-        width: 91%;
+        text-align: center;
+        width: 100%;
+        height: inherit;
         @media (max-width: 850px) {
             width: 100%;
         }
-        padding-top: 15px;
     }
 
     .navbar {
@@ -25,9 +42,6 @@ navbar {
         color: #353238;
         opacity: 0.5;
         font-size: 15px;
-        @media (max-width: 850px) {
-            font-size: 13px;
-        }
         letter-spacing: 2px;
         text-transform: uppercase;
         hr {
@@ -38,13 +52,26 @@ navbar {
             margin-bottom: 0px;
         }
     }
+    .uib-collapse {
+        text-align: center;
+
+        .nav {
+            display: inline-block;
+            margin: 0;
+            padding: 0;
+        }
+    }
+
+    .bottom-line {
+        margin: 0px;
+        margin-top: 0px;
+    }
     .nav > li > a {
+        background-color: white;
+        text-align: center;
         cursor: pointer;
         transition: opacity 0.3s;
         padding-bottom: 0px;
-        @media (max-width: 850px) {
-            padding-left: 0px;
-        }
         &.active {
             opacity: 1;
             hr {
@@ -53,10 +80,20 @@ navbar {
                 height: 1px;
             }
         }
+        @media(max-width: 767px) {
+            color: white;
+            background-color: #706C61;
+            padding-top: 15px
+            &:hover {
+                color: #353238;
+                opacity: 1;
+                background-color: #706C61;
+            }
+        }
         &:hover {
             color: #353238;
             opacity: 1;
-            background-color: white;
+            background-color: #white;
             hr {
                 transition: opacity 0.3s, margin-top 0.3s, height 0.3s;
                 opacity: 1;
@@ -64,14 +101,14 @@ navbar {
                 height: 1px;
             }
         }
-        &:focus {
-            background: none;
-        }
     }
+
     .login-button {
-        float: right;
-        margin-top: 10px;
-        margin-right: 10px;
+        border: none;
+        padding-right: 15px;
+        padding-left: 15px;
+        padding-top: 15px;
+        padding-bottom: 0px;
         background-color: transparent;
         font-size: 15px;
         color: #353238;
@@ -83,15 +120,32 @@ navbar {
         letter-spacing: 2px;
         font-family: 'Maison Neue Book', HelveticaNeue-Light, "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
     }
+
     .login-button:hover {
         transition: opacity 0.3s;
         opacity: 1;
         /*border: 1px solid;*/
         /*background-color: rgba(0, 0, 0, 0.1);*/
     }
+
     .btn.login-button {
-        @media (max-width: 850px) {
-            font-size: 13px;
+        border-radius: 0px;
+        background-color: white;
+        float: right;
+        line-height: inherit;
+        transition: opacity 0.3s;
+
+        @media (max-width: 767px) {
+            color: white;
+            font-size: 15px;
+            float: none;
+            background-color: #706C61;
+            transition: opacity 0.3s;
+            &:hover {
+                color: #353238;
+                opacity: 1;
+                background-color: #706C61 !important;
+            }
         }
         &:active {
             box-shadow: none;
@@ -101,18 +155,10 @@ navbar {
             box-shadow: none;
             opacity: 1;
         }
-        .welcome {
-            float: right;
-            margin-top: 12px;
-            span {
-                color: black;
-                font-size: 16px;
-                margin-right: 5px;
-            }
-            a {
-                color: white;
-                cursor: pointer;
-            }
+        &:hover {
+            color: #353238;
+            opacity: 1;
+            background-color: white;
         }
     }
 }

@@ -19,8 +19,6 @@ app.factory('Job', function($http, $log) {
     Job.fetch = function(id) {
         return $http.get('/api/jobs/' + id)
         .then(res => res.data)
-    
-
     }
 
 

@@ -49,13 +49,12 @@
           link: function(scope, el) {
                   const button = angular.element(el.find('toggle-checkbox')[0])
               }
-              //   controller: [ '$scope', function ($scope) {
-              //     $scope.formOptions = {formState: $scope.formState};
-              //     console.log($scope.formOptions);
-              //     console.log($scope.options);
-              //     $scope.model[$scope.options.key] = $scope.model[$scope.options.key] || [];
+      });
 
-          //   }]
+      formlyConfig.setType({
+          name: 'upload',
+          templateUrl: 'js/formly/upload.html',
+          wrapper: ['bootstrapLabel', 'bootstrapHasError'],
       });
 
   });
