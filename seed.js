@@ -423,9 +423,9 @@ function seed() {
             _jobs = jobs
             return createJobDescriptions(jobs)
         })
-        // .then(function(jobs){
-        //     return createJobApplications(jobs)
-        // })
+        .then(function(jobs){
+            return createJobApplications(jobs)
+        })
         .then(function(jobs){
             return createStages(jobs)
         })

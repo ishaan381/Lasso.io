@@ -9,9 +9,9 @@
             <div class="row stages-row">
                 <div class="col-md-3">
                     APPLIED
-                    <!--                     <div>
+                                        <div>
                         <small>All new applicants start here.</small>
-                    </div> -->
+                    </div>
                 </div>
                 <div class="col-md-9 stages-container">
                     <div class="typesDemo" ng-repeat="list in beginStage">
@@ -34,9 +34,9 @@
             <div class="row stages-row">
                 <div class="col-md-3">
                     STAGES
-                    <!--                     <div>
+                                        <div>
                         <small>Add and order your own stages.</small>
-                    </div> -->
+                    </div>
                 </div>
                 <div class="col-md-9 stages-container">
                     <div class="typesDemo" ng-repeat="list in customStages">
@@ -51,7 +51,7 @@
                                 </dnd-nodrag>
                             </li>
                             <li class="dndPlaceholder">
-                                Drop any <strong>{{list.allowedTypes.join(' or ')}}</strong> here
+                                Drag and drop to order your hiring stages.
                             </li>
                         </ul>
                     </div>
@@ -61,9 +61,10 @@
             <div class="row stages-row">
                 <div class="col-md-3">
                     OFFER
-                    <!--                 <div>
-                        <small>The applicant is hired!</small>
-                    </div> -->
+            <div>
+    <small>The applicant is hired!</small>
+</div>
+
                 </div>
                 <div class="col-md-9 stages-container">
                     <div class="typesDemo" ng-repeat="list in endStage">
@@ -95,7 +96,7 @@
             <pre>{{customStages || json}}</pre>
             <pre>{{endStage || json}}</pre> -->
         </div>
-        <div class="col-md-7">
+        <div class="col-md-7 stages-pipeline">
             <!-- Only show if a stage is selected to edit.-->
             <div ng-hide="selected">
                 Select a stage to customize it's view panels! You can add pre-made interview kits or make your own.

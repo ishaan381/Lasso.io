@@ -1,10 +1,10 @@
 <div ng-controller="panelFormCtrl">
     <div ng-repeat="question in questions" class="question-container">
-        <h4 class="col-md-12 edit-title" editable-text="question.title">{{ question.title || "Click to edit title or question ..." }}</h4>
+        <h3 class="col-md-12 edit-title" editable-text="question.title">{{ question.title || "Click to edit title or question ..." }}</h3>
         <small class="col-md-12 edit-description" editable-text="question.description">{{ question.description || "Click to edit description ..." }}</small>
         <div class="row">
             <div class="col-md-4">
-                <md-select ng-model="question.selectedField" placeholder="Question Type" class="md-no-underline">
+                <md-select md-on-close="closeSelect(question.selectedField)" ng-model="question.selectedField" placeholder="Question Type" class="md-no-underline">
                     <md-option value="text">Text (Single Line)</md-option>
                     <md-option value="textbox">Textbox</md-option>
                     <md-option value="code">Code</md-option>
@@ -16,6 +16,16 @@
                 </md-select>
             </div>
         </div>
+
+        <panel-dropdown ng-model="question.dropdownOptions"></panel-dropdown>
+
+        {{question}}
+        <!-- <div class="col-md-12">
+            <div class="multiple-choice" ng-show="question.selectedField === 'radio'">
+            <div class="col-md-3">circle</div>
+            <div class="col-md-9"><input ng-model="question.options">Add Option</input></div>
+            </div>
+        </div> -->
     </div>
     <md-button class="md-raised add-question-button" ng-click="addQuestion()"><i class="fa fa-plus-circle pr-5" aria-hidden="true"></i> Add An Interview Question</md-button>
 </div>
