@@ -1,5 +1,4 @@
 app.factory('JobApplication', function($http) {
-  var JobApplication = {};
 
   let fields = [{
     noFormControl: true,

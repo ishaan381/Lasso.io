@@ -2,8 +2,10 @@ app.controller('applicantFormCtrl', function(_, $rootScope, $scope, formlyVersio
 
   $rootScope.$broadcast('applicantView');
 
-  $scope.description = job.description;
-  let application = job.application;
+  console.log(job);
+
+  $scope.description = JSON.parse(job.jobDescription.fields);
+  let application = JSON.parse(job.jobApplication.fields);
 
   $scope.onSubmit = function(model) {
     App.create($stateParams.jobId, model)
