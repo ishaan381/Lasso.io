@@ -18,7 +18,11 @@ app.controller('panelFormCtrl', function(_, $scope, formlyVersion, $log, $q, $ht
     $scope.$parent.$watch('tabRemoveToggle', reloadForm)
 
     $scope.addQuestion = function() {
-        $scope.questions.push({ title: "click to edit title or question", description: "click to edit description", selectedField: "text" })
+        $scope.questions.push({ title: "Edit Question", description: "Add Details / Description", selectedField: "text" })
+    }
+
+    $scope.closeSelect = function (selected) {
+        console.log(selected);
     }
 
     $scope.fields = [
