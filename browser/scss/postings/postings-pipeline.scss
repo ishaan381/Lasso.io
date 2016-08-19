@@ -1,23 +1,29 @@
 #edit-pipeline {
-
+    font-family: 'Open Sans';
+    md-select {
+        font-family: 'Open Sans';
+         margin-left: 15px;
+    }
+    .ta-root.focussed > .ta-scroll-window.form-control {
+        border-color: none;
+        box-shadow: none;
+    }
     .job-editor {
-        background-color: #f2f2f2;
         border: none;
         margin-bottom: none;
         box-shadow: none;
         border-top: none;
     }
     md-content {
-        max-height: 500px;
+        max-height: 800px;
     }
-
     text-angular {
-      button {
-        border: 0;
-      }
-      .btn-toolbar {
-        margin-top: 10px;
-      }
+        button {
+            border: 0;
+        }
+        .btn-toolbar {
+            margin-top: 10px;
+        }
     }
     .add-question-button {
         i {
@@ -34,8 +40,8 @@
     }
     .question-container {
         margin-top: 20px;
-        background-color: #f2f2f2;
-        padding: 20px;
+        padding-top: 10px;
+        padding-left: 10px;
         .edit-title {
             margin-bottom: 20px;
         }
@@ -50,6 +56,9 @@
         .editable-buttons button {
             outline: none;
         }
+        .editable-click {
+            border-bottom: none;
+        }
     }
     .editable-empty {
         color: #236690;
@@ -62,15 +71,36 @@
 }
 
 .header {
-    font-family: Meta Medium;
+    font-family: Open Sans;
     margin-bottom: 35px;
 }
 
+.stages-pipeline {
+    background-color: #f3f3f3;
+    padding: 30px;
+    md-content {
+        background-color: #f3f3f3;
+    }
+    .question-container {
+        background-color: white;
+        border-radius: 5px;
+    }
+}
+
 .stages-boxes {
-    font-family: 'Maison Neue Book', HelveticaNeue-Light, "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+    font-family: 'Open Sans', HelveticaNeue-Light, "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
     letter-spacing: 2px;
+    margin-top: 30px;
+    small {
+        letter-spacing: normal;
+    }
+    .dndPlaceholder {
+        letter-spacing: normal;
+    }
     .typesDemo {
+        font-family: 'Open Sans';
         .input-sm {
+            font-family: 'Open Sans';
             border: none;
             box-shadow: none;
             display: inline;
