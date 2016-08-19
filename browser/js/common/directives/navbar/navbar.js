@@ -22,8 +22,8 @@ app.directive('navbar', function($rootScope, AuthService, AUTH_EVENTS, $state, $
                 });
             };
 
-            scope.invitePrompt = function(ev) {
-                var modalInstance = $uibModal.open({
+            scope.invitePrompt = function() {
+                $uibModal.open({
                     animation: true,
                     templateUrl: 'js/common/directives/navbar/invite.html',
                     controller: 'ModalInstaCtrl',
@@ -67,12 +67,12 @@ app.controller('ModalInstaCtrl', function($scope, $uibModalInstance, $http, Auth
             .then(function(user) {
                 return $http.post('/api/code', { email: email, companyId: user.companyId })
             })
-            .then(function(response) {
+            .then(function() {
                 $scope.message = "Email with verification code sent to: " + email;
                 $scope.notsent = false;
                 $timeout(function(){$uibModalInstance.dismiss('cancel')}, 1000)
             })
-            .catch(function(err) {
+            .catch(function() {
                 $scope.message = "Error! please try again"
 
             })

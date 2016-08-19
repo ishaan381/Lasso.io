@@ -20,15 +20,15 @@ router.param('id', function(req, res, next, id){
   .catch(next);
 });
 
-router.get('/:id', function(req, res, next){
+router.get('/:id', function(req, res){
   res.send(req.requestedStage);
 });
 
-router.post('/', check.pageAdmin, function(req, res, next){
+router.post('/', function(req, res, next){
   var stages = req.body.map(stage => Stage.create(stage));
 
   Promise.all(stages)
-  .then(function(stages){
+  .then(function(){//took stages out of here b/c the scope already had a stages variable
     res.status(201);
     res.send(stages);
   })

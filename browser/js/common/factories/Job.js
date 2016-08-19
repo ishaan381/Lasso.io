@@ -9,15 +9,6 @@ app.factory('Job', function($http, $log) {
             })
     }
 
-    //we can use this for searching all jobs, basically the roundabout method
-    Job.queryAll = function(params) {
-        console.log(jQuery.param(params));
-        return $http.get('/api/jobs?' + jQuery.param(params))
-            .then(function(response) {
-                return response.data;
-            })
-    }
-
     Job.getAppsForJob = function(id) {
         return $http.get('/api/jobs/'+ id +'/apps')
         .then(function(resp){
@@ -27,22 +18,9 @@ app.factory('Job', function($http, $log) {
 
     Job.fetch = function(id) {
         return $http.get('/api/jobs/' + id)
-            .then(function(response) {
-                return response.data;
-            })
-    }
+        .then(res => res.data)
 
-    //not sure if we also have to specify a company field
-    //also not sure if this belongs in the Job application factory
-    Job.apply = function(job, app) {
-        return $http.post('api/applications', {
-            jobId: job.id,
-            fields: app.fields
-        })
-        .then(function(resp) {
-            $log.info(resp.data)
-            return resp.data
-        })
+
     }
 
 

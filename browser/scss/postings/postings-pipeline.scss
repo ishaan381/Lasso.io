@@ -1,67 +1,130 @@
-  .stages-boxes {
-      font-family: 'Maison Neue Book', HelveticaNeue-Light, "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
-      letter-spacing: 2px;
-      .typesDemo {
-          .input-sm {
-              border: none;
-              box-shadow: none;
-              display: inline;
-              width: 90%;
-              letter-spacing: 2px;
-          }
+#edit-pipeline {
 
-          .fa-times {
+    .job-editor {
+        background-color: #f2f2f2;
+        border: none;
+        margin-bottom: none;
+        box-shadow: none;
+        border-top: none;
+    }
+    md-content {
+        max-height: 500px;
+    }
+
+    text-angular {
+      button {
+        border: 0;
+      }
+      .btn-toolbar {
+        margin-top: 10px;
+      }
+    }
+    .add-question-button {
+        i {
+            font-size: 15px;
+        }
+        padding: 0 20px;
+        background-color: #236690;
+        color: white;
+        margin: 0;
+        margin-top: 20px;
+        &:hover {
+            background-color: lighten(#236690, 10%) !important;
+        }
+    }
+    .question-container {
+        margin-top: 20px;
+        background-color: #f2f2f2;
+        padding: 20px;
+        .edit-title {
+            margin-bottom: 20px;
+        }
+        .edit-description {}
+        .editable-wrap .editable-controls > input {
+            margin-bottom: 10px;
+            outline: 0;
+            border-radius: 0;
+            width: 100%;
+            box-shadow: none;
+        }
+        .editable-buttons button {
+            outline: none;
+        }
+    }
+    .editable-empty {
+        color: #236690;
+        font-style: normal;
+    }
+}
+
+.add-question {
+    margin-bottom: 150px;
+}
+
+.header {
+    font-family: Meta Medium;
+    margin-bottom: 35px;
+}
+
+.stages-boxes {
+    font-family: 'Maison Neue Book', HelveticaNeue-Light, "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+    letter-spacing: 2px;
+    .typesDemo {
+        .input-sm {
+            border: none;
+            box-shadow: none;
+            display: inline;
+            width: 90%;
+            letter-spacing: 2px;
+        }
+        .fa-times {
             font-size: 15px;
             color: brown;
-
             &:hover {
-              transition: color 0.3s;
-              color: crimson;
+                transition: color 0.3s;
+                color: crimson;
             }
-          }
-          ul[dnd-list] li {
-              border-radius: 0;
-              /*         &:active {
+        }
+        ul[dnd-list] li {
+            border-radius: 0;
+            /*         &:active {
             background-color: white;
           }*/
-          }
-          ul[dnd-list] .dndDragging {
-              border-color: #236690;
-              z-index: 1000;
-          }
-          i {
-              margin-top: 4px;
-              font-size: 15px;
-          }
-      }
-      .add-stage-button {
-          i {
-              font-size: 15px;
-          }
-          padding: 0 20px;
-          background-color: #236690;
-          color: white;
-          margin: 0;
-
-          &:hover {
-            background-color: lighten(#236690, 10%) !important;
-          }
-      }
-
-      .submit-stages-button {
+        }
+        ul[dnd-list] .dndDragging {
+            border-color: #236690;
+            z-index: 1000;
+        }
+        i {
+            margin-top: 4px;
+            font-size: 15px;
+        }
+    }
+    .add-stage-button {
+        i {
+            font-size: 15px;
+        }
         padding: 0 20px;
-          background-color: #A61C3C;
-          color: white;
-          margin: 0;
-
-          &:hover {
+        background-color: #236690;
+        color: white;
+        margin: 0;
+        &:hover {
+            background-color: lighten(#236690, 10%) !important;
+        }
+    }
+    .submit-stages-button {
+        padding: 0 20px;
+        background-color: #A61C3C;
+        color: white;
+        margin: 0;
+        &:hover {
             background-color: #e91e63 !important;
-          }
-      }
-      .stages-row {
+        }
+    }
+    .stages-row {
         margin-bottom: 35px;
-        width: 80%;
+        // width: 80%;
         margin-left: auto;
         margin-right: auto;
-      }
-  }
+    }
+}

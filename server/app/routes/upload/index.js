@@ -2,20 +2,20 @@
 var router = require('express').Router();
 module.exports = router;
 
-var fs = require('fs');
-var S3FS = require('s3fs');
+// var fs = require('fs');
+// var S3FS = require('s3fs');
 
-var s3fsImpl = new S3FS('lasso-uploads', {
-  accessKeyId: "AKIAIAVODYJBLIDQ4WAQ",
-  secretAccessKey: "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"
-})
+// var s3fsImpl = new S3FS('lasso-uploads', {
+//   accessKeyId: "AKIAIAVODYJBLIDQ4WAQ",
+//   secretAccessKey: "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"
+// })
 
-s3fsImpl.create();
+// s3fsImpl.create();
 
-var multiparty = require('connect-multiparty');
-var multipartyMiddleware = multiparty();
+// var multiparty = require('connect-multiparty');
+// var multipartyMiddleware = multiparty();
 
-router.use(multipartyMiddleware);
+// router.use(multipartyMiddleware);
 
 
 // var multer = require('multer'),
@@ -34,19 +34,40 @@ router.use(multipartyMiddleware);
 //   })
 // })
 
+var multer = require('multer');
+var crypto = require('crypto');
+var mime = require('mime');
+
+var storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, './public/uploads/')
+  },
+  filename: function (req, file, cb) {
+    crypto.pseudoRandomBytes(16, function (err, raw) {
+      cb(null, raw.toString('hex') + Date.now() + '.' + mime.extension(file.mimetype));
+    });
+  }
+});
+
+router.use(multer({storage : storage}).single('file'));
+
+
 router.post('/', function(req, res, next) {
-  var file = req.files.file;
-
-  var readStream = fs.createReadStream(file.path);
-
-  return s3fsImpl.writeFile(file.originalFilename, readStream)
-  .then(function(data) {
-    console.log(data)
-    fs.unlink(file.path, function(err) {
-      if (err) console.error(err)
-    })
-    res.send('OK!')
-  })
-
+  res.send(req.file.filename)
 })
 
+
+
+
+// var file = req.files.file;
+
+//   var readStream = fs.createReadStream(file.path);
+
+//   return s3fsImpl.writeFile(file.originalFilename, readStream)
+//   .then(function(data) {
+//     console.log(data)
+//     fs.unlink(file.path, function(err) {
+//       if (err) console.error(err)
+//     })
+//     res.send('OK!')
+//   })

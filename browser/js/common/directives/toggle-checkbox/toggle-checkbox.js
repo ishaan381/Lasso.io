@@ -4,10 +4,6 @@ app.directive('toggleCheckbox', function () {
         restrict: 'E',
         templateUrl: 'js/common/directives/toggle-checkbox/toggle-checkbox.html',
         scope: { data: '=data', model: '=ngModel', options: '='},
-        link: function (scope) {
-            // console.log(scope.model);
-            //scope.model = "bye"
-        },
         controller: function ($scope) {
 
             console.log($scope.options);

@@ -1,0 +1,11 @@
+<div ng-controller="panelMenuCtrl">
+    <div class="col-md-12">
+    	<md-input-container class="col-md-12">
+        <label for="label">Enter name for helper (e.g. Technical Interview, Interview Instructions)</label>
+        <input type="text" id="label" ng-model="helperTitle">
+    </md-input-container>
+    </div>
+    
+    <md-button class="md-raised add-question-button" ng-click="switchToNotesPanel()"><i class="fa fa-plus-circle pr-5" aria-hidden="true"></i> Add Notes or Instructions</md-button>
+    <md-button class="md-raised add-question-button" ng-click="switchToFormPanel()"><i class="fa fa-plus-circle pr-5" aria-hidden="true"></i> Add Interview Kit </md-button>
+</div>
