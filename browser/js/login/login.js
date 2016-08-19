@@ -8,7 +8,7 @@ app.config(function ($stateProvider) {
 
 });
 
-app.controller('LoginCtrl', function ($scope, AuthService, $state, $log) {
+app.controller('LoginCtrl', function ($scope, AuthService, $state, $log, Upload, $timeout) {
 
     $scope.login = {};
     $scope.signup = {};
@@ -53,7 +53,4 @@ app.controller('LoginCtrl', function ($scope, AuthService, $state, $log) {
 
 
     }
-
-
-
 });
