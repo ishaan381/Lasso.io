@@ -2,9 +2,12 @@
 </subnav>
 <div class="job-editor-container">
     <div class="boxed job-editor col-md-12 col-sm-12">
+
+                <div class="col-md-12">
+                <h1 class="header">Step 2: Customize your application form.</h1>
+            </div>
         <div id="postings-application">
             <div id="postings-application-edit" class="col-md-6">
-                <h1>Customize your application form</h1>
                 <form ng-submit="onSubmit()" name="form" novalidate>
                     <formly-form model="model" fields="fields" options="options" form="form">
                         <div class="form-actions">
@@ -15,8 +18,9 @@
                 <!--                 <h2>Form Data</h2>
  -->
 <!--                                 <pre>{{lists | json}}</pre>
- -->                <pre>{{model | json}}</pre>
-</div>
+ -->                
+<!--  <pre>{{model | json}}</pre>
+ --></div>
             <div id="postings-application-preview" ng-controller="previewApplicationCtrl" class="col-md-6">
                 <div id="postings-application-preview-container">
                     <form ng-submit="onSubmit()" name="form" novalidate>

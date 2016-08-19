@@ -1,6 +1,6 @@
 'use strict';
 
-window.app = angular.module('FullstackGeneratedApp', ['fsaPreBuilt', 'ui.router', 'ui.bootstrap', 'ngAnimate', 'formly', 'formlyRepeatingSection','formlyBootstrap', 'ui.select', 'ngSanitize', 'textAngular', 'angular-parallax', 'ngMaterial', 'dndLists']);
+window.app = angular.module('FullstackGeneratedApp', ['fsaPreBuilt', 'ui.router', 'ui.bootstrap', 'ngAnimate', 'formly', 'formlyRepeatingSection','formlyBootstrap', 'ui.select', 'ngSanitize', 'textAngular', 'angular-parallax', 'ngMaterial', 'dndLists', 'xeditable']);
 
 app.config(function ($urlRouterProvider, $locationProvider) {
     // This turns off hashbang urls (/#about) and changes it to something normal (/about)
@@ -19,7 +19,9 @@ app.constant('_', window._)
 app.run(function ($rootScope) {
      $rootScope._ = window._;
   });
-
+app.run(function(editableOptions) {
+  editableOptions.theme = 'bs3'; // bootstrap3 theme. Can be also 'bs2', 'default'
+});
 // This app.run is for controlling access to specific states.
 app.run(function ($rootScope, AuthService, $state) {
 
