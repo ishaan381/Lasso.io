@@ -19,7 +19,7 @@ router.param('id', function(req, res, next, id){
 	.catch(next);
 });
 
-router.get('/:id', function(req, res) {
+router.get('/:id',(check.admin || check.pageAdmin || check.access), function(req, res) {
 	res.send(req.requestedUser);
 });
 
