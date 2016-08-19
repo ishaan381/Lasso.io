@@ -13,6 +13,7 @@ router.use('/comments', require('./comments'));
 router.use('/applications', require('./applications'));
 router.use('/code', require('./code'));
 router.use('/stages', require('./stages'));
+router.use('/upload', require('./upload'));
 
 
 // Make sure this is after all of
