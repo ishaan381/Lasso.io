@@ -24,6 +24,17 @@ router.get('/:id', function(req, res){
   res.send(req.requestedStage);
 });
 
+router.get('/:id/candidates', function(req, res, next){
+  req.requestedStage.getApplication()
+  .then(applications => {
+    res.send(applications.map(app => {
+      app.fields = JSON.parse(app.fields);
+      return app;
+    })
+    )})
+  .catch(next);
+});
+
 router.post('/', function(req, res, next){
   var stages = req.body.map(stage => Stage.create(stage));
 

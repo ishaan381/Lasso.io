@@ -5,15 +5,5 @@ app.directive('pipelineSubnav', function () {
       scope: {
         stages: '='
       }
-      // link: function (scope) {
-      //   scope.stages = [
-      //     { label: 'Pool'},
-      //     { label: 'Recruiter Screen'},
-      //     { label: 'Phone Screen'},
-      //     { label: 'Skype Interview'},
-      //     { label: 'On-site Interview'},
-      //     { label: 'Offer'}
-      //   ];
-      // }
     }
 });
