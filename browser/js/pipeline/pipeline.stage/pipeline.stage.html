@@ -1,0 +1,16 @@
+<div class="pipe-body-wrapper">
+  <div class="col-sm-3 applicantBar">
+    <div class="row app-bar">
+      <div class="col-md-6 app-section1">
+        <a ng-click="qualified=true">Qualified</a>
+      </div>
+      <div class="col-md-6 app-section2">
+        <a ng-click="qualified=false">Disqualified</a>
+      </div>
+    </div>
+    <hr>
+    <div ng-show="qualified" ng-repeat="candidate in candidates | filter: filterByQualified">{{ candidate.fields }}</div>
+    <div ng-hide="qualified" ng-repeat="candidate in candidates | filter: filterByDisqualified">{{ candidate.fields }}</div>
+  </div>
+  <div class="col-sm-9" ui-view></div>
+</div>
