@@ -1,4 +1,4 @@
-app.controller('applicantFormCtrl', function(_, $rootScope, $scope, formlyVersion, $q, $http, $stateParams, job, App, $state, JobApplication) {
+app.controller('applicantFormCtrl', function($rootScope, $scope, formlyVersion, $stateParams, job, App, $state, JobApplication) {
 
   $rootScope.$broadcast('applicantView');
 
