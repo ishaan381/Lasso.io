@@ -9,7 +9,7 @@
       </div>
     </div>
     <hr>
-    <div ng-show="qualified" ng-repeat="candidate in candidates | filter: filterByQualified">{{ candidate.fields }}</div>
+    <div ng-show="qualified" ng-repeat="candidate in candidates | filter: filterByQualified" ui-sref="pipeline.stage.candidate({candidateId: candidate.id})">{{ candidate.fields }}</div>
     <div ng-hide="qualified" ng-repeat="candidate in candidates | filter: filterByDisqualified">{{ candidate.fields }}</div>
   </div>
   <div class="col-sm-9" ui-view></div>
