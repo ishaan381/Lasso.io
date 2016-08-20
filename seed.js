@@ -306,7 +306,7 @@ function createStages(jobs) {
 
 function randomApp(stages) {
     return App.build({
-        fields: JSON.stringify({
+        application: JSON.stringify({
             "fullNameField": chance.name(),
             "emailField": chance.email(),
             "phoneField": chance.phone(),

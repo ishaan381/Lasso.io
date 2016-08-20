@@ -6,8 +6,35 @@
     li {
       display: inline-block;
       float: none;
-      margin: 0 20px;
       vertical-align: middle;
+    }
+  }
+}
+
+
+.pipeline-subnav {
+  font-family: 'Meta Medium Caps';
+  width: 75%;
+  float: right;
+  height: 100px;
+  font-size: 16px;
+  .stage-label {
+    font-family: Meta Medium Caps;
+  }
+
+  .container {
+    height: 100%;
+    .my-navbar {
+      height: 100%;
+    }
+    .nav-center {
+      height: 100%;
+    }
+    li {
+      height: 100%;
+      a {
+        height: 100%;
+      }
     }
   }
 }

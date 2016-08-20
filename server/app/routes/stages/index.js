@@ -28,7 +28,7 @@ router.get('/:id/candidates', function(req, res, next){
   req.requestedStage.getApplication()
   .then(applications => {
     res.send(applications.map(app => {
-      app.fields = JSON.parse(app.fields);
+      app.application = JSON.parse(app.application);
       return app;
     })
     )})

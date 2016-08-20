@@ -7,6 +7,7 @@ app.factory('Stage', function ($http) {
   Stage.getCandidates = function (id) {
     return $http.get('/api/stages/' + parseInt(id) + '/candidates')
     .then(res => {
+
       cache = res.data;
       return cache;
     });

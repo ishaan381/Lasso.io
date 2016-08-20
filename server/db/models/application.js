@@ -3,7 +3,7 @@ var db = require('../_db');
 
 
 module.exports = db.define('application', {
-  fields: {
+  application: {
     type: Sequelize.JSON,
     allowNull: false
   },

@@ -1,16 +1,79 @@
-<div class="pipe-body-wrapper">
-  <div class="col-sm-3 applicantBar">
+<div class="col-sm-3 applicantBar">
     <div class="row app-bar">
-      <div class="col-md-6 app-section1">
-        <a ng-click="qualified=true">Qualified</a>
-      </div>
-      <div class="col-md-6 app-section2">
-        <a ng-click="qualified=false">Disqualified</a>
-      </div>
+        <a ng-click="qualified=true">
+            <div class="col-md-6 app-section1" ng-class="{'app-section-clicked': !qualified}">
+                Qualified
+            </div>
+        </a>
+        <a ng-click="qualified=false">
+            <div class="col-md-6 app-section2" ng-class="{'app-section-clicked': qualified}">
+                Disqualified
+            </div>
+        </a>
     </div>
-    <hr>
-    <div ng-show="qualified" ng-repeat="candidate in candidates | filter: filterByQualified" ui-sref="pipeline.stage.candidate({candidateId: candidate.id})">{{ candidate.fields }}</div>
-    <div ng-hide="qualified" ng-repeat="candidate in candidates | filter: filterByDisqualified">{{ candidate.fields }}</div>
-  </div>
-  <div class="col-sm-9" ui-view></div>
+    <div class="app-filter-container col-md-12">
+        <div class="app-filter col-md-8"><i class="fa fa-filter pr-10" aria-hidden="true"></i><span><input class="filter-input" placeholder="Filter by name or #tag" ng-model="nameFilter"></input></span></div>
+        <div class="app-sort col-md-4">
+            <ui-select ng-model="sortBy.selected" theme="selectize" title="Choose a person">
+                <ui-select-match placeholder="Sort by ...">{{$select.selected.title}}</ui-select-match>
+                <ui-select-choices repeat="item in sortSelection">
+                    <div ng-bind-html="item.title"></div>
+                </ui-select-choices>
+            </ui-select>
+        </div>
+    </div>
+    {{nameFilter}}
+    <div ng-show="qualified" ng-repeat="candidate in candidates | filter: filterByQualified | filter: filterByName">
+        <div class="candidate-block col-md-12">
+            <div class="candidate-chart col-md-3">
+                <canvas id="doughnut" class="chart chart-doughnut" chart-data="data" chart-options="options" chart-labels="labels">
+                </canvas>
+            </div>
+            <div class="candidate-essential-info col-md-7">
+                <div class="candidate-name">
+                    {{candidate.application.fullNameField}}
+                </div>
+                <div class="candidate-tags">
+                    #sample tag
+                </div>
+                <div class="candidate-source">
+                    from lasso.io : 11 days ago
+                </div>
+            </div>
+            <div class="candidate-links col-md-2">
+                <a ng-show="candidate.application.linkedInLinkField" href="{{candidate.application.linkedInLinkField}}"><i class="fa fa-linkedin-square" aria-hidden="true"></i></a>
+                <a ng-show="candidate.application.githubLinkField" href="{{candidate.application.githubLinkField}}"><i class="fa fa-github" aria-hidden="true"></i></a>
+                <a ng-show="candidate.application.twitterLinkField" href="{{candidate.application.twitterLinkField}}"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                <a ng-show="candidate.application.otherLinkField" href="{{candidate.application.otherLinkField}}"><i class="fa fa-share" aria-hidden="true"></i></a>
+                <a ng-show="candidate.application.portfolioLinkField" href="{{candidate.application.portfolioLinkField}}"><i class="fa fa-desktop smaller" aria-hidden="true"></i></a>
+            </div>
+        </div>
+        {{ candidate.application }}</div>
+    <div ng-hide="qualified" ng-repeat="candidate in candidates | filter: filterByDisqualified | filter: filterByName">
+        <div class="candidate-block col-md-12">
+            <div class="candidate-chart col-md-3">
+                <canvas id="doughnut" class="chart chart-doughnut" chart-data="data" chart-options="options" chart-labels="labels">
+                </canvas>
+            </div>
+            <div class="candidate-essential-info col-md-7">
+                <div class="candidate-name">
+                    {{candidate.application.fullNameField}}
+                </div>
+                <div class="candidate-tags">
+                    #sample tag
+                </div>
+                <div class="candidate-source">
+                    from lasso.io : 11 days ago
+                </div>
+            </div>
+            <div class="candidate-links col-md-2">
+                <a ng-show="candidate.application.linkedInLinkField" href="{{candidate.application.linkedInLinkField}}"><i class="fa fa-linkedin-square" aria-hidden="true"></i></a>
+                <a ng-show="candidate.application.githubLinkField" href="{{candidate.application.githubLinkField}}"><i class="fa fa-github" aria-hidden="true"></i></a>
+                <a ng-show="candidate.application.twitterLinkField" href="{{candidate.application.twitterLinkField}}"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                <a ng-show="candidate.application.otherLinkField" href="{{candidate.application.otherLinkField}}"><i class="fa fa-share" aria-hidden="true"></i></a>
+                <a ng-show="candidate.application.portfolioLinkField" href="{{candidate.application.portfolioLinkField}}"><i class="fa fa-desktop smaller" aria-hidden="true"></i></a>
+            </div>
+        </div>
+    </div>
 </div>
+<div class="col-sm-9" ui-view></div>
