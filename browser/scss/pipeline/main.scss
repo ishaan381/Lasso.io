@@ -155,6 +155,27 @@
       }
     }
 
-
   }
+  /*subnav*/
+      .candidate-main {
+        height: calc(100vh - 100px); 
+
+        .candidate-toolbar {
+          height: 10%;
+          margin-top: 2%;
+          margin-bottom: 2%;
+          width: 95%;
+          margin-left: auto;
+          margin-right: auto;
+        }
+
+        .candidate-panels {
+          height: 85%;
+          margin-bottom: 1%;
+          width: 95%;
+          margin-left: auto;
+          margin-right: auto;
+        }
+
+    }
 }
