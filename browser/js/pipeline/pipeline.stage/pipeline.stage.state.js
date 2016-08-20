@@ -1,7 +1,12 @@
 app.config($stateProvider => {
   $stateProvider.state('pipeline.stage', {
-    url: '/?stageId',
+    url: '/stage/:stageId?qualified',
     templateUrl: '/js/pipeline/pipeline.stage/pipeline.stage.html',
-    controller: 'stageCtrl'
+    controller: 'stageCtrl',
+    resolve: {
+    	hi: function ($stateParams) {
+    		console.log($stateParams.qualified);
+    	}
+    }
   });
 });

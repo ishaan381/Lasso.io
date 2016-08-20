@@ -1,11 +1,11 @@
 <div class="col-sm-3 applicantBar">
     <div class="row app-bar">
-        <a ng-click="qualified=true">
+        <a ui-sref="pipeline.stage({stageId: 2, qualified: true})">
             <div class="col-md-6 app-section1" ng-class="{'app-section-clicked': !qualified}">
                 Qualified
             </div>
         </a>
-        <a ng-click="qualified=false">
+        <a ui-sref="pipeline.stage({stageId: 2, qualified: false})">
             <div class="col-md-6 app-section2" ng-class="{'app-section-clicked': qualified}">
                 Disqualified
             </div>
@@ -22,8 +22,7 @@
             </ui-select>
         </div>
     </div>
-    {{nameFilter}}
-    <div ng-show="qualified" ng-repeat="candidate in candidates | filter: filterByQualified | filter: filterByName">
+    <div ng-show="qualified" ng-repeat="candidate in candidates | filter: filterByQualified | filter: filterByName" ui-sref="pipeline.stage.candidate({candidateId: candidate.id, test: 1})">
         <div class="candidate-block col-md-12">
             <div class="candidate-chart col-md-3">
                 <canvas id="doughnut" class="chart chart-doughnut" chart-data="data" chart-options="options" chart-labels="labels">
@@ -48,8 +47,8 @@
                 <a ng-show="candidate.application.portfolioLinkField" href="{{candidate.application.portfolioLinkField}}"><i class="fa fa-desktop smaller" aria-hidden="true"></i></a>
             </div>
         </div>
-        {{ candidate.application }}</div>
-    <div ng-hide="qualified" ng-repeat="candidate in candidates | filter: filterByDisqualified | filter: filterByName">
+    </div>
+    <div ng-hide="qualified" ng-repeat="candidate in candidates | filter: filterByDisqualified | filter: filterByName" ui-sref="pipeline.stage.candidate({candidateId: candidate.id})">
         <div class="candidate-block col-md-12">
             <div class="candidate-chart col-md-3">
                 <canvas id="doughnut" class="chart chart-doughnut" chart-data="data" chart-options="options" chart-labels="labels">
@@ -76,4 +75,4 @@
         </div>
     </div>
 </div>
-<div class="col-sm-9" ui-view></div>
+<div class="col-sm-9 candidate-main" ui-view></div>
