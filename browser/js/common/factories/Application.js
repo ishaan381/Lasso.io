@@ -1,10 +1,11 @@
 app.factory('App', function($http) {
     var App = {};
 
-    App.create = function(jobId, model) {
+    App.create = function(jobId, model, jobAppId) {
         return $http.post('api/applications', {
             jobId: jobId,
-            fields: model
+            application: model,
+            jobApplicationId: jobAppId
         })
         .then(res => res.data);
     }

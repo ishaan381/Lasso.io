@@ -1,0 +1,24 @@
+.user-edit-submit {
+	width: 100%;
+}
+
+.user-edit-form {
+	margin-right: 10%;
+	margin-left: 10%;
+}
+.edit-panel {
+	font-family: 'Open Sans', sans-serif;
+	margin-left: 10%;
+	margin-right: 10%;
+	margin-top: 20px;
+	padding-top: 15px;
+}
+
+.user-edit-header {
+	margin-bottom: 50px;
+	text-align: center;
+}
+
+md-input-container:not(.md-input-invalid).md-input-focused .md-input {
+	border-color: black;
+}
