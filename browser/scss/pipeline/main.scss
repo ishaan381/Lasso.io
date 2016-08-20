@@ -113,12 +113,34 @@
     .candidate-main {
         height: calc(100vh - 100px);
         .candidate-toolbar {
+            font-family: 'Meta Medium';
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: white;
             height: 10%;
             margin-top: 2%;
             margin-bottom: 2%;
             width: 95%;
             margin-left: auto;
             margin-right: auto;
+            border-radius: 5px;
+            p {
+                margin: 0;
+                letter-spacing: 2px;
+            }
+            a {
+                padding-right: 6px;
+            }
+            .reject {
+                color: #d50000;
+            }
+            .move-on {
+                color: #1b5e20;
+            }
+            .between {
+                color: #9e9e9e;
+            }
         }
         .candidate-panels {
             height: 85%;
@@ -135,16 +157,14 @@
         height: 95%;
         border-top: 8px solid #10A8DC;
         padding: 0;
-
         .app-section1 {
-          outline: none;
+            outline: none;
         }
-
         .app-sort {
-          float:right;
+            float: right;
         }
         .app-filter-container {
-          border-bottom: 0;
+            border-bottom: 0;
         }
     }
 }
