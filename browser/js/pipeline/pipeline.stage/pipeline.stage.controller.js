@@ -1,4 +1,7 @@
-app.controller('stageCtrl', function ($scope, $state, Stage, $stateParams, $uibModal, $log) {
+app.controller('stageCtrl', function ($scope, $state, Stage, $stateParams, $uibModal, $log, stage) {
+
+  $scope.currentStage = stage;
+  $scope.currentStageId = $stateParams.stageId
 
   Stage.getCandidates($stateParams.stageId)
   .then(cache => {
