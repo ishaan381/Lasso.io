@@ -4,7 +4,7 @@ app.controller('newDescriptionCtrl', function (_, $scope, $state, formlyVersion,
 
     vm.countries = countries.data;
     vm.originalFields = angular.copy(vm.fields);
-    
+
     // function refreshAddresses(address, field) {
     //   var promise;
     //   if (!address) {
@@ -73,6 +73,7 @@ app.controller('newDescriptionCtrl', function (_, $scope, $state, formlyVersion,
           type: 'text',
           label: 'Department',
           placeholder: 'Department',
+          required: true,
           disabled: false
         }
       },

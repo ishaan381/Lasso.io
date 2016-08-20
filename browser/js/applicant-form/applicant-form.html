@@ -1,5 +1,4 @@
 <div class="forms-container">
-<<<<<<< HEAD
   <div class="row">
       <h1>{{ description.title }}</h1>
       <h4 class="otherInfo">{{ description.city }}, {{ description.state }} | {{ description.department }} | {{ description.commitment }}</h4>
@@ -15,25 +14,4 @@
     </form>
   </div>
   <pre>{{model | json}}</pre>
-=======
-    <div class="row">
-        <h1>{{ description.title }}</h1>
-        <h4 class="otherInfo">{{ description.region }}, {{ description.country }} | {{ description.department }} | {{ description.commitment }}</h4>
-        <hr>
-    </div>
-    <div class="row">
-        <!-- <div ngf-drop ngf-select ng-model="file" class="drop-box" ngf-drag-over-class="'dragover'" accept="application/pdf" ngf-pattern="'application/pdf'"> Drop pdfs or images here or click to upload
-        </div> -->
-        <div ngf-no-file-drop> File Drag / Drop is not supported for this browser
-        </div>
-        <form ng-submit="onSubmit(model)" name="form" novalidate>
-            <formly-form model="model" fields="fields" options="options" form="form">
-                <div class="form-actions button-div">
-                    <md-button type="submit" class="md-raised md-primary btn1" ng-disabled="form.$invalid">Submit</md-button>
-                </div>
-            </formly-form>
-        </form>
-    </div>
-    <pre>{{model | json}}</pre>
->>>>>>> master
 </div>

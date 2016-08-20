@@ -8,26 +8,24 @@
             </div>
         <div id="postings-application">
             <div id="postings-application-edit" class="col-md-6">
-                <form ng-submit="onSubmit()" name="form" novalidate>
+                <form name="form" novalidate>
                     <formly-form model="model" fields="fields" options="options" form="form">
                         <div class="form-actions">
-                            <button type="submit" class="btn btn-primary submit-button" ng-disabled="form.$invalid">Save Changes</button>
+                            <button type="submit" class="btn btn-primary submit-button" ng-click="onSave()" ng-disabled="form.$invalid">Save Changes</button>
+                            <button type="submit" class="btn btn-primary submit-button" ng-click="onSubmit()" ng-disabled="form.$invalid">Submit</button>
                         </div>
                     </formly-form>
                 </form>
                 <!--                 <h2>Form Data</h2>
  -->
 <!--                                 <pre>{{lists | json}}</pre>
- -->                
+ -->
 <!--  <pre>{{model | json}}</pre>
  --></div>
             <div id="postings-application-preview" ng-controller="previewApplicationCtrl" class="col-md-6">
                 <div id="postings-application-preview-container">
                     <form ng-submit="onSubmit()" name="form" novalidate>
                         <formly-form model="model" fields="fields" options="options" form="form">
-                            <div class="form-actions col-md-12">
-                                <button type="submit" class="btn btn-primary submit-application-button" ng-disabled="form.$invalid">SUBMIT APPLICATION</button>
-                            </div>
                         </formly-form>
                     </form>
                     <!--                     <h2>Form Data</h2>

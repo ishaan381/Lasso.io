@@ -43,7 +43,7 @@ app.controller('LoginCtrl', function ($scope, AuthService, $state) {
         AuthService.checkCode(signupInfo.code)
         .then(function(companyInfo) {
             //console.log("THIRD CONSOLE LOG", companyId)
-            return AuthService.signup({password: signupInfo.password, email: signupInfo.email, companyId: companyInfo.data.id})
+            return AuthService.signup({password: signupInfo.password, email: signupInfo.email, companyId: companyInfo.data.companyId, isCompanyAdmin: companyInfo.data.isCompanyAdmin})
         })
         .then(function() {
             $state.go('postings');

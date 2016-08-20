@@ -1,4 +1,4 @@
-app.controller('editApplicationCtrl', function(_, $scope, formlyVersion, $q, $http, sharedModal, JobApplication, $stateParams, thisJob) {
+app.controller('editApplicationCtrl', function(_, $scope, formlyVersion, $q, $http, sharedModal, JobApplication, $stateParams, thisJob, $state) {
     // Watches sharedModal.customFields for updates.
     // Comes from ^dndCtrl.
     // Adds to formly-form model.
@@ -16,14 +16,23 @@ app.controller('editApplicationCtrl', function(_, $scope, formlyVersion, $q, $ht
     $scope.originalFields = angular.copy($scope.fields);
 
     // On Form Submit
-    function onSubmit() {
-        JobApplication.create({ fields: JSON.stringify($scope.model), jobId: $stateParams.id })
-            .then(function(job) {
-                console.log(job);
-            })
+
+    $scope.onSave = onSave;
+
+    function onSave() {
+        console.log('Saving')
+        if (!thisJob.jobApplication) return JobApplication.create({ fields: JSON.stringify($scope.model), jobId: $stateParams.id });
+        else return JobApplication.update({ fields: JSON.stringify($scope.model), jobId: $stateParams.id});
     }
 
-    $scope.onSubmit = onSubmit;
+    $scope.onSubmit = function() {
+        console.log("SAVING AND SUBMITTING")
+        onSave()
+        .then(function() {
+            console.log('next steps')
+            $state.go('editPosting.pipeline')
+        })
+    }
 
     $scope.env = {
         angularVersion: angular.version.full,
