@@ -38,7 +38,7 @@ router.post('/', function(req, res, next){
 	.catch(next);
 });
 
-router.put('/:id', check.access, function(req, res, next) {
+router.put('/:id', function(req, res, next) {
 	req.requestedApplication.update(req.body)
 	.then(function(app){
 		res.status(204);
