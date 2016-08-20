@@ -1,3 +1,4 @@
-app.controller('candidateCtrl', function ($scope, $state, $stateParams) {
-
+app.controller('candidateCtrl', function ($scope, $state, $stateParams, candidate) {
+  $scope.candidate = candidate;
+  console.log(candidate);
 });
