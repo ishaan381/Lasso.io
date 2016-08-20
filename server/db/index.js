@@ -36,6 +36,9 @@ Job.hasMany(Application, {as: 'application', onDelete: 'cascade', hooks: true});
 Application.belongsTo(Stage, {as: 'stage'});
 Stage.hasMany(Application, {as: 'application', onDelete: 'cascade', hooks: true});
 
+Application.belongsTo(JobApplication, {as: 'jobApplication'});
+JobApplication.hasMany(Application, {as: 'application', onDelete: 'cascade', hooks: true});
+
 Comment.belongsTo(Application, {as: 'application'});
 Application.hasMany(Comment, {as: 'comment', onDelete : 'cascade', hooks: true});
 

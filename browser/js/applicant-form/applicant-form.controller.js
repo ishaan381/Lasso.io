@@ -7,7 +7,7 @@ app.controller('applicantFormCtrl', function($rootScope, $scope, formlyVersion, 
     let application = JSON.parse(job.jobApplication.fields);
 
     $scope.onSubmit = function(model) {
-        App.create($stateParams.jobId, model)
+        App.create($stateParams.jobId, model, job.jobApplication.id)
             .then(() => $state.go('afterSubmit'));
     }
 

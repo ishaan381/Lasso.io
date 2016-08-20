@@ -7,4 +7,6 @@ app.controller('pipelineCtrl', function ($scope, stages) {
 
   $scope.stages = stages;
 
+  console.log($scope.stages);
+
 });

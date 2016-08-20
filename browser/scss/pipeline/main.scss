@@ -1,4 +1,4 @@
-.pipe-body-wrapper {
+/*.pipe-body-wrapper {
    height: 88%;
    padding: 0px;
   .applicantBar {
@@ -30,5 +30,131 @@
   hr {
     margin-top: 5px;
     margin-bottom: 5px;
+  }
+}*/
+
+.main-pipeline-container {
+  .row {
+    margin-right: 0;
+    margin-left: 0;
+  }
+  .applicantBar {
+/*    width: 25%;*/
+    font-family: 'Meta Medium';
+    font-size: 18px;
+    background-color: white;
+    height: 100vh;
+    border-top: 8px solid #10A8DC;
+    padding:0;
+  }
+
+  .app-bar {
+    height: 50px;
+    cursor: pointer;
+  }
+
+  .app-section1 {
+    text-align:center;
+    height: 100%;
+    line-height: 50px;
+    border-right: 1px solid #ddd;
+  }
+
+  .app-section2 {
+    text-align: center;
+    height: 100%;
+    line-height: 50px;
+  }
+
+  .app-section1:hover {
+    background-color: white;
+  }
+
+  .app-section2:hover {
+    background-color: white;
+  }
+
+
+  .app-section-clicked {
+    border-bottom: 1px solid #ddd;
+    background-color: #fafafa;
+  }
+
+  .app-filter-container {
+    padding: 0;
+    padding-top:10px;
+    border-bottom: 1px solid #999;
+  }
+
+  .app-filter {
+    padding-left: 8px;
+    padding-right: 0;
+    span {
+      font-size: 14px;
+      color: #999;
+    }
+    .filter-input {
+      border: none;
+      border-color: transparent;
+      outline: none;
+    }
+  }
+  .app-sort {
+    padding: 0;
+    padding-right: 5px;
+    .selectize-input {
+      border-radius: 0;
+      outline: 0;
+      padding: 4px 6px;
+    }
+    .selectize-control.single .selectize-input:after {
+      right: 8px;
+    }
+  }
+
+  .candidate-block {
+      height: 80px;
+      overflow:hidden;
+      padding: 10px;
+      padding-left:0px;
+
+      .candidate-chart {
+        padding:0;
+        padding-bottom:10px;
+        height:70px;
+        canvas {
+          width: 85px;
+          height: 45px;
+          margin-top:5px;
+        }
+      }
+    .candidate-essential-info {
+      font-size: 14px;
+      padding: 0;
+      .candidate-name {
+        font-size: 18px;
+      }
+      .candidate-tags {
+        font-size: 12px;
+      }
+      .candidate-source {
+        font-size: 12px;
+      }
+    }
+    .candidate-links {
+      font-size: 14px;
+      padding: 0;
+      padding-left:10px;
+      float:right;
+      a {
+        float:right;
+        padding-left:5px;
+      }
+      .smaller {
+        font-size: 12px;
+      }
+    }
+
+
   }
 }
