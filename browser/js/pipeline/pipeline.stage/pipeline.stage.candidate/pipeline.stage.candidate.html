@@ -1,6 +1,31 @@
 <div class="row candidate-toolbar">
-	TOOLBAR GOES HERE
+    DEBUG:
+    <h4>Current Tab Id: {{currTabId}}</h4>
 </div>
 <div class="row candidate-panels">
-	PANELS GO HERE
-</div>
+    <div class="col-sm-12 panelBar">
+        <div class="row app-bar">
+            <a>
+                <div class="col-sm-3 app-section1" ng-click="switchTab(0)" ng-class="{'app-section-clicked': currTabId !== 0 }">
+                    Comments
+                </div>
+            </a>
+            <a>
+                <div class="col-sm-3 app-section1" ng-click="switchTab(1)" ng-class="{'app-section-clicked': currTabId !== 1 }">
+                    Candidate Application
+                </div>
+            </a>
+            <a ng-repeat="panel in currentStage.panels">
+                <div class="col-sm-3 app-section1" ng-click="switchTab(panel.panelId + 2)" ng-class="{'app-section-clicked': currTabId !== panel.panelId + 2 }">
+                    {{panel.title}}
+                </div>
+            </a>
+        </div>
+        <div class="app-filter-container col-md-12">
+        </div>
+        
+        <!-- changes views -->
+
+        <ng-include src="currPanelTemplate"></ng-include> 
+
+    </div>

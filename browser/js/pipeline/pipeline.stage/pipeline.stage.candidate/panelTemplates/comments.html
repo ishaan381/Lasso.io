@@ -1,0 +1,15 @@
+<div class="comments-panel">
+    <div class="app-sort col-md-4">
+        <ui-select ng-model="sortBy.selected" theme="selectize" title="Choose a person">
+            <ui-select-match placeholder="Sort by ...">{{$select.selected.title}}</ui-select-match>
+            <ui-select-choices repeat="item in sortSelection">
+                <div ng-bind-html="item.title"></div>
+            </ui-select-choices>
+        </ui-select>
+    </div>
+
+    {{data}}
+    
+
+
+</div>

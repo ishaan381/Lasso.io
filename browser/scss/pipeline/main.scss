@@ -1,181 +1,150 @@
-/*.pipe-body-wrapper {
-   height: 88%;
-   padding: 0px;
-  .applicantBar {
-    margin: 15px;
-    height: 100%;
-    border: 3px solid white;
-    border-radius: 10px;
-    background-color: white;
-    font-family: 'Roboto', sans-serif;
-    letter-spacing: 1px;
+.main-pipeline-container {
+    .row {
+        margin-right: 0;
+        margin-left: 0;
+    }
+    .applicantBar {
+        /*    width: 25%;*/
+        font-family: 'Meta Medium';
+        font-size: 18px;
+        background-color: white;
+        height: 100vh;
+        border-top: 8px solid #10A8DC;
+        padding: 0;
+    }
     .app-bar {
-      padding-top: 10px;
-      background-color: white;
+        height: 50px;
+        cursor: pointer;
     }
     .app-section1 {
-      text-align: center;
-      border-right: 2px solid #eee;
-      a {
-        color: #66bb6a
-      }
+        text-align: center;
+        height: 100%;
+        line-height: 50px;
+        border-right: 1px solid #ddd;
     }
     .app-section2 {
-      text-align: center;
-      a {
-        color: #ef5350
-      }
+        text-align: center;
+        height: 100%;
+        line-height: 50px;
     }
-  }
-  hr {
-    margin-top: 5px;
-    margin-bottom: 5px;
-  }
-}*/
-
-.main-pipeline-container {
-  .row {
-    margin-right: 0;
-    margin-left: 0;
-  }
-  .applicantBar {
-/*    width: 25%;*/
-    font-family: 'Meta Medium';
-    font-size: 18px;
-    background-color: white;
-    height: 100vh;
-    border-top: 8px solid #10A8DC;
-    padding:0;
-  }
-
-  .app-bar {
-    height: 50px;
-    cursor: pointer;
-  }
-
-  .app-section1 {
-    text-align:center;
-    height: 100%;
-    line-height: 50px;
-    border-right: 1px solid #ddd;
-  }
-
-  .app-section2 {
-    text-align: center;
-    height: 100%;
-    line-height: 50px;
-  }
-
-  .app-section1:hover {
-    background-color: white;
-  }
-
-  .app-section2:hover {
-    background-color: white;
-  }
-
-
-  .app-section-clicked {
-    border-bottom: 1px solid #ddd;
-    background-color: #fafafa;
-  }
-
-  .app-filter-container {
-    padding: 0;
-    padding-top:10px;
-    border-bottom: 1px solid #999;
-  }
-
-  .app-filter {
-    padding-left: 8px;
-    padding-right: 0;
-    span {
-      font-size: 14px;
-      color: #999;
+    .app-section1:hover {
+        background-color: white;
     }
-    .filter-input {
-      border: none;
-      border-color: transparent;
-      outline: none;
+    .app-section2:hover {
+        background-color: white;
     }
-  }
-  .app-sort {
-    padding: 0;
-    padding-right: 5px;
-    .selectize-input {
-      border-radius: 0;
-      outline: 0;
-      padding: 4px 6px;
+    .app-section-clicked {
+        border-bottom: 1px solid #ddd;
+        background-color: #fafafa;
     }
-    .selectize-control.single .selectize-input:after {
-      right: 8px;
+    .app-filter-container {
+        padding: 0;
+        padding-top: 10px;
+        border-bottom: 1px solid #999;
     }
-  }
-
-  .candidate-block {
-      height: 80px;
-      overflow:hidden;
-      padding: 10px;
-      padding-left:0px;
-
-      .candidate-chart {
-        padding:0;
-        padding-bottom:10px;
-        height:70px;
-        canvas {
-          width: 85px;
-          height: 45px;
-          margin-top:5px;
+    .app-filter {
+        padding-left: 8px;
+        padding-right: 0;
+        span {
+            font-size: 14px;
+            color: #999;
         }
-      }
-    .candidate-essential-info {
-      font-size: 14px;
-      padding: 0;
-      .candidate-name {
-        font-size: 18px;
-      }
-      .candidate-tags {
-        font-size: 12px;
-      }
-      .candidate-source {
-        font-size: 12px;
-      }
+        .filter-input {
+            border: none;
+            border-color: transparent;
+            outline: none;
+        }
     }
-    .candidate-links {
-      font-size: 14px;
-      padding: 0;
-      padding-left:10px;
-      float:right;
-      a {
-        float:right;
-        padding-left:5px;
-      }
-      .smaller {
-        font-size: 12px;
-      }
+    .app-sort {
+        padding: 0;
+        padding-right: 5px;
+        .selectize-input {
+            border-radius: 0;
+            outline: 0;
+            padding: 4px 6px;
+        }
+        .selectize-control.single .selectize-input:after {
+            right: 8px;
+        }
     }
-
-  }
-  /*subnav*/
-      .candidate-main {
-        height: calc(100vh - 100px); 
-
+    .candidate-block {
+        height: 80px;
+        overflow: hidden;
+        padding: 10px;
+        padding-left: 0px;
+        .candidate-chart {
+            padding: 0;
+            padding-bottom: 10px;
+            height: 70px;
+            canvas {
+                width: 85px;
+                height: 45px;
+                margin-top: 5px;
+            }
+        }
+        .candidate-essential-info {
+            font-size: 14px;
+            padding: 0;
+            .candidate-name {
+                font-size: 18px;
+            }
+            .candidate-tags {
+                font-size: 12px;
+            }
+            .candidate-source {
+                font-size: 12px;
+            }
+        }
+        .candidate-links {
+            font-size: 14px;
+            padding: 0;
+            padding-left: 10px;
+            float: right;
+            a {
+                float: right;
+                padding-left: 5px;
+            }
+            .smaller {
+                font-size: 12px;
+            }
+        }
+    }
+    /*subnav*/
+    .candidate-main {
+        height: calc(100vh - 100px);
         .candidate-toolbar {
-          height: 10%;
-          margin-top: 2%;
-          margin-bottom: 2%;
-          width: 95%;
-          margin-left: auto;
-          margin-right: auto;
+            height: 10%;
+            margin-top: 2%;
+            margin-bottom: 2%;
+            width: 95%;
+            margin-left: auto;
+            margin-right: auto;
         }
-
         .candidate-panels {
-          height: 85%;
-          margin-bottom: 1%;
-          width: 95%;
-          margin-left: auto;
-          margin-right: auto;
+            height: 85%;
+            margin-bottom: 1%;
+            width: 95%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    }
+    .panelBar {
+        font-family: 'Meta Medium';
+        font-size: 18px;
+        background-color: white;
+        height: 95%;
+        border-top: 8px solid #10A8DC;
+        padding: 0;
+
+        .app-section1 {
+          outline: none;
         }
 
+        .app-sort {
+          float:right;
+        }
+        .app-filter-container {
+          border-bottom: 0;
+        }
     }
 }
