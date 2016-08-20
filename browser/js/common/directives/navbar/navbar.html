@@ -22,9 +22,12 @@
                 <li ng-show="isLoggedIn()">
                     <a ui-sref-active="active" ui-sref="postings">POSTINGS<div><hr class="bottom-line"></div></a>
                 </li>
-                <li ng-show="!user" ui-sref="login" ui-sref-active="active" class="btn login-button">Login</li>
-                <li ng-show="!user" ui-sref="signup" ui-sref-active="active" class="btn login-button">Signup</li>
-                <li ng-show="user" ng-click="logout()" class="btn login-button">Logout</li>
+                <li ng-show="isLoggedIn()">
+                    <a ui-sref-active="active" ui-sref="useredit">PROFILE<div><hr class="bottom-line"></div></a>
+                </li>
+                <li ng-show="!isLoggedIn()" ui-sref="login" ui-sref-active="active" class="btn login-button">Login</li>
+                <li ng-show="!isLoggedIn()" ui-sref="signup" ui-sref-active="active" class="btn login-button">Signup</li>
+                <li ng-show="isLoggedIn()" ng-click="logout()" class="btn login-button">Logout</li>
             </ul>
         </nav>
     </div>
