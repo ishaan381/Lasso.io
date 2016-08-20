@@ -36,5 +36,8 @@
     "angular-xeditable": "^0.2.0",
     "angular-charts": "^0.2.7",
     "d3": "^4.2.2"
+  },
+  "resolutions": {
+    "d3": "^4.2.2"
   }
 }
