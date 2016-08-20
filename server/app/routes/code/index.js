@@ -17,7 +17,7 @@ var transporter = nodemailer.createTransport({
 
 router.post('/', function(req, res, next) {
     console.log(req.body)
-    Code.create({ code: randomCode(9, false), companyId: req.body.companyId })
+    Code.create({ code: randomCode(9, false), companyId: req.body.companyId, isCompanyAdmin: req.body.isCompanyAdmin })
         .then(function(_code) {
             var mailOptions = {
                 from: '"Lasso.io" <llasso1606@gmail.com>', // sender address

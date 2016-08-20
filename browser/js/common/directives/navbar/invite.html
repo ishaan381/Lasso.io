@@ -1,20 +1,23 @@
-
 <div class="invite-wrapper">
-<div class="modal-body">
-    <div class='form-header' ng-if='notsent'>
-        <form ng-submit="sendCode(email)">
-            <div class="row">
-                <div class="col-md-8">
-                    <input type="email" name="email" ng-model="email" placeholder="Enter Colleague's Email" required>
+    <div class="modal-body">
+        <div class='form-header' ng-if='notsent'>
+            <form ng-submit="sendCode(email)">
+                <div class="row">
+                    <div class="col-md-8">
+                        <input type="email" name="email" ng-model="email" placeholder="Enter Colleague's Email" required>
+                    </div>
+                    <div class="col-md-4">
+                        <button type="submit">SEND LINK</button>
+                    </div>
                 </div>
-                <div class="col-md-4">
-                    <button type="submit">SEND LINK</button>
+                <div class="checkbox" ng-if="isAdmin">
+                    <label>
+                        <input type="checkbox" ng-model="priv" ng-click="reverse()">Grant your colleague admin privileges?</label>
                 </div>
-            </div>
-        </form>
+            </form>
+        </div>
+        <div class="message" ng-if="message">
+            <h7>{{ message }}</h7>
+        </div>
     </div>
-    <div class="message" ng-if="message">
-        <h7>{{ message }}</h7>
-    </div>
-</div>
 </div>

@@ -59,13 +59,27 @@ app.controller('ModalInstaCtrl', function($scope, $uibModalInstance, $http, Auth
 
     $scope.message = "";
 
+    AuthService.getLoggedInUser()
+    .then(function(user) {
+        $scope.isAdmin = user.isCompanyAdmin;
+    });
+
     $scope.notsent = true;
 
+    $scope.priv = false;
+
+    $scope.reverse = function() {
+        $scope.priv = !$scope.priv;
+    }
+
+    console.log($scope.priv)
+
     $scope.sendCode = function(email) {
+        console.log($scope.priv)
         $scope.message = "Sending..."
         AuthService.getLoggedInUser()
             .then(function(user) {
-                return $http.post('/api/code', { email: email, companyId: user.companyId })
+                return $http.post('/api/code', { email: email, companyId: user.companyId, isCompanyAdmin: $scope.priv })
             })
             .then(function() {
                 $scope.message = "Email with verification code sent to: " + email;

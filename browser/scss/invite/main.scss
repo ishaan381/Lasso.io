@@ -1,61 +1,54 @@
 .invite-wrapper {
-
-.modal-body {
-  font-family: 'Maison Neue Book', HelveticaNeue-Light, "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
-  letter-spacing: 2px;
-  padding: 50px 30px;
-  color: darken(#f2f2f2, 30%);
-
-  input {
-    width: 100%;
-    border: none;
-    font-size: 14px;
-    font-family: 'Maison Neue Book', HelveticaNeue-Light, "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
-    letter-spacing: 2px;
-    padding-bottom: 10px;
-    border-bottom-width: 1px;
-    border-bottom-style: solid;
-    border-color: darken(#f2f2f2, 30%);
-
-    &:hover {
-      border-color: #353238;
+    .modal-body {
+        font-family: 'Maison Neue Book', HelveticaNeue-Light, "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+        letter-spacing: 2px;
+        padding: 50px 30px;
+        color: darken(#f2f2f2, 30%);
+        .checkbox {
+          color: black;
+        }
+        input {
+            width: 100%;
+            border: none;
+            font-size: 14px;
+            font-family: 'Maison Neue Book', HelveticaNeue-Light, "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+            letter-spacing: 2px;
+            padding-bottom: 10px;
+            border-bottom-width: 1px;
+            border-bottom-style: solid;
+            border-color: darken(#f2f2f2, 30%);
+            &:hover {
+                border-color: #353238;
+            }
+            &:focus {
+                outline: none;
+                color: #353238;
+                transition: border-color 0.3s, border-width 0.3s;
+                border-color: #353238;
+                border-width: 2px;
+            }
+        }
+        button {
+            height: 30px;
+            width: 100%;
+            border: none;
+            background-color: darken(#fafafa, 3%);
+            color: #adadad;
+            letter-spacing: 2px;
+            &:hover {
+                transition: background-color 0.3s, color 0.3s;
+                background-color: #dedede;
+                color: darken(#adadad, 50%);
+            }
+            &:focus {
+                outline: none;
+            }
+        }
+        .message {
+            margin-top: 40px;
+            color: #323538;
+            font-size: 16px;
+            text-align: center;
+        }
     }
-
-    &:focus {
-      outline: none;
-      color: #353238;
-      transition: border-color 0.3s, border-width 0.3s;
-      border-color: #353238;
-      border-width: 2px;
-    }
-  }
-
-  button {
-    height: 30px;
-    width: 100%;
-    border: none;
-    background-color: darken(#fafafa, 3%);
-    color: #adadad;
-    letter-spacing: 2px;
-
-    &:hover {
-      transition: background-color 0.3s, color 0.3s;
-      background-color: #dedede;
-      color: darken(#adadad, 50%);
-    }
-
-    &:focus {
-    outline: none;
-    }
-  }
-
-  .message {
-    margin-top: 40px;
-    color: #323538;
-    font-size: 16px;
-    text-align: center;
-  }
 }
-  
-}
-

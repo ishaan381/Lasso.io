@@ -6,5 +6,9 @@ module.exports = db.define('code', {
   code: {
     type: Sequelize.STRING,
     allowNull: false
+  },
+
+  isCompanyAdmin: {
+    type: Sequelize.BOOLEAN
   }
 })

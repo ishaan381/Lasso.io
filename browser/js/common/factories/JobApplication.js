@@ -119,6 +119,13 @@ app.factory('JobApplication', function($http) {
       })
   }
 
+  JobApplication.update = function(jobApp) {
+    return $http.put('/api/jobs/applications/'+jobApp.jobId, jobApp)
+          .then(function(res) {
+            return res.data;
+          })
+  }
+
   JobApplication.fetch = function(jobId) {
     return $http.get('/api/jobs/applications/' + jobId)
   }
