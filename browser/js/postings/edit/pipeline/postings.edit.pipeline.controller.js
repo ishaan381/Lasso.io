@@ -1,5 +1,8 @@
 app.controller('editPipelineCtrl', function(_, $scope, formlyVersion, $q, $http, thisJob, $state, Pipeline, sharedStages) {
 
+    $scope.stages = [];
+
+
     $scope.env = {
         angularVersion: angular.version.full,
         formlyVersion: formlyVersion
@@ -11,7 +14,7 @@ app.controller('editPipelineCtrl', function(_, $scope, formlyVersion, $q, $http,
 
     $scope.addStage = function() {
         $scope.customStages[0].stages.push({
-            name: "",
+            title: "",
             type: "custom",
             panels: [
                 { title: 'Select A Helper', templateUrl: '/js/postings/edit/pipeline/panel-templates/menu-selection.html', panelId: 0 }
@@ -39,14 +42,14 @@ app.controller('editPipelineCtrl', function(_, $scope, formlyVersion, $q, $http,
         var stageArray = [];
 
         var beginStage = $scope.beginStage[0].stages[0];
-        stageArray.push({ title: beginStage.name, index: 0, jobId: thisJob.id, panels: beginStage.panels});
+        stageArray.push({ title: beginStage.title, index: 0, jobId: thisJob.id, panels: beginStage.panels});
 
         $scope.customStages[0].stages.forEach(function(stage) {
-            stageArray.push({ title: stage.name, index: stage.id + 1, jobId: thisJob.id, panels: stage.panels})
+            stageArray.push({ title: stage.title, index: stage.id + 1, jobId: thisJob.id, panels: stage.panels})
         })
 
         var endStage = $scope.endStage[0].stages[0];
-        stageArray.push({ title: endStage.name, index: stageArray.length, jobId: thisJob.id, panels: endStage.panels});
+        stageArray.push({ title: endStage.title, index: stageArray.length, jobId: thisJob.id, panels: endStage.panels});
 
         console.log(stageArray);
 
@@ -108,6 +111,23 @@ app.controller('editPipelineCtrl', function(_, $scope, formlyVersion, $q, $http,
         }]
     }]
 
+    if (thisJob.stage) {
+    console.log('in here');
+    var stages = thisJob.stage;
+    console.log(stages, $scope.beginStage);
+    $scope.beginStage[0].stages[0] = stages[0];
+
+    $scope.customStages[0].stages = [];
+
+    for (var i = 1; i < stages.length - 1; i++) {
+        $scope.customStages[0].stages.push(stages[i]);
+    }
+
+    $scope.endStage[0].stages[0] = stages[stages.length - 1];
+
+    populateStages();
+   }
+
     function populateStages() {
         $scope.beginStage[0].stages.forEach(function(stage) {
             $scope.stages.push(stage);
@@ -129,7 +149,7 @@ app.controller('editPipelineCtrl', function(_, $scope, formlyVersion, $q, $http,
         populateStages();
     }
 
-    $scope.stages = [];
+
 
     $scope.$watch('stages', function(newVal, oldVal) {
         sharedStages.stages = newVal;
