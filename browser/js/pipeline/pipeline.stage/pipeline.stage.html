@@ -1,11 +1,11 @@
 <div class="col-sm-3 applicantBar">
     <div class="row app-bar">
-        <a ui-sref="pipeline.stage({stageId: 2, qualified: true})">
+        <a ui-sref="pipeline.stage({stageId: currentStageId, qualified: true})">
             <div class="col-md-6 app-section1" ng-class="{'app-section-clicked': !qualified}">
                 Qualified
             </div>
         </a>
-        <a ui-sref="pipeline.stage({stageId: 2, qualified: false})">
+        <a ui-sref="pipeline.stage({stageId: currentStageId, qualified: false})">
             <div class="col-md-6 app-section2" ng-class="{'app-section-clicked': qualified}">
                 Disqualified
             </div>
@@ -22,6 +22,7 @@
             </ui-select>
         </div>
     </div>
+    {{currentStage.title}}
     <div ng-show="qualified" ng-repeat="candidate in candidates | filter: filterByQualified | filter: filterByName" ui-sref="pipeline.stage.candidate({candidateId: candidate.id, test: 1})">
         <div class="candidate-block col-md-12">
             <div class="candidate-chart col-md-3">

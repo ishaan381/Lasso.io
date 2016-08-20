@@ -4,8 +4,8 @@ app.config($stateProvider => {
     templateUrl: '/js/pipeline/pipeline.html',
     controller: 'pipelineCtrl',
     resolve: {
-      stages: function (Pipeline, $stateParams) {
-        return Pipeline.getStages($stateParams.id)
+      thisJob: function (Job, $stateParams) {
+        return Job.fetch($stateParams.id)
       }
     }
   });

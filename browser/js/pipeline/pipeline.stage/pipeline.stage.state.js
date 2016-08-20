@@ -4,8 +4,8 @@ app.config($stateProvider => {
     templateUrl: '/js/pipeline/pipeline.stage/pipeline.stage.html',
     controller: 'stageCtrl',
     resolve: {
-    	hi: function ($stateParams) {
-    		console.log($stateParams.qualified);
+    	stage: function (thisJob, $stateParams) {
+    		return thisJob.stage.filter(stage => stage.id === +$stateParams.stageId)[0];
     	}
     }
   });
