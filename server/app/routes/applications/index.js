@@ -13,9 +13,7 @@ router.param('id', function(req, res, next, id){
 		where:{
 			id: id
 		},
-		include: [
-			{ model: Comment, as: 'comments'},
-		]
+		include: [Comment]
 	})
 	.then(function(app){
 		req.requestedApplication = app;
