@@ -43,6 +43,9 @@ module.exports = db.define('user', {
             return this.Model.encryptPassword(candidatePassword, this.salt) === this.password;
         }
     },
+    getterMethods: {
+        fullName: function () {return this.firstName + ' ' + this.lastName}
+    },
     classMethods: {
         generateSalt: function () {
             return crypto.randomBytes(16).toString('base64');
