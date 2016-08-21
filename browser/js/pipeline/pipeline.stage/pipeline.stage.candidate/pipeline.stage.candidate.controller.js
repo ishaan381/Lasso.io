@@ -1,6 +1,5 @@
 app.controller('candidateCtrl', function($scope, $state, $stateParams, $timeout, stage, candidate, thisJob, Stage, AuthService) {
 
-    console.log(candidate);
     $scope.candidate = candidate;
     $scope.currentStage = stage;
     $scope.currTabId = 0;
@@ -19,7 +18,6 @@ app.controller('candidateCtrl', function($scope, $state, $stateParams, $timeout,
         $scope.currTabId = tabId;
         // tab is a panel
         if (tabId === 0) {
-            console.log(candidate)
             $scope.data = { comments: candidate.comments }
             $scope.currPanelTemplate = templateRoot + 'comments.html';
         } else if (tabId === 1) {

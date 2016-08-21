@@ -11,18 +11,15 @@ app.controller('stageCtrl', function ($scope, $state, Stage, $stateParams, $uibM
 
   // Restful Routing
   if ($stateParams.qualified === "true") {
-    console.log($stateParams);
     $scope.qualified = true;
   } else if ($stateParams.qualified === "false") {
-    console.log($stateParams);
     $scope.qualified = false;
-    console.log($scope.qualified);
   }
 
-  $scope.$watch('qualified', function () {
-    console.log('trigger');
-    console.log($scope.qualified);
-  })
+  // $scope.$watch('qualified', function () {
+  //   console.log('trigger');
+  //   console.log($scope.qualified);
+  // })
 
   $scope.filterByDisqualified = function (candidate) {
     return candidate.rejected;
