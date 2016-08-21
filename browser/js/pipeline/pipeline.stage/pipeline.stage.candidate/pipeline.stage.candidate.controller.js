@@ -6,6 +6,10 @@ app.controller('candidateCtrl', function($scope, $state, $stateParams, $timeout,
     $scope.currPanelTemplate;
     $scope.candidateApp = JSON.parse(candidate.application)
 
+    let numStages = thisJob.stage.length;
+
+    $scope.lastStage = $scope.currentStage.index === numStages - 1 ? true : false;
+
     const templateRoot = "js/pipeline/pipeline.stage/pipeline.stage.candidate/panelTemplates/";
 
     $scope.switchTab = switchTab;
@@ -56,5 +60,10 @@ app.controller('candidateCtrl', function($scope, $state, $stateParams, $timeout,
     $scope.qualifyCandidate = function(candidateId) {
         Stage.qualifyCandidate(candidateId);
         $state.go('pipeline.stage', { stageId: stage.id })
+    }
+
+    $scope.disqualifyCandidate = function (candidateId) {
+        Stage.disqualifyCandidate(candidateId);
+        $state.go('pipeline.stage', { stageId: stage.id });
     }
 });
