@@ -25,6 +25,10 @@ app.controller('panelFormCtrl', function(_, $scope, formlyVersion, $log, $q, $ht
         console.log(selected);
     }
 
+    $scope.needsChoices = function (selectedField) {
+        return (selectedField === 'dropdown' || selectedField === 'checkbox' || selectedField === 'radio') ? true : false
+    }
+
     $scope.fields = [
 
     ];

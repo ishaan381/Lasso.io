@@ -1,10 +1,9 @@
-app.directive('panelDropdown', function() {
+app.directive('panelScoreboard', function() {
 
     return {
         restrict: 'E',
-        templateUrl: 'js/common/directives/panel-dropdown/panel-dropdown.html',
+        templateUrl: 'js/common/directives/panel-scoreboard/panel-scoreboard.html',
         scope: { choices: '=ngModel' },
-        controller: 'panelDropdownCtrl',
         link: function(scope, element, attrs) {
             if (scope.choices) {
                 scope.choices = scope.choices;
@@ -21,24 +20,11 @@ app.directive('panelDropdown', function() {
                 var lastItem = scope.choices.length - 1;
                 scope.choices.splice(lastItem);
                 if (scope.choices.length === 0) {
-                  scope.addNewChoice();
+                    scope.addNewChoice();
                 }
             };
 
         }
     };
-
-});
-
-app.controller('panelDropdownCtrl', function(_, $scope, $log, $q, $http, $state) {
-
-    // console.log($scope.model);
-
-    // $scope.model = "";
-
-    // $scope.addNewOption = function () {
-    //   $scope.model = "hi";
-    // }
-
 
 });

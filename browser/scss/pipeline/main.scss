@@ -168,3 +168,93 @@
         }
     }
 }
+
+panel-dropdown {
+    fieldset {
+        margin-bottom: 5px;
+    }
+    i {
+        color: darken(#f3f3f3, 5%);
+        font-size: 20px !important;
+        position: relative;
+        top: 2px;
+    }
+    input {
+        padding: 5px;
+        width: 95%;
+        outline: 0;
+        border-radius: 5px;
+        border-width: 3px;
+        border-color: darken(#f3f3f3, 3%);
+        border-style: solid;
+        box-shadow: none;
+        color: #666;
+    }
+    .circle-container {
+        padding: 0;
+    }
+    .input-field {
+        padding: 0;
+    }
+    .remove-container {
+        padding: 0;
+    }
+    .remove {
+        background-color: #236690;
+        width: 80%;
+        outline: 0;
+        border-radius: 5px;
+        margin-top: 2.5px;
+    }
+}
+
+panel-scoreboard {
+    fieldset {
+        margin-bottom: 5px;
+    }
+    i {
+        color: darken(#f3f3f3, 15%);
+        font-size: 20px !important;
+        position: relative;
+        top: 2px;
+    }
+    input {
+        padding: 5px;
+        width: 100% !important;
+        outline: 0;
+        border-radius: 5px;
+        border-width: 3px;
+        border-color: darken(#f3f3f3, 3%);
+        border-style: solid;
+        box-shadow: none;
+        color: #666;
+    }
+    .circle-container {
+        padding: 0;
+    }
+    .input-field {
+        padding: 0;
+        margin-top: 5px;
+    }
+    .remove-container {
+        padding: 0;
+        margin-top: 3px;
+    }
+    .remove {
+        background-color: #236690;
+        width: 80%;
+        outline: 0;
+        border-radius: 5px;
+        margin-top: 2.5px;
+    }
+    .icon-container {
+        height: 100%;
+        background-color: #fafafa;
+        padding: 10px;
+        .col-md-3 {
+            text-align: center;
+        }
+        margin-right: 15px;
+    }
+
+}
