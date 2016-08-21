@@ -6,14 +6,22 @@ Comment = require('./comment'),
 db = require('../_db');
 
 module.exports = db.define('user', {
+    firstName: {
+        type: Sequelize.STRING
+    },
+    lastName: {
+        type: Sequelize.STRING
+    },
     email: {
         type: Sequelize.STRING,
         validate: {
             isEmail: true
-        }
+        },
+        allowNull: false
     },
     password: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        allowNull: false
     },
     salt: {
         type: Sequelize.STRING
@@ -56,14 +64,6 @@ module.exports = db.define('user', {
                 user.salt = user.Model.generateSalt();
                 user.password = user.Model.encryptPassword(user.password, user.salt);
             }
-        },
-        // beforeDestroy: function(user){
-        //     return Comment.destroy({
-        //         where: {
-        //             userId: user.id
-        //         },
-        //         individualHooks: true
-        //     })
-        // }
+        }
     }
 });

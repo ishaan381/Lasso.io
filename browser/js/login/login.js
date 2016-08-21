@@ -39,17 +39,14 @@ app.controller('LoginCtrl', function ($scope, AuthService, $state) {
 
     $scope.sendSignup = function(signupInfo) {
 
-        console.log('signing up')
         AuthService.checkCode(signupInfo.code)
         .then(function(companyInfo) {
-            //console.log("THIRD CONSOLE LOG", companyId)
-            return AuthService.signup({password: signupInfo.password, email: signupInfo.email, companyId: companyInfo.data.companyId, isCompanyAdmin: companyInfo.data.isCompanyAdmin})
+            return AuthService.signup({password: signupInfo.password, email: signupInfo.email, companyId: companyInfo.data.companyId, isCompanyAdmin: companyInfo.data.isCompanyAdmin, firstName: signupInfo.firstName, lastName: signupInfo.lastName});
         })
         .then(function() {
             $state.go('postings');
         })
         .catch(function(err) {
-            console.log(err);
             $scope.error = err.message
         })
 
