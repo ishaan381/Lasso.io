@@ -90,3 +90,18 @@ router.delete('/:id', check.pageAdmin || check.admin, function(req, res, next) {
     .catch(next);
 });
 
+router.put('/stages/:jobId', check.pageAdmin || check.admin, function(req, res, next) {
+  Stage.findAll({
+    where: {
+      jobId: req.param.jobId
+    }
+  })
+  .then(function(stages) {
+    return Promise.all(stages.map(stage => Stage.update(stage)))
+  })
+  .then(function(stages) {
+    res.status(201)
+    res.send(stages)
+  })
+})
+
