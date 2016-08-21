@@ -66,6 +66,8 @@ function createCompanies() {
 function randomUser(companies) {
     var company = chance.pick(companies);
     return User.build({
+        firstName: chance.first(),
+        lastName: chance.last(),
         email: userEmails.pop(),
         password: chance.word(),
         companyId: company.id,
@@ -79,13 +81,17 @@ function genUsers(companies) {
         email: "ishaan@gmail.com",
         password: "ishaan",
         companyId: 1,
-        isCompanyAdmin: true
+        isCompanyAdmin: true,
+        firstName: 'Ishaan',
+        lastName: 'Nagpal'
     }))
     users.push(User.build({
         email: "kevin@gmail.com",
         password: "kevin",
         companyId: 1,
-        isCompanyAdmin: false
+        isCompanyAdmin: false,
+        firstName: 'Kevin',
+        lastName: 'Li'
     }))
     return users;
 }
