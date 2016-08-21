@@ -1,0 +1,28 @@
+<div>
+    <fieldset class="col-md-12 " data-ng-repeat="choice in choices">
+        <div class="col-md-6 input-field left">
+            <input class="col-md-10" type="text" ng-model="choice.value" once="addNewChoice()" name="" placeholder="Add question or details">
+        </div>
+        <div class="col-md-6 right">
+            <div class="col-md-9 icon-container">
+                <div class="col-md-3">
+                    <i class="fa fa-times" aria-hidden="true"></i>
+                </div>
+                <div class="col-md-3">
+                    <i class="fa fa-thumbs-down" aria-hidden="true"></i>
+                </div>
+                <div class="col-md-3">
+                    <i class="fa fa-thumbs-up" aria-hidden="true"></i>
+                </div>
+                <div class="col-md-3">
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                </div>
+            </div>
+            <div class="col-md-2 remove-container">
+                <button class="remove" ng-show="$last" ng-click="removeChoice()"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+            </div>
+        </div>
+    </fieldset>
+    <!--     <button class="addfields" ng-click="addNewChoice()">Add fields</button>
+ -->
+</div>
