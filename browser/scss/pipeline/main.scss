@@ -1,4 +1,5 @@
 .main-pipeline-container {
+    height: 100vh;
     .row {
         margin-right: 0;
         margin-left: 0;
@@ -113,6 +114,7 @@
     .candidate-main {
         height: calc(100vh - 100px);
         .candidate-toolbar {
+            position:relative;
             font-family: 'Meta Medium';
             display: flex;
             align-items: center;
@@ -143,8 +145,7 @@
             }
         }
         .candidate-panels {
-            height: 85%;
-            margin-bottom: 1%;
+            height: 83%;
             width: 95%;
             margin-left: auto;
             margin-right: auto;
@@ -167,9 +168,19 @@
             border-bottom: 0;
         }
         .notes-panel {
-            font-family: 'Open-Sans', sans-serif;
-            margin-left: 5%;
-            margin-top: 5%;
+            font-family: 'Meta Medium', sans-serif;
+            padding-left:50px;
+            padding-right:50px;
+            h3 {
+                font-size: 18px;
+            }
+            div {
+                font-size: 15px;
+            }
+        }
+        .history-panel {
+            background-color: #fafafa;
+            height: 100%;
         }
     }
 }
