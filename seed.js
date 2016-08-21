@@ -15,7 +15,7 @@ const numUsers = 25,
     numJobs = 30, //pipelines have jobs, jobs have app descriptions, and jobappforms
     numStages = 100,
     numApps = 500,
-    numComments = 300;
+    numComments = 2500;
 const companyNames = ['Fullstack Academy', 'Microsoft', 'Lyft', 'Uber', 'BMW'],
     userEmails = chance.unique(chance.email, numUsers),
     department = ["Business Analytics", "Software Engineering", "Engineering", "Frontend Developement", "Customer Service", "Data Science", "Accounting", "Legal", "Marketing", "Operations", "HR", "Communications", "Compliance"],
@@ -66,6 +66,8 @@ function createCompanies() {
 function randomUser(companies) {
     var company = chance.pick(companies);
     return User.build({
+        firstName: chance.first(),
+        lastName: chance.last(),
         email: userEmails.pop(),
         password: chance.word(),
         companyId: company.id,
@@ -79,13 +81,17 @@ function genUsers(companies) {
         email: "ishaan@gmail.com",
         password: "ishaan",
         companyId: 1,
-        isCompanyAdmin: true
+        isCompanyAdmin: true,
+        firstName: 'Ishaan',
+        lastName: 'Nagpal'
     }))
     users.push(User.build({
         email: "kevin@gmail.com",
         password: "kevin",
         companyId: 1,
-        isCompanyAdmin: false
+        isCompanyAdmin: false,
+        firstName: 'Kevin',
+        lastName: 'Li'
     }))
     return users;
 }
@@ -337,7 +343,7 @@ function randomComments() {
         content: chance.pick(commentContent),
         stageId: Math.floor(Math.random() * 100) + 1,
         userId: Math.floor(Math.random() * 27) + 1,
-        applicaitonId: Math.floor(Math.random() * 100) + 1
+        applicationId: Math.floor(Math.random() * 500) + 1
     })
 }
 

@@ -13,9 +13,7 @@ router.param('id', function(req, res, next, id){
 		where:{
 			id: id
 		},
-		include: [
-			{ model: Comment, as: 'comments'},
-		]
+		include: [Comment]
 	})
 	.then(function(app){
 		req.requestedApplication = app;
@@ -40,7 +38,7 @@ router.post('/', function(req, res, next){
 	.catch(next);
 });
 
-router.put('/:id', check.access, function(req, res, next) {
+router.put('/:id', function(req, res, next) {
 	req.requestedApplication.update(req.body)
 	.then(function(app){
 		res.status(204);

@@ -1,0 +1,34 @@
+<div class="row candidate-toolbar">
+    <p> {{ candidateApp.fullNameField | uppercase }} | <a>{{ candidateApp.emailField }}</a> | {{ candidateApp.phoneField }} | <a href="{{candidateApp.linkedInLinkField}}"><i class="fa fa-linkedin-square"></i></a><a href="{{candidateApp.githubLinkField}}"><i class="fa fa-github"></i></a><a href="{{candidateApp.twitterLinkField}}"><i class="fa fa-twitter"></i></a><a href="{{candidateApp.portfolioLinkField}}"><i class="fa fa-desktop smaller"></i></a></p>
+    <md-button ng-if="!candidate.rejected && isCompanyAdmin" class="md-warn reject">Remove</md-button>
+    <p ng-if="!candidate.rejected && isCompanyAdmin" class="between">
+        <---OR--->
+    </p>
+    <md-button ng-if="!candidate.rejected && isCompanyAdmin" class="md-primary move-on" ng-click="moveCandidate(candidate.id)">Advance</md-button>
+    <md-button ng-if="candidate.rejected && isCompanyAdmin" class="md-primary move-on" ng-click="qualifyCandidate(candidate.id)">Add Back to Pool</md-button>
+</div>
+<div class="row candidate-panels">
+    <div class="col-sm-12 panelBar">
+        <div class="row app-bar">
+            <a>
+                <div class="col-sm-3 app-section1" ng-click="switchTab(0)" ng-class="{'app-section-clicked': currTabId !== 0 }">
+                    Comments
+                </div>
+            </a>
+            <a>
+                <div class="col-sm-3 app-section1" ng-click="switchTab(1)" ng-class="{'app-section-clicked': currTabId !== 1 }">
+                    Candidate Application
+                </div>
+            </a>
+            <a ng-repeat="panel in currentStage.panels">
+                <div class="col-sm-3 app-section1" ng-click="switchTab(panel.panelId + 2)" ng-class="{'app-section-clicked': currTabId !== panel.panelId + 2 }">
+                    {{panel.title}}
+                </div>
+            </a>
+        </div>
+        <div class="app-filter-container col-md-12">
+        </div>
+        <!-- changes views -->
+        <ng-include src="currPanelTemplate"></ng-include>
+    </div>
+</div>

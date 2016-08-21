@@ -1,12 +1,9 @@
 var Sequelize = require('sequelize');
 var db = require('../_db');
+var user = require('./user');
 
 
 module.exports = db.define('comment', {
-  title: {
-  	type: Sequelize.STRING,
-  	allowNull: false
-  },
 
   content: {
   	type: Sequelize.TEXT,
@@ -20,5 +17,22 @@ module.exports = db.define('comment', {
 
   stageId: {
     type: Sequelize.INTEGER
+  },
+
+  author: {
+    type: Sequelize.STRING
   }
-})
+},
+{
+  hooks: {
+    afterValidate: function (comment) {
+      var user = require('./user');
+      var id = comment.userId;
+      return user.findById(id)
+      .then(function(author) {
+        comment.author = author.email
+      })
+    }
+  }
+}
+)

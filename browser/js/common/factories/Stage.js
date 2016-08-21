@@ -1,4 +1,4 @@
-app.factory('Stage', function ($http) {
+app.factory('Stage', function ($http, AuthService) {
 
   let Stage = {};
 
@@ -11,6 +11,30 @@ app.factory('Stage', function ($http) {
       cache = res.data;
       return cache;
     });
+  }
+
+  Stage.moveCandidate = function (candidateId) {
+
+    let applicant = cache.find(candidate => {
+      return candidate.id === candidateId;
+    })
+
+    applicant.stageId++;
+
+    cache.splice(cache.indexOf(applicant), 1)
+
+    return $http.put('/api/applications/' + candidateId, {stageId: applicant.stageId})
+    .then(res => res.data);
+
+  }
+
+  Stage.qualifyCandidate = function (candidateId) {
+
+    let applicant = cache.find(candidate => candidate.id === candidateId);
+    applicant.rejected = false;
+    return $http.put('/api/applications/' + candidateId, {rejected: false})
+    .then(res => res.data);
+
   }
 
   return Stage;
