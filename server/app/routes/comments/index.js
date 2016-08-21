@@ -15,6 +15,10 @@ router.param('id', function(req, res, next, id){
 	.catch(next);
 });
 
+router.get('/:id', function(req, res, next) {
+	res.send(req.requestedComment)
+})
+
 
 router.put('/:id', check.user, function(req, res, next) {
 	req.requestedComment.update(req.body)
