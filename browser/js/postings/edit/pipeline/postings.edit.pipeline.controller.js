@@ -51,10 +51,7 @@ app.controller('editPipelineCtrl', function(_, $scope, formlyVersion, $q, $http,
         var endStage = $scope.endStage[0].stages[0];
         stageArray.push({ title: endStage.title, index: stageArray.length, jobId: thisJob.id, panels: endStage.panels });
 
-        console.log(stageArray);
-
         if (thisJob.stage) {
-            console.log(thisJob.id)
             return Pipeline.updateStages(stageArray, thisJob.id)
         } else {
             return Pipeline.createStages(stageArray)
@@ -123,9 +120,10 @@ app.controller('editPipelineCtrl', function(_, $scope, formlyVersion, $q, $http,
     }]
 
     if (thisJob.stage) {
-        console.log('in here');
+
         var stages = thisJob.stage;
-        console.log(stages, $scope.beginStage);
+        stages.sort((a, b) => a.index - b.index)
+
         $scope.beginStage[0].stages[0] = stages[0];
 
         $scope.customStages[0].stages = [];

@@ -36,10 +36,11 @@ router.get('/:id/candidates', function(req, res, next){
 });
 
 router.post('/', function(req, res, next){
-  var stages = req.body.map(stage => Stage.create(stage));
 
-  Promise.all(stages)
-  .then(function(){//took stages out of here b/c the scope already had a stages variable
+  Promise.each(req.body, function(stage) {
+    Stage.create(stage)
+  })
+  .then(function(stages){//took stages out of here b/c the scope already had a stages variable
     res.status(201);
     res.send(stages);
   })

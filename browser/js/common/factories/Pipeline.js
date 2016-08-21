@@ -10,9 +10,8 @@ app.factory('Pipeline', function ($http) {
       .then(res => res.data);
       },
 
-      updateStages: function(array, id) {
-        console.log('HELLLLOOOOO', id)
-        return $http.put('/api/jobs/stages/'+id, array)
+      updateStages: function(array, jobId) {
+        return $http.put('/api/jobs/stages/'+jobId, array)
         .then(res => res.data);
       }
   }
