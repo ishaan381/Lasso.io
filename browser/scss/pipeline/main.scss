@@ -10,7 +10,7 @@
         font-size: 18px;
         background-color: white;
         height: 100vh;
-        border-top: 8px solid #10A8DC;
+        border-top: 8px solid #166088;
         padding: 0;
     }
     .app-bar {
@@ -22,11 +22,13 @@
         height: 100%;
         line-height: 50px;
         border-right: 1px solid #ddd;
+        color: #166088;
     }
     .app-section2 {
         text-align: center;
         height: 100%;
         line-height: 50px;
+        color: #166088;
     }
     .app-section1:hover {
         background-color: white;
@@ -156,13 +158,15 @@
         font-size: 18px;
         background-color: white;
         height: 95%;
-        border-top: 8px solid #10A8DC;
+        border-top: 8px solid #166088;
         padding: 0;
+        overflow: scroll;
         .app-section1 {
             outline: none;
         }
         .app-sort {
             float: right;
+            margin-bottom: 10px;
         }
         .app-filter-container {
             border-bottom: 0;
@@ -181,6 +185,19 @@
         .history-panel {
             background-color: #fafafa;
             height: 100%;
+        }
+
+        .comment {
+            font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif;
+        }
+
+        .ui.comments {
+            border: 1px solid #f2f2f2;
+            background-color: #f2f2f2;
+            border-radius: 10px;
+            margin: 0 auto 10px auto;
+            font-size: 0.9em;
+            padding: 5px;
         }
     }
 }
@@ -270,7 +287,9 @@ panel-scoreboard {
         .col-md-3 {
             text-align: center;
         }
+
         margin-right: 15px;
+
     }
 
 }
