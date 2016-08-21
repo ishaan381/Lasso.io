@@ -30,7 +30,7 @@ module.exports = db.define('comment', {
       var id = comment.userId;
       return user.findById(id)
       .then(function(author) {
-        comment.author = author.email
+        comment.author = author.fullName
       })
     }
   }
