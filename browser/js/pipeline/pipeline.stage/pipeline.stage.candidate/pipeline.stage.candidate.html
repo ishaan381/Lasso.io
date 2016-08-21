@@ -1,11 +1,11 @@
 <div class="row candidate-toolbar">
     <p> {{ candidateApp.fullNameField | uppercase }} | <a>{{ candidateApp.emailField }}</a> | {{ candidateApp.phoneField }} | <a href="{{candidateApp.linkedInLinkField}}"><i class="fa fa-linkedin-square"></i></a><a href="{{candidateApp.githubLinkField}}"><i class="fa fa-github"></i></a><a href="{{candidateApp.twitterLinkField}}"><i class="fa fa-twitter"></i></a><a href="{{candidateApp.portfolioLinkField}}"><i class="fa fa-desktop smaller"></i></a></p>
-    <md-button ng-if="!candidate.rejected && isCompanyAdmin" class="md-warn reject">Remove</md-button>
-    <p ng-if="!candidate.rejected && isCompanyAdmin" class="between">
+    <md-button ng-if="!candidate.rejected && isCompanyAdmin && !lastStage" class="md-warn reject" ng-click="disqualifyCandidate(candidate.id)">Remove</md-button>
+    <p ng-if="!candidate.rejected && isCompanyAdmin && !lastStage" class="between">
         <---OR--->
     </p>
-    <md-button ng-if="!candidate.rejected && isCompanyAdmin" class="md-primary move-on" ng-click="moveCandidate(candidate.id)">Advance</md-button>
-    <md-button ng-if="candidate.rejected && isCompanyAdmin" class="md-primary move-on" ng-click="qualifyCandidate(candidate.id)">Add Back to Pool</md-button>
+    <md-button ng-if="!candidate.rejected && isCompanyAdmin && !lastStage" class="md-primary move-on" ng-click="moveCandidate(candidate.id)">Advance</md-button>
+    <md-button ng-if="candidate.rejected && isCompanyAdmin  && !lastStage" class="md-primary move-on" ng-click="qualifyCandidate(candidate.id)">Add Back to Pool</md-button>
 </div>
 <div class="row candidate-panels">
     <div class="col-sm-12 panelBar">

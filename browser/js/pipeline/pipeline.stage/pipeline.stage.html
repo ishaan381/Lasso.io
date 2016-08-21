@@ -25,11 +25,11 @@
     {{currentStage.title}}
     <div ng-show="qualified" ng-repeat="candidate in candidates | filter: filterByQualified | filter: filterByName" ui-sref="pipeline.stage.candidate({candidateId: candidate.id, test: 1})">
         <div class="candidate-block col-md-12">
-            <div class="candidate-chart col-md-3">
+            <div class="candidate-chart col-md-4">
                 <canvas id="doughnut" class="chart chart-doughnut" chart-data="data" chart-options="options" chart-labels="labels">
                 </canvas>
             </div>
-            <div class="candidate-essential-info col-md-7">
+            <div class="candidate-essential-info col-md-8">
                 <div class="candidate-name">
                     {{candidate.application.fullNameField}}
                 </div>
@@ -39,23 +39,16 @@
                 <div class="candidate-source">
                     from lasso.io : 11 days ago
                 </div>
-            </div>
-            <div class="candidate-links col-md-2">
-                <a ng-show="candidate.application.linkedInLinkField" href="{{candidate.application.linkedInLinkField}}"><i class="fa fa-linkedin-square" aria-hidden="true"></i></a>
-                <a ng-show="candidate.application.githubLinkField" href="{{candidate.application.githubLinkField}}"><i class="fa fa-github" aria-hidden="true"></i></a>
-                <a ng-show="candidate.application.twitterLinkField" href="{{candidate.application.twitterLinkField}}"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-                <a ng-show="candidate.application.otherLinkField" href="{{candidate.application.otherLinkField}}"><i class="fa fa-share" aria-hidden="true"></i></a>
-                <a ng-show="candidate.application.portfolioLinkField" href="{{candidate.application.portfolioLinkField}}"><i class="fa fa-desktop smaller" aria-hidden="true"></i></a>
             </div>
         </div>
     </div>
     <div ng-hide="qualified" ng-repeat="candidate in candidates | filter: filterByDisqualified | filter: filterByName" ui-sref="pipeline.stage.candidate({candidateId: candidate.id})">
         <div class="candidate-block col-md-12">
-            <div class="candidate-chart col-md-3">
+            <div class="candidate-chart col-md-4">
                 <canvas id="doughnut" class="chart chart-doughnut" chart-data="data" chart-options="options" chart-labels="labels">
                 </canvas>
             </div>
-            <div class="candidate-essential-info col-md-7">
+            <div class="candidate-essential-info col-md-8">
                 <div class="candidate-name">
                     {{candidate.application.fullNameField}}
                 </div>
@@ -65,13 +58,6 @@
                 <div class="candidate-source">
                     from lasso.io : 11 days ago
                 </div>
-            </div>
-            <div class="candidate-links col-md-2">
-                <a ng-show="candidate.application.linkedInLinkField" href="{{candidate.application.linkedInLinkField}}"><i class="fa fa-linkedin-square" aria-hidden="true"></i></a>
-                <a ng-show="candidate.application.githubLinkField" href="{{candidate.application.githubLinkField}}"><i class="fa fa-github" aria-hidden="true"></i></a>
-                <a ng-show="candidate.application.twitterLinkField" href="{{candidate.application.twitterLinkField}}"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-                <a ng-show="candidate.application.otherLinkField" href="{{candidate.application.otherLinkField}}"><i class="fa fa-share" aria-hidden="true"></i></a>
-                <a ng-show="candidate.application.portfolioLinkField" href="{{candidate.application.portfolioLinkField}}"><i class="fa fa-desktop smaller" aria-hidden="true"></i></a>
             </div>
         </div>
     </div>

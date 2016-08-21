@@ -37,5 +37,12 @@ app.factory('Stage', function ($http, AuthService) {
 
   }
 
+  Stage.disqualifyCandidate = function (candidateId) {
+    let applicant = cache.find(candidate => candidate.id === candidateId);
+    applicant.rejected = true;
+    return $http.put('/api/applications/' + candidateId, {rejected: true})
+    .then(res => res.data);
+  }
+
   return Stage;
 });
