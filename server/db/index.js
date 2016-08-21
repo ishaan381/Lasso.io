@@ -12,6 +12,7 @@ const User = require('./models/user'),
  Stage = require('./models/stage'),
  Code = require('./models/code');
 
+
 Job.belongsTo(Company, {as: 'company'});
 Company.hasMany(Job, {as: 'job', onDelete : 'cascade', hooks: true});
 

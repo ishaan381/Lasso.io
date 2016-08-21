@@ -57,13 +57,13 @@ module.exports = db.define('user', {
                 user.password = user.Model.encryptPassword(user.password, user.salt);
             }
         },
-        beforeDestroy: function(user){
-            return Comment.destroy({
-                where: {
-                    userId: user.id
-                },
-                individualHooks: true
-            })
-        }
+        // beforeDestroy: function(user){
+        //     return Comment.destroy({
+        //         where: {
+        //             userId: user.id
+        //         },
+        //         individualHooks: true
+        //     })
+        // }
     }
 });
