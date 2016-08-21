@@ -27,7 +27,7 @@ const companyNames = ['Fullstack Academy', 'Microsoft', 'Lyft', 'Uber', 'BMW'],
     commentContent = ['I love you', '^ is he comming off too strong?', 'he seems too qualified', 'there might something to this', 'I like bread', 'maybe if we actually screen applicants we wouldnt end up with another carl', 'whoopsie daisy', 'if you want to add more comments just put them in the seed file', 'this looks fun', 'wow I love rejecting people... it just makes me feel...  so powerful!', 'Im going insane', 'how many more comments content do I have to write', 'I love seed files!', '#LOL #YOLO #AMIRIGHT?'],
     commentTitles = ['Great Job!', 'Could be better', 'it\'s not me, it\'s you', 'it\'s not you, it\'s me', 'it\'s not me, it\'s me', 'it\'s not you, it\'s you', 'fame', 'I think he\'s the perfect applicant!', 'Next!', 'another one bites the dust', 'Clever title', 'comment.title', 'I put one title in here to screw with the scope'],
     fullNames = ['Bob Dole', 'Elon Musk', 'Jonathan Ligh', 'Ishaan Nagpal', 'Firstname Lastname', 'Kevin Li', 'Payton Henson'],
-    stageNames = ['Applied', 'Phone Interview', 'In-Person Interview', 'Hired']
+    stageNames = ['Applied', 'Phone Interview', 'In-Person Interview', 'Offer']
 
 function doTimes(n, fn, arg) {
     var results = [];
@@ -66,6 +66,8 @@ function createCompanies() {
 function randomUser(companies) {
     var company = chance.pick(companies);
     return User.build({
+        firstName: chance.first(),
+        lastName: chance.last(),
         email: userEmails.pop(),
         password: chance.word(),
         companyId: company.id,
@@ -79,13 +81,17 @@ function genUsers(companies) {
         email: "ishaan@gmail.com",
         password: "ishaan",
         companyId: 1,
-        isCompanyAdmin: true
+        isCompanyAdmin: true,
+        firstName: 'Ishaan',
+        lastName: 'Nagpal'
     }))
     users.push(User.build({
         email: "kevin@gmail.com",
         password: "kevin",
         companyId: 1,
-        isCompanyAdmin: false
+        isCompanyAdmin: false,
+        firstName: 'Kevin',
+        lastName: 'Li'
     }))
     return users;
 }

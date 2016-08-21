@@ -8,6 +8,11 @@ app.factory('Pipeline', function ($http) {
     createStages: function (array) {
       return $http.post('/api/stages', array)
       .then(res => res.data);
+      },
+
+      updateStages: function(array, jobId) {
+        return $http.put('/api/jobs/stages/'+jobId, array)
+        .then(res => res.data);
       }
   }
 })

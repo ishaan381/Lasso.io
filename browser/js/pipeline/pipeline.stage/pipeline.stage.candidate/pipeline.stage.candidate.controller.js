@@ -1,11 +1,14 @@
 app.controller('candidateCtrl', function($scope, $state, $stateParams, $timeout, stage, candidate, thisJob, Stage, AuthService) {
 
-    console.log(candidate);
     $scope.candidate = candidate;
     $scope.currentStage = stage;
     $scope.currTabId = 0;
     $scope.currPanelTemplate;
     $scope.candidateApp = JSON.parse(candidate.application)
+
+    let numStages = thisJob.stage.length;
+
+    $scope.lastStage = $scope.currentStage.index === numStages - 1 ? true : false;
 
     const templateRoot = "js/pipeline/pipeline.stage/pipeline.stage.candidate/panelTemplates/";
 
@@ -19,7 +22,6 @@ app.controller('candidateCtrl', function($scope, $state, $stateParams, $timeout,
         $scope.currTabId = tabId;
         // tab is a panel
         if (tabId === 0) {
-            console.log(candidate)
             $scope.data = { comments: candidate.comments }
             $scope.currPanelTemplate = templateRoot + 'comments.html';
         } else if (tabId === 1) {
@@ -58,5 +60,10 @@ app.controller('candidateCtrl', function($scope, $state, $stateParams, $timeout,
     $scope.qualifyCandidate = function(candidateId) {
         Stage.qualifyCandidate(candidateId);
         $state.go('pipeline.stage', { stageId: stage.id })
+    }
+
+    $scope.disqualifyCandidate = function (candidateId) {
+        Stage.disqualifyCandidate(candidateId);
+        $state.go('pipeline.stage', { stageId: stage.id });
     }
 });
