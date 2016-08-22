@@ -2,12 +2,12 @@
     <div class="row app-bar">
         <a ui-sref="pipeline.stage({stageId: currentStageId, qualified: true})">
             <div class="col-md-6 app-section1" ng-class="{'app-section-clicked': !qualified}">
-                Qualified
+                Qualified <span>{{numQualified}}</span>
             </div>
         </a>
         <a ui-sref="pipeline.stage({stageId: currentStageId, qualified: false})">
             <div class="col-md-6 app-section2" ng-class="{'app-section-clicked': qualified}">
-                Disqualified
+                Disqualified <span>{{numDisqualified}}</span>
             </div>
         </a>
     </div>
