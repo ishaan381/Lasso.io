@@ -34,8 +34,15 @@ router.get('/:id', function(req, res) {
 });
 
 //this route is for the company admin to get all users
-router.get('/:id/users', function(req, res){
-	res.send(req.requestedCompany);
+router.get('/:id/users', check.pageAdmin, function(req, res){
+	User.findAll({
+		where: {
+			companyId: req.params.id
+		}
+	})
+	.then(function(users){
+		res.send(users);
+	});
 });
 
 router.post('/', function(req, res, next) {
