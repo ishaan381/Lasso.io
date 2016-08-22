@@ -10,6 +10,11 @@ app.directive('navbar', function($rootScope, AuthService, AUTH_EVENTS, $state, $
                 { label: 'Home', state: 'home' },
             ];
 
+            AuthService.getLoggedInUser()
+            .then(function(user){
+                scope.user.isCompanyAdmin = user.isCompanyAdmin;
+            });
+
             scope.user = null;
 
             scope.isLoggedIn = function() {
@@ -28,10 +33,6 @@ app.directive('navbar', function($rootScope, AuthService, AUTH_EVENTS, $state, $
                     templateUrl: 'js/common/directives/navbar/invite.html',
                     controller: 'ModalInstaCtrl',
                 });
-            }
-
-            scope.isPageAdmin = function(){
-                return scope.user.isCompanyAdmin;
             }
 
             var setUser = function() {

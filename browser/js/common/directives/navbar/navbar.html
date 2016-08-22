@@ -25,7 +25,7 @@
                 <li ng-show="isLoggedIn()">
                     <a ui-sref-active="active" ui-sref="useredit">PROFILE<div><hr class="bottom-line"></div></a>
                 </li>
-                <li ng-show="isLoggedIn() && isCompanyAdmin()">
+                <li ng-show="user.isCompanyAdmin">
                     <a ui-sref-active="active" ui-sref="pageadmin">COMPANY PANEL<div><hr class="bottom-line"></div></a>
                 </li>
                 <li ng-show="!isLoggedIn()" ui-sref="login" ui-sref-active="active" class="btn login-button">Login</li>
