@@ -29,7 +29,7 @@
       	<td>{{ user.firstName }}</td>
       	<td>{{ user.lastName }}</td>
         <td>{{ user.email }}</td>
-        <td>
+        <td class="x-button">
         	<button type="button" ng-click="deleteUser(user)" class="btn btn-sm btn-danger">
         	<i class="glyphicon glyphicon-remove-circle"></i>
         	</button>
@@ -76,7 +76,7 @@
         <td>{{ job.jobDescription.fields.commitment }}</td>
         <td>{{ job.jobDescription.fields.state }}</td>
         <td>{{ job.jobDescription.fields.city }}</td>
-        <td>
+        <td class="x-button">
           <button type="button" ng-click="deletePosting(job)" class="btn btn-sm btn-danger">
           <i class="glyphicon glyphicon-remove-circle"></i>
           </button>
