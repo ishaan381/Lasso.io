@@ -34,9 +34,16 @@
                     <a ui-sref-active="active" ui-sref="postings"><i class="fa fa-suitcase" aria-hidden="true"></i>
 POSTINGS<div></div></a>
                 </li>
-                <li ng-show="!isLoggedIn()" ui-sref="login" ui-sref-active="active" class="btn login-button"><i class="fa fa-sign-in" aria-hidden="true"></i> Login
+
+                <li ng-show="!isLoggedIn()" ui-sref="login" ui-sref-active="active" class="btn login-button">
+                    <a ui-sref-active="active" ui-sref="useredit"><i class="fa fa-sign-in" aria-hidden="true"></i> Login<div></div></a>
                 </li>
-                <li ng-show="!isLoggedIn()" ui-sref="signup" ui-sref-active="active" class="btn login-button">Signup</li>
+
+                <li ng-show="!isLoggedIn()" ui-sref="signup" ui-sref-active="active" class="btn login-button">
+                    <a ui-sref-active="active" ui-sref="useredit"><i class="fa fa-user-plus" aria-hidden="true"></i>
+Signup<div></div></a>
+                </li>
+
 
                 <li ng-show="isLoggedIn()" ng-click="logout()" class="btn login-button">
                     <a ui-sref-active="active" ui-sref="useredit"><i class="fa fa-sign-out" aria-hidden="true"></i> Logout<div></div></a>

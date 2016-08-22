@@ -3,6 +3,16 @@
         font-family: Lato;
         font-weight: 400;
         padding: 30px;
+
+        .default-inputs {
+        margin-bottom: 0px;
+        }
+
+
+        .preview-application-title {
+        margin-top: 10px;
+        }
+
         #postings-application-preview-container {
             background-color: #fff;
             padding: 15px;
@@ -19,6 +29,7 @@
                 input {
                     height: 17px;
                     border-radius: 0;
+                    margin-bottom: 0px;
                 }
             }
             textarea, .ui-select-container, .custom-text-input {
