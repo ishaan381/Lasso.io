@@ -25,6 +25,9 @@
                 <li ng-show="isLoggedIn()">
                     <a ui-sref-active="active" ui-sref="useredit">PROFILE<div><hr class="bottom-line"></div></a>
                 </li>
+                <li ng-show="isLoggedIn()">
+                    <a ui-sref-active="active" ui-sref="pageadmin">COMPANY DASHBOARD<div><hr class="bottom-line"></div></a>
+                </li>
                 <li ng-show="!isLoggedIn()" ui-sref="login" ui-sref-active="active" class="btn login-button">Login</li>
                 <li ng-show="!isLoggedIn()" ui-sref="signup" ui-sref-active="active" class="btn login-button">Signup</li>
                 <li ng-show="isLoggedIn()" ng-click="logout()" class="btn login-button">Logout</li>
