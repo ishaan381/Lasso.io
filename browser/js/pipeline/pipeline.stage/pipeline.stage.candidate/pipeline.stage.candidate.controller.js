@@ -54,16 +54,21 @@ app.controller('candidateCtrl', function($scope, $state, $stateParams, $timeout,
 
     $scope.moveCandidate = function(candidateId) {
         Stage.moveCandidate(candidateId);
+        $scope.$parent.numQualified--;
         $state.go('pipeline.stage', { stageId: stage.id })
     }
 
     $scope.qualifyCandidate = function(candidateId) {
         Stage.qualifyCandidate(candidateId);
         $state.go('pipeline.stage', { stageId: stage.id })
+        $scope.$parent.numQualified++;
+        $scope.$parent.numDisqualified--;
     }
 
-    $scope.disqualifyCandidate = function (candidateId) {
+    $scope.disqualifyCandidate = function(candidateId) {
         Stage.disqualifyCandidate(candidateId);
         $state.go('pipeline.stage', { stageId: stage.id });
+        $scope.$parent.numDisqualified++;
+        $scope.$parent.numQualified--;
     }
 });
