@@ -102,7 +102,10 @@ function createUsers(companies) {
 
 function randomJob(companies) {
     var company = chance.pick(companies);
-    return Job.create({ companyId: company.id })
+    return Job.create({
+        companyId: company.id,
+        published: chance.bool({likelihood: 85})
+    });
 }
 
 function genJobs(companies) {
