@@ -346,6 +346,7 @@ function randomComments() {
         content: chance.pick(commentContent),
         stageId: Math.floor(Math.random() * 100) + 1,
         userId: Math.floor(Math.random() * 27) + 1,
+        rating: chance.pick([0, 1, 2, 3, 4, 5]),
         applicationId: Math.floor(Math.random() * 500) + 1
     })
 }

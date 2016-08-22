@@ -116,7 +116,7 @@
     }
     /*subnav*/
     .candidate-main {
-        height: calc(100vh - 100px);
+        height: calc(100vh - 50px);
         .candidate-toolbar {
             position: relative;
             font-family: 'Meta Medium';
@@ -156,7 +156,7 @@
         }
     }
     .panelBar {
-        font-family: 'Meta Medium';
+        /*font-family: 'Meta Medium';*/
         font-size: 18px;
         background-color: white;
         height: 95%;
@@ -198,6 +198,48 @@
             margin: 0 auto 10px auto;
             font-size: 0.9em;
             padding: 5px;
+        }
+
+        .switch {
+            display: inline;
+            margin-right: 10px;
+        }
+
+        .thumbs {
+            font-size: 20px;
+        }
+
+        .selected {
+            padding: 2px;
+        }
+
+        .unselected {
+            padding: 2px;
+        }
+
+        .first-selected, .second-selected {
+            color: #CA5252;
+        }
+        .third-selected {
+            color: #FDD05B;
+        }
+        .fourth-selected, .fifth-selected {
+            color: #2CAF61;
+        }
+        md-switch.md-checked.md-primary .md-bar {
+            background-color: rgba(22,120,194, 0.5);
+        }
+
+        md-switch.md-checked.md-primary .md-thumb {
+            background-color: rgb(22,120,194);
+        }
+
+        md-switch .md-label {
+            font-size: 14px;
+        }
+
+        .ui.button {
+            margin-top: 10px;
         }
     }
 }

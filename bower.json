@@ -37,6 +37,8 @@
     "angular-charts": "^0.2.7",
     "d3": "^4.2.2",
     "semantic": "semantic-ui#^2.2.2",
+    "awesome-rating": "^1.0.0",
+    "moment": "^2.14.1",
     "angular-ui-ace": "^0.2.3",
     "typed.js": "^1.1.4"
   },

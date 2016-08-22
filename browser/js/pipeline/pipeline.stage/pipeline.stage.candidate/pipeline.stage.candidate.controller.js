@@ -4,7 +4,10 @@ app.controller('candidateCtrl', function($scope, $state, $stateParams, $timeout,
     $scope.currentStage = stage;
     $scope.currTabId = 0;
     $scope.currPanelTemplate;
-    $scope.candidateApp = JSON.parse(candidate.application)
+    $scope.candidateApp = JSON.parse(candidate.application);
+    $scope.candidate.comments = $scope.candidate.comments.sort((a, b) => Date.parse(b.date) - Date.parse(a.date))
+
+    console.log(candidate.comments)
 
     let numStages = thisJob.stage.length;
 
@@ -21,7 +24,7 @@ app.controller('candidateCtrl', function($scope, $state, $stateParams, $timeout,
         $scope.currTabId = tabId;
         // tab is a panel
         if (tabId === 0) {
-            $scope.data = { comments: candidate.comments }
+            $scope.data = { comments: $scope.candidate.comments}
             $scope.currPanelTemplate = templateRoot + 'comments.html';
         } else if (tabId === 1) {
             $scope.data = { app: candidate.application, appQuestions: thisJob.jobApplication }
@@ -70,4 +73,7 @@ app.controller('candidateCtrl', function($scope, $state, $stateParams, $timeout,
         $scope.$parent.numDisqualified++;
         $scope.$parent.numQualified--;
     }
+
+
+
 });
