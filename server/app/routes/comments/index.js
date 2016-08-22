@@ -28,6 +28,15 @@ router.put('/:id', check.user, function(req, res, next) {
 	}).catch(next);
 })
 
+router.post('/', check.user, function(req, res, next) {
+	Comment.create(req.body)
+	.then(function(comment) {
+		res.status(201)
+		res.send(comment)
+	})
+	.catch(next)
+})
+
 router.delete('/:id', function(req, res, next) {
 	req.requestedComment.destroy()
 	.then(function(){

@@ -1,4 +1,4 @@
-<div class="comments-panel">
+<div class="comments-panel" ng-controller="CommentPanelCtrl">
     <div class="row">
         <div class="app-sort col-md-4">
             <ui-select ng-model="sortBy.selected" theme="selectize" title="Choose a person">
@@ -9,6 +9,23 @@
             </ui-select>
         </div>
     </div>
-    <comment ng-repeat="comment in data.comments" comment-data="comment"></comment>
+    <div class='col-md-8'>
+        <comment ng-repeat="comment in data.comments" comment-data="comment"></comment>
+    </div>
+    <div class='col-md-4'>
+        <form class="ui reply form">
+            <div class="field">
+                <textarea ng-model="input"></textarea>
+            </div>
+            <div>
+                <md-switch ng-model="toggle" aria-label="Switch" class="md-primary switch" md-no-ink="" ng-change="onChange(toggle)">
+                    {{ message }}
+                </md-switch>
+                <div awesome-rating="rating" class="switch thumbs" awesome-rating-options="options" ng-show="toggle"></div>
+            </div>
+            <button class="ui primary submit labeled icon button" ng-click="addComment()" ng-disabled="!input">
+                <i class="icon edit"></i> Add Comment
+            </button>
+        </form>
     </div>
 </div>

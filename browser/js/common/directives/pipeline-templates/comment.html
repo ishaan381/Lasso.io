@@ -6,10 +6,8 @@
             <div class="content">
                 <a class="author">{{author}}</a>
                 <div class="metadata">
-                    <div class="date">2 days ago</div>
-                    <div class="rating">
-                        <i class="star icon"></i> 5 Faves
-                    </div>
+                    <div class="date">{{date}}</div>
+                    <div awesome-rating="rating" awesome-rating-options="options" ng-show="rating"></div>
                 </div>
                 <div class="text">
                     {{content}}

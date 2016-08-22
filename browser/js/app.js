@@ -1,7 +1,7 @@
 'use strict';
 
 
-window.app = angular.module('FullstackGeneratedApp', ['fsaPreBuilt', 'ui.router', 'ui.bootstrap', 'ngAnimate', 'formly', 'formlyRepeatingSection','formlyBootstrap', 'ui.select', 'ngSanitize', 'textAngular', 'angular-parallax', 'ngMaterial', 'dndLists', 'xeditable', 'ngFileUpload', 'angularCharts', 'chart.js']);
+window.app = angular.module('FullstackGeneratedApp', ['fsaPreBuilt', 'ui.router', 'ui.bootstrap', 'ngAnimate', 'formly', 'formlyRepeatingSection','formlyBootstrap', 'ui.select', 'ngSanitize', 'textAngular', 'angular-parallax', 'ngMaterial', 'dndLists', 'xeditable', 'ngFileUpload', 'angularCharts', 'chart.js', 'awesome-rating']);
 
 
 app.config(function ($urlRouterProvider, $locationProvider) {

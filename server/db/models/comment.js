@@ -15,6 +15,10 @@ module.exports = db.define('comment', {
     defaultValue: (new Date())
   },
 
+  rating: {
+    type: Sequelize.INTEGER,
+  },
+
   stageId: {
     type: Sequelize.INTEGER
   },
