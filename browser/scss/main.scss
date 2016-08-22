@@ -103,7 +103,7 @@ $spaceamounts: (5, 10, 15, 20, 25, 30);
 @include generate-padding-right();
 @include generate-padding-left();
 
-
+@import 'adminpanel/main';
 @import 'directives/main';
 @import 'home/main';
 @import 'login/main';

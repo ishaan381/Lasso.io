@@ -17,12 +17,12 @@
                 <li ng-repeat="item in items" ng-show="!item.auth || isLoggedIn()">
                     <a ui-sref-active="active" ui-sref="{{ item.state }}"><i class="fa fa-home" aria-hidden="true"></i>
 {{ item.label }}<div></div></a></li>
-                
                 <li ng-show="isLoggedIn()">
                     <a ui-sref-active="active" ui-sref="newDescription">
-<i class="fa fa-plus pr-5" aria-hidden="true"></i>ADD<div></div></a>
+                        <i class="fa fa-plus pr-5" aria-hidden="true"></i>ADD
+                        <div></div>
+                    </a>
                 </li>
-
                 <li ng-show="isLoggedIn()">
                     <a ui-sref-active="active" ui-sref="candidates">
                         <i class="fa fa-users pr-5" aria-hidden="true"></i>CANDIDATES
@@ -34,21 +34,19 @@
                     <a ui-sref-active="active" ui-sref="postings"><i class="fa fa-suitcase" aria-hidden="true"></i>
 POSTINGS<div></div></a>
                 </li>
-
+                <li ng-show="user.isCompanyAdmin">
+                    <a ui-sref-active="active" ui-sref="pageadmin">COMPANY PANEL<div></div></a>
+                </li>
                 <li ng-show="!isLoggedIn()" ui-sref="login" ui-sref-active="active" class="btn login-button">
                     <a ui-sref-active="active" ui-sref="useredit"><i class="fa fa-sign-in" aria-hidden="true"></i> Login<div></div></a>
                 </li>
-
                 <li ng-show="!isLoggedIn()" ui-sref="signup" ui-sref-active="active" class="btn login-button">
                     <a ui-sref-active="active" ui-sref="useredit"><i class="fa fa-user-plus" aria-hidden="true"></i>
 Signup<div></div></a>
                 </li>
-
-
                 <li ng-show="isLoggedIn()" ng-click="logout()" class="btn login-button">
                     <a ui-sref-active="active" ui-sref="useredit"><i class="fa fa-sign-out" aria-hidden="true"></i> Logout<div></div></a>
                 </li>
-
                 <li ng-show="isLoggedIn()" class="btn login-button">
                     <a ui-sref-active="active" ui-sref="useredit"><i class="fa fa-user" aria-hidden="true"></i>
 PROFILE<div></div></a>

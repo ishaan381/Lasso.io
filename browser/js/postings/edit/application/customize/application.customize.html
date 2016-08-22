@@ -2,10 +2,9 @@
 </subnav>
 <div class="job-editor-container">
     <div class="boxed job-editor col-md-12 col-sm-12">
-
-                <div class="col-md-12">
-                <h1 class="header">Step 2: Customize your application form.</h1>
-            </div>
+        <div class="col-md-12">
+            <h1 class="header">Step 2: Customize your application form.</h1>
+        </div>
         <div id="postings-application">
             <div id="postings-application-edit" class="col-md-6">
                 <form name="form" novalidate>
@@ -16,60 +15,14 @@
                         </div>
                     </formly-form>
                 </form>
-                <!--                 <h2>Form Data</h2>
- -->
-<!--                                 <pre>{{lists | json}}</pre>
-
- -->
-<!--  <pre>{{model | json}}</pre>
- --></div>
-
-            <div id="postings-application-preview" ng-controller="previewApplicationCtrl" class="col-md-6">
-                <div id="postings-application-preview-container">
-                    <form ng-submit="onSubmit()" name="form" novalidate>
-                        <formly-form model="model" fields="fields" options="options" form="form">
-                        </formly-form>
-                    </form>
-                    <!--                     <h2>Form Data</h2>
-                    <pre>{{model | json}}</pre> -->
-                </div>
             </div>
         </div>
-    </div>
-</div>
-<!-- <div class="header-wrapper">
-                    <header class="section"></header>
-                </div>
-                <div class="content-wrapper">
-                    <section class="section-wrapper">
-                        <div class="section">ANALYTICS MANAGER</div>
-                        <div class="section">SAN FRANCISCO, CA ...</div>
-                    </section>
-                    <section class="section-wrapper">
-                        <div class="section">
-                            <h4>Submit your application</h4>
-                            <ul>
-                                <li class="application-question">application questions</li>
-                            </ul>
-                        </div>
-                        <div class="section">
-                            <h4>Links</h4>
-                            <ul>
-                                <li class="application-question">links</li>
-                            </ul>
-                        </div>
-                        <div class="section">
-                        auto generated sections ...
-
-                        </div>
-                        <div class="section last-section-apply">
-                            <button class="submit-btn"> Submit Application</button>
-                        </div>
-                    </section>
-                </div>
-                <div class="footer-wrapper">
-                    <footer class="section"></footer>
-                </div>
+        <div id="postings-application-preview" ng-controller="previewApplicationCtrl" class="col-md-6">
+            <div id="postings-application-preview-container">
+                <form ng-submit="onSubmit()" name="form" novalidate>
+                    <formly-form model="model" fields="fields" options="options" form="form">
+                    </formly-form>
+                </form>
             </div>
         </div>
     </div>

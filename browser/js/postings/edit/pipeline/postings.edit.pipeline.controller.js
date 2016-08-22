@@ -73,7 +73,7 @@ app.controller('editPipelineCtrl', function(_, $scope, formlyVersion, $q, $http,
         max: 1,
         allowedTypes: ['begin'],
         stages: [{
-            name: "Applied",
+            title: "Applied",
             type: "begin",
             panels: [
                 { title: 'Notes', templateUrl: '/js/postings/edit/pipeline/panel-templates/default-notes.html', panelId: 0, panelNotes: "" }
@@ -87,7 +87,7 @@ app.controller('editPipelineCtrl', function(_, $scope, formlyVersion, $q, $http,
         allowedTypes: ['custom'],
         max: 10,
         stages: [{
-            name: "Phone Interview",
+            title: "Phone Interview",
             type: "custom",
             id: 0,
             panels: [
@@ -96,7 +96,7 @@ app.controller('editPipelineCtrl', function(_, $scope, formlyVersion, $q, $http,
 
             ]
         }, {
-            name: "In-Person Interview",
+            title: "In-Person Interview",
             type: "custom",
             id: 1,
             panels: [
@@ -109,7 +109,7 @@ app.controller('editPipelineCtrl', function(_, $scope, formlyVersion, $q, $http,
         allowedTypes: ['end'],
         max: 1,
         stages: [{
-            name: "Offer",
+            title: "Offer",
             type: "end",
             panels: [
                 { title: 'Notes', templateUrl: '/js/postings/edit/pipeline/panel-templates/default-notes.html', panelId: 0, panelNotes: "" }
@@ -119,7 +119,7 @@ app.controller('editPipelineCtrl', function(_, $scope, formlyVersion, $q, $http,
         }]
     }]
 
-    if (thisJob.stage) {
+    if (thisJob.stage.length) {
 
         var stages = thisJob.stage;
         stages.sort((a, b) => a.index - b.index)
@@ -166,6 +166,11 @@ app.controller('editPipelineCtrl', function(_, $scope, formlyVersion, $q, $http,
         sharedStages.stages = newVal;
     }, true)
 
+    console.log($scope.stages)
+    console.log($scope.beginStage)
+    console.log($scope.endStage)
+    console.log($scope.customStages)
+    console.log("THISJOB STAGES", thisJob.stage)
     populateStages();
 
 

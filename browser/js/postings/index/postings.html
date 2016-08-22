@@ -7,7 +7,7 @@
             <div class="col-md-6 col-sm-6 col-xs-6 postings-title">
                 <h1>POSTINGS</h1>
             </div>
-            <div class="postings-control-panel col-md-6 col-sm-6 col-xs-6">
+            <div ng-if="isAdmin" class="postings-control-panel col-md-6 col-sm-6 col-xs-6">
                 <div class="add-posting">
                     <div class="button">
                         <a class="" href="#" ui-sref="newDescription"><i class="fa fa-plus pr-5" aria-hidden="true"></i>add new posting</a>
@@ -41,8 +41,17 @@
         <div class='col-md-12'>
             <hr id="panel-hr">
         </div>
+
+        <form>
+            <div class="form-group">
+                <div class="input-group">
+                    <div class="input-group-addon"><i class="fa fa-search"></i></div>
+                    <input type="text" class="form-control" placeholder="Search by job, job title, or job content" ng-model="searchjob">
+                </div>      
+            </div>
+        </form>
         <div class="col-md-12" id="chunk-container">
-            <div ng-repeat="chunk in chunkedJobs" id="chunk">
+            <div ng-repeat="chunk in chunkedJobs | filter:searchjob" id="chunk">
                 <div layout="row">
                     <div flex="30" class="border-padding">
                         <div class="border">

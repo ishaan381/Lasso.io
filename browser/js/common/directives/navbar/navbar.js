@@ -10,6 +10,11 @@ app.directive('navbar', function($rootScope, AuthService, AUTH_EVENTS, $state, $
                 { label: 'Home', state: 'home' },
             ];
 
+            AuthService.getLoggedInUser()
+            .then(function(user){
+                scope.user.isCompanyAdmin = user.isCompanyAdmin;
+            });
+
             scope.user = null;
 
             scope.isLoggedIn = function() {

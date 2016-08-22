@@ -1,0 +1,95 @@
+<div class="container" ng-show="isPageAdmin()">
+  
+  <form>
+    <div class="form-group">
+      <div class="input-group">
+        <div class="input-group-addon"><i class="fa fa-search"></i></div>
+        <input type="text" class="form-control" placeholder="Search by name or email" ng-model="searchuser">
+      </div>      
+    </div>
+  </form>
+  
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <td>
+          FIRST NAME 
+        </td>
+        <td>
+          LAST NAME
+        </td>
+                <td>
+          EMAIL
+        </td>
+      </tr>
+    </thead>
+    
+    <tbody>
+      <tr ng-repeat="user in users | orderBy:sortType:sortReverse | filter:searchuser">
+      	<td>{{ user.firstName }}</td>
+      	<td>{{ user.lastName }}</td>
+        <td>{{ user.email }}</td>
+        <td class="x-button">
+        	<button type="button" ng-click="deleteUser(user)" class="btn btn-sm btn-danger">
+        	<i class="glyphicon glyphicon-remove-circle"></i>
+        	</button>
+        </td>
+      </tr>
+    </tbody>
+    
+  </table>
+
+  <form>
+    <div class="form-group">
+      <div class="input-group">
+        <div class="input-group-addon"><i class="fa fa-search"></i></div>
+        <input type="text" class="form-control" placeholder="Search by job, job content, or job title" ng-model="searchjob">
+      </div>      
+    </div>
+  </form>
+  
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <td>
+          JOB TITLE 
+        </td>
+        <td>
+          DEPARTMENT
+        </td>
+        <td>
+          COMMITMENT
+        </td>
+        <td>
+          STATE
+        </td>
+        <td>
+          CITY
+        </td>
+      </tr>
+    </thead>
+    
+    <tbody>
+      <tr ng-repeat="job in jobs | orderBy:sortType:sortReverse | filter:searchjob">
+        <td>{{ job.jobDescription.fields.title }}</td>
+        <td>{{ job.jobDescription.fields.department }}</td>
+        <td>{{ job.jobDescription.fields.commitment }}</td>
+        <td>{{ job.jobDescription.fields.state }}</td>
+        <td>{{ job.jobDescription.fields.city }}</td>
+        <td class="x-button">
+          <button type="button" ng-click="deletePosting(job)" class="btn btn-sm btn-danger">
+          <i class="glyphicon glyphicon-remove-circle"></i>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+    
+  </table>
+  
+</div>
+<div ng-show="!isPageAdmin()" class="harambe-container">
+<h1>ERROR 401: UNAUTHORIZED ACCESS</h1>
+  <h1>YOU'RE NOT SUPPOSE TO BE HERE</h1>
+  <img class="harambe" src="http://cbsnews2.cbsistatic.com/hub/i/r/2016/06/01/be84a529-4da6-4981-b3d8-306f852e5001/thumbnail/620x350/0e8dd6a9cdb773d610077c76cf1d23fa/133086105858279649186878551590185511304691o.jpg">
+  <h2>YOU HAVE BE LOGGED OUT</h2>
+</div>

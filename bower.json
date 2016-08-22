@@ -37,7 +37,8 @@
     "angular-charts": "^0.2.7",
     "d3": "^4.2.2",
     "semantic": "semantic-ui#^2.2.2",
-    "angular-ui-ace": "bower"
+    "angular-ui-ace": "bower",
+    "typed.js": "^1.1.4"
   },
   "resolutions": {
     "d3": "^4.2.2"

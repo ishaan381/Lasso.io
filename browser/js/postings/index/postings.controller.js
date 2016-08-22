@@ -1,4 +1,6 @@
-app.controller('postingsCtrl', function(_, $scope, $q, $http, jobs) {
+
+app.controller('postingsCtrl', function(_, $scope, $q, jobs, AuthService) {
+
 
     jobs.forEach(job => job.jobDescription.fields = JSON.parse(job.jobDescription.fields));
 
@@ -45,5 +47,10 @@ app.controller('postingsCtrl', function(_, $scope, $q, $http, jobs) {
     }
 
     $scope.chunkJobs('department');
+
+    $scope.isAdmin;
+
+    AuthService.getLoggedInUser()
+    .then(user => $scope.isAdmin = user.isCompanyAdmin);
 
 });
