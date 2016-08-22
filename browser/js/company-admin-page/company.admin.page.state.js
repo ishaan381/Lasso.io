@@ -12,7 +12,15 @@ app.config(function ($stateProvider) {
     				return {isCompanyAdmin: false}
     			}
     		})
-    	}
+    	},
+
+        jobs: function (Company, AuthService) {
+            return AuthService.getLoggedInUser()
+            .then(user => {
+                if (user) return Company.fetch(user.companyId)
+            })
+            .then(company => company.job)
+        }
     }
   })
 });

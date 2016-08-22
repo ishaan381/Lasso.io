@@ -21,7 +21,6 @@ app.factory('Job', function($http, $log) {
         .then(res => res.data)
     }
 
-
     //doesnt work yet, this is just here for the possibility of querying
     Job.queryAllByCompany = function (id, params) {
         return $http.get('/api/jobs/company/' + id + '/?' + jQuery.param(params))
