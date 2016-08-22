@@ -75,6 +75,19 @@ router.post('/', function(req, res, next) {
         .catch(next);
 });
 
+router.get('/:jobId/apps', function(req, res, next) {
+    Apps.get({
+        where: {
+            jobId: req.params.jobId
+        }
+    })
+    .then(function(apps){
+        res.status(200)
+        res.send(apps)
+    })
+    .catch(next);
+})
+
 router.put('/:id', function(req, res, next) {
     req.requestedJob.update(req.body)
         .then(function(desc) {

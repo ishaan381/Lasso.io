@@ -27,6 +27,18 @@ router.get('/:id', function(req, res) {
     res.send(req.requestedApplication);
 });
 
+router.get('/:jobId', function(req, res, next) {
+	App.get({
+		where: {
+			jobId: req.params.jobId
+		}
+	})
+	.then(function(apps){
+		res.status(200)
+		res.send(apps)
+	})
+})
+
 //these seem to the the same
 
 router.post('/', function(req, res, next){
