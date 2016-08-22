@@ -1,5 +1,5 @@
 
-app.controller('postingsCtrl', function(_, $scope, $q, jobs) {
+app.controller('postingsCtrl', function(_, $scope, $q, jobs, AuthService) {
 
 
     jobs.forEach(job => job.jobDescription.fields = JSON.parse(job.jobDescription.fields));
