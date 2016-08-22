@@ -39,11 +39,9 @@ app.factory('Job', function($http, $log) {
             })
     }
 
-    // Job.edit = function(job) {
-    //     return $http.put('/api/jobs/' + job.id, {
-
-    //     })
-    // }
+    Job.edit = function(id, data) {
+        return $http.put('/api/jobs/' + id, data);
+    }
 
     Job.remove = function (id) {
         return $http.delete('/api/jobs/' + id)
