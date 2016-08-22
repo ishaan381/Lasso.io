@@ -7,7 +7,7 @@
             <div class="col-md-6 col-sm-6 col-xs-6 postings-title">
                 <h1>POSTINGS</h1>
             </div>
-            <div class="postings-control-panel col-md-6 col-sm-6 col-xs-6">
+            <div ng-if="isAdmin" class="postings-control-panel col-md-6 col-sm-6 col-xs-6">
                 <div class="add-posting">
                     <div class="button">
                         <a class="" href="#" ui-sref="newDescription"><i class="fa fa-plus pr-5" aria-hidden="true"></i>add new posting</a>
