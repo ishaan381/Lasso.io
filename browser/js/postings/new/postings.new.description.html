@@ -6,7 +6,7 @@
                 <h1>Step 1: Describe the job.</h1>
                 <form ng-submit="vm.onSubmit()" name="vm.form" novalidate>
                     <formly-form model="vm.model" fields="vm.fields" options="vm.options" form="vm.form">
-                        <div class="form-actions">
+                        <div ng-if="isAdmin" class="form-actions">
                             <button type="submit" class="btn btn-primary submit-button" ng-disabled="vm.form.$invalid">submit</button>
                         </div>
                     </formly-form>

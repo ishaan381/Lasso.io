@@ -20,5 +20,12 @@ app.factory('JobDescriptions', function($http) {
         });
     }
 
+    JobDescriptions.update = function (id, data) {
+        return $http.put('/api/jobs/descriptions/'  + id, {
+            fields: data.fields
+        })
+        .then(res => res.data);
+    }
+
     return JobDescriptions;
 });
