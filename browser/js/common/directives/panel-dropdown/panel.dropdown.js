@@ -6,6 +6,7 @@ app.directive('panelDropdown', function() {
         scope: { choices: '=ngModel' },
         controller: 'panelDropdownCtrl',
         link: function(scope, element, attrs) {
+            // for persistence
             if (scope.choices) {
                 scope.choices = scope.choices;
             } else {

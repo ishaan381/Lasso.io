@@ -1,0 +1,33 @@
+<div id="kit-scorecard-field">
+    <div class="question-info">
+        <h3>{{question.title}}</h3>
+        <small>{{question.description}}</small>
+    </div>
+    <!-- FOR SCOREBOARD OPTIONS -->
+    <div class="scorecard-option-container" >
+        <div  data-ng-repeat="option in question.options track by $index">
+            <fieldset class="col-md-12 options ">
+                <div class="col-md-6 input-field left">
+                    <div class="scorecard-option">{{option.value}}</div>
+                </div>
+                <div class="col-md-6 right">
+                    <div class="col-md-12 icon-container">
+                        <div class="col-md-3 rating" ng-class="getClass($index, 0)" ng-click="logRating($index, 0)">
+                            <i class="fa fa-times" aria-hidden="true"></i>
+                        </div>
+                        <div class="col-md-3 rating" ng-class="getClass($index, 1)" ng-click="logRating($index, 1)">
+                            <i class="fa fa-thumbs-down" aria-hidden="true"></i>
+                        </div>
+                        <div class="col-md-3 rating" ng-class="getClass($index, 2)" ng-click="logRating($index, 2)">
+                            <i class="fa fa-thumbs-up" aria-hidden="true"></i>
+                        </div>
+                        <div class="col-md-3 rating" ng-class="getClass($index, 3)" ng-click="logRating($index, 3)">
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+
+    </div>
+</div>

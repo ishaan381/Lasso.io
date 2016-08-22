@@ -39,6 +39,8 @@
     "semantic": "semantic-ui#^2.2.2",
     "awesome-rating": "^1.0.0",
     "moment": "^2.14.1"
+    "angular-ui-ace": "bower",
+    "typed.js": "^1.1.4"
   },
   "resolutions": {
     "d3": "^4.2.2"

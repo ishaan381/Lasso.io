@@ -1,8 +1,9 @@
 <div layout="column" class="job-column">
     <div layout="row">
-    <div id="title">
-        <h3><a ui-sref="pipeline({id: detail.id})"> {{ detail.jobDescription.fields.title }} </a></h3>
-    </div>
+
+        <div id="title">
+            <h3><a ng-href="{{toUrl(detail.published)}}"> {{ detail.jobDescription.fields.title }}</a><span class="published"> | {{ published }}</span></h3>
+        </div>
     </div>
     <div id="more-info">
         <div layout="row">

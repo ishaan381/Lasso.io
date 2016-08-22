@@ -5,7 +5,9 @@
     .container {
         background-color: white;
         width: 100%;
-        padding: 15px;
+        padding: 30px;
+        padding-left: 45px;
+        padding-right: 45px;
         hr {
             margin-top: 15px;
             margin-bottom: 25px;
@@ -19,7 +21,6 @@
         .col-md-12 {
             padding: 0;
             width: 100%;
-
         }
         .col-md-6 {
             padding: 0;
@@ -66,10 +67,10 @@
                 margin-left: auto;
                 margin-right: 0px;
                 background-color: darken(white, 2%);
-                /*		    background-color: #dedede;
-			*/
-                /*			 margin: 0 auto;
-			*/
+                /*          background-color: #dedede;
+            */
+                /*           margin: 0 auto;
+            */
                 text-align: center;
                 -webkit-transition: all 0.3s;
                 -moz-transition: all 0.3s;
@@ -101,8 +102,8 @@
                 top: 0;
                 /*Change 'top' to 'bottom' for an upwards transition*/
                 height: 0px;
-                /*		    margin: 0 auto;
-			*/
+                /*          margin: 0 auto;
+            */
                 padding: 0px;
                 background-color: darken(white, 3%);
                 -webkit-transition: .2s ease;
@@ -149,10 +150,10 @@
     }
     #chunk {
         width: 80%;
-        /*    	background-color: #f2f2f2;
+        /*      background-color: #f2f2f2;
 */
         h3 {
-        	margin-top: 0px;
+            margin-top: 0px;
         }
         margin: 0 auto 30px auto;
         .border-padding {
@@ -170,6 +171,11 @@
             text-transform: uppercase;
             padding-top: 10px;
         }
+        i {
+            font-size: 14px;
+            position: relative;
+            bottom: 2px;
+        }
     }
     .job-column {
         /*vertical-align: middle;*/
@@ -181,9 +187,11 @@
         /*-moz-osx-font-smoothing: grayscale;*/
         transition-duration: 0.3s;
         transition-property: transform;
+
         &:hover {
             background-color: darken(#fafafa, 0%);
             transform: scale(1.01);
+
         }
         h3 {
             margin-bottom: 5px;
@@ -192,13 +200,13 @@
     #more-info {
         font-size: 12px;
         .detail {
-        	width: 25%;
+            width: 25%;
         }
-       /* #commitment {
-        	width: %;
+        /* #commitment {
+            width: %;
         }*/
         .detail#department {
-        	width: 50%;
+            width: 50%;
         }
         i {
             font-size: 5px;
@@ -206,71 +214,65 @@
             padding-right: 5px;
         }
     }
-
     @media (max-width: 1080px) {
-    	.sort-posting-title {
-    		padding-right: 2px;
-    	}
-
-    	.sort-posting-filters {
-    		font-size: 10px;
-    	}
-
-    	#posting-url {
-    		font-size: 10px;
-    	}
-
-    	.filter-option {
-    		padding-left: 2px;
-    		padding-right: 2px;
-    	}
-
-    	i {
-    		display: none;
-    	}
+        .sort-posting-title {
+            padding-right: 2px;
+        }
+        .sort-posting-filters {
+            font-size: 10px;
+        }
+        #posting-url {
+            font-size: 10px;
+        }
+        .filter-option {
+            padding-left: 2px;
+            padding-right: 2px;
+        }
+        i {
+            display: none;
+        }
     }
-
     @media (max-width: 850px) {
-    	width: 100%;
-    	#chunk {
-    		width: 100%;
-    	}
-    	.postings-title > h1 {
-    		font-size: 20px;
-    	}
-
-    	#title > h3 {
-    		font-size: 16px;
-    	}
-
-    	#chunk-container {
-    		.category {
-    			font-size: 14px;
-    			padding-top: 5px;
-    		}
-    	}
-    	#more-info {
-    		.detail {
-    			width: 33%;
-    		}
-
-    		.detail#department {
-    			width: 33%;
-    		}
-    	}
+        width: 100%;
+        #chunk {
+            width: 100%;
+        }
+        .postings-title > h1 {
+            font-size: 20px;
+        }
+        #title > h3 {
+            font-size: 16px;
+        }
+        #chunk-container {
+            .category {
+                font-size: 14px;
+                padding-top: 5px;
+            }
+        }
+        #more-info {
+            .detail {
+                width: 33%;
+            }
+            .detail#department {
+                width: 33%;
+            }
+        }
     }
-
     @media (max-width: 575px) {
-    	#sort-by {
-    		display: none;
-    	}
-
-    	#posting-url {
-    		display: none;
-    	}
+        #sort-by {
+            display: none;
+        }
+        #posting-url {
+            display: none;
+        }
     }
 }
 
 .gap {
     height: 20px;
+}
+
+.published {
+    color: #9e9e9e;
+    font-weight: 100;
 }

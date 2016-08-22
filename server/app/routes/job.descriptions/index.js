@@ -33,7 +33,7 @@ router.post('/', function(req, res, next) {
 	.catch(next);
 });
 
-router.put('/:id', check.access, function(req, res, next) {
+router.put('/:id', function(req, res, next) {
     req.requestedDesc.update(req.body)
     .then(function (desc) {
         res.send(desc);

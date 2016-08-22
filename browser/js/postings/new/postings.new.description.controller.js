@@ -1,27 +1,24 @@
-app.controller('newDescriptionCtrl', function (_, $scope, $state, formlyVersion, $q, $http, countries, JobDescriptions, Job) {
+app.controller('newDescriptionCtrl', function (_, $scope, $state, formlyVersion, $q, $http, countries, JobDescriptions, Job, AuthService) {
 
     const vm = this;
 
     vm.countries = countries.data;
     vm.originalFields = angular.copy(vm.fields);
 
-    // function refreshAddresses(address, field) {
-    //   var promise;
-    //   if (!address) {
-    //     promise = $q.when({data: {results: []}});
-    //   }
-    //   else {
-    //     var endpoint = '//maps.googleapis.com/maps/api/geocode/json?components=administrative_area:' + address + '|country:' + vm.model.country
-    //     promise = $http.get(endpoint);
-    //   }
-    //   return promise.then(response => {
-    //     field.templateOptions.options = response.data.results;
-    //   });
-    // }
+    let user;
+    $scope.isAdmin;
+
+    AuthService.getLoggedInUser()
+    .then(_user => {
+      user = _user;
+      $scope.isAdmin = _user.isCompanyAdmin;
+    });
+
+
 
     // function definition
     function onSubmit() {
-      var companyId = 1;
+      var companyId = user.companyId;
       var jobId;
       var descriptionData = {fields: JSON.stringify(vm.model)};
       Job.create({companyId: companyId})

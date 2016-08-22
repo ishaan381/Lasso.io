@@ -10,19 +10,17 @@
                     <md-option value="code">Code</md-option>
                     <md-option value="dropdown">Dropdown</md-option>
                     <md-option value="radio">Multiple Choice</md-option>
-                    <md-option value="checkbox">Checkboxes</md-option>
-                    <md-option value="scoreboard">Scoreboard</md-option>
+                    <!-- not supported yet --> 
+<!--                     <md-option value="checkbox">Checkboxes</md-option>
+ -->                    <md-option value="scoreboard">Scoreboard</md-option>
                     <md-option value="yesno">Yes/No</md-option>
                 </md-select>
             </div>
         </div>
-
-        <panel-dropdown ng-if="needsChoices(question.selectedField)" ng-model="question.options"></panel-dropdown>
-
-        <panel-scoreboard ng-if="question.selectedField === 'scoreboard'" ng-model="question.options"></panel-scoreboard>
-
-        {{question}}
-
+        <div class="row choice-pane">
+            <panel-dropdown ng-if="needsChoices(question.selectedField)" ng-model="question.options"></panel-dropdown>
+            <panel-scoreboard ng-if="question.selectedField === 'scoreboard'" ng-model="question.options"></panel-scoreboard>
+        </div>
     </div>
     <md-button class="md-raised add-question-button" ng-click="addQuestion()"><i class="fa fa-plus-circle pr-5" aria-hidden="true"></i> Add An Interview Question</md-button>
 </div>

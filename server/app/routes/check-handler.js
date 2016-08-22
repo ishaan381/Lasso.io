@@ -17,7 +17,7 @@ var checkAdmin = function(req, res, next) {
 }
 
 var checkAccess = function (req, res, next) {
-    if (req.user.id === req.requestedUser.id || req.user.isAdmin) next();
+    if ((req.user.id === req.requestedUser.id || req.user.isAdmin)) next();
     else {
         var err = new Error('Unauthorized');
         err.status = 401;
