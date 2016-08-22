@@ -4,9 +4,11 @@ app.config(function($stateProvider) {
     templateUrl: 'js/postings/edit/application/customize/application.customize.html',
     controller: 'editApplicationCtrl',
     resolve: {
-      parsedJobApp: function (JobApplication, $stateParams) {
-        return JobApplication.fetch($stateParams.id)
-        .then(res => JSON.parse(res.data.fields));
+      parsedJobApp: function (thisJob, JobApplication, $stateParams) {
+        if (thisJob.jobApplication) {
+          return JobApplication.fetch($stateParams.id)
+          .then(res => JSON.parse(res.data.fields));
+        }
       }
     }
   })
