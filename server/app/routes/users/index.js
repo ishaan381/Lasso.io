@@ -24,7 +24,7 @@ router.get('/:id',(check.admin || check.pageAdmin || check.access), function(req
 });
 
 
-router.delete('/:id', (check.admin || check.pageAdmin), function(req, res, next) {
+router.delete('/:id', check.pageAdmin, function(req, res, next) {
 	req.requestedUser.destroy()
 	.then(function(){
 		res.status(204).end();

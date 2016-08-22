@@ -30,10 +30,17 @@ app.factory('User', function($http, $rootScope) {
                password: user.newpassword
             })
             .then(function(resp){
-              $rootScope.$emit('edit profile', resp.data);
               return resp.data;
             })
   }
+
+  User.delete = function(user) {
+      return $http.delete('api/users/' + user.id)
+        .then(function(resp){
+          return resp.data;
+        })
+  }
+
 
   return User;
 })

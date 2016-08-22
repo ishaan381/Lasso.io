@@ -5,7 +5,7 @@ app.config(function ($stateProvider) {
     controller: 'postingsCtrl as vm',
     resolve: {
     	jobs: function (Company, AuthService) {
-            return AuthService.getLoggedInUser()
+            AuthService.getLoggedInUser()
             .then(user => {
                 if (user) return Company.fetch(user.companyId)
             })

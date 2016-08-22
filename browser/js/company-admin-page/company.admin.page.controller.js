@@ -1,22 +1,21 @@
 'use strict';
 
-app.controller('PageAdmin', function ($scope, $rootScope, $state, AuthService, User, Company) {
+app.controller('PageAdmin', function ($scope, $rootScope, admin, $state, AuthService, User, Company) {
 
-	AuthService.getLoggedInUser()
-	.then(user => {
-		$scope.user = user;
+	Company.getUsers(admin.companyId)
+	.then(function(users){
+		$scope.users = users
 	});
 
-	$scope.getUsers = function(){
-		return Company.getUsers($scope.company)
-		.then(function(users){
-			$scope.users = users;
-		})
-	};
-
-
 	$scope.isPageAdmin = function(){
-		return $scope.user.isCompanyAdmin;
+		return admin.isCompanyAdmin;
 	}
 
-});
+	$scope.delete = function(user){
+			User.delete(user)
+			var index = $scope.users.indexOf(user);
+			if(index !== -1) {
+				$scope.users.splice(index, 1);
+			}
+		}
+	});
