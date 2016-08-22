@@ -5,7 +5,7 @@
   .photobot{
     background-image: url("http://media.gettyimages.com/photos/coffee-cup-laptop-notebook-and-pen-in-office-picture-id177245735?k=6&m=177245735&s=170667a&w=0&h=bGzIJEO8-ktxIFNgYCqnOMfPth6810yNr18J2ChpmEY=");
     background-attachment: fixed;
-    height: 100vh;
+    height: calc(100vh + 200px);
     /*position: relative;*/
     /*background-position: 50%;*/
     background-repeat: no-repeat;
@@ -16,24 +16,32 @@
   };
 
   .logo {
+    margin-left: 8%;
     font-size: 80px;
     text-align: center;
-    font-family: 'Puritan', sans-serif;
+    font-family: 'Lato', sans-serif;
+    font-weight: bold;
     position: absolute;
     top: 30%;
     width: 100%;
     color: whitesmoke;
+    text-align: left;
     p {
       margin-bottom: 0px;
     }
     }
     .sublogo {
-    font-size: 25px;
-    text-align: center;
-    font-family: 'Puritan', sans-serif;
+    font-size: 45px;
+    font-family: 'Lato', sans-serif;
     position: absolute;
     width: 100%;
     color: whitesmoke;
+    text-align: left;
+    }
+    #typed-output {
+/*      text-decoration: underline;
+          text-decoration-color: red;*/
+      border-bottom: 5px solid #82B541
     }
 }
 
@@ -106,4 +114,30 @@
     font-family: 'Maison Neue Book', HelveticaNeue-Light, "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
   }
 }
+
+.typed-cursor{
+    opacity: 1;
+    -webkit-animation: blink 0.7s infinite;
+    -moz-animation: blink 0.7s infinite;
+    animation: blink 0.7s infinite;
+}
+@keyframes blink{
+    0% { opacity:1; }
+    50% { opacity:0; }
+    100% { opacity:1; }
+}
+@-webkit-keyframes blink{
+    0% { opacity:1; }
+    50% { opacity:0; }
+    100% { opacity:1; }
+}
+@-moz-keyframes blink{
+    0% { opacity:1; }
+    50% { opacity:0; }
+    100% { opacity:1; }
+}
+
 //https://static.pexels.com/photos/2855/landscape-mountains-nature-lake.jpg
+
+
+
