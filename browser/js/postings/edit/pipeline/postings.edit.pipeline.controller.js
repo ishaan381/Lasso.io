@@ -1,4 +1,4 @@
-app.controller('editPipelineCtrl', function(_, $scope, formlyVersion, $q, $http, thisJob, $state, Pipeline, sharedStages) {
+app.controller('editPipelineCtrl', function(_, $scope, formlyVersion, $q, $http, thisJob, $state, Pipeline, sharedStages, Job) {
 
     $scope.stages = [];
 
@@ -64,9 +64,10 @@ app.controller('editPipelineCtrl', function(_, $scope, formlyVersion, $q, $http,
     $scope.submitStages = function() {
 
         saveStages()
-        .then(function(stages) {
-            $state.go('pipeline', { id: thisJob.id });
-        })
+            .then(function(stages) {
+                return Job.edit(thisJob.id, { published: true });
+            })
+            .then(job => $state.go('pipeline', { id: thisJob.id }));
     }
 
     $scope.beginStage = [{
@@ -159,7 +160,6 @@ app.controller('editPipelineCtrl', function(_, $scope, formlyVersion, $q, $http,
 
         populateStages();
     }
-
 
 
     $scope.$watch('stages', function(newVal, oldVal) {
