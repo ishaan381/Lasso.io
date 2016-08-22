@@ -16,7 +16,6 @@ app.controller('candidateCtrl', function($scope, $state, $stateParams, $timeout,
 
     $scope.data;
 
-
     // note panel id is += 2 ...
     function switchTab(tabId) {
         $scope.currTabId = tabId;

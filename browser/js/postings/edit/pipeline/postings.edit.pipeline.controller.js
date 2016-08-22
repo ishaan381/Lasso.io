@@ -138,6 +138,7 @@ app.controller('editPipelineCtrl', function(_, $scope, formlyVersion, $q, $http,
     }
 
     function populateStages() {
+
         $scope.beginStage[0].stages.forEach(function(stage) {
             $scope.stages.push(stage);
         })
@@ -155,6 +156,7 @@ app.controller('editPipelineCtrl', function(_, $scope, formlyVersion, $q, $http,
 
     function repopulateStages() {
         $scope.stages = [];
+
         populateStages();
     }
 

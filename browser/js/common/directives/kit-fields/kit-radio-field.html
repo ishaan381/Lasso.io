@@ -1,0 +1,16 @@
+<div id="kit-radio-field" >
+    <div class="question-info">
+
+    <h3>{{question.title}}</h3>
+    <small>{{question.description}}</small>
+    </div>
+    <!-- FOR RADIO OPTIONS -->
+    <md-radio-group ng-model="model.value" ng-if="question.selectedField === 'radio' ">
+        <md-radio-button ng-repeat="question in question.options" value="{{question.value}}">{{question.value}}</md-radio-button>
+    </md-radio-group>
+    <!-- FOR YES / NO Options -->
+    <md-radio-group ng-model="model.value" ng-if="question.selectedField === 'yesno' ">
+        <md-radio-button value="Yes">Yes</md-radio-button>
+        <md-radio-button value="No">No</md-radio-button>
+    </md-radio-group>
+</div>
