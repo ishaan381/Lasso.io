@@ -38,6 +38,13 @@ app.controller('stageCtrl', function($scope, $state, Stage, $stateParams, $uibMo
         return fullName.indexOf(filterInput) !== -1;
     }
 
+    $scope.getInitials = function (fullName) {
+        // return 'hi'
+        // console.log(fullName);
+        return fullName.split(' ').map(function (s) { return s.charAt(0); }).join('');
+
+    }
+
     $scope.sortSelection = [
         { title: 'Sort by alphabetical' },
         { title: 'Sort by date' },

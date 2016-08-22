@@ -25,11 +25,14 @@
     {{currentStage.title}}
     <div ng-show="qualified" ng-repeat="candidate in candidates | filter: filterByQualified | filter: filterByName" ui-sref="pipeline.stage.candidate({candidateId: candidate.id, test: 1})">
         <div class="candidate-block col-md-12">
-            <div class="candidate-chart col-md-4">
+            <div class="candidate-avatar col-md-2">
+                <ng-avatar bg-color="#166088" initials="{{getInitials(candidate.application.fullNameField)}}"></ng-avatar>
+            </div>
+            <!--             <div class="candidate-chart col-md-4">
                 <canvas id="doughnut" class="chart chart-doughnut" chart-data="data" chart-options="options" chart-labels="labels">
                 </canvas>
-            </div>
-            <div class="candidate-essential-info col-md-8">
+            </div> -->
+            <div class="candidate-essential-info col-md-10">
                 <div class="candidate-name">
                     {{candidate.application.fullNameField}}
                 </div>
@@ -44,11 +47,14 @@
     </div>
     <div ng-hide="qualified" ng-repeat="candidate in candidates | filter: filterByDisqualified | filter: filterByName" ui-sref="pipeline.stage.candidate({candidateId: candidate.id})">
         <div class="candidate-block col-md-12">
-            <div class="candidate-chart col-md-4">
+            <div class="candidate-avatar col-md-2">
+                <ng-avatar bg-color="#166088" initials="{{getInitials(candidate.application.fullNameField)}}"></ng-avatar>
+            </div>
+<!--             <div class="candidate-chart col-md-4">
                 <canvas id="doughnut" class="chart chart-doughnut" chart-data="data" chart-options="options" chart-labels="labels">
                 </canvas>
-            </div>
-            <div class="candidate-essential-info col-md-8">
+            </div> -->
+            <div class="candidate-essential-info col-md-10">
                 <div class="candidate-name">
                     {{candidate.application.fullNameField}}
                 </div>

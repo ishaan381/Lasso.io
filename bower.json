@@ -38,9 +38,11 @@
     "d3": "^4.2.2",
     "semantic": "semantic-ui#^2.2.2",
     "angular-ui-ace": "^0.2.3",
-    "typed.js": "^1.1.4"
+    "typed.js": "^1.1.4",
+    "angular-avatar": "^1.1.0"
   },
   "resolutions": {
-    "d3": "^4.2.2"
+    "d3": "^4.2.2",
+    "angular": "1.4.5"
   }
 }
