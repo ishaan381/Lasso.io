@@ -1,6 +1,7 @@
 app.controller('panelFormCtrl', function(_, $scope, formlyVersion, $log, $q, $http, $state, sharedStages) {
 
     $scope.questions = [];
+    $scope.fixthis = "";
 
     var currentIndex;
     $scope.$parent.$watch('selectedIndex', function(newIndex) {

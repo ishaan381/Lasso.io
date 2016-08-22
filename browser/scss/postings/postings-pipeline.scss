@@ -44,6 +44,7 @@
         padding-left: 10px;
         .edit-title {
             margin-bottom: 20px;
+            margin-top: 15px;
         }
         .edit-description {}
         .editable-wrap .editable-controls > input {
@@ -58,6 +59,11 @@
         }
         .editable-click {
             border-bottom: none;
+        }
+        .choice-pane {
+            padding-left: 20px;
+            padding-right: 20px;
+            padding-bottom: 30px;
         }
     }
     .editable-empty {

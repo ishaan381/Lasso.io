@@ -1,7 +1,8 @@
 <div layout="column" class="job-column">
     <div layout="row">
     <div id="title">
-        <h3><a ui-sref="pipeline({id: detail.id})"> {{ detail.jobDescription.fields.title }} </a></h3>
+        <h3><a ui-sref="pipeline({id: detail.id})"> {{ detail.jobDescription.fields.title }} </a><a ui-sref="editPosting.description ( {id: detail.id} ) "><i class="fa fa-pencil pl-5" aria-hidden="true"></i></a>
+</h3>
     </div>
     </div>
     <div id="more-info">
