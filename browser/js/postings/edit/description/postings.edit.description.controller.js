@@ -1,4 +1,4 @@
-app.controller('editDescriptionCtrl', function (_, $scope, formlyVersion, $q, $http, countries, thisJob) {
+app.controller('editDescriptionCtrl', function (_, $scope, formlyVersion, $q, $http, countries, thisJob, Job, $state, JobDescriptions) {
 
     const vm = this;
 
@@ -9,34 +9,25 @@ app.controller('editDescriptionCtrl', function (_, $scope, formlyVersion, $q, $h
       formlyVersion: formlyVersion
     };
 
-    vm.model = {
-    };
+    vm.model = {};
     console.log('job:', thisJob);
     console.log('job desc:', thisJob.jobDescription);
 
-        _.assign(vm.model, JSON.parse(thisJob.jobDescription.fields));
+    _.assign(vm.model, JSON.parse(thisJob.jobDescription.fields));
 
     vm.options = {};
 
-    function refreshAddresses(address, field) {
-      var promise;
-      if (!address) {
-        if (vm.model.region) {
-          promise = $q.when({data: {results: [{'formatted_address': vm.model.region}]}})
-        }
-        else {
-          promise = $q.when({data: {results: []}});
-        }
-      }
-      else {
-        var endpoint = '//maps.googleapis.com/maps/api/geocode/json?components=administrative_area:' + address + '|country:' + vm.model.country
-        promise = $http.get(endpoint);
-      }
-      return promise.then(response => {
-        field.templateOptions.options = response.data.results;
-      });
+    function onSubmit() {
+      var descriptionData = {fields: JSON.stringify(vm.model)};
+      JobDescriptions.update(thisJob.id, descriptionData)
+      .then(() => $state.go('editPosting.application', {id: thisJob.id}));
+
     }
-    
+
+    // function assignment
+    vm.onSubmit = onSubmit;
+
+
     vm.fields = [
       {
         noFormControl: true,
@@ -64,34 +55,25 @@ app.controller('editDescriptionCtrl', function (_, $scope, formlyVersion, $q, $h
         }
       },
       {
-        key: 'country',
-        type: 'ui-select-single',
-        className: 'country-field col-md-4',
+        key: 'city',
+        type: 'input',
+        className: 'col-md-4',
         templateOptions: {
-          optionsAttr: 'bs-options',
-          ngOptions: 'option[to.valueProp] as option in to.options | filter: $select.search',
-          label: 'Country',
-          valueProp: 'code',
-          labelProp: 'name',
-          placeholder: 'Select a country',
-          options: vm.countries,
+          type: 'text',
+          label: 'City',
+          placeholder: 'City',
           required: true
         }
       },
       {
-        key: 'region',
-        type: 'ui-select-single-search',
-        className: 'region-field col-md-4',
+        key: 'state',
+        type: 'input',
+        className: 'col-md-4',
         templateOptions: {
-          optionsAttr: 'bs-options',
-          ngOptions: 'option[to.valueProp] as option in to.options | filter: $select.search',
-          label: 'Region',
-          valueProp: 'formatted_address',
-          labelProp: 'formatted_address',
-          placeholder: 'Search',
-          options: [],
-          refresh: refreshAddresses,
-          refreshDelay: 0
+          type: 'text',
+          label: 'State',
+          placeholder: 'State',
+          required: true
         }
       },
       {

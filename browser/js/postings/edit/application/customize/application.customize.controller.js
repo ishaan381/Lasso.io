@@ -1,4 +1,4 @@
-app.controller('editApplicationCtrl', function(_, $scope, formlyVersion, $q, $http, sharedModal, JobApplication, $stateParams, thisJob, $state) {
+app.controller('editApplicationCtrl', function(_, $scope, formlyVersion, $q, $http, sharedModal, JobApplication, $stateParams, thisJob, $state, parsedJobApp) {
     // Watches sharedModal.customFields for updates.
     // Comes from ^dndCtrl.
     // Adds to formly-form model.
@@ -20,7 +20,7 @@ app.controller('editApplicationCtrl', function(_, $scope, formlyVersion, $q, $ht
     $scope.onSave = onSave;
 
     function onSave() {
-        console.log('Saving')
+        console.log(thisJob, "THIS JOB")
         if (!thisJob.jobApplication) return JobApplication.create({ fields: JSON.stringify($scope.model), jobId: $stateParams.id });
         else return JobApplication.update({ fields: JSON.stringify($scope.model), jobId: $stateParams.id});
     }
@@ -45,14 +45,12 @@ app.controller('editApplicationCtrl', function(_, $scope, formlyVersion, $q, $ht
 
     // This reloads the job application if it exists in the database.
     if (thisJob.jobApplication) {
-        var parsedJobApplication = JSON.parse(thisJob.jobApplication.fields)
-            // Assigns it to the formly model.
-        _.assign($scope.model, parsedJobApplication);
+        // Assigns it to the formly model.
+        _.assign($scope.model, parsedJobApp);
         // Adds it to the custom questions (separate from formly model) in shared service if pre-existing.
         // :: See $watch on sharedModal.customFields in dnd.controller.js
-        if (parsedJobApplication.customFields) {
-            console.log('updated');
-            sharedModal.customFields = parsedJobApplication.customFields;
+        if (parsedJobApp.customFields) {
+            sharedModal.customFields = parsedJobApp.customFields;
         }
     }
 
