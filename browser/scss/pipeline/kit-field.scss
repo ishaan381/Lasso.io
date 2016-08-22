@@ -1,0 +1,105 @@
+.kit-panel {
+    padding-top: 40px;
+    padding-bottom: 40px;
+    padding-left: 60px;
+    padding-right: 60px;
+    .question-info {
+        margin-bottom: 20px;
+        small {
+            color: darken(#999, 10%);
+        }
+    }
+    .question-field {
+        margin-bottom: 30px;
+    }
+    #kit-code-field {
+        .ace_editor {
+            height: 300px;
+        }
+    }
+    #kit-text-field {
+        md-input-container {
+            margin-top: 10px;
+        }
+    }
+    #kit-textbox-field {
+        md-input-container {
+            margin-top: 10px;
+        }
+    }
+    #kit-dropdown-field {
+        .selectize-control.single .selectize-input,
+        .selectize-dropdown.single {
+            outline: none;
+        }
+        .selectize-dropdown .active {
+            outline: none;
+        }
+        .ui-select-choices-row {
+            outline: none;
+        }
+        .ui-select-choices-row:hover {
+            background-color: darken(#f5f5f5, 10%);
+        }
+    }
+    #kit-radio-field {}
+    #kit-scorecard-field {
+        fieldset {
+            /*reset semantic defaults*/
+            border: 0;
+            padding: 0;
+            margin: 0;
+        }
+        .scorecard-option-container fieldset:first-of-type {}
+        fieldset.options:first-of-type {
+            margin-bottom: 5px;
+            padding-bottom: 0;
+            padding-left: 10px;
+            margin: 0 !important;
+            border-top: 1px solid lighten(#999, 10%);
+            border-bottom: 1px solid lighten(#999, 10%);
+            border-right: 0;
+            border-left: 0;
+        }
+        i {
+            color: darken(#f3f3f3, 15%);
+            font-size: 20px !important;
+            position: relative;
+        }
+        .scorecard-option {
+            font-size: 15px;
+            margin-top: 20px;
+        }
+        .circle-container {
+            padding: 0;
+        }
+        .icon-container {
+            height: 100%;
+            background-color: #fafafa;
+            .rating {
+                text-align: center;
+                padding: 20px;
+            }
+            .rating:hover {
+                background-color: lighten(#999, 20%);
+                cursor: pointer;
+                i {
+                    color: white;
+                }
+            }
+            .rating.clicked.good {
+                background-color: rgb(170, 210, 3);
+                i {
+                    color: white;
+                }
+            }
+            .rating.clicked.bad {
+                background-color: #ED4337;
+                i {
+                    color: white;
+                }
+            }
+            margin-right: 15px;
+        }
+    }
+}

@@ -1,0 +1,9 @@
+<section id="kit-code-field" ng-controller="AceCtrl">
+    <div class="question-info">
+        <h3>{{question.title}}</h3>
+        <small>{{question.description}}</small>
+    </div>
+    <!-- FOR TEXT -->
+    <div ui-ace="aceOption" ng-model="model.value"></div>
+    <select ng-model="mode" ng-options="m for m in modes" ng-change="modeChanged()"></select>
+</section>
