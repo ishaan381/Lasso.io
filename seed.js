@@ -9,6 +9,7 @@ let chalk = require('chalk'),
     Stage = db.model('stage'),
     Company = db.model('company'),
     App = db.model('application');
+    Feedback = db.model('feedback');
 var Promise = require('sequelize').Promise;
 const numUsers = 25,
     numCompanies = 5,
@@ -319,12 +320,17 @@ function randomApp(stages) {
             "fullNameField": chance.name(),
             "emailField": chance.email(),
             "phoneField": chance.phone(),
-            "currentCompanyField": chance.sentence({ words: 2 }),
+            "currentCompanyField": chance.pick(['Fullstack Academy', 'Microsoft', 'Lyft', 'Uber', 'BMW']),
             "linkedInLinkField": "https://ca.linkedin.com/in/tj-holowaychuk-9a92817",
             "twitterLinkField": "https://twitter.com/tjholowaychuk",
             "githubLinkField": "https://github.com/tj",
             "portfolioLinkField": "http://tjholowaychuk.com/",
-            "otherLinkField": "https://medium.com/@tjholowaychuk"
+            "otherLinkField": "https://medium.com/@tjholowaychuk",
+            "custom-field-0": "I saw a story a few months ago on the news about the outreach your company does with the community.  Giving back is a big part of my personal philosophy and I was excited to see that there was a company that felt the same way.  You can imagine how excited I was when I found out there was a job opening in my skill set here.  I would really hope to be able to come to work every day to a place where I knew not only are my technical skills valuable, but my personal philosophies are as well.",
+            "custom-field-1": "Dear Hiring Manager:\n\nYour posting on LinkedIn for a Sales and Marketing Coordinator recently caught my eye, and I think you will find I am an exceptional candidate for this position.\n\nI am an accomplished administrative professional and a junior in the Marketing & Management program at Riverrun University. Over the past ten years, I have provided high-level support in a variety of industries and across multiple functional areas. I am now seeking a position that will make the most of my administrative experience while offering additional opportunities for personal and professional development.\n\nIn exchange, I offer exceptional attention to detail, highly developed communication skills, and a talent for managing complex projects with a demonstrated ability to prioritize and multitask.\n\nMy accomplishments and qualifications are further detailed in the attached resume. I welcome the opportunity to meet with you and discuss the value that I can bring to your organization.\n\nWarmest regards,\n\nCatelyn Stark",
+            "custom-field-2": chance.pick(['Yes', 'No']),
+            "custom-field-3": chance.pick(['Google', 'Recruiter', 'LinkedIn', 'Indeed.Com']),
+            "custom-field-4": ["New York", "New Jersey"]
         }),
         jobId: Math.floor(Math.random() * 30) + 1,
         stageId: chance.pick(stages).id,
@@ -359,6 +365,11 @@ function createComments() {
     return Promise.map(genComments(), comments => comments.save());
 }
 
+
+function createFeedback() {
+    return Promise.map(genFeedback(), feedback => )
+}
+
 function seed() {
     var _companies, _users, _stages, _jobs;
     return createCompanies()
@@ -385,6 +396,9 @@ function seed() {
         })
         .then(function() {
             return createComments()
+        })
+        .then(function () {
+            return createFeedback()
         })
         .then(function() {
             console.log("Hello")
