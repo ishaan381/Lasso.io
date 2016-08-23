@@ -18,19 +18,6 @@
                     <a ui-sref-active="active" ui-sref="{{ item.state }}"><i class="fa fa-home" aria-hidden="true"></i>
 {{ item.label }}<div></div></a></li>
                 <li ng-show="isLoggedIn()">
-                    <a ui-sref-active="active" ui-sref="newDescription">
-                        <i class="fa fa-plus pr-5" aria-hidden="true"></i>ADD
-                        <div></div>
-                    </a>
-                </li>
-                <li ng-show="isLoggedIn()">
-                    <a ui-sref-active="active" ui-sref="candidates">
-                        <i class="fa fa-users pr-5" aria-hidden="true"></i>CANDIDATES
-                        <div>
-                        </div>
-                    </a>
-                </li>
-                <li ng-show="isLoggedIn()">
                     <a ui-sref-active="active" ui-sref="postings"><i class="fa fa-suitcase" aria-hidden="true"></i>
 POSTINGS<div></div></a>
                 </li>

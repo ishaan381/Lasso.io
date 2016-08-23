@@ -366,9 +366,9 @@ function createComments() {
 }
 
 
-function createFeedback() {
-    return Promise.map(genFeedback(), feedback => )
-}
+// function createFeedback() {
+//     return Promise.map(genFeedback(), feedback => feedback.save())
+// }
 
 function seed() {
     var _companies, _users, _stages, _jobs;
@@ -397,9 +397,9 @@ function seed() {
         .then(function() {
             return createComments()
         })
-        .then(function () {
-            return createFeedback()
-        })
+        // .then(function () {
+        //     return createFeedback()
+        // })
         .then(function() {
             console.log("Hello")
         })
