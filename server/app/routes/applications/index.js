@@ -6,7 +6,8 @@ let db = require('../../../db'),
 check = require('../check-handler');
 
 const App = db.model('application'),
-Comment = db.model('comment');
+Comment = db.model('comment'),
+Stage = db.model('stage')
 
 router.param('id', function(req, res, next, id){
 	App.findOne({
@@ -42,7 +43,18 @@ router.get('/:jobId', function(req, res, next) {
 //these seem to the the same
 
 router.post('/', function(req, res, next){
-	App.create(req.body)
+  Stage.findOne({
+    where: {
+      jobId: req.body.jobId,
+      index: 0
+    }
+  })
+  .then(stage => {
+    console.log(stage);
+    req.body.stageId = stage.id;
+    req.body.application = JSON.stringify(req.body.application);
+    return App.create(req.body);
+  })
 	.then(function(app) {
 		res.status(201);
 		res.send(app);
