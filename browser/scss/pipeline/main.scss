@@ -1,5 +1,4 @@
 @import 'kit-field';
-
 .main-pipeline-container {
     height: 100vh;
     .row {
@@ -8,12 +7,16 @@
     }
     .applicantBar {
         /*    width: 25%;*/
-        font-family: 'Meta Medium';
+        font-family: 'Lato', 'Helvetica Neue', Arial, Helvetica, sans-serif;
         font-size: 18px;
         background-color: white;
         height: 100vh;
-        border-top: 8px solid #166088;
+        border-top: 4px solid #166088;
         padding: 0;
+    }
+    .selected-candidate {
+        background-color: darken(#f2f2f2, 2%);
+        outline: 0;
     }
     .app-bar {
         height: 50px;
@@ -77,6 +80,7 @@
         overflow: hidden;
         padding: 10px;
         padding-left: 0px;
+        outline: 0;
         .candidate-chart {
             padding: 0;
             padding-bottom: 10px;
@@ -87,13 +91,16 @@
                 margin-top: 5px;
             }
         }
-        .candidate-avatar {
-            border: 1px solid #ddd;
-            border-radius: 2px;
+        .avatar-wrapper {
             background-color: #fff;
             padding: 3px;
+            width: 55px !important;
+            height: 55px !important;
+            margin-left: 10px;
         }
-
+        .candidate-avatar {
+            height: 100%;
+        }
         .candidate-essential-info {
             font-size: 14px;
             padding: 0;
@@ -167,7 +174,7 @@
         font-size: 18px;
         background-color: white;
         height: 95%;
-        border-top: 8px solid #166088;
+        border-top: 4px solid #166088;
         padding: 0;
         overflow: scroll;
         .app-section1 {
@@ -206,45 +213,39 @@
             font-size: 0.9em;
             padding: 5px;
         }
-
         .switch {
             display: inline;
             margin-right: 10px;
         }
-
         .thumbs {
             font-size: 20px;
         }
-
         .selected {
             padding: 2px;
         }
-
         .unselected {
             padding: 2px;
         }
-
-        .first-selected, .second-selected {
+        .first-selected,
+        .second-selected {
             color: #CA5252;
         }
         .third-selected {
             color: #FDD05B;
         }
-        .fourth-selected, .fifth-selected {
+        .fourth-selected,
+        .fifth-selected {
             color: #2CAF61;
         }
         md-switch.md-checked.md-primary .md-bar {
-            background-color: rgba(22,120,194, 0.5);
+            background-color: rgba(22, 120, 194, 0.5);
         }
-
         md-switch.md-checked.md-primary .md-thumb {
-            background-color: rgb(22,120,194);
+            background-color: rgb(22, 120, 194);
         }
-
         md-switch .md-label {
             font-size: 14px;
         }
-
         .ui.button {
             margin-top: 10px;
         }
@@ -275,6 +276,11 @@ panel-dropdown {
         border-style: solid;
         box-shadow: none;
         color: #666;
+    }
+    @media screen and (max-width: 1600px) and (min-width: 1000px) {
+        input {
+            width: 90%;
+        }
     }
     .circle-container {
         padding: 0;

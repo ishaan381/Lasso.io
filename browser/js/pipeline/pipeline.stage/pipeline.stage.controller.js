@@ -3,12 +3,15 @@ app.controller('stageCtrl', function($scope, $state, Stage, $stateParams, $uibMo
     $scope.currentStage = stage;
     $scope.currentStageId = $stateParams.stageId
 
+    var avatarColors = ['#745296',  '#632A50', '#e91e63', '#00695c', '#ef6c00', '#607d8b']
+
     Stage.getCandidates($stateParams.stageId)
         .then(cache => {
             $scope.candidates = cache;
             $scope.numQualified = $scope.candidates.filter(candidate => !candidate.rejected).length;
             $scope.numDisqualified = $scope.candidates.filter(candidate => candidate.rejected).length;
             console.log($scope.candidates);
+            $scope.candidates.forEach((candidate, index) => candidate.avatarColor = avatarColors[index % 6])
         });
 
     // Restful Routing
@@ -43,6 +46,24 @@ app.controller('stageCtrl', function($scope, $state, Stage, $stateParams, $uibMo
         // console.log(fullName);
         return fullName.split(' ').map(function (s) { return s.charAt(0); }).join('');
 
+    }
+
+    $scope.selectedCandidateId;
+
+    $scope.setActiveCandidate = function (candidateId) {
+        console.log('hi');
+        $scope.selectedCandidateId = candidateId;
+        console.log($scope.selectedCandidateId);
+    }
+
+    $scope.resetActiveCandidate = function () {
+        $scope.selectedCandidateId = null;
+    }
+
+    $scope.addActiveClass = function (candidateId) {
+        return {
+            'selected-candidate': candidateId === $scope.selectedCandidateId
+        }
     }
 
     $scope.sortSelection = [

@@ -6,6 +6,8 @@ body {
   background: #f2f2f2;
 }
 
+
+
 @mixin clearfix {
   &:after {
     content: "";
@@ -94,6 +96,16 @@ $spaceamounts: (5, 10, 15, 20, 25, 30);
     }
   }
 }
+
+/* for some fucking weird reason */
+
+.input-default {
+input {
+
+  height: 20px;
+}
+}
+
 
 @include generate-margin-bottom();
 @include generate-margin-right();

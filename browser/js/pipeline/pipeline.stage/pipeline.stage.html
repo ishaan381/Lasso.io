@@ -1,11 +1,11 @@
 <div class="col-sm-3 applicantBar">
     <div class="row app-bar">
-        <a ui-sref="pipeline.stage({stageId: currentStageId, qualified: true})">
+        <a ng-click="resetActiveCandidate()" ui-sref="pipeline.stage({stageId: currentStageId, qualified: true})">
             <div class="col-md-6 app-section1" ng-class="{'app-section-clicked': !qualified}">
                 Qualified <span>{{numQualified}}</span>
             </div>
         </a>
-        <a ui-sref="pipeline.stage({stageId: currentStageId, qualified: false})">
+        <a ng-click="resetActiveCandidate()" ui-sref="pipeline.stage({stageId: currentStageId, qualified: false})">
             <div class="col-md-6 app-section2" ng-class="{'app-section-clicked': qualified}">
                 Disqualified <span>{{numDisqualified}}</span>
             </div>
@@ -22,17 +22,16 @@
             </ui-select>
         </div>
     </div>
-    {{currentStage.title}}
     <div ng-show="qualified" ng-repeat="candidate in candidates | filter: filterByQualified | filter: filterByName" ui-sref="pipeline.stage.candidate({candidateId: candidate.id, test: 1})">
-        <div class="candidate-block col-md-12">
-            <div class="candidate-avatar col-md-2">
-                <ng-avatar bg-color="#166088" initials="{{getInitials(candidate.application.fullNameField)}}"></ng-avatar>
+        <div class="candidate-block col-md-12" ng-click="setActiveCandidate(candidate.id)" ng-class="addActiveClass(candidate.id)">
+            <div class="candidate-avatar col-md-3">
+                <ng-avatar bg-color="{{candidate.avatarColor}}" initials="{{getInitials(candidate.application.fullNameField)}}"></ng-avatar>
             </div>
             <!--             <div class="candidate-chart col-md-4">
                 <canvas id="doughnut" class="chart chart-doughnut" chart-data="data" chart-options="options" chart-labels="labels">
                 </canvas>
             </div> -->
-            <div class="candidate-essential-info col-md-10">
+            <div class="candidate-essential-info col-md-9">
                 <div class="candidate-name">
                     {{candidate.application.fullNameField}}
                 </div>
@@ -46,15 +45,15 @@
         </div>
     </div>
     <div ng-hide="qualified" ng-repeat="candidate in candidates | filter: filterByDisqualified | filter: filterByName" ui-sref="pipeline.stage.candidate({candidateId: candidate.id})">
-        <div class="candidate-block col-md-12">
-            <div class="candidate-avatar col-md-2">
-                <ng-avatar bg-color="#166088" initials="{{getInitials(candidate.application.fullNameField)}}"></ng-avatar>
+        <div class="candidate-block col-md-12" ng-click="setActiveCandidate(candidate.id)" ng-class="addActiveClass(candidate.id)">
+            <div class="candidate-avatar col-md-3">
+                <ng-avatar bg-color="{{candidate.avatarColor}}" initials="{{getInitials(candidate.application.fullNameField)}}"></ng-avatar>
             </div>
-<!--             <div class="candidate-chart col-md-4">
+            <!--             <div class="candidate-chart col-md-4">
                 <canvas id="doughnut" class="chart chart-doughnut" chart-data="data" chart-options="options" chart-labels="labels">
                 </canvas>
             </div> -->
-            <div class="candidate-essential-info col-md-10">
+            <div class="candidate-essential-info col-md-9">
                 <div class="candidate-name">
                     {{candidate.application.fullNameField}}
                 </div>
