@@ -1,4 +1,4 @@
-app.controller('kitPanelCtrl', function ($scope, $state, $stateParams) {
+app.controller('kitPanelCtrl', function ($scope, $state, $stateParams, Feedback) {
     $scope.model = {
     }
 
@@ -8,6 +8,20 @@ app.controller('kitPanelCtrl', function ($scope, $state, $stateParams) {
     			value: null
     		};
     	})
+    }
+
+    $scope.submitFeedback = function() {
+        console.log("SUBMITTING FEEDBACK!!", $stateParams)
+        var _answers = [];
+
+        for (var answerIndex in $scope.model) {
+            _answers.push($scope.model[answerIndex])
+        }
+
+        Feedback.submitFeedback({answers: _answers, stageId: $stateParams.stageId, applicationId: $stateParams.candidateId})
+        .then(function(feedback) {
+            console.log(feedback)
+        })
     }
 
     generateKitModel();
