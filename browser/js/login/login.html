@@ -1,4 +1,4 @@
-<div class="login-band form-wrapper">
+<!-- <div class="login-band form-wrapper">
     <div class="login-signup-form login">
         <form id="login-form" name="loginForm" ng-submit="loginForm.$valid && sendLogin(login)">
             <alert type="danger" ng-show="error">
@@ -15,4 +15,43 @@
             </div>
         </form>
     </div>
-</div>
+</div> -->
+
+<section id="login">
+    <div class="form-cool">
+        <alert type="danger" ng-show="error.signup">
+            {{ error.signup }}
+        </alert>
+        <div class="form">
+
+            <div class="tab-content">
+               
+                <div ng-if="onLogin" id="login">
+
+                <div class="logo-container"><img class="logo" src="/logo.png" /></div>
+                    <h1>Sign in to Lasso</h1>
+                    <form id="login-form" name="loginForm" ng-submit="loginForm.$valid && sendLogin(login)">
+                        <alert type="danger" ng-show="error.login">
+                            {{ error.login }}
+                        </alert>
+                        <div class="field-wrap">
+                            <label>
+                                Email Address<span class="req">*</span>
+                            </label>
+                            <input type="text" ng-model="login.email" class="form-control" id="email">
+                        </div>
+                        <div class="field-wrap">
+                            <label>
+                                Password<span class="req">*</span>
+                            </label>
+                            <input type="password" ng-model="login.password" class="form-control" id="login-password">
+                        </div>
+                        <p class="forgot"><a href="#">Forgot Password?</a></p>
+                        <div class="field-wrap">
+                            <button class="btn btn-default">LOGIN</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>

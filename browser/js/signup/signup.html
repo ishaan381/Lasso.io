@@ -1,4 +1,4 @@
-<div class='login-signup-form'>
+<!-- <div class='login-signup-form'>
     <div class="signup" layout="row">
             <form id="login-form" name="companyForm" ng-submit="createCompany(companySignupInfo)">
                 <alert type="danger" ng-show="error">
@@ -22,7 +22,7 @@
             </form>
     </div>
     <div>
-        <h3 class="divider"><-----OR-----></h5>
+        <h3 class="divider">-OR-></h5>
     </div>
     <div class="signup" layout="row">
             <form id="login-form" name="signupForm" ng-submit="sendSignup(signup)">
@@ -50,3 +50,117 @@
             </form>
     </div>
 </div>
+
+
+ -->
+
+<section id="login">
+    <div class="form-cool">
+        <alert type="danger" ng-show="error.signup">
+            {{ error.signup }}
+        </alert>
+
+
+        <div class="form">
+                <div class="logo-container"><img class="logo" src="/logo.png" /></div>
+            <ul class="tab-group">
+                <li class="tab" ng-class="{active: onSignUp}"><a ng-click="setOnSignUp()" href="#signup">Create Company Account</a></li>
+                <li class="tab" ng-class="{active: onLogin}"><a ng-click="setOnLogin()" href="#join">Join Existing Company</a></li>
+            </ul>
+            <div class="tab-content">
+                <div ng-if="onSignUp" id="signup">
+                                    <h1>Join Lasso</h1>
+
+           <form id="login-form" name="companyForm" ng-submit="createCompany(companySignupInfo)">
+ <alert type="danger" ng-show="error">
+                    {{ error }}
+                </alert>
+                                <div class="field-wrap">
+                                            <label>
+                                First Name<span class="req">*</span>
+                            </label>
+                    <input type="text" ng-model="companySignupInfo.firstName" class="form-control" id="email" >
+                </div>
+                <div class="field-wrap">
+                            <label>
+                                Last Name<span class="req">*</span>
+                            </label>
+                    <input type="text" ng-model="companySignupInfo.lastName" class="form-control" id="email" >
+                </div>
+                <div class="field-wrap">
+             <label>
+                                Email<span class="req">*</span>
+                            </label>
+                    <input type="text" ng-model="companySignupInfo.email" class="form-control" id="email">
+
+                </div>
+                <div class="field-wrap">
+                             <label>
+                                Password<span class="req">*</span>
+                            </label>
+                    <input type="password" ng-model="companySignupInfo.password" class="form-control" id="login-password" >
+                </div>
+                <div class="field-wrap">
+                             <label>
+                                Company Name<span class="req">*</span>
+                            </label>
+                    <input type="text" ng-model="companySignupInfo.name" class="form-control" id="login-password" >
+                </div>
+                <div class="field-wrap">
+                             <label>
+                                Company Website<span class="req">*</span>
+                            </label>
+                    <input type="text" ng-model="companySignupInfo.website" class="form-control" id="login-password" >
+                </div>
+                <div class="submission-parent">
+                    <button type="submit" class="btn btn-default submission">Create Company Account</button>
+                </div>
+                    </form>
+                </div>
+
+                <div ng-if="onLogin" id="join">
+                    <h1>Have an invite code?</h1>
+            <form id="login-form" name="signupForm" ng-submit="sendSignup(signup)">
+                        <alert type="danger" ng-show="error.login">
+                            {{ error.login }}
+                        </alert>
+                    <div class="field-wrap">
+                    <label>
+                                First Name<span class="req">*</span>
+                            </label>
+                    <input type="text" ng-model="signup.firstName" class="form-control" id="email" >
+                </div>
+                <div class="field-wrap">
+                <label>
+                                Last Name<span class="req">*</span>
+                            </label>
+                    <input type="text" ng-model="signup.lastName" class="form-control" id="email" >
+                </div>
+                <div class="field-wrap">
+                <label>
+                                Email<span class="req">*</span>
+                            </label>
+                    <input type="text" ng-model="signup.email" class="form-control" id="email" >
+                </div>
+                <div class="field-wrap">
+                <label>
+                                Password<span class="req">*</span>
+                            </label>
+                    <input type="password" ng-model="signup.password" class="form-control" id="login-password" >
+                </div>
+                <div class="field-wrap">
+                <label>
+                                Signup Code<span class="req">*</span>
+                            </label>
+                    <input type="text" ng-model="signup.code" class="form-control" id="login-password" required>
+                </div>
+                <div class="submission-parent">
+
+                <button type="submit" class="btn btn-default submission">Join an Existing Company</button>
+                </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+

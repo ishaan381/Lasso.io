@@ -1,7 +1,6 @@
 
 app.controller('postingsCtrl', function(_, $scope, $q, jobs, AuthService) {
 
-
     jobs.forEach(job => job.jobDescription.fields = JSON.parse(job.jobDescription.fields));
 
     $scope.jobs = jobs;
@@ -46,7 +45,13 @@ app.controller('postingsCtrl', function(_, $scope, $q, jobs, AuthService) {
       })
     }
 
-    $scope.chunkJobs('department');
+    if (jobs.length) {
+      $scope.chunkJobs('department');
+      $scope.hasPosting = true;
+    }
+    else {
+      $scope.hasPosting = false;
+    }
 
     $scope.isAdmin;
 

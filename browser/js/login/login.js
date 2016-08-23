@@ -17,6 +17,9 @@ app.controller('LoginCtrl', function ($scope, AuthService, $state) {
     $scope.companySignupInfo = {};
     $scope.error = null;
 
+
+    $scope.onLogin = true;
+
     $scope.sendLogin = function (loginInfo) {
 
         AuthService.login(loginInfo).then(function () {
