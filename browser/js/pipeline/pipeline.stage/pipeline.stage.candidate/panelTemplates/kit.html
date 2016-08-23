@@ -1,18 +1,20 @@
-<div class="kit-panel" ng-controller="kitPanelCtrl" >
+<div class="kit-panel" ng-controller="kitPanelCtrl">
     <div class="question-field" ng-repeat="question in data.questions">
-    	<!-- @Omri passing in 
+        <!-- @Omri passing in 
     	data to angular directive within ng-repeat evaluates to undefined
     	inside directive's isolate scope if attribute name is camel-case 
     	i.e. data-question is undefined but changing to data is fine 
 		http://stackoverflow.com/questions/15754889/angular-directive-does-not-evaluate-inside-ng-repeat 
 		any thoughts why? -->
+<!--         <div style="width: 100%;height: 30px;" class="row" ng-if="question.selectedField == 'code'">hi</div> -->
         <kit-dropdown-field ng-model="model[question.id]" question="question" ng-if="question.selectedField == 'dropdown'"></kit-dropdown-field>
-		<kit-radio-field ng-model="model[question.id]" question="question" ng-if="question.selectedField == 'radio' || question.selectedField == 'yesno'"></kit-radio-field>
+        <kit-radio-field ng-model="model[question.id]" question="question" ng-if="question.selectedField == 'radio' || question.selectedField == 'yesno'"></kit-radio-field>
         <kit-scorecard-field ng-model="model[question.id]" question="question" ng-if="question.selectedField == 'scoreboard'"></kit-scorecard-field>
-        <kit-code-field ng-model="model[question.id]" question="question" ng-if="question.selectedField == 'code'"></kit-code-field>
+        <kit-code-field style="margin-top: 40px;" ng-model="model[question.id]" question="question" ng-if="question.selectedField == 'code'"></kit-code-field>
         <kit-textbox-field ng-model="model[question.id]" question="question" ng-if="question.selectedField == 'textbox'"></kit-textbox-field>
         <kit-text-field ng-model="model[question.id]" question="question" ng-if="question.selectedField == 'text'"></kit-text-field>
     </div>
+        <button class="btn">Submit</button>
 
     {{model}}
 </div>

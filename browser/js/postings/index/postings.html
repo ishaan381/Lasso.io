@@ -23,7 +23,7 @@
             <div class="col-md-6 col-sm-6 col-xs-6 sort-posting">
                 <div class="sort-posting-filters">
                     <div class="sort-posting-title pr-30" id="sort-by"> Sort By: </div>
-                    <div class="border-right filter-option pr-15" ng-click="chunkJobs('region')">
+                    <div class="border-right filter-option pr-15" ng-click="chunkJobs('state')">
                         <i class="fa fa-map-marker pr-5" aria-hidden="true"></i>
                         <span class="filter-title"> Location</span>
                     </div>
@@ -50,7 +50,10 @@
                 </div>      
             </div>
         </form>
-        <div class="col-md-12" id="chunk-container">
+        <div ng-show="!hasPosting" style="text-align: center;" >
+            You do not have any open job postings. <a ui-sref="newDescription">Create one now!</a>
+        </div>
+        <div ng-show="hasPosting" class="col-md-12" id="chunk-container">
             <div ng-repeat="chunk in chunkedJobs | filter:searchjob" id="chunk">
                 <div layout="row">
                     <div flex="30" class="border-padding">

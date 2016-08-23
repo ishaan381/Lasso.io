@@ -130,8 +130,9 @@
         this.createCompany = function(credentials) {
 
             return $http.post('/create', {name: credentials.name, website: credentials.website})
-            .then(function() {
-                return self.signup({email: credentials.email, password: credentials.password})
+            .then(function(company) {
+                console.log(company.data)
+                return self.signup({email: credentials.email, password: credentials.password, companyId: company.data.id})
             })
             .catch(function() {
                 return $q.reject({message: 'Company account already exists'})
