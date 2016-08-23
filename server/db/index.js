@@ -53,7 +53,8 @@ Application.hasMany(Feedback, {as:'feedback', onDelete: 'cascade', hooks: true})
 Feedback.belongsTo(Stage, {as: 'stage'});
 Stage.hasMany(Feedback, {as: 'feedback', onDelete: 'cascade', hooks: true});
 
-
+Feedback.belongsTo(User, {as: 'user'});
+User.hasMany(Feedback, {as: 'feedback', onDelete: 'cascade', hooks: true});
 
 
 
