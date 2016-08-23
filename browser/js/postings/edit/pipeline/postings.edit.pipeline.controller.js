@@ -34,8 +34,6 @@ app.controller('editPipelineCtrl', function(_, $scope, formlyVersion, $q, $http,
 
     $scope.removeStage = function(id) {
         $scope.customStages[0].stages.splice(id, 1);
-        console.log($scope.customStages[0].stages);
-        console.log(id)
     }
 
     function saveStages() {
@@ -47,9 +45,9 @@ app.controller('editPipelineCtrl', function(_, $scope, formlyVersion, $q, $http,
         $scope.customStages[0].stages.forEach(function(stage) {
             stage.panels.forEach(function(_stage) {
                 if (_stage.panelQuestions) {
-                    _stage.panelQuestions.forEach (function (question) {
+                    _stage.panelQuestions.forEach(function(question) {
                         question.options = question.options.filter(function(option) {
-                            return !!option.value 
+                            return !!option.value
                         })
                     })
                 }
@@ -60,10 +58,16 @@ app.controller('editPipelineCtrl', function(_, $scope, formlyVersion, $q, $http,
         var endStage = $scope.endStage[0].stages[0];
         stageArray.push({ title: endStage.title, index: stageArray.length, jobId: thisJob.id, panels: endStage.panels });
 
-        if (thisJob.stage) {
+        if (thisJob.stage.length) {
             return Pipeline.updateStages(stageArray, thisJob.id)
+                .then(function(stages) {
+                    $state.reload();
+                })
         } else {
             return Pipeline.createStages(stageArray)
+                .then(function(stages) {
+                    $state.reload();
+                })
         }
 
     }
@@ -175,11 +179,7 @@ app.controller('editPipelineCtrl', function(_, $scope, formlyVersion, $q, $http,
         sharedStages.stages = newVal;
     }, true)
 
-    console.log($scope.stages)
-    console.log($scope.beginStage)
-    console.log($scope.endStage)
-    console.log($scope.customStages)
-    console.log("THISJOB STAGES", thisJob.stage)
+
     populateStages();
 
 

@@ -50,5 +50,13 @@ app.factory('Job', function($http, $log) {
             })
     }
 
+    Job.getFirstStageId = function (id) {
+        return $http.get('/api/stages/'+id+'/first')
+        .then(function(res) {
+            console.log("BACK IN THE FACTORY", res.data)
+            return res.data
+        });
+    }
+
     return Job;
 });
