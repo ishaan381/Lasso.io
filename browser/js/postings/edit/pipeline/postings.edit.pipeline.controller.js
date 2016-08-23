@@ -43,10 +43,11 @@ app.controller('editPipelineCtrl', function(_, $scope, formlyVersion, $q, $http,
         stageArray.push({ title: beginStage.title, index: 0, jobId: thisJob.id, panels: beginStage.panels });
 
         $scope.customStages[0].stages.forEach(function(stage) {
+            console.log("STAGES", stage)
             stage.panels.forEach(function(_stage) {
                 if (_stage.panelQuestions) {
                     _stage.panelQuestions.forEach(function(question) {
-                        question.options = question.options.filter(function(option) {
+                        if (question.options) question.options = question.options.filter(function(option) {
                             return !!option.value
                         })
                     })
