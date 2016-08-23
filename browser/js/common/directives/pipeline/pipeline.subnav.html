@@ -6,7 +6,10 @@
                     <a class="stage" ui-sref-active="stage-active" ui-sref="pipeline.stage({stageId: stage.id, qualified: true})">
                         <div class="stage-container">
                             <div class="stage-label">
-                                {{ stage.title }}
+                                {{stage.title}}
+                                <div class="ui circular label">
+                                {{stage.numCands}}
+                                </div>
                             </div>
                         </div>
                     </a>
