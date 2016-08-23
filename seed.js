@@ -1,3 +1,4 @@
+'use strict'
 let chalk = require('chalk'),
     chance = require('chance')(),
     db = require('./server/db'),
