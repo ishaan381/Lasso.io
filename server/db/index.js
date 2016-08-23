@@ -10,7 +10,8 @@ const User = require('./models/user'),
  Application = require('./models/application'),
  Comment = require('./models/comment'),
  Stage = require('./models/stage'),
- Code = require('./models/code');
+ Code = require('./models/code'),
+ Feedback = require('./models/feedback');
 
 
 Job.belongsTo(Company, {as: 'company'});
@@ -45,6 +46,12 @@ Application.hasMany(Comment, {onDelete : 'cascade', hooks: true});
 
 Comment.belongsTo(User, {as: 'user'});
 User.hasMany(Comment, {as: 'comment', onDelete : 'cascade', hooks: true});
+
+Feedback.belongsTo(Application, {as: 'application'});
+Application.hasMany(Feedback, {as:'feedback', onDelete: 'cascade', hooks: true});
+
+Feedback.belongsTo(Stage, {as: 'stage'});
+Stage.hasMany(Feedback, {as: 'feedback', onDelete: 'cascade', hooks: true});
 
 
 
