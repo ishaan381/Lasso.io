@@ -103,6 +103,10 @@
             color: green;
             font-size: 11px;
         }
+        .section-author {
+            text-align: right;
+            padding-right: 16px;
+        }
         .candidate-detail {
             color: #999;
             font-size: 14px;
@@ -118,7 +122,6 @@
             .section-title {}
             .section-date {}
         }
-
         hr.style11 {
             height: 6px;
             background: url(http://ibrahimjabbari.com/english/images/hr-11.png) repeat-x 0 0;
@@ -128,9 +131,62 @@
             height: 100%;
         }
     }
-
     .ui.button {
         margin: 0;
+    }
+    .candidate-feedback {
+        font-size: 14px;
+        width: 65%;
+        .heading {
+            padding-left: 28px;
+            padding-top: 20px;
+        }
+        .field-container {
+            padding-left: 15px;
+        }
+        .interviewer {
+            padding-left: 28px;
+            margin-top: 0;
+            margin-bottom: 30px;
+        }
+        fieldset {
+            border-style: none;
+            padding-left: 0;
+            margin-left: 0;
+            margin-bottom: 15px;
+        }
+        .application-panel .candidate-feedback .right {
+            padding-left: 0;
+        }
+        .scoreboard {
+            padding-left: 0;
+        }
+        .left {
+            .title {
+                font-size: 16px;
+                font-weight: bold;
+            }
+            .description {
+                font-size: 14px;
+                margin-top: 5px;
+            }
+        }
+        .good {
+            i {
+                color: rgb(170, 210, 3);
+            }
+        }
+        .bad {
+            i {
+                color: #ED4337;
+            }
+        }
+        .right {
+            min-height: 120px;
+        }
+        .ace_editor {
+            height: 200px;
+        }
     }
     .candidate-application {
         font-size: 14px;
@@ -148,7 +204,7 @@
         .answer-option {
             margin-bottom: 30px;
         }
-              h1 {
+        h1 {
             padding-top: 30px;
         }
     }

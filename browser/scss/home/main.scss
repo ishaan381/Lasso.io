@@ -3,7 +3,9 @@
 #home {
 
   .photobot{
-    background-image: url("http://media.gettyimages.com/photos/coffee-cup-laptop-notebook-and-pen-in-office-picture-id177245735?k=6&m=177245735&s=170667a&w=0&h=bGzIJEO8-ktxIFNgYCqnOMfPth6810yNr18J2ChpmEY=");
+ /* background-image: url("https://hd.unsplash.com/30/workshop.jpg");
+  background-image: url('https://hd.unsplash.com/photo-1414509613498-f53000d3d2c1');
+*/  background-image: url('https://hd.unsplash.com/photo-1430165558479-de3cf8cf1478');
     background-attachment: fixed;
     height: 100vh;
     /*position: relative;*/
@@ -46,11 +48,16 @@
 }
 
 #whitespace {
-  background-color: whitesmoke;
-  height: 300px;
+  background-color: white;
+  height: 100vh;
   box-shadow: 0 1px 3px rgba(0,0,0,0.24);
   color: #353238;
   text-align: center;
+
+  .subtext {
+    padding: 30px;
+  }
+
 
   .card {
     font-family: 'Open Sans', sans-serif;
@@ -85,16 +92,21 @@
 
 #parallax {
   .stockphoto {
-    background-image: url("https://static.pexels.com/photos/2855/landscape-mountains-nature-lake.jpg");
+/*    background-image: url("https://hd.unsplash.com/photo-1453799527828-cf1bd7b2f682");
+*/    
+/*background-image: url("https://hd.unsplash.com/30/workshop.jpg");
+*/
+/*  background-image: url('https://hd.unsplash.com/photo-1414509613498-f53000d3d2c1');
+*/background-image: url('https://hd.unsplash.com/photo-1426024120108-99cc76989c71');
     background-attachment: fixed;
-    height: 45vh;
+    height: 100vh;
     background-repeat: no-repeat;
     margin: 0;
     padding: 0;
     background-size: cover;
   }
   .coffee {
-    background-image: url("http://talentjockey.com/wp-content/uploads/2015/04/public-domain-images-free-stock-photos-high-quality-resolution-downloads-public-domain-archive-14-1000x667.jpg");
+    background-image: url("https://18482-presscdn-0-9-pagely.netdna-ssl.com/wp-content/themes/envato/assets/images/elements/hero-image-1.jpg");
     background-attachment: fixed;
     height: 45vh;
     background-repeat: no-repeat;

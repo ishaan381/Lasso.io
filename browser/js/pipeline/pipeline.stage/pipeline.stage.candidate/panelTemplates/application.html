@@ -8,11 +8,13 @@
                 <i class="fa fa-arrow-left" aria-hidden="true"></i>
             </a>
         </div>
-
         <!--         {{candidateAppQuestions}}
         {{candidateApp}} -->
+        <div ng-if="display === 'resume' && iFrameWidth" class="iframe-resume">
+            <iframe ng-src="{{getResumeUrl(candidateApp.resumeField)}}" width="{{iFrameWidth}}" height="{{iFrameHeight}}"></iframe>
+        </div>
         <div class="candidate-application" ng-if="display === 'application'">
-        <h1>Initial Application</h1>
+            <h1>Initial Application</h1>
             <div ng-repeat="field in finalApp" class="question-info">
                 <div class="field-container">
                     <div class="col-md-4 question">{{field.question}}</div>
@@ -23,56 +25,112 @@
                 <small>{{question.description}}</small> -->
             </div>
         </div>
-        <!-- {{candidateApp}} -->
-    </div>
-    <pageslide ps-push='true' ps-open="checked" ps-size="350px" ps-container='container1'>
-        <div class="col-md-12 toolbar">
-            <div class="col-md-5">
+        <div class="candidate-feedback" ng-if="display === 'feedback'">
+            <h1 class="heading">Feedback</h1>
+            <h3 class="interviewer">Interviewer: {{selectedInterviewer}}</h3>
+            <div ng-repeat="field in selectedFeedback" class="question-info">
+                <div class="field-container">
+                    <div class="col-md-4 left">
+                        <div class="col-md-12 title">{{field.question.title}}</div>
+                        <div class="col-md-12 description">{{field.question.description}}</div>
+                    </div>
+                    <div ng-if="field.question.selectedField !== 'code' && field.question.selectedField !== 'scoreboard' " class="col-md-8 right">
+                        {{field.answer.value}}
+                    </div>
+                    <div ng-if="field.question.selectedField === 'scoreboard'" class="col-md-8 right scoreboard">
+                        <div class="scorecard-option-container">
+                            <div data-ng-repeat="option in field.question.options track by $index">
+                                <fieldset class="col-md-12 options ">
+                                    <div class="col-md-6 input-field left">
+                                        <div class="scorecard-option">{{option.value}}</div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="col-md-12 icon-container">
+                                            <div class="col-md-3 rating">
+                                                <i ng-class="{'bad': option.value == 0}" class="fa fa-times" aria-hidden="true"></i>
+                                            </div>
+                                            <div class="col-md-3 rating">
+                                                <i ng-class="{'bad': option.value == 1}" class="fa fa-thumbs-down" aria-hidden="true"></i>
+                                            </div>
+                                            <div class="col-md-3 rating">
+                                                <i ng-class="{'good': option.value == 2}" class="fa fa-thumbs-up" aria-hidden="true"></i>
+                                            </div>
+                                            <div class="col-md-3 rating">
+                                                <i ng-class="{'good': option.value == 3}" class="fa fa-star" aria-hidden="true"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="margin-bottom: 20px;" ng-if="field.question.selectedField === 'code'" class="col-md-8 right scoreboard">
+                        <div ui-ace ng-model="field.answer.value"></div>
+                    </div>
+                    <!--                    <div ng-if="field.type !== 'checkbox' " class="col-md-8 answer">{{field.answer}}</div>
+                    <div ng-if="field.type == 'checkbox'" class="col-md-8 answer answer-option"><span ng-repeat="option in field.answer track by $index">{{option}}<br /> </span></div> -->
+                </div>
             </div>
-            <div class="buttons col-md-7">
-                <button class="ui icon button">
-                    <i class="fa fa-envelope-o" aria-hidden="true"></i>
-                </button>
-                <button class="ui icon button">
-                    <i class="fa fa-calendar-check-o" aria-hidden="true"></i>
-                </button>
-                <button class="ui icon button">
-                    <i class="fa fa-comment-o" aria-hidden="true"></i>
-                </button>
-                <button class="ui icon button">
-                    <i class="fa fa-share" aria-hidden="true"></i>
-                </button>
-            </div>
+            <!-- {{candidateApp}} -->
         </div>
-        <div class="candidate-details">
-            <h2 class="col-md-12 candidate-name">{{candidateApp.fullNameField}}</h2>
-            <p class="col-md-12 candidate-company">{{candidateApp.currentCompanyField}}</p>
-            <p class="col-md-12 candidate-detail created-on">
-                <i class="fa fa-flag pr-10" aria-hidden="true"></i>Created on August 23, 2016
-            </p>
-            <p class="col-md-12 candidate-detail candidate-resume">
-                <i class="fa fa-file-pdf-o pr-10" aria-hidden="true"></i> resume link
-            </p>
-            <h4 class="ui horizontal divider header">
-            <i class="fa fa-check-square-o" aria-hidden="true"></i>
-                Application
-            </h4>
-            <div class="col-md-12 section-line">
-                <div class="col-md-8 section-title">
-                    <i class="fa fa-circle pr-10 status-ready" aria-hidden="true"></i><a ng-click="switchDisplay('application', candidateAppQuestions)">Initial Application</a>
+        <pageslide ps-push='true' ps-open="checked" ps-size="350px" ps-container='container1'>
+            <div class="col-md-12 toolbar">
+                <div class="col-md-5">
                 </div>
-                <div class="col-md-4 section-date">
-                    8/23/2016
+                <div class="buttons col-md-7">
+                    <button class="ui icon button">
+                        <i class="fa fa-envelope-o" aria-hidden="true"></i>
+                    </button>
+                    <button class="ui icon button">
+                        <i class="fa fa-calendar-check-o" aria-hidden="true"></i>
+                    </button>
+                    <button class="ui icon button">
+                        <i class="fa fa-comment-o" aria-hidden="true"></i>
+                    </button>
+                    <button class="ui icon button">
+                        <i class="fa fa-share" aria-hidden="true"></i>
+                    </button>
                 </div>
             </div>
-            <h4 class="ui horizontal divider header ">
-<i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-    Feedback
-</h4>
-            <h4 class="ui horizontal divider header ">
+            <div class="candidate-details">
+                <h2 class="col-md-12 candidate-name">{{candidateApp.fullNameField}}</h2>
+                <p class="col-md-12 candidate-company">{{candidateApp.currentCompanyField}}</p>
+                <p class="col-md-12 candidate-detail created-on">
+                    <i class="fa fa-flag pr-10" aria-hidden="true"></i>Created on August 23, 2016
+                </p>
+                <p class="col-md-12 candidate-detail candidate-resume">
+                   <a ng-click="switchDisplay('resume')"> <i class="fa fa-file-pdf-o pr-10" aria-hidden="true"></i>{{candidateApp.resumeField}}</a>
+                </p>
+                <h4 class="ui horizontal divider header">
+                    <i class="fa fa-check-square-o" aria-hidden="true"></i>
+                    Application
+                 </h4>
+                <div class="col-md-12 section-line">
+                    <div class="col-md-8 section-title">
+                        <i class="fa fa-circle pr-10 status-ready" aria-hidden="true"></i><a ng-click="switchDisplay('application', candidateAppQuestions)">Initial Application</a>
+                    </div>
+                    <div class="col-md-4 section-date">
+                        8/23/2016
+                    </div>
+                </div>
+                <h4 class="ui horizontal divider header ">
+                    <i class="fa fa-pencil-square-o pr-5" aria-hidden="true"></i>Feedback</a>
+                </h4>
+                <div ng-repeat="feedback in finalApplicationFeedback" class="col-md-12 section-line">
+                    <div class="col-md-7 section-title">
+                        <i class="fa fa-circle pr-10 status-ready" aria-hidden="true"></i><a ng-click="switchDisplay('feedback', feedback)">Feedback Form</a>
+                    </div>
+                    <div class="col-md-5 section-author">
+                        {{feedback.interviewer}}
+                    </div>
+                    <!-- <div class="col-md-4 section-date">
+                        8/23/2016
+                    </div> -->
+                </div>
+                <h4 class="ui horizontal divider header ">
 <i class="fa fa-history" aria-hidden="true"></i>
     History
 </h4>
-        </div>
-    </pageslide>
-</div>
+            </div>
+        </pageslide>
+    </div>

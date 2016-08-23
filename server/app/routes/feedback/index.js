@@ -19,6 +19,17 @@ router.get('/:id', function(req, res, next) {
   res.send(req.requestedFeedback)
 })
 
+router.get('/application/:appId', function (req, res, next) {
+  Feedback.findAll({
+    where: {
+      applicationId: req.params.appId
+    }
+  })
+  .then(function (feedbacks) {
+    res.send(feedbacks);
+  })
+})
+
 
 router.put('/:id', check.user, function(req, res, next) {
   req.requestedFeedback.update(req.body)

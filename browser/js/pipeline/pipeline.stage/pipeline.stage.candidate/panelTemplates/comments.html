@@ -1,5 +1,5 @@
 <div class="comments-panel" ng-controller="CommentPanelCtrl">
-    <div class="row">
+<!--     <div class="row">
         <div class="app-sort col-md-4">
             <ui-select ng-model="sortBy.selected" theme="selectize" title="Choose a person">
                 <ui-select-match placeholder="Sort by ...">{{$select.selected.title}}</ui-select-match>
@@ -8,7 +8,7 @@
                 </ui-select-choices>
             </ui-select>
         </div>
-    </div>
+    </div> -->
     <div class='col-md-8'>
         <comment ng-repeat="comment in data.comments" comment-data="comment"></comment>
     </div>
