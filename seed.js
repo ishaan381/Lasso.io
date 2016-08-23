@@ -9,6 +9,7 @@ let chalk = require('chalk'),
     Stage = db.model('stage'),
     Company = db.model('company'),
     App = db.model('application');
+    Feedback = db.model('feedback');
 var Promise = require('sequelize').Promise;
 const numUsers = 25,
     numCompanies = 5,
@@ -364,6 +365,11 @@ function createComments() {
     return Promise.map(genComments(), comments => comments.save());
 }
 
+
+function createFeedback() {
+    return Promise.map(genFeedback(), feedback => )
+}
+
 function seed() {
     var _companies, _users, _stages, _jobs;
     return createCompanies()
@@ -390,6 +396,9 @@ function seed() {
         })
         .then(function() {
             return createComments()
+        })
+        .then(function () {
+            return createFeedback()
         })
         .then(function() {
             console.log("Hello")
