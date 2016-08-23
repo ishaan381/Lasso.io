@@ -3,7 +3,7 @@ app.directive('pipelineSubnav', function () {
       restrict: 'E',
       templateUrl: 'js/common/directives/pipeline/pipeline.subnav.html',
       scope: {
-        stages: '='
+        stages: '=',
       }
     }
 });

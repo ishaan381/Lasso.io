@@ -1,4 +1,78 @@
 <div class="application-panel" ng-controller="applicationPanelCtrl">
-{{data}}
+    <div id='container1'>
+        <div class="open-sidebar">
+            <a class="col-md-6 close-icon" ng-click="checked = false">
+                <i class="fa fa-times-circle pr-5" aria-hidden="true"></i>
+            </a>
+            <a class="col-md-6 open-icon" ng-click="checked = true">
+                <i class="fa fa-arrow-left" aria-hidden="true"></i>
+            </a>
+        </div>
 
+        <!--         {{candidateAppQuestions}}
+        {{candidateApp}} -->
+        <div class="candidate-application" ng-if="display === 'application'">
+        <h1>Initial Application</h1>
+            <div ng-repeat="field in finalApp" class="question-info">
+                <div class="field-container">
+                    <div class="col-md-4 question">{{field.question}}</div>
+                    <div ng-if="field.type !== 'checkbox' " class="col-md-8 answer">{{field.answer}}</div>
+                    <div ng-if="field.type == 'checkbox'" class="col-md-8 answer answer-option"><span ng-repeat="option in field.answer track by $index">{{option}}<br /> </span></div>
+                </div>
+                <!--                <h3>{{question.title}}</h3>
+                <small>{{question.description}}</small> -->
+            </div>
+        </div>
+        <!-- {{candidateApp}} -->
+    </div>
+    <pageslide ps-push='true' ps-open="checked" ps-size="350px" ps-container='container1'>
+        <div class="col-md-12 toolbar">
+            <div class="col-md-5">
+            </div>
+            <div class="buttons col-md-7">
+                <button class="ui icon button">
+                    <i class="fa fa-envelope-o" aria-hidden="true"></i>
+                </button>
+                <button class="ui icon button">
+                    <i class="fa fa-calendar-check-o" aria-hidden="true"></i>
+                </button>
+                <button class="ui icon button">
+                    <i class="fa fa-comment-o" aria-hidden="true"></i>
+                </button>
+                <button class="ui icon button">
+                    <i class="fa fa-share" aria-hidden="true"></i>
+                </button>
+            </div>
+        </div>
+        <div class="candidate-details">
+            <h2 class="col-md-12 candidate-name">{{candidateApp.fullNameField}}</h2>
+            <p class="col-md-12 candidate-company">{{candidateApp.currentCompanyField}}</p>
+            <p class="col-md-12 candidate-detail created-on">
+                <i class="fa fa-flag pr-10" aria-hidden="true"></i>Created on August 23, 2016
+            </p>
+            <p class="col-md-12 candidate-detail candidate-resume">
+                <i class="fa fa-file-pdf-o pr-10" aria-hidden="true"></i> resume link
+            </p>
+            <h4 class="ui horizontal divider header">
+            <i class="fa fa-check-square-o" aria-hidden="true"></i>
+                Application
+            </h4>
+            <div class="col-md-12 section-line">
+                <div class="col-md-8 section-title">
+                    <i class="fa fa-circle pr-10 status-ready" aria-hidden="true"></i><a ng-click="switchDisplay('application', candidateAppQuestions)">Initial Application</a>
+                </div>
+                <div class="col-md-4 section-date">
+                    8/23/2016
+                </div>
+            </div>
+            <h4 class="ui horizontal divider header ">
+<i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+    Feedback
+</h4>
+            <h4 class="ui horizontal divider header ">
+<i class="fa fa-history" aria-hidden="true"></i>
+    History
+</h4>
+        </div>
+    </pageslide>
 </div>

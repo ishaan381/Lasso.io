@@ -1,4 +1,159 @@
 @import 'kit-field';
+.application-panel {
+    height: 100%;
+    font-family: Lato;
+    /* Needed for hiding crollbars when pushing */
+    html {
+        overflow-x: hidden;
+    }
+    .ng-pageslide {
+        background: #eee;
+    }
+    body.ng-pageslide-body-open::before {
+        content: '.';
+        display: block;
+        position: absolute;
+        top: 0;
+        background-color: rgb(0, 0, 0);
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 1;
+        opacity: 0.5;
+        transition: opacity 1s;
+        opacity: 0.5;
+        pointer-events: all;
+    }
+    body.ng-pageslide-body-closed::before {
+        transition: opacity 1s;
+        content: '.';
+        display: block;
+        position: absolute;
+        top: 0;
+        background-color: rgb(0, 0, 0);
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 1;
+        opacity: 0;
+        pointer-events: none;
+    }
+    #container1,
+    #container2 {
+        width: 100%;
+        height: 20rem;
+        height: 100%;
+        overflow: inherit !important;
+    }
+    .open-sidebar {
+        height: 50px;
+        width: 100px;
+        background-color: #166088;
+        right: 0;
+        bottom: 0;
+        top: 0;
+        position: absolute;
+        i {
+            font-size: 26px;
+            color: white;
+            position: relative;
+            top: 10px;
+        }
+        .close-icon {
+            padding: 0;
+            padding-left: 15px;
+            top: 2px;
+        }
+        .open-icon {
+            padding: 0;
+            padding-left: 7px;
+        }
+    }
+    pageslide {
+        width: 350px;
+        padding-left: 25px;
+        padding-right: 25px;
+        padding-top: 15px;
+        .col-md-12 {
+            padding: 0;
+        }
+        .col-md-8 {
+            padding: 0;
+        }
+        .col-md-7 {
+            padding: 0;
+        }
+        .candidate-name {
+            font-size: 35px;
+            font-weight: normal;
+        }
+        .candidate-company {
+            font-family: 'Lato';
+            text-transform: uppercase;
+            font-weight: bold;
+            letter-spacing: 1px;
+            font-size: 15px;
+        }
+        .toolbar {
+            float: right;
+            padding: 0;
+            padding-left: 20px;
+        }
+        .status-ready {
+            color: green;
+            font-size: 11px;
+        }
+        .candidate-detail {
+            color: #999;
+            font-size: 14px;
+            i {
+                color: #999;
+            }
+        }
+        .divider {
+            padding-top: 40px;
+        }
+        .section-line {
+            font-size: 14px;
+            .section-title {}
+            .section-date {}
+        }
+
+        hr.style11 {
+            height: 6px;
+            background: url(http://ibrahimjabbari.com/english/images/hr-11.png) repeat-x 0 0;
+            border: 0;
+        }
+        .candidate-details {
+            height: 100%;
+        }
+    }
+
+    .ui.button {
+        margin: 0;
+    }
+    .candidate-application {
+        font-size: 14px;
+        width: 65%;
+        padding-left: 30px;
+        .field-container {
+            margin-bottom: 20px;
+        }
+        .question {
+            font-weight: bold;
+        }
+        .answer {
+            margin-bottom: 30px;
+        }
+        .answer-option {
+            margin-bottom: 30px;
+        }
+              h1 {
+            padding-top: 30px;
+        }
+    }
+}
+
 .main-pipeline-container {
     height: 100vh;
     .row {
@@ -188,9 +343,10 @@
             border-bottom: 0;
         }
         .notes-panel {
-            font-family: 'Meta Medium', sans-serif;
+            font-family: 'Lato', sans-serif;
             padding-left: 50px;
             padding-right: 50px;
+            margin-top: 25px;
             h3 {
                 font-size: 18px;
             }
