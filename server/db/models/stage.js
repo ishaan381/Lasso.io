@@ -1,5 +1,5 @@
 let Sequelize = require('sequelize'),
-    db = require('../_db');
+db = require('../_db');
 
 module.exports = db.define('stage', {
     index: {
