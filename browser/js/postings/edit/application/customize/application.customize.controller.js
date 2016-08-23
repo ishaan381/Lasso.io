@@ -12,7 +12,7 @@ app.controller('editApplicationCtrl', function(_, $scope, formlyVersion, $q, $ht
     // FORM GENERATION
     const vm = this;
 
-
+    console.log(thisJob);
     $scope.originalFields = angular.copy($scope.fields);
 
     // On Form Submit
@@ -58,6 +58,7 @@ app.controller('editApplicationCtrl', function(_, $scope, formlyVersion, $q, $ht
 
     // This reloads the job application if it exists in the database.
     if (thisJob.jobApplication) {
+        console.log('hi');
         // Assigns it to the formly model.
         _.assign($scope.model, parsedJobApp);
         // Adds it to the custom questions (separate from formly model) in shared service if pre-existing.

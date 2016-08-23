@@ -47,10 +47,11 @@
 
 #whitespace {
   background-color: whitesmoke;
-  height: 300px;
+  height: 100vh;
   box-shadow: 0 1px 3px rgba(0,0,0,0.24);
   color: #353238;
   text-align: center;
+
 
   .card {
     font-family: 'Open Sans', sans-serif;
@@ -85,16 +86,16 @@
 
 #parallax {
   .stockphoto {
-    background-image: url("https://static.pexels.com/photos/2855/landscape-mountains-nature-lake.jpg");
+    background-image: url("https://18482-presscdn-0-9-pagely.netdna-ssl.com/wp-content/themes/envato/assets/images/elements/hero-image-3.jpg");
     background-attachment: fixed;
-    height: 45vh;
+    height: 100vh;
     background-repeat: no-repeat;
     margin: 0;
     padding: 0;
     background-size: cover;
   }
   .coffee {
-    background-image: url("http://talentjockey.com/wp-content/uploads/2015/04/public-domain-images-free-stock-photos-high-quality-resolution-downloads-public-domain-archive-14-1000x667.jpg");
+    background-image: url("https://18482-presscdn-0-9-pagely.netdna-ssl.com/wp-content/themes/envato/assets/images/elements/hero-image-1.jpg");
     background-attachment: fixed;
     height: 45vh;
     background-repeat: no-repeat;

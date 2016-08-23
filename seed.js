@@ -17,6 +17,8 @@ const numUsers = 25,
     numStages = 100,
     numApps = 500,
     numComments = 2500;
+    // do not change for now
+    numFeedbacks = 1;
 const companyNames = ['Fullstack Academy', 'Microsoft', 'Lyft', 'Uber', 'BMW'],
     userEmails = chance.unique(chance.email, numUsers),
     department = ["Business Analytics", "Software Engineering", "Engineering", "Frontend Developement", "Customer Service", "Data Science", "Accounting", "Legal", "Marketing", "Operations", "HR", "Communications", "Compliance"],
@@ -320,6 +322,7 @@ function randomApp(stages) {
             "fullNameField": chance.name(),
             "emailField": chance.email(),
             "phoneField": chance.phone(),
+            "resumeField": 'cv-template.pdf',
             "currentCompanyField": chance.pick(['Fullstack Academy', 'Microsoft', 'Lyft', 'Uber', 'BMW']),
             "linkedInLinkField": "https://ca.linkedin.com/in/tj-holowaychuk-9a92817",
             "twitterLinkField": "https://twitter.com/tjholowaychuk",
@@ -365,10 +368,23 @@ function createComments() {
     return Promise.map(genComments(), comments => comments.save());
 }
 
+// // build feedback only for one company
+// function randomFeedback() {
+//     return Feedback.build({
+//         answers: [{"value":"4 - Strong Hire"},{"value":"Top 1%"},{"0":1,"1":2,"2":1,"3":2},{"value":"function merge(left, right){\n    var result  = [],\n        il      = 0,\n        ir      = 0;\n\n    while (il < left.length && ir < right.length){\n        if (left[il] < right[ir]){\n            result.push(left[il++]);\n        } else {\n            result.push(right[ir++]);\n        }\n    }\n\n    return result.concat(left.slice(il)).concat(right.slice(ir));\n}"},{"value":"Yes"},{"value":"cool"},{"value":"I thought the candidate was well-prepared for the interview and would make a good addition to our team."}],
+//         stageId: 2,
+//         userId: 1,
+//         applicationId: 1,
+//     })
+// }
 
-function createFeedback() {
-    return Promise.map(genFeedback(), feedback => )
-}
+// function genFeedbacks() {
+//     return doTimes(numFeedbacks, randomFeedback);
+// };
+
+// function createFeedbacks() {
+//     return Promise.map(genFeedback(), feedback => feedback.save());
+// }
 
 function seed() {
     var _companies, _users, _stages, _jobs;
@@ -396,9 +412,6 @@ function seed() {
         })
         .then(function() {
             return createComments()
-        })
-        .then(function () {
-            return createFeedback()
         })
         .then(function() {
             console.log("Hello")

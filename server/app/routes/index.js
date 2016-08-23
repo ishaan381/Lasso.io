@@ -3,6 +3,7 @@ var router = require('express').Router();
 module.exports = router;
 //all routes are plural
 
+
 router.use('/members', require('./members'));
 router.use('/companies', require('./companies'));
 router.use('/jobs/applications', require('./job.applications'));

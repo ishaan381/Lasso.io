@@ -24,12 +24,11 @@ app.controller('candidateCtrl', function($scope, $state, $stateParams, $timeout,
         $scope.currTabId = tabId;
         // tab is a panel
         if (tabId === 0) {
-            $scope.data = { comments: $scope.candidate.comments}
-            $scope.currPanelTemplate = templateRoot + 'comments.html';
-        } else if (tabId === 1) {
             $scope.data = { app: JSON.parse(candidate.application), appQuestions: JSON.parse(thisJob.jobApplication.fields) }
             $scope.currPanelTemplate = templateRoot + 'application.html';
-
+        } else if (tabId === 1) {
+            $scope.data = { comments: $scope.candidate.comments }
+            $scope.currPanelTemplate = templateRoot + 'comments.html';
         } else if (tabId > 1) {
             var currentPanel = $scope.currentStage.panels[tabId - 2];
             if (currentPanel.hasOwnProperty("panelQuestions")) {
