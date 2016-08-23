@@ -366,9 +366,7 @@ function createComments() {
 }
 
 
-// function createFeedback() {
-//     return Promise.map(genFeedback(), feedback => feedback.save())
-// }
+//     return Promise.map(genFeedback(), feedback => )
 
 function seed() {
     var _companies, _users, _stages, _jobs;

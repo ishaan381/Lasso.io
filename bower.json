@@ -45,6 +45,6 @@
   },
   "resolutions": {
     "d3": "^4.2.2",
-    "angular": "1.4.5"
+    "angular": "1.5.8"
   }
 }
