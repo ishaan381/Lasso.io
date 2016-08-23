@@ -10,8 +10,8 @@ app.controller('editApplicationCtrl', function(_, $scope, formlyVersion, $q, $ht
     }, true)
 
     // FORM GENERATION
-
     const vm = this;
+
 
     $scope.originalFields = angular.copy($scope.fields);
 
@@ -20,18 +20,31 @@ app.controller('editApplicationCtrl', function(_, $scope, formlyVersion, $q, $ht
     $scope.onSave = onSave;
 
     function onSave() {
-        console.log(thisJob, "THIS JOB")
-        if (!thisJob.jobApplication) return JobApplication.create({ fields: JSON.stringify($scope.model), jobId: $stateParams.id });
-        else return JobApplication.update({ fields: JSON.stringify($scope.model), jobId: $stateParams.id});
+        if (!thisJob.jobApplication) {
+            return JobApplication.create({
+                fields: JSON.stringify($scope.model),
+                jobId: $stateParams.id
+
+            })
+            .then(function(job) {
+                $state.reload();
+            })
+        } else {
+            return JobApplication.update({
+                fields: JSON.stringify($scope.model),
+                jobId: $stateParams.id
+            })
+            .then(function(job) {
+                $state.reload();
+            })
+        };
     }
 
     $scope.onSubmit = function() {
-        console.log("SAVING AND SUBMITTING")
         onSave()
-        .then(function() {
-            console.log('next steps')
-            $state.go('editPosting.pipeline')
-        })
+            .then(function() {
+                $state.go('editPosting.pipeline')
+            })
     }
 
     $scope.env = {

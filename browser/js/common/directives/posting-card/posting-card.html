@@ -1,8 +1,8 @@
-<div layout="column" class="job-column">
+<div layout="column" class="job-column" ng-click="toUrl(detail.published)">
     <div layout="row">
 
         <div id="title">
-            <h3><a ng-href="{{toUrl(detail.published)}}"> {{ detail.jobDescription.fields.title }}</a><span class="published"> | {{ published }}</span></h3>
+            <h3><a> {{ detail.jobDescription.fields.title }}</a><span class="published"> | {{ published }}</span></h3>
         </div>
     </div>
     <div id="more-info">

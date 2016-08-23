@@ -35,6 +35,20 @@ router.get('/:id/candidates', function(req, res, next){
   .catch(next);
 });
 
+router.get('/:jobId/first', function(req, res, next) {
+  Stage.findOne({
+    where: {
+      jobId: +req.params.jobId,
+      index: 0
+    }
+  })
+  .then(function(stage) {
+    console.log("FOUND THE STAGE", stage)
+    res.send({stageId: stage.id})
+  })
+  .catch(next)
+})
+
 router.post('/', function(req, res, next){
 
   Promise.each(req.body, function(stage) {
