@@ -1,21 +1,27 @@
 #postings-application {
+.form-control[disabled], fieldset[disabled] .form-control {
+    height: 20px;
+}
     #postings-application-preview {
         font-family: Lato;
         font-weight: 400;
         padding: 30px;
-
+        .form-control {
+            height: 20px;
+            background-color: red;
+        }
         .default-inputs {
-        margin-bottom: 0px;
+            margin-bottom: 0px;
         }
-
-
         .preview-application-title {
-        margin-top: 10px;
+            margin-top: 10px;
         }
-
         #postings-application-preview-container {
             background-color: #fff;
             padding: 15px;
+            input.form-control {
+                height: 20px;
+            }
             .preview-field-label {
                 font-size: 13px;
                 color: #515357;
@@ -26,13 +32,16 @@
                 padding-left: 3px;
             }
             .default-inputs {
+                height: 20px !important;
                 input {
-                    height: 17px;
                     border-radius: 0;
                     margin-bottom: 0px;
+                    height: 20px !important;
                 }
             }
-            textarea, .ui-select-container, .custom-text-input {
+            textarea,
+            .ui-select-container,
+            .custom-text-input {
                 margin-top: 10px;
             }
         }

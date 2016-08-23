@@ -1,7 +1,7 @@
 <div>
     <fieldset class="col-md-12 " data-ng-repeat="choice in choices">
         <div class="col-md-6 input-field left">
-            <input class="col-md-10" type="text" ng-model="choice.value" once="addNewChoice()" name="" placeholder="Add question or details">
+            <input class="col-md-10" type="text" ng-model="choice.value" name="" placeholder="Add question or details">
         </div>
         <div class="col-md-6 right">
             <div class="col-md-9 icon-container">
@@ -23,6 +23,8 @@
             </div>
         </div>
     </fieldset>
+        <button class="btn add-option" ng-click="addNewChoice()">Add Option</button>
+
     <!--     <button class="addfields" ng-click="addNewChoice()">Add fields</button>
  -->
 </div>

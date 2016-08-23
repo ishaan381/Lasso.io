@@ -66,7 +66,7 @@ app.controller('previewApplicationCtrl', function(_, $scope, $timeout, $interval
                     $scope.fields.push({
                         key: info,
                         type: 'input',
-                        className: 'col-md-8 default-inputs',
+                        className: 'col-md-8 input-default',
                         templateOptions: {
                             type: 'text',
                             disabled: true,
@@ -78,7 +78,7 @@ app.controller('previewApplicationCtrl', function(_, $scope, $timeout, $interval
                     $scope.fields.push({
                         key: info,
                         type: 'input',
-                        className: 'col-md-8 default-inputs',
+                        className: 'col-md-8 input-default',
                         templateOptions: {
                             type: 'text',
                             disabled: true,
@@ -115,7 +115,7 @@ app.controller('previewApplicationCtrl', function(_, $scope, $timeout, $interval
                 $scope.fields.push({
                     key: link,
                     type: 'input',
-                    className: 'col-md-8 default-inputs',
+                    className: 'col-md-8 input-default',
                     templateOptions: {
                         disabled: true,
                         type: 'text',

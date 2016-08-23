@@ -2,12 +2,11 @@
     <fieldset class="col-md-12" data-ng-repeat="choice in choices">
         <div class="col-md-11 input-field">
         <i class="pr-10 fa fa-circle-o" aria-hidden="true"></i>
-            <input type="text" ng-model="choice.value" once="addNewChoice()" name="" placeholder="Add option">
+            <input type="text" ng-model="choice.value" name="" placeholder="Add option">
         </div>
         <div class="col-md-1 remove-container">
             <button class="remove" ng-show="$last" ng-click="removeChoice()"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
         </div>
     </fieldset>
-    <!--     <button class="addfields" ng-click="addNewChoice()">Add fields</button>
- -->
+    <button class="btn add-option" ng-click="addNewChoice()">Add Option</button>
 </div>
