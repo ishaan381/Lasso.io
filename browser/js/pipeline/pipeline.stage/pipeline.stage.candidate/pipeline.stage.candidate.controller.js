@@ -7,8 +7,6 @@ app.controller('candidateCtrl', function($scope, $state, $stateParams, $timeout,
     $scope.candidateApp = JSON.parse(candidate.application);
     $scope.candidate.comments = $scope.candidate.comments.sort((a, b) => Date.parse(b.date) - Date.parse(a.date))
 
-    console.log(candidate.comments)
-
     let numStages = thisJob.stage.length;
 
     $scope.lastStage = $scope.currentStage.index === numStages - 1 ? true : false;
@@ -56,7 +54,7 @@ app.controller('candidateCtrl', function($scope, $state, $stateParams, $timeout,
     $scope.moveCandidate = function(candidateId) {
         Stage.moveCandidate(candidateId);
         $scope.$parent.numQualified--;
-        $state.go('pipeline.stage', { stageId: stage.id })
+        $state.go('pipeline.stage', { stageId: stage.id });
     }
 
     $scope.qualifyCandidate = function(candidateId) {
@@ -72,7 +70,4 @@ app.controller('candidateCtrl', function($scope, $state, $stateParams, $timeout,
         $scope.$parent.numDisqualified++;
         $scope.$parent.numQualified--;
     }
-
-
-
 });

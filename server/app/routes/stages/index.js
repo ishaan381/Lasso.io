@@ -5,7 +5,8 @@ module.exports = router;
 let db = require('../../../db'),
 check = require('../check-handler');
 
-const Stage = db.model('stage');
+const Stage = db.model('stage'),
+App = db.model('application');
 
 router.param('id', function(req, res, next, id){
   Stage.findOne({
@@ -23,6 +24,18 @@ router.param('id', function(req, res, next, id){
 router.get('/:id', function(req, res){
   res.send(req.requestedStage);
 });
+
+router.get('/:id/numCandidates', function(req, res, next){
+  App.count({
+    where: {
+      stageId: req.params.id
+    }
+  })
+  .then(function(count){
+    res.json(count);
+  })
+  .catch(next);
+})
 
 router.get('/:id/candidates', function(req, res, next){
   req.requestedStage.getApplication()
@@ -43,7 +56,6 @@ router.get('/:jobId/first', function(req, res, next) {
     }
   })
   .then(function(stage) {
-    console.log("FOUND THE STAGE", stage)
     res.send({stageId: stage.id})
   })
   .catch(next)

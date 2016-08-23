@@ -8,7 +8,6 @@ app.config(function($stateProvider) {
                 return $stateParams.id;
             }],
             thisJob: function(Job, $stateParams) {
-                console.log($stateParams.id);
                 var postingId = $stateParams.id;
                 return Job.fetch(postingId) // fetch from stateparams
             }

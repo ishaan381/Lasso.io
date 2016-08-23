@@ -16,10 +16,15 @@ const numUsers = 25,
     numCompanies = 5,
     numJobs = 30, //pipelines have jobs, jobs have app descriptions, and jobappforms
     numStages = 100,
+<<<<<<< HEAD
     numApps = 500,
     numComments = 2500;
     // do not change for now
     numFeedbacks = 1;
+=======
+    numApps = 2500,
+    numComments = 5000;
+>>>>>>> e223041dbd32915d74ba10ff72470a70c21a0377
 const companyNames = ['Fullstack Academy', 'Microsoft', 'Lyft', 'Uber', 'BMW'],
     userEmails = chance.unique(chance.email, numUsers),
     department = ["Business Analytics", "Software Engineering", "Engineering", "Frontend Developement", "Customer Service", "Data Science", "Accounting", "Legal", "Marketing", "Operations", "HR", "Communications", "Compliance"],
@@ -338,7 +343,7 @@ function randomApp(stages) {
         }),
         jobId: Math.floor(Math.random() * 30) + 1,
         stageId: chance.pick(stages).id,
-        rejected: chance.weighted([true, false], [80, 20])
+        rejected: chance.weighted([true, false], [55, 45])
     })
 }
 
@@ -354,10 +359,10 @@ function randomComments() {
     return Comment.build({
         title: chance.pick(commentTitles),
         content: chance.pick(commentContent),
-        stageId: Math.floor(Math.random() * 100) + 1,
+        stageId: Math.floor(Math.random() * numStages) + 1,
         userId: Math.floor(Math.random() * 27) + 1,
         rating: chance.pick([0, 1, 2, 3, 4, 5]),
-        applicationId: Math.floor(Math.random() * 500) + 1
+        applicationId: Math.floor(Math.random() * numApps) + 1
     })
 }
 
@@ -379,6 +384,7 @@ function createComments() {
 //     })
 // }
 
+<<<<<<< HEAD
 // function genFeedbacks() {
 //     return doTimes(numFeedbacks, randomFeedback);
 // };
@@ -386,6 +392,9 @@ function createComments() {
 // function createFeedbacks() {
 //     return Promise.map(genFeedback(), feedback => feedback.save());
 // }
+=======
+//     return Promise.map(genFeedback(), feedback => )
+>>>>>>> e223041dbd32915d74ba10ff72470a70c21a0377
 
 function seed() {
     var _companies, _users, _stages, _jobs;
@@ -414,6 +423,12 @@ function seed() {
         .then(function() {
             return createComments()
         })
+<<<<<<< HEAD
+=======
+        // .then(function () {
+        //     return createFeedback()
+        // })
+>>>>>>> e223041dbd32915d74ba10ff72470a70c21a0377
         .then(function() {
             console.log("Hello")
         })

@@ -12,7 +12,7 @@ app.directive('navbar', function($rootScope, AuthService, AUTH_EVENTS, $state, $
 
             AuthService.getLoggedInUser()
             .then(function(user){
-                scope.user.isCompanyAdmin = user.isCompanyAdmin;
+                if (user) scope.user.isCompanyAdmin = user.isCompanyAdmin;
             });
 
             scope.user = null;

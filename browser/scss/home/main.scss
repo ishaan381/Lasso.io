@@ -48,11 +48,15 @@
 }
 
 #whitespace {
-  background-color: whitesmoke;
+  background-color: white;
   height: 100vh;
   box-shadow: 0 1px 3px rgba(0,0,0,0.24);
   color: #353238;
   text-align: center;
+
+  .subtext {
+    padding: 30px;
+  }
 
 
   .card {

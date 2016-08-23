@@ -28,9 +28,10 @@ app.controller('newDescriptionCtrl', function (_, $scope, $state, formlyVersion,
         return JobDescriptions.create(descriptionData);
       })
       .then(data => {
-        console.log(data);
-        $state.go('editPosting.application', {id: jobId})
+        $state.reload()
+
       })
+      .then(() => $state.go('editPosting.application', {id: jobId}))
     }
 
     // function assignment

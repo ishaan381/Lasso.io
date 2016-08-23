@@ -3,14 +3,13 @@ app.controller('stageCtrl', function($scope, $state, Stage, $stateParams, $uibMo
     $scope.currentStage = stage;
     $scope.currentStageId = $stateParams.stageId
 
-    var avatarColors = ['#745296',  '#632A50', '#e91e63', '#00695c', '#ef6c00', '#607d8b']
+    var avatarColors = ['#745296', '#632A50', '#e91e63', '#00695c', '#ef6c00', '#607d8b']
 
     Stage.getCandidates($stateParams.stageId)
         .then(cache => {
             $scope.candidates = cache;
             $scope.numQualified = $scope.candidates.filter(candidate => !candidate.rejected).length;
             $scope.numDisqualified = $scope.candidates.filter(candidate => candidate.rejected).length;
-            console.log($scope.candidates);
             $scope.candidates.forEach((candidate, index) => candidate.avatarColor = avatarColors[index % 6])
         });
 
@@ -20,11 +19,6 @@ app.controller('stageCtrl', function($scope, $state, Stage, $stateParams, $uibMo
     } else if ($stateParams.qualified === "false") {
         $scope.qualified = false;
     }
-
-    // $scope.$watch('qualified', function () {
-    //   console.log('trigger');
-    //   console.log($scope.qualified);
-    // })
 
     $scope.filterByDisqualified = function(candidate) {
         return candidate.rejected;
@@ -51,9 +45,7 @@ app.controller('stageCtrl', function($scope, $state, Stage, $stateParams, $uibMo
     $scope.selectedCandidateId;
 
     $scope.setActiveCandidate = function (candidateId) {
-        console.log('hi');
         $scope.selectedCandidateId = candidateId;
-        console.log($scope.selectedCandidateId);
     }
 
     $scope.resetActiveCandidate = function () {
