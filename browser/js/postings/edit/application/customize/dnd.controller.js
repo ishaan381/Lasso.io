@@ -20,7 +20,6 @@ app.controller('dndCtrl', function(_, $scope, formlyVersion, $q, $http, sharedMo
     }, function(newCustomField, oldVal) {
         if (newCustomField) {
             $scope.lists[0].questions.push(newCustomField);
-            console.log($scope.lists[0]);
         }
     })
 

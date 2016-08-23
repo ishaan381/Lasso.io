@@ -11,8 +11,11 @@ app.controller('panelFormCtrl', function(_, $scope, formlyVersion, $log, $q, $ht
         })
 
     function reloadForm() {
-        $scope.panels = $scope.selected.panels;
-        $scope.questions = $scope.panels[currentIndex].panelQuestions;
+        if ($scope.selected) {
+            $scope.panels = $scope.selected.panels;
+            $scope.questions = $scope.panels[currentIndex].panelQuestions;
+        }
+
     }
 
     $scope.$parent.$watch('tabRemoveToggle', reloadForm)
