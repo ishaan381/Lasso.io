@@ -77,10 +77,7 @@ app.controller('ModalInstaCtrl', function($scope, $uibModalInstance, $http, Auth
         $scope.priv = !$scope.priv;
     }
 
-    console.log($scope.priv)
-
     $scope.sendCode = function(email) {
-        console.log($scope.priv)
         $scope.message = "Sending..."
         AuthService.getLoggedInUser()
             .then(function(user) {
