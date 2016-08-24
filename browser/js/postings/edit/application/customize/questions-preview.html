@@ -1,9 +1,6 @@
 <div ng-controller="dndCtrl" class="typesDemo row">
     <div ng-repeat="list in lists" class="col-md-12">
         <div class="panel panel-info" ng-if="list.questions.length > 0">
-            <!--             <div class="panel-heading">
-                <h3 class="panel-title">{{list.label}}</h3>
-            </div> -->
             <div class="panel-body">
                 <ul dnd-drop="dropCallback(event, index, item, external, type, 'containerType')" dnd-list="list.questions">
                     <li ng-repeat="question in list.questions" dnd-draggable="question" dnd-type="question.type" dnd-auto-scroll="true" dnd-disable-if="question.type == 'unknown'" dnd-moved="list.questions.splice($index, 1)" dnd-effect-allowed="move" class="background-{{question.type}}">

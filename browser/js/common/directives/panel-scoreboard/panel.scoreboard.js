@@ -4,7 +4,7 @@ app.directive('panelScoreboard', function() {
         restrict: 'E',
         templateUrl: 'js/common/directives/panel-scoreboard/panel-scoreboard.html',
         scope: { choices: '=ngModel' },
-        link: function(scope, element, attrs) {
+        link: function(scope) {
             if (scope.choices) {
                 scope.choices = scope.choices;
             } else {

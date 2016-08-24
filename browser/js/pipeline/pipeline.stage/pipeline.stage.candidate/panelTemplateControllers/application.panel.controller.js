@@ -27,11 +27,7 @@ app.controller('applicationPanelCtrl', function($scope, $state, $stateParams, Fe
                     $scope.finalApplicationFeedback[fbIdx].values.push(q);
                 })
             })
-            console.log($scope.finalApplicationFeedback);
         })
-
-    console.log($scope.candidateAppQuestions);
-    // $scope.candidateApp.
 
     function combineAppAnswers() {
         $scope.candidateAppQuestions.customFields.forEach(function(question) {
@@ -62,13 +58,9 @@ app.controller('applicationPanelCtrl', function($scope, $state, $stateParams, Fe
     }
 
     $scope.getResumeUrl = function(data) {
-        console.log('hi');
-        console.log(data);
         return '/uploads/' + data;
     }
-
-    // console.log($scope.candidateApp);
-    // console.log($scope.candidateAppQuestions);
+    
     $scope.checked = true;
     $scope.size = '100px';
     $scope.$watch('checked', function() {

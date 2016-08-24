@@ -30,7 +30,6 @@ app.factory('Job', function($http, $log) {
     }
 
     Job.create = function(job) {
-        console.log("in factory")
         return $http.post('/api/jobs', {
                 companyId: job.companyId
             })
@@ -53,7 +52,6 @@ app.factory('Job', function($http, $log) {
     Job.getFirstStageId = function (id) {
         return $http.get('/api/stages/'+id+'/first')
         .then(function(res) {
-            console.log("BACK IN THE FACTORY", res.data)
             return res.data
         });
     }

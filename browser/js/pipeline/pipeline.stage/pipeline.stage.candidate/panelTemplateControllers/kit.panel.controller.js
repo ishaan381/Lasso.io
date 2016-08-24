@@ -17,7 +17,6 @@ app.controller('kitPanelCtrl', function ($scope, $state, $stateParams, Feedback,
     }
 
     $scope.submitFeedback = function() {
-        console.log("SUBMITTING FEEDBACK!!", $stateParams)
         var _answers = [];
 
         for (var answerIndex in $scope.model) {
@@ -31,6 +30,4 @@ app.controller('kitPanelCtrl', function ($scope, $state, $stateParams, Feedback,
     }
 
     generateKitModel();
-
-    // console.log($scope.model);
 });

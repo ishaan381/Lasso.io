@@ -5,8 +5,7 @@ app.directive('panelDropdown', function() {
         templateUrl: 'js/common/directives/panel-dropdown/panel-dropdown.html',
         scope: { choices: '=ngModel' },
         controller: 'panelDropdownCtrl',
-        link: function(scope, element, attrs) {
-            // for persistence
+        link: function(scope, element) {
             if (scope.choices) {
                 scope.choices = scope.choices;
             } else {
@@ -28,18 +27,5 @@ app.directive('panelDropdown', function() {
 
         }
     };
-
-});
-
-app.controller('panelDropdownCtrl', function(_, $scope, $log, $q, $http, $state) {
-
-    // console.log($scope.model);
-
-    // $scope.model = "";
-
-    // $scope.addNewOption = function () {
-    //   $scope.model = "hi";
-    // }
-
 
 });

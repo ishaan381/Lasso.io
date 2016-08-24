@@ -35,7 +35,6 @@ app.controller('CommentPanelCtrl', function($scope, $state, $stateParams, Commen
     $scope.disabled = !($scope.input);
 
     $scope.addComment = function() {
-      console.log($scope.disabled, $scope.input, "disability stats")
       var commentObject = {
         content: $scope.input,
         rating: $scope.toggle? $scope.rating : 0,

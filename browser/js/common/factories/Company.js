@@ -24,7 +24,6 @@ app.factory('Company', function($http) {
     }
 
     Company.create = function(company) {
-        console.log("in factory")
         return $http.post('/api/companies', {
             name: company.name,
             website: company.website
