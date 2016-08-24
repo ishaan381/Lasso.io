@@ -1,17 +1,11 @@
 <nav class="navbar navbar-static-top" ng-hide="hide" ng-cloak>
     <div class="container nav-container">
-        <!-- <div class="navbar-header">
-            <a class="navbar-brand">LASSO</a>
-        </div> -->
-        <!--         <div class="navbar-header">
- -->
         <button ng-init="navCollapsed = true" ng-click="navCollapsed = !navCollapsed" class="navbar-toggle collapsed" data-toggle="uib-collapse" data-target="#burger">
             <span class="sr-only"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
-        <!--         </div> -->
         <nav uib-collapse="navCollapsed" class="uib-collapse navbar-collapse navHeaderCollapse" id="burger">
             <ul class="nav navbar-nav navbar-center sf-js-enabled show">
                 <li ng-repeat="item in items" ng-show="!item.auth || isLoggedIn()">
