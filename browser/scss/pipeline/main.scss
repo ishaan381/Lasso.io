@@ -222,6 +222,7 @@
         font-size: 18px;
         background-color: white;
         height: 100vh;
+        overflow: scroll;
         border-top: 4px solid #166088;
         padding: 0;
     }
@@ -417,14 +418,18 @@
         .comment {
             font-family: Lato, 'Helvetica Neue', Arial, Helvetica, sans-serif;
         }
+        .comments-panel {
+            margin-top: 40px;
+        }
         .ui.comments {
             border: 1px solid #f2f2f2;
             background-color: #f2f2f2;
-            border-radius: 10px;
+            /*border-radius: 10px;*/
             margin: 0 auto 10px auto;
             font-size: 0.9em;
             padding: 5px;
         }
+
         .switch {
             display: inline;
             margin-right: 10px;
