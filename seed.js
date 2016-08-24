@@ -10,7 +10,7 @@ let chalk = require('chalk'),
     Stage = db.model('stage'),
     Company = db.model('company'),
     App = db.model('application');
-    Feedback = db.model('feedback');
+
 var Promise = require('sequelize').Promise;
 const numUsers = 25,
     numCompanies = 5,
