@@ -16,15 +16,9 @@ const numUsers = 25,
     numCompanies = 5,
     numJobs = 30, //pipelines have jobs, jobs have app descriptions, and jobappforms
     numStages = 100,
-<<<<<<< HEAD
-    numApps = 500,
-    numComments = 2500;
-    // do not change for now
-    numFeedbacks = 1;
-=======
     numApps = 2500,
     numComments = 5000;
->>>>>>> e223041dbd32915d74ba10ff72470a70c21a0377
+
 const companyNames = ['Fullstack Academy', 'Microsoft', 'Lyft', 'Uber', 'BMW'],
     userEmails = chance.unique(chance.email, numUsers),
     department = ["Business Analytics", "Software Engineering", "Engineering", "Frontend Developement", "Customer Service", "Data Science", "Accounting", "Legal", "Marketing", "Operations", "HR", "Communications", "Compliance"],
@@ -384,17 +378,7 @@ function createComments() {
 //     })
 // }
 
-<<<<<<< HEAD
-// function genFeedbacks() {
-//     return doTimes(numFeedbacks, randomFeedback);
-// };
 
-// function createFeedbacks() {
-//     return Promise.map(genFeedback(), feedback => feedback.save());
-// }
-=======
-//     return Promise.map(genFeedback(), feedback => )
->>>>>>> e223041dbd32915d74ba10ff72470a70c21a0377
 
 function seed() {
     var _companies, _users, _stages, _jobs;
@@ -423,12 +407,6 @@ function seed() {
         .then(function() {
             return createComments()
         })
-<<<<<<< HEAD
-=======
-        // .then(function () {
-        //     return createFeedback()
-        // })
->>>>>>> e223041dbd32915d74ba10ff72470a70c21a0377
         .then(function() {
             console.log("Hello")
         })
