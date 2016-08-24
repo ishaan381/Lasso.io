@@ -1,40 +1,41 @@
 .my-navbar {
-  font-family: 'Roboto', sans-serif;
-  text-align: center;
-  .nav {
-    float: none;
-    li {
-      display: inline-block;
-      float: none;
-      vertical-align: middle;
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
+    .nav {
+        float: none;
+        li {
+            display: inline-block;
+            float: none;
+            vertical-align: middle;
+        }
     }
-  }
 }
 
-
 .pipeline-subnav {
-  font-family: 'Meta Medium Caps';
-  width: 75%;
-  float: right;
-  height: 50px;
-  font-size: 16px;
-  .stage-label {
-    font-family: Meta Medium Caps;
-  }
-
-  .container {
-    height: 100%;
-    .my-navbar {
-      height: 100%;
+    font-family: 'Meta Medium Caps';
+    width: 75%;
+    float: right;
+    height: 50px;
+    font-size: 16px;
+    .stage-label {
+        font-family: Meta Medium Caps;
     }
-    .nav-center {
-      height: 100%;
-    }
-    li {
-      height: 100%;
-      a {
+    .container {
         height: 100%;
-      }
+        .ui.circular.label {
+            border-radius: 0;
+        }
+        .my-navbar {
+            height: 100%;
+        }
+        .nav-center {
+            height: 100%;
+        }
+        li {
+            height: 100%;
+            a {
+                height: 100%;
+            }
+        }
     }
-  }
 }
