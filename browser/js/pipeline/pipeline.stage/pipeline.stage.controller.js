@@ -36,8 +36,6 @@ app.controller('stageCtrl', function($scope, $state, Stage, $stateParams, $uibMo
     }
 
     $scope.getInitials = function (fullName) {
-        // return 'hi'
-        // console.log(fullName);
         return fullName.split(' ').map(function (s) { return s.charAt(0); }).join('');
 
     }

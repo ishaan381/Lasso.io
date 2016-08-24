@@ -9,8 +9,6 @@ app.controller('panelCtrl', function(_, $scope, formlyVersion, $log, $q, $http, 
         if (newSelectedStage) {
             tabs = newSelectedStage.panels;
             $scope.tabs = newSelectedStage.panels;
-            // $scope.selectedIndex = 0;
-            // console.log($scope.selectedIndex);
         }
     }, true)
 
@@ -36,18 +34,9 @@ app.controller('panelCtrl', function(_, $scope, formlyVersion, $log, $q, $http, 
     $scope.tabs = tabs;
     $scope.selectedIndex = 0;
     $scope.$watch('selectedIndex', function(current, old) {
-        console.log('in here', current, old);
-
-        // previous = selected;
-        // selected = tabs[current];
-        // $scope.selectedIndex = current;
-        // if (old + 1 && (old != current)) $log.debug('Goodbye ' + previous.title + '!');
-        // if (current + 1) $log.debug('Hello ' + selected.title + '!');
     });
 
     $scope.addTab = function() {
-        console.log("In the add function", $scope.selectedIndex, tabs.length);
-        // tabs.push({ title: 'Select a Helper', templateUrl: '/js/postings/edit/pipeline/panel-templates/menu-selection.html', panelId: tabs.length });
         tabs.push({ title: 'Interview Kit', templateUrl: '/js/postings/edit/pipeline/panel-templates/default-form.html', panelId: tabs.length, panelQuestions: [] })
         $scope.selectedIndex = tabs.length - 1;
         console.log('After push', $scope.selectedIndex, tabs.length)

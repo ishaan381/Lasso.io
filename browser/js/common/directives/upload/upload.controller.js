@@ -5,28 +5,11 @@ app.directive('upload', function () {
         templateUrl: 'js/common/directives/upload/upload.html',
         scope: { model: '=ngModel', options: '='},
         controller: 'uploadCtrl'
-        // controller: function ($scope) {
-
-        //     console.log($scope.options);
-
-        //     $scope.checked = $scope.data.checked;
-        //     $scope.unchecked = $scope.data.unchecked;
-        //     $scope.current = $scope.unchecked;
-
-        //     $scope.toggleChecked = function () {
-        //         $scope.current = ($scope.unchecked === $scope.current) ? $scope.current = $scope.checked : $scope.current = $scope.unchecked;
-        //         $scope.model = $scope.current;
-        //     }
-
-
-        // }
     };
 
 });
 
 app.controller('uploadCtrl', function(_, $rootScope, $scope, formlyVersion, $q, $http, Upload, $timeout) {
-
-    console.log($scope.model);
 
     $scope.$watch('file', function() {
         if ($scope.file != null) {
@@ -44,7 +27,6 @@ app.controller('uploadCtrl', function(_, $rootScope, $scope, formlyVersion, $q, 
                     file: file
                 }
             }).then(function(resp) {
-                console.log('SUCCESS!', resp)
                 $scope.model = resp.data;
                 $timeout(function() {
                     $scope.log = 'file: ' +
@@ -58,7 +40,6 @@ app.controller('uploadCtrl', function(_, $rootScope, $scope, formlyVersion, $q, 
                 $scope.log = 'progress: ' + progressPercentage +
                     '% ' + evt.config.data.file.name + '\n' +
                     $scope.log;
-                    console.log($scope.log)
             });
         }
     };

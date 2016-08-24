@@ -4,7 +4,7 @@ app.controller('editApplicationCtrl', function(_, $scope, formlyVersion, $q, $ht
     // Adds to formly-form model.
     $scope.$watch(function() {
         return sharedModal.customFields;
-    }, function(newVal, oldVal) {
+    }, function(newVal) {
         $scope.model.customFields = newVal;
         // Change height of preview whenever new custom field is added.
     }, true)
@@ -12,7 +12,6 @@ app.controller('editApplicationCtrl', function(_, $scope, formlyVersion, $q, $ht
     // FORM GENERATION
     const vm = this;
 
-    console.log(thisJob);
     $scope.originalFields = angular.copy($scope.fields);
 
     // On Form Submit
@@ -22,7 +21,7 @@ app.controller('editApplicationCtrl', function(_, $scope, formlyVersion, $q, $ht
     // This reloads the job application if it exists in the database.
     var comingFromNewStage = false;
 
-    $rootScope.$on('$stateChangeSuccess', function(e, toState, toParams, fromState, fromParams) {
+    $rootScope.$on('$stateChangeSuccess', function(e, toState, toParams, fromState) {
 
         if (toState.name === 'editPosting.application' && fromState.name === 'newDescription') {
             sharedModal.customFields = [];
@@ -38,7 +37,7 @@ app.controller('editApplicationCtrl', function(_, $scope, formlyVersion, $q, $ht
                     jobId: $stateParams.id
 
                 })
-                .then(function(job) {
+                .then(function() {
                     $state.reload();
                 })
         } else {
@@ -46,7 +45,7 @@ app.controller('editApplicationCtrl', function(_, $scope, formlyVersion, $q, $ht
                     fields: JSON.stringify($scope.model),
                     jobId: $stateParams.id
                 })
-                .then(function(job) {
+                .then(function() {
                     $state.reload();
                 })
         };
@@ -232,7 +231,6 @@ app.controller('editApplicationCtrl', function(_, $scope, formlyVersion, $q, $ht
         // Assigns it to the formly model.
 
         _.assign($scope.model, parsedJobApp);
-        //$scope.model = { hey: "HELLO" }
             // Adds it to the custom questions (separate from formly model) in shared service if pre-existing.
             // :: See $watch on sharedModal.customFields in dnd.controller.js
         if (parsedJobApp.customFields) {

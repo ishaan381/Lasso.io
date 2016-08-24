@@ -30,14 +30,13 @@ app.controller('dndCtrl', function(_, $scope, formlyVersion, $q, $http, sharedMo
     $scope.$watch(function() {
         return sharedModal.customFields;
     }, function(newVal) {
-        console.log('wow');
         $scope.lists[0].questions = newVal;
     })
 
     // Watches questions list for updates. Adds incremented ID / tag to each custom field.
     // Updates sharedModal.customFields service which ^editApplicationCtrl is $watch-ing.
 
-    $scope.$watch('lists', function(newVal) {
+    $scope.$watch('lists', function() {
         $scope.lists[0].questions.forEach(function(question, idx) {
             question.id = 'custom-field-' + idx;
         })
@@ -47,7 +46,7 @@ app.controller('dndCtrl', function(_, $scope, formlyVersion, $q, $http, sharedMo
     // Sets sharedModal.modal to null if state change --> if user had not saved changes
     // but has "saved" a modal instance.
 
-    $scope.$on('$locationChangeStart', function(event, newUrl, oldUrl) {
+    $scope.$on('$locationChangeStart', function(event, newUrl) {
         sharedModal.modal = null;
     });
 
@@ -86,16 +85,10 @@ app.controller('dndCtrl', function(_, $scope, formlyVersion, $q, $http, sharedMo
         return item;
     };
 
-    $scope.logEvent = function(message, event) {
-        console.log(message, '(triggered by the following', event.type, 'event)');
-        console.log(event);
-    };
-
     $scope.logListEvent = function(action, event, index, external, type) {
         var message = external ? 'External ' : '';
         message += type + ' element is ' + action + ' position ' + index;
         $scope.logEvent(message, event);
     };
-    console.log($scope.lists);
 
 });

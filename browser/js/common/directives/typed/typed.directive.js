@@ -8,10 +8,10 @@ app.directive('typedjs', function() {
 
     template: '<span id="typed-output"></span>',
 
-    link: function($scope, $element, $attrs) {
+    link: function(scope) {
 
       var options = {
-        strings: $scope.strings,
+        strings: scope.strings,
         typeSpeed: 6,
         contentType: "html",
         showCursor: true,

@@ -36,7 +36,6 @@ app.factory('JobApplication', function($http) {
   function generatePersonalInfo(personalInfo) {
     for (let field in personalInfo) {
       let fieldConfig = personalInfo[field].value;
-      console.log(personalInfo[field])
       if ( (fieldConfig === 0 || fieldConfig === 1) && personalInfo[field].label !== 'Resume') {
         fields.push({
           noFormControl: true,

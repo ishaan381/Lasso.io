@@ -104,10 +104,8 @@
         var self = this;
 
         this.checkCode = function(code) {
-            console.log('checking code')
             return $http.post('/checkcode', {code: code})
             .then(function(companyInfo) {
-                console.log('valid code')
                 return $q.resolve(companyInfo)
             })
             .catch(function() {
@@ -131,7 +129,6 @@
 
             return $http.post('/create', {name: credentials.name, website: credentials.website})
             .then(function(company) {
-                console.log(company.data)
                 return self.signup({email: credentials.email, password: credentials.password, companyId: company.data.id})
             })
             .catch(function() {
