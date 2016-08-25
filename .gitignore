@@ -1,7 +1,6 @@
 .idea
 node_modules
 npm-debug.log
-public/uploads
 public/main.js
 public/style.css
 .DS_Store
