@@ -1,7 +1,9 @@
 .idea
 node_modules
 npm-debug.log
-public
+public/uploads
+public/main.js
+public/style.css
 .DS_Store
 coverage
 bower_components
