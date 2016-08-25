@@ -10,7 +10,7 @@ let chalk = require('chalk'),
     Stage = db.model('stage'),
     Company = db.model('company'),
     App = db.model('application');
-    Feedback = db.model('feedback');
+
 var Promise = require('sequelize').Promise;
 const numUsers = 25,
     numCompanies = 5,
@@ -19,7 +19,6 @@ const numUsers = 25,
     numApps = 500,
     numComments = 2500;
     // do not change for now
-    numFeedbacks = 1;
 const companyNames = ['Fullstack Academy', 'Microsoft', 'Lyft', 'Uber', 'BMW'],
     userEmails = chance.unique(chance.email, numUsers),
     department = ["Business Analytics", "Software Engineering", "Engineering", "Frontend Developement", "Customer Service", "Data Science", "Accounting", "Legal", "Marketing", "Operations", "HR", "Communications", "Compliance"],
