@@ -16,8 +16,11 @@ const numUsers = 25,
     numCompanies = 5,
     numJobs = 30, //pipelines have jobs, jobs have app descriptions, and jobappforms
     numStages = 100,
+
     numApps = 2500,
     numComments = 5000;
+
+    // do not change for now
 
 const companyNames = ['Fullstack Academy', 'Microsoft', 'Lyft', 'Uber', 'BMW'],
     userEmails = chance.unique(chance.email, numUsers),
