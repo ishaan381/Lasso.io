@@ -10,7 +10,10 @@ app.controller('stageCtrl', function($scope, $state, Stage, $stateParams, $uibMo
             $scope.candidates = cache;
             $scope.numQualified = $scope.candidates.filter(candidate => !candidate.rejected).length;
             $scope.numDisqualified = $scope.candidates.filter(candidate => candidate.rejected).length;
-            $scope.candidates.forEach((candidate, index) => candidate.avatarColor = avatarColors[index % 6])
+            $scope.candidates.forEach((candidate, index) => {
+                candidate.avatarColor = avatarColors[index % 6]
+                candidate.date = moment(candidate.createdAt).calendar();
+            })
         });
 
     // Restful Routing
