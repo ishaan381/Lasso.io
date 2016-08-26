@@ -6,8 +6,6 @@ app.directive('toggleCheckbox', function () {
         scope: { data: '=data', model: '=ngModel', options: '='},
         controller: function ($scope) {
 
-            console.log($scope.options);
-
             $scope.checked = $scope.data.checked;
             $scope.unchecked = $scope.data.unchecked;
             $scope.current = $scope.unchecked;

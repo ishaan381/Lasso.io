@@ -37,7 +37,7 @@
                     </div>
                     <div class="col-md-9 stages-container">
                         <div class="typesDemo" ng-repeat="list in customStages">
-                            <ul dnd-list="list.stages" dnd-allowed-types="list.allowedTypes" dnd-disable-if="list.stages.length >= list.max">
+                            <ul dnd-drop="dropCallback(event, index, item, external, type, 'containerType')" dnd-list="list.stages" dnd-allowed-types="list.allowedTypes" dnd-disable-if="list.stages.length >= list.max">
                                 <li ng-repeat="stage in list.stages" dnd-draggable="stage" dnd-selected="selectedCb(stage)" ng-class="{selected: selected === stage}" dnd-type="stage.type" dnd-disable-if="stage.type == 'unknown'" dnd-moved="list.stages.splice($index, 1)" dnd-effect-allowed="move" class="background-{{stage.type}}">
                                     <dnd-nodrag>
                                         <div dnd-handle class="handle"><i class="fa fa-bars" aria-hidden="true"></i></div>

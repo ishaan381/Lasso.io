@@ -52,12 +52,20 @@ app.controller('candidateCtrl', function($scope, $state, $stateParams, $timeout,
         })
 
     $scope.moveCandidate = function(candidateId) {
+       // $scope.stages[stage.id].numCands
+       $scope.stages.forEach(function(_stage) {
+        if (_stage.id === stage.id) _stage.numCands--;
+        if (_stage.id === stage.id + 1) _stage.numCands++;
+       })
         Stage.moveCandidate(candidateId);
         $scope.$parent.numQualified--;
         $state.go('pipeline.stage', { stageId: stage.id });
     }
 
     $scope.qualifyCandidate = function(candidateId) {
+        $scope.stages.forEach(function(_stage) {
+            if (_stage.id === stage.id) _stage.numCands++;
+        })
         Stage.qualifyCandidate(candidateId);
         $state.go('pipeline.stage', { stageId: stage.id })
         $scope.$parent.numQualified++;
@@ -65,6 +73,9 @@ app.controller('candidateCtrl', function($scope, $state, $stateParams, $timeout,
     }
 
     $scope.disqualifyCandidate = function(candidateId) {
+        $scope.stages.forEach(function(_stage) {
+            if (_stage.id === stage.id) _stage.numCands--;
+        })
         Stage.disqualifyCandidate(candidateId);
         $state.go('pipeline.stage', { stageId: stage.id });
         $scope.$parent.numDisqualified++;

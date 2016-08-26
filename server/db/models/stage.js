@@ -10,5 +10,8 @@ module.exports = db.define('stage', {
     },
     panels: {
         type: Sequelize.JSON
+    },
+    type: {
+      type: Sequelize.STRING
     }
 });

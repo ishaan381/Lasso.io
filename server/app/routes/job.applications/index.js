@@ -8,7 +8,6 @@ check = require('../check-handler');
 const JobApplication = db.model('job_application');
 
 router.param('id', function(req, res, next, id){
-  console.log(id);
 	JobApplication.findOne({
 		where:{
 			jobId: id

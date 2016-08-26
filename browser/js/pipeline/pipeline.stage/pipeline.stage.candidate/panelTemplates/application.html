@@ -46,17 +46,17 @@
                                     </div>
                                     <div class="col-md-6">
                                         <div class="col-md-12 icon-container">
-                                            <div class="col-md-3 rating">
-                                                <i ng-class="{'bad': option.value == 0}" class="fa fa-times" aria-hidden="true"></i>
+                                            <div class="col-md-3 rating" ng-if="field.answer[$index]===0">
+                                                <i class="fa fa-times bad" aria-hidden="true"></i>
                                             </div>
-                                            <div class="col-md-3 rating">
-                                                <i ng-class="{'bad': option.value == 1}" class="fa fa-thumbs-down" aria-hidden="true"></i>
+                                            <div class="col-md-3 rating" ng-if="field.answer[$index]===1">
+                                                <i class="fa fa-thumbs-down bad" aria-hidden="true"></i>
                                             </div>
-                                            <div class="col-md-3 rating">
-                                                <i ng-class="{'good': option.value == 2}" class="fa fa-thumbs-up" aria-hidden="true"></i>
+                                            <div class="col-md-3 rating" ng-if="field.answer[$index]===2">
+                                                <i class="fa fa-thumbs-up good" aria-hidden="true"></i>
                                             </div>
-                                            <div class="col-md-3 rating">
-                                                <i ng-class="{'good': option.value == 3}" class="fa fa-star" aria-hidden="true"></i>
+                                            <div class="col-md-3 rating" ng-if="field.answer[$index]===3">
+                                                <i class="fa fa-star good" aria-hidden="true"></i>
                                             </div>
                                         </div>
                                     </div>

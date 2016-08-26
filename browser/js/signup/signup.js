@@ -10,7 +10,7 @@ app.config(function ($stateProvider) {
 
 
 app.controller('SignupCtrl', function ($scope, AuthService, $state) {
-    
+
     $scope.login = {};
     $scope.signup = {};
     $scope.companySignupInfo = {};
@@ -54,7 +54,6 @@ app.controller('SignupCtrl', function ($scope, AuthService, $state) {
     $scope.createCompany = function (createInfo) {
         AuthService.createCompany(createInfo)
         .then(function(companyInfo) {
-        	console.log('hi');
             $state.go('postings');
         })
         .catch(function(err) {

@@ -43,7 +43,6 @@ app.controller('editPipelineCtrl', function(_, $scope, formlyVersion, $q, $http,
         stageArray.push({ title: beginStage.title, index: 0, jobId: thisJob.id, panels: beginStage.panels });
 
         $scope.customStages[0].stages.forEach(function(stage) {
-            console.log("STAGES", stage)
             stage.panels.forEach(function(_stage) {
                 if (_stage.panelQuestions) {
                     _stage.panelQuestions.forEach(function(question) {
@@ -103,7 +102,7 @@ app.controller('editPipelineCtrl', function(_, $scope, formlyVersion, $q, $http,
         max: 10,
         stages: [{
             title: "Phone Interview",
-            type: "custom",
+            type: 'custom',
             id: 0,
             panels: [
                 { title: 'Interviewer Instructions', templateUrl: '/js/postings/edit/pipeline/panel-templates/default-notes.html', panelId: 0, panelNotes: "" },
@@ -112,7 +111,7 @@ app.controller('editPipelineCtrl', function(_, $scope, formlyVersion, $q, $http,
             ]
         }, {
             title: "In-Person Interview",
-            type: "custom",
+            type: 'custom',
             id: 1,
             panels: [
                 { title: 'Interviewer Instructions', templateUrl: '/js/postings/edit/pipeline/panel-templates/default-notes.html', panelId: 0, panelNotes: "" },
@@ -149,7 +148,7 @@ app.controller('editPipelineCtrl', function(_, $scope, formlyVersion, $q, $http,
 
         $scope.endStage[0].stages[0] = stages[stages.length - 1];
 
-        populateStages();
+        //populateStages();
     }
 
     function populateStages() {
@@ -171,17 +170,30 @@ app.controller('editPipelineCtrl', function(_, $scope, formlyVersion, $q, $http,
 
     function repopulateStages() {
         $scope.stages = [];
-
         populateStages();
     }
 
 
-    $scope.$watch('stages', function(newVal, oldVal) {
-        sharedStages.stages = newVal;
-    }, true)
+    // $scope.$watch('stages', function(newVal, oldVal) {
+    //     sharedStages.stages = newVal;
+    // }, true)
 
 
     populateStages();
 
+    $scope.dropCallback = function(event, index, item, external, type, allowedType) {
+        $scope.logListEvent('dropped at', event, index, external, type);
+
+        if (external) {
+            if (allowedType === 'itemType' && !item.label) return false;
+            if (allowedType === 'containerType' && !angular.isArray(item)) return false;
+        }
+        return item;
+    };
+
+    $scope.logListEvent = function(action, event, index, external, type) {
+        var message = external ? 'External ' : '';
+        message += type + ' element is ' + action + ' position ' + index;
+    };
 
 });

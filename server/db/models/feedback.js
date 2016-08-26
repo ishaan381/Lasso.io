@@ -27,7 +27,6 @@ module.exports = db.define('feedback', {
         return User.findById(feedback.userId)
       })
       .then(function(user) {
-        console.log("FINDING USER",user)
         feedback.interviewer = user.fullName;
       });
     }

@@ -88,7 +88,7 @@ app.controller('dndCtrl', function(_, $scope, formlyVersion, $q, $http, sharedMo
     $scope.logListEvent = function(action, event, index, external, type) {
         var message = external ? 'External ' : '';
         message += type + ' element is ' + action + ' position ' + index;
-        console.log(message, event);
+        //console.log(message, event);
     };
 
 });

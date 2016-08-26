@@ -12,7 +12,7 @@ app.factory('Stage', function ($http, AuthService) {
       return cache;
     });
   }
-  
+
   Stage.numCandidates = function(stage){
     return $http.get('/api/stages/' + stage.id + '/numCandidates')
     .then(res => res.data);

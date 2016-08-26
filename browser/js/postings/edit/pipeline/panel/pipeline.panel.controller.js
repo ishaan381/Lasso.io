@@ -39,7 +39,6 @@ app.controller('panelCtrl', function(_, $scope, formlyVersion, $log, $q, $http, 
     $scope.addTab = function() {
         tabs.push({ title: 'Interview Kit', templateUrl: '/js/postings/edit/pipeline/panel-templates/default-form.html', panelId: tabs.length, panelQuestions: [] })
         $scope.selectedIndex = tabs.length - 1;
-        console.log('After push', $scope.selectedIndex, tabs.length)
     };
 
     $scope.tabRemoveToggle = true;

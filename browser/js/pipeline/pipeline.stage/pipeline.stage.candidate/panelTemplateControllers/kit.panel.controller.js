@@ -3,6 +3,8 @@ app.controller('kitPanelCtrl', function ($scope, $state, $stateParams, Feedback,
     }
     var currentUser;
 
+    $scope.notSubmitted = true;
+
     AuthService.getLoggedInUser()
     .then(function(user) {
         currentUser = user;
@@ -25,7 +27,7 @@ app.controller('kitPanelCtrl', function ($scope, $state, $stateParams, Feedback,
 
         Feedback.submitFeedback({answers: _answers, stageId: $stateParams.stageId, applicationId: $stateParams.candidateId, userId: currentUser.id})
         .then(function(feedback) {
-            console.log(feedback)
+            $scope.notSubmitted = false;
         })
     }
 

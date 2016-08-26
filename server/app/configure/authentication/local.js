@@ -82,15 +82,12 @@ module.exports = function (app, db) {
     })
 
     app.post('/checkcode', function(req, res, next) {
-        console.log(req.body, "THIS IS THE CODE WE ARE SEARCHING")
         var _companyId, _isCompanyAdmin;
         Code.findOne({where: {
             code: req.body.code
         }})
         .then(function(code) {
-            console.log('FOUND THE CODE', code)
             if (code) {
-                console.log("FIRST CONSOLE LOG", code.companyId)
                 _companyId = code.companyId;
                 _isCompanyAdmin = code.isCompanyAdmin;
                 return code.destroy()
@@ -102,7 +99,6 @@ module.exports = function (app, db) {
             }
         })
         .then(function() {
-            console.log("SECOND CONSOLE LOG", _companyId);
             res.send({companyId: _companyId, isCompanyAdmin: _isCompanyAdmin});
         })
         .catch(function(error) {
@@ -123,7 +119,6 @@ module.exports = function (app, db) {
             }
         })
         .then(function(createdUser) {
-            console.log('user created in the backend', createdUser);
             res.sendStatus(200)
         })
         .catch(function(error) {

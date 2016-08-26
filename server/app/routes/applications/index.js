@@ -50,7 +50,6 @@ router.post('/', function(req, res, next){
     }
   })
   .then(stage => {
-    console.log(stage);
     req.body.stageId = stage.id;
     req.body.application = JSON.stringify(req.body.application);
     return App.create(req.body);

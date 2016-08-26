@@ -5,7 +5,7 @@ app.controller('applicationPanelCtrl', function($scope, $state, $stateParams, Fe
     $scope.finalApplicationFeedback = {};
     $scope.finalApp = [];
 
-    // Get Feedback and format into multi-dimensional array with 
+    // Get Feedback and format into multi-dimensional array with
     // answers and questions attached -- stores in finalApplicationFeedback
     // DOES NOT ACCOUNT FOR MISMATCH IN LENGTH -- means all fields must be filled out
     Feedback.getFeedbackForApplication($stateParams.candidateId)
@@ -60,7 +60,7 @@ app.controller('applicationPanelCtrl', function($scope, $state, $stateParams, Fe
     $scope.getResumeUrl = function(data) {
         return '/uploads/' + data;
     }
-    
+
     $scope.checked = true;
     $scope.size = '100px';
     $scope.$watch('checked', function() {

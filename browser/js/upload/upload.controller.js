@@ -2,7 +2,6 @@ app.controller('UploadCtrl', function($scope, Upload) {
 
   $scope.submit = function() {
       if ($scope.form.file.$valid && $scope.file) {
-        console.log('uploading!')
         $scope.upload($scope.file);
       }
     };

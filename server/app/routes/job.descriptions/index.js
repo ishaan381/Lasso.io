@@ -21,7 +21,6 @@ router.param('id', function(req, res, next, id){
 });
 
 router.get('/:id', function(req, res) {
-    console.log('In')
     res.send(req.requestedDesc)
 });
 

@@ -4,7 +4,7 @@
         <small>{{question.description}}</small>
     </div>
     <ui-select ng-model="model.value" theme="selectize" title="Select One">
-        <ui-select-match placeholder="Select or search a person in the list...">{{$select.selected.value}}</ui-select-match>
+        <ui-select-match placeholder="Select a rating">{{$select.selected.value}}</ui-select-match>
         <ui-select-choices repeat="question.value as question in question.options | filter: $select.search">
             <div ng-bind-html="question.value | highlight: $select.search"></div>
         </ui-select-choices>

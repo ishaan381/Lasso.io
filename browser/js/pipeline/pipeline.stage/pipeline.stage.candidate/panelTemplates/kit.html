@@ -1,5 +1,5 @@
 <div class="kit-panel" ng-controller="kitPanelCtrl">
-    <div class="question-field" ng-repeat="question in data.questions">
+    <div class="question-field" ng-repeat="question in data.questions" ng-if="notSubmitted">
         <!-- @Omri passing in
     	data to angular directive within ng-repeat evaluates to undefined
     	inside directive's isolate scope if attribute name is camel-case

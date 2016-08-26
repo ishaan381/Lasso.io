@@ -164,6 +164,12 @@
         .scoreboard {
             padding-left: 0;
         }
+        .good {
+                color: rgb(170, 210, 3);
+        }
+        .bad {
+                color: #ED4337;
+        }
         .left {
             .title {
                 font-size: 16px;
@@ -172,16 +178,6 @@
             .description {
                 font-size: 14px;
                 margin-top: 5px;
-            }
-        }
-        .good {
-            i {
-                color: rgb(170, 210, 3);
-            }
-        }
-        .bad {
-            i {
-                color: #ED4337;
             }
         }
         .right {
@@ -432,7 +428,6 @@
             font-size: 0.9em;
             padding: 5px;
         }
-
         .switch {
             display: inline;
             margin-right: 10px;
