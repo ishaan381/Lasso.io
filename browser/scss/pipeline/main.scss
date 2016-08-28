@@ -70,7 +70,7 @@
         }
     }
     pageslide {
-        width: 350px;
+        width: 300px;
         padding-left: 25px;
         padding-right: 25px;
         padding-top: 15px;
@@ -235,6 +235,7 @@
     }
     .app-section1 {
         text-align: center;
+        font-size: 16px;
         height: 100%;
         line-height: 50px;
         border-right: 1px solid #ddd;
@@ -315,6 +316,7 @@
         .candidate-essential-info {
             font-size: 14px;
             padding: 0;
+            padding-left:10px;
             .candidate-name {
                 font-size: 18px;
             }
