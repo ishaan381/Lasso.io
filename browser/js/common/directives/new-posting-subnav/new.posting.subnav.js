@@ -7,7 +7,7 @@ app.directive('newsubnav', function ($rootScope, $state, AuthService) {
         link: function (scope) {
 
             scope.items = [
-                { label: 'create a job posting', state: 'newDescription', description: "Tell applicants why it's great to work at {{companyName}}", icon: "fa fa-briefcase", auth: true },
+                { label: 'create a job posting', state: 'newDescription', description: "Tell applicants why it's great to work here", icon: "fa fa-briefcase", auth: true },
 
             ];
 
