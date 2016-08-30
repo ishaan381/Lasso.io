@@ -214,7 +214,7 @@ app.controller('previewApplicationCtrl', function(_, $scope, $timeout, $interval
         var customsTitle = {
             noFormControl: true,
             className: 'col-md-12',
-            template: '<h4 class="preview-application-link-title">Additional Questions</h4><hr>'
+            template: '<h4 class="preview-application-link-title">ADDITIONAL QUESTIONS</h4><hr>'
         }
 
         $scope.fields.push(customsTitle);
