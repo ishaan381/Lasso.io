@@ -12,6 +12,8 @@ app.config(function ($urlRouterProvider, $locationProvider) {
         window.location.reload();
     });
 
+    $urlRouterProvider.when('/hire/postings/:id/stage/:stageId/candidate/:candidateId', '/hire/postings/:id/stage/:stageId/candidate/:candidateId/application');
+
 });
 
 app.constant('_', window._)

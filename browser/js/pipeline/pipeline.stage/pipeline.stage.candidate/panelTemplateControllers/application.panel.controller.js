@@ -78,4 +78,6 @@ app.controller('applicationPanelCtrl', function($scope, $state, $stateParams, Fe
     $scope.onclose = function() {
         alert('Close');
     }
+
+    $scope.switchDisplay('application', $scope.candidateAppQuestions)
 });
