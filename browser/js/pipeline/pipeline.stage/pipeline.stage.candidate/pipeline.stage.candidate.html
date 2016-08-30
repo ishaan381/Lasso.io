@@ -10,23 +10,23 @@
 <div class="row candidate-panels">
     <div class="col-sm-12 panelBar">
         <div class="row app-bar">
-            <a>
-                <div class="col-sm-3 app-section1" ng-click="switchTab(0)" ng-class="{'app-section-clicked': currTabId !== 0 }">
+            <a ui-sref=".application" ui-sref-active="app-section-clicked1">
+                <div class="col-sm-3 app-section1">
                     Candidate Application
                 </div>
             </a>
-            <a>
-                <div class="col-sm-3 app-section1" ng-click="switchTab(1)" ng-class="{'app-section-clicked': currTabId !== 1 }">
+            <a ui-sref=".comments" ui-sref-active="app-section-clicked1">
+                <div class="col-sm-3 app-section1">
                     Comments
                 </div>
             </a>
-            <a ng-repeat="panel in currentStage.panels">
-                <div class="col-sm-3 app-section1" ng-click="switchTab(panel.panelId + 2)" ng-class="{'app-section-clicked': currTabId !== panel.panelId + 2 }">
+            <a ng-repeat="panel in currentStage.panels" ui-sref="{{panel.sref}}" ui-sref-active="app-section-clicked1">
+                <div class="col-sm-3 app-section1" ui-sref-active="app-section-clicked">
                     {{panel.title}}
                 </div>
             </a>
         </div>
         <!-- changes views -->
-        <ng-include src="currPanelTemplate"></ng-include>
+        <div ui-view class="panel-views"></div>
     </div>
 </div>

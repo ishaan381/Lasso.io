@@ -165,10 +165,10 @@
             padding-left: 0;
         }
         .good {
-                color: rgb(170, 210, 3);
+            color: rgb(170, 210, 3);
         }
         .bad {
-                color: #ED4337;
+            color: #ED4337;
         }
         .left {
             .title {
@@ -240,6 +240,7 @@
         line-height: 50px;
         border-right: 1px solid #ddd;
         color: #166088;
+        background-color: #fafafa;
     }
     .app-section2 {
         text-align: center;
@@ -256,6 +257,11 @@
     .app-section-clicked {
         border-bottom: 1px solid #ddd;
         background-color: #fafafa;
+    }
+    .app-section-clicked1 {
+        .app-section1 {
+            background-color: white;
+        }
     }
     .app-filter-container {
         padding: 0;
@@ -316,7 +322,7 @@
         .candidate-essential-info {
             font-size: 14px;
             padding: 0;
-            padding-left:10px;
+            padding-left: 10px;
             .candidate-name {
                 font-size: 18px;
             }
@@ -392,6 +398,9 @@
         overflow: scroll;
         .app-section1 {
             outline: none;
+        }
+        .panel-views {
+            height: 100%;
         }
         .app-sort {
             float: right;
